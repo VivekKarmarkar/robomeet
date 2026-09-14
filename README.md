@@ -1,117 +1,120 @@
 # RoboMeet
 
-A local meeting robot with an animated camera, a separate slide presentation, GPT Live voice, meeting notes, and an MCP connection to your coding agent. Built as a new standalone app; the original Professor Claude / LiveKit project is unchanged.
+A meeting robot that joins a Google Meet from a link, talks with the people in the call using OpenAI's GPT Live voice model, and hands real work to the Claude Code or Codex session that launched it, over MCP.
 
-## Run
+## Overview
 
-From this directory:
+RoboMeet runs on one Linux laptop. A Node server drives a signed-in Chrome that joins the meeting as a normal participant; the GPT Live voice session runs inside that Meet tab, so what you hear is the model itself, about 1.2 to 1.7 s after your last word. A backend reasoning model (gpt-5.6-sol by default) handles longer thinking and tool calls: saving a meeting note, showing a slide deck on the robot's shared screen, or asking the coding session to do something. That session listens through the `robomeet` MCP server, does the job with its own tools, and replies; the robot speaks the result.
+
+It was built to let a coding session sit in a meeting: present work, take notes, answer questions, and take requests, without a hosted relay, LiveKit, Recall, or any speech-to-text pipeline of its own.
+
+## Features
+
+- **Joins any Google Meet link** as a signed-in participant (`vivekkmk.assistant@gmail.com` in a dedicated Chrome profile), knocks when it is not the organizer, and leaves cleanly.
+- **Live voice from the moment it is in the call**, even while knocking, so the first hello is answered; greets in its own words when someone is there.
+- **Facts, then "be yourself"**: the launch briefing tells the model what it is, both models and how delegation works, the coding session it is linked to (agent and session name are launch parameters), its tools, why it is there and any extra context from the launching session. No scripted lines.
+- **Delegation that keeps talking**: when a request goes to the coding agent the robot says so and keeps the conversation going until the answer comes back.
+- **Slides on the shared screen**: text slides, picture slides (`image:/slides/<file>.png`), and PDFs page by page (`present_pdf`).
+- **Meeting notes** saved locally and readable by the coding session.
+- **Global MCP server and skills**: `/robomeet <link>` from any Claude Code or Codex session launches the robot and turns that session into its coding agent; `/robomeet-stop` ends it.
+- **No echo on the same laptop**: the robot's audio goes to a PulseAudio null sink, so a human can join from the same machine with speakers on.
+- **Latency harness** (`tools/latency/`) that measures the whole path with timed synthetic speech and a second participant, no human needed.
+
+## Getting started
+
+### Prerequisites
+
+- Linux with a display, Google Chrome at `/usr/bin/google-chrome`, PulseAudio or PipeWire (`pactl`), and `pdftoppm` (poppler) for PDF decks.
+- Node.js 22.6 or newer.
+- An OpenAI API key with GPT Live access, in `OPENAI_API_KEY` or an env file named by `ROBO_OPENAI_ENV`.
+- A Google account for the robot, signed in once into the app's own Chrome profile (below).
+
+### Installation
 
 ```bash
 npm ci
-npm start
+npm test            # fixtures only, no paid calls
+node bin/login.mjs  # once: sign the robot's Google account into data/browser-profile, then close that window
 ```
 
-Open **http://127.0.0.1:4318**. Paste a Google Meet link and join. The host may need to admit the AI participant. Start voice explicitly after admission, then select **Speak** when it should be able to answer. The default **Listen** mode hears the meeting while muting outgoing speech.
-
-**Stop** closes the paid voice connection. **Leave** also closes the meeting browser. Muting is not the same as stopping: an active muted model session can still incur API charges. A voice session defaults to a ten-minute maximum, and a lost renderer heartbeat triggers shutdown. `Ctrl+C` shuts down the server and its owned browser.
-
-The robot uses its own Chrome instance and synthetic media tracks. It does not capture your laptop microphone or camera in meeting mode. The separate **local voice preview** uses your microphone only after you start it.
-
-### Google sign-in when guest admission is rejected
-
-If Google rejects an unsigned-in participant, give the robot a legitimate login in its own profile:
+Register the MCP server at user scope so every session can reach the robot (never project-scoped):
 
 ```bash
-node bin/login.mjs
+claude mcp add --scope user robomeet -- node /absolute/path/to/robomeet/bin/mcp.mjs
 ```
 
-Sign in as `vivekkmk.assistant@gmail.com` in that separate Chrome window, then close it. Start the app with:
+Codex: the same command in `~/.codex/config.toml` under `[mcp_servers.robomeet]`. The skills live in `~/.claude/skills/robomeet` and `~/.codex/skills/robomeet` (identical files).
 
-```bash
-ROBOMEET_PROFILE_DIR=data/browser-profile npm start
+### Usage
+
+From a Claude Code or Codex session:
+
+```text
+/robomeet https://meet.google.com/abc-defg-hij
 ```
 
-The profile remains inside this app's `data/` directory. The app refuses existing unrelated profiles, symlinks, and profiles already open in another Chrome process. There is no cookie copying or automated login bypass. A signed-in bot's displayed Meet name comes from its Google account; the camera explicitly identifies it as an AI participant.
+The skill runs `bin/attend.mjs`, which starts the server if needed, joins, briefs the model, starts voice, and keeps a presence policy; the session then long-polls `listen` and answers jobs with `reply`. `/robomeet-stop` leaves and confirms voice is idle.
 
-## Terminal controls
-
-```bash
-node bin/command.mjs join 'https://meet.google.com/abc-defg-hij'
-node bin/command.mjs context 'Discuss the project roadmap. Speak only when addressed.'
-node bin/command.mjs start-voice
-node bin/command.mjs mode speak
-node bin/command.mjs present example-slides.json
-node bin/command.mjs share on
-node bin/command.mjs stop-voice
-node bin/command.mjs leave
-```
-
-Other commands: `status`, `listen CURSOR TIMEOUT_MS`, `note TEXT`, and `reply JOB_ID RESULT`. Decks can be JSON, text, or Markdown through the dashboard; the terminal `present` command accepts JSON. Use `---` between text slides. PDF rendering is not included in this version.
-
-## Connect a coding agent
-
-The standard stdio MCP entry point is `bin/mcp.mjs`; run it with Node using an absolute path. It connects to the already-running local app. No OpenAI key goes through MCP.
-
-Tools: `status`, `join`, `leave`, `voice`, `mode`, `listen`, `reply`, `send_context`, `present`, `slide`, and `notes`.
-
-For an existing coding task that cannot add an MCP server while it is running, the included terminal client uses the same real MCP protocol:
+By hand:
 
 ```bash
-node bin/tool.mjs tools
+node bin/attend.mjs 'https://meet.google.com/abc-defg-hij' --agent "Claude Code" --session-name mysession --purpose "Why the robot is here" --brief "What it should know about this meeting"
 node bin/tool.mjs listen '{"after":0,"timeoutMs":50000}'
 node bin/tool.mjs reply '{"jobId":"ID_FROM_LISTEN","result":"The completed result"}'
-node bin/tool.mjs present '{"title":"Update","slides":[{"title":"Progress","body":"The change is ready for review."}],"enabled":true}'
+node bin/present-pdf.mjs /path/to/deck.pdf
+node bin/attend-stop.mjs
 ```
 
-Keep the returned cursor and supply it to the next `listen` call. A request includes a stable job ID and reference context. The coding agent completes the work in its existing repository/task, then replies with that exact ID. The app feeds the result back to the original voice session. Repeated identical replies are safe; conflicting duplicate results are rejected.
+The dashboard at `http://127.0.0.1:4318` shows the meeting, voice, notes, jobs and the deck.
 
-By default, MCP `listen` waits for actionable events, including coding requests and saved notes. Continuous transcript chunks and media telemetry do not keep waking the coding agent. Supply `types:["transcript"]` when transcript events are specifically needed.
+## Project structure
 
-**An MCP server does not wake an idle Codex desktop task by itself.** While attending, the coding task must actively call `listen` and handle requests. This app does not create a separate Codex task, alter the desktop harness, or install a background polling automation. The included terminal client lets the current task participate without editing working global configuration.
+```text
+bin/attend.mjs          launcher used by the skill: server, join, briefing, voice policy, greeting
+bin/attend-stop.mjs     stop voice, leave, unmute
+bin/start-live.mjs      server launcher; ROBOMEET_VOICE_IN_PAGE=1 selects the single-hop voice path
+bin/present-pdf.mjs     PDF -> picture slides
+bin/mcp.mjs, tool.mjs   stdio MCP server and a terminal client for the same protocol
+src/server.mjs          HTTP + SSE app, commands, durable state
+src/live.mjs            GPT Live session config, control connection, delegation tools, announce
+src/meet-worker-live.mjs  Playwright worker: join, admission, screen share, single-hop voice
+src/meet-live.js        in-page overlay: meeting audio -> GPT Live -> fake microphone
+src/meet-media.js       in-page media adapter: synthetic camera, screen, audio mix
+src/in-page-voice.mjs   Node side of the single-hop session (create, heartbeat, teardown)
+src/pdf-slides.mjs      page rendering for present_pdf
+src/mcp.mjs, store.mjs  MCP tools; notes, jobs, events in data/state.json
+public/                 dashboard and renderer (slide canvas, audio gates)
+tools/latency/          measurement harness and reference runs
+test/                   node:test suites (fixtures, no paid calls)
+```
+
+`data/` holds the browser profile, control token, state and logs. It is never committed.
 
 ## Configuration
 
 | Variable | Purpose |
 | --- | --- |
-| `OPENAI_API_KEY` | Server-side OpenAI API key. |
-| `ROBO_OPENAI_ENV` | Alternative existing env file containing the key. |
-| `ROBO_BACKEND_MODEL` | Responses delegation model; defaults to `gpt-5.6-luna`. |
-| `ROBO_PORT` | Local HTTP port; default 4318. |
-| `ROBO_URL` | Local URL used by the terminal and MCP clients. |
-| `ROBO_DATA_DIR` | Local notes, events, jobs, and control token directory. |
-| `ROBO_MAX_SESSION_MS` | Maximum voice duration; default 600000 ms. |
-| `ROBOMEET_CHROME_PATH` | Chrome executable; default `/usr/bin/google-chrome`. |
-| `ROBOMEET_DISPLAY` | Linux display override. |
-| `ROBOMEET_HEADLESS` | Set to `1` for headless execution where supported. |
-| `ROBOMEET_PROFILE_DIR` | Opt into the dedicated app profile, e.g. `data/browser-profile`, after normal sign-in. |
+| `OPENAI_API_KEY` / `ROBO_OPENAI_ENV` | Server-side OpenAI key, or an env file that contains it. |
+| `ROBO_BACKEND_MODEL` | Backend reasoning model for delegation (the launcher sets `gpt-5.6-sol`). |
+| `ROBO_VOICE` | GPT Live voice; pinned to `marin` by default. |
+| `ROBO_MAX_SESSION_MS` | Voice session cap (the launcher sets 3600000). |
+| `ROBO_PORT`, `ROBO_URL`, `ROBO_DATA_DIR` | Port, base URL for clients, data directory. |
+| `ROBOMEET_PROFILE_DIR` | The dedicated signed-in Chrome profile, e.g. `data/browser-profile`. |
+| `ROBOMEET_VOICE_IN_PAGE` | `1` runs the GPT Live session inside the Meet tab (default via the launcher). |
+| `ROBOMEET_CAMERA`, `ROBOMEET_GREETING`, `ROBOMEET_NULL_SINK` | Camera on/off, greeting cue text, null sink name. |
+| `ROBOMEET_CHROME_PATH`, `ROBOMEET_DISPLAY`, `ROBOMEET_HEADLESS` | Chrome binary, X display, headless. |
 
-On this machine, the server can read the already-existing key from the original LiveKit project's `agent-py/.env.local`. It never rewrites that file, sends the key to the browser, or embeds it in the deliverable. Other machines should supply `OPENAI_API_KEY` or `ROBO_OPENAI_ENV`.
+The server binds to loopback, authorizes with a local control token, rejects cross-origin requests, and never sends the OpenAI key to the browser.
 
-The app binds to loopback and uses a local control token with restrictive file permissions. Cross-origin requests are rejected. Notes, transcripts, and job results are stored locally in `data/state.json`. Do not publish this data directory.
+## Tech stack
 
-## Components
+Node.js (ES modules), Playwright driving Google Chrome, WebRTC and Web Audio in the Meet tab, OpenAI GPT Live (`gpt-live-1`) with Responses delegation (`gpt-5.6-sol`), `@modelcontextprotocol/sdk` for the MCP server, `ws`, `zod`, `node:test`; `pdftoppm` for PDFs.
 
-```text
-Google Meet web client ⇄ isolated browser media adapter
-                               ⇅ browser media tracks
-                      robot + slides renderer ⇄ GPT Live
-                               ⇅ local app state     ⇅ delegation
-                               Node server ⇄ Responses tools
-                                    ⇅
-                            MCP listen / reply
-                                    ⇅
-                       your existing coding agent task
-```
+## License
 
-`src/meet-worker.mjs` handles meeting admission and browser lifecycle. `src/meet-media.js` routes meeting media; it keeps the bridge's own generated audio out of the incoming mix. `public/media.js` renders the face and slides and applies hard audio gates. `src/live.mjs` owns GPT Live and its server control connection. `src/store.mjs` persists notes and correlated jobs. `src/mcp.mjs` exposes agent controls.
+No license file yet; all rights reserved by the author.
 
-There is no LiveKit, Recall, hosted relay, ngrok tunnel, external frontend CDN, or serialized speech-recognition/TTS pipeline in this app. The development test fixtures use local synthetic speech solely to verify audio routing.
-
-## Validation and scope
-
-Run `npm test`. Tests exercise browser media routing, separate video tracks, echo exclusion, replacement meeting tracks, session cancellation and cleanup, durable job correlation, origin checks, and an actual MCP subprocess connection. These tests use fixtures and make no paid model calls.
-
-Actual provider and meeting results are recorded in `VALIDATION.md`. Google Meet web-client admission and media behavior can change independently of this app. Zoom is a separate future adapter and is not implemented here.
+---
 
 ## Global launch (Claude Code and Codex)
 
