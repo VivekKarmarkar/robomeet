@@ -1,0 +1,36 @@
+{
+ "sampleRate": 48000,
+ "end": 40.0,
+ "utterances": [
+  {
+   "name": "delegate",
+   "onset": 2.0,
+   "end": 6.432
+  },
+  {
+   "name": "hello",
+   "onset": 12.0,
+   "end": 12.476
+  },
+  {
+   "name": "stillthere",
+   "onset": 16.0,
+   "end": 16.986
+  },
+  {
+   "name": "hello",
+   "onset": 20.0,
+   "end": 20.476
+  },
+  {
+   "name": "stillthere",
+   "onset": 24.0,
+   "end": 24.986
+  },
+  {
+   "name": "bye",
+   "onset": 36.0,
+   "end": 38.327
+  }
+ ]
+}

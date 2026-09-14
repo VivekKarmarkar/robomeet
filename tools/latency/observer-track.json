@@ -1,0 +1,36 @@
+{
+ "sampleRate": 48000,
+ "end": 46.0,
+ "utterances": [
+  {
+   "name": "hello",
+   "onset": 6.0,
+   "end": 6.418
+  },
+  {
+   "name": "hello",
+   "onset": 9.0,
+   "end": 9.418
+  },
+  {
+   "name": "hello",
+   "onset": 16.0,
+   "end": 16.418
+  },
+  {
+   "name": "who",
+   "onset": 22.0,
+   "end": 22.882
+  },
+  {
+   "name": "session",
+   "onset": 32.0,
+   "end": 35.395
+  },
+  {
+   "name": "bye",
+   "onset": 42.0,
+   "end": 44.613
+  }
+ ]
+}

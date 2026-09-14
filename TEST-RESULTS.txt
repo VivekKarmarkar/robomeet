@@ -1,0 +1,25 @@
+
+> robomeet@0.1.0 test
+> node --test test/*.mjs
+
+✔ real stdio MCP bridge controls isolated app and preserves durable job cursors and reply identity (273.359507ms)
+✔ isolated media bridge carries both directions and excludes generated voice from the meeting mix (1890.507794ms)
+✔ dedicated profile rejects existing or external Chrome directories (4.219776ms)
+✔ worker joins, presents and closes in anonymous and dedicated-profile modes (3033.91273ms)
+✔ durable jobs deduplicate within their session and preserve exact reply correlation after restart (12.773773ms)
+✔ Responses tools run once and continue only after every correlated result is ready (51.836225ms)
+✔ teardown closes the paid session, cancels waits and never sends a late agent result (29.91673ms)
+✔ Stop during HTTP session creation closes the resulting session instead of reviving voice (7.55844ms)
+✔ renderer heartbeat loss closes the paid session (84.532787ms)
+✔ local API rejects unauthenticated and foreign-origin requests; media telemetry never wakes durable listeners (29.214305ms)
+✔ HTTP voice boundary preserves browser SDP byte-for-byte, including its final CRLF (13.252173ms)
+✔ sideband diagnostics are bounded structural metadata and exclude reflected audio and private payloads (160.602805ms)
+✔ filtered listeners wait through transcript chunks and advance cursors without losing matching pages (58.892215ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3389.425683

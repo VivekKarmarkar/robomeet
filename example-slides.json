@@ -1,0 +1,7 @@
+{
+  "title": "RoboMeet introduction",
+  "slides": [
+    { "title": "Hello, I’m RoboMeet", "body": "An AI participant with a voice, a face, and a connection to your coding agent." },
+    { "title": "A conversation, with follow-through", "body": "I can listen, save meeting notes, show a presentation, and pass project work to your coding agent." }
+  ]
+}

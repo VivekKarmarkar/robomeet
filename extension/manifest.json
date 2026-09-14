@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "RoboMeet Bridge",
+  "version": "0.1.0",
+  "description": "Lets the local RoboMeet app run its robot in a Google Meet tab of this signed-in browser. It acts only on Meet windows that RoboMeet opens, and clicks inside them as real input so audio and joining work.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "alarms",
+    "storage",
+    "debugger"
+  ],
+  "host_permissions": [
+    "https://meet.google.com/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "js": [
+        "robot-main.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "js": [
+        "observer-main.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ]
+}

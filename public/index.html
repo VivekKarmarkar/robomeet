@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111a18">
+  <title>RoboMeet · A little presence, a real conversation</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell max-w-7xl mx-auto">
+    <!-- Connection and meeting controls -->
+    <header class="topbar flex items-center justify-between gap-4">
+      <a class="brand flex items-center gap-3" href="/" aria-label="RoboMeet home"><span class="brand-mark" aria-hidden="true">▰</span><span>robo<span class="brand-light">meet</span><small>YOUR SEAT AT THE TABLE</small></span></a>
+      <div class="connection-pill"><span id="server-dot" class="status-dot"></span><span id="server-status">Connecting</span></div>
+    </header>
+    <main>
+      <section class="intro flex flex-wrap items-end justify-between gap-5">
+        <div><p class="eyebrow">MEETING STUDIO</p><h1>A little presence.<br><span>A real conversation.</span></h1></div>
+        <p class="intro-copy">Give your assistant a face, a voice,<br>and a place to share its work.</p>
+      </section>
+      <form id="join-form" class="join-bar flex flex-wrap items-center gap-3">
+        <span class="meet-icon" aria-hidden="true">↗</span><label class="sr-only" for="meeting-url">Google Meet link</label><input id="meeting-url" type="url" placeholder="Paste a Google Meet link" autocomplete="off" required>
+        <button id="join-button" class="button primary" type="submit">Join meeting <span aria-hidden="true">↗</span></button><button id="leave-button" class="button ghost" type="button" disabled>Leave</button>
+      </form>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div class="studio-grid grid lg:grid-cols-12 gap-5">
+        <!-- Stable outgoing camera and voice -->
+        <section class="panel camera-panel lg:col-span-7">
+          <div class="panel-heading flex items-center justify-between"><h2><span class="tiny-square"></span> Your assistant</h2><span id="meeting-status" class="subtle-pill">Not in a meeting</span></div>
+          <div class="camera-stage"><canvas id="robot-canvas" width="1280" height="720" aria-label="Animated robot camera preview"></canvas><div class="camera-caption"><span class="camera-name">Robo <span>AI PARTICIPANT</span></span><span id="voice-status">Voice is off</span></div></div>
+          <div class="voice-controls">
+            <div class="flex flex-wrap items-center justify-between gap-3"><div><h3>Let’s talk</h3><p id="voice-hint">Join a meeting, then start voice.</p></div><div class="flex gap-2"><button id="start-voice" class="button primary" type="button" disabled><span aria-hidden="true">◉</span> Start voice</button><button id="stop-voice" class="button ghost" type="button" disabled>Stop</button></div></div>
+            <div class="mode-row flex items-center justify-between gap-3"><span class="field-caption">PARTICIPATION</span><div class="segmented" role="group" aria-label="Participation mode"><button data-mode="quiet" id="mode-quiet" type="button" aria-pressed="false">Quiet</button><button data-mode="listen" id="mode-listen" type="button" aria-pressed="true">Listen</button><button data-mode="speak" id="mode-speak" type="button" aria-pressed="false">Speak</button></div></div><p id="mode-description" class="mode-description">Hears the room. Its outgoing audio stays muted.</p>
+          </div>
+        </section>
+        <!-- Independent screen-share output -->
+        <section class="panel presentation-panel lg:col-span-5">
+          <div class="panel-heading flex items-center justify-between"><h2><span class="tiny-square cream"></span> Presentation</h2><span id="slide-count" class="muted">No slides yet</span></div>
+          <div class="presentation-stage"><canvas id="slides-canvas" width="1280" height="720" aria-label="Presentation preview"></canvas></div>
+          <div class="presentation-toolbar flex items-center justify-between gap-3"><div class="flex gap-2"><button id="previous-slide" class="icon-button" type="button" aria-label="Previous slide" disabled>←</button><button id="next-slide" class="icon-button" type="button" aria-label="Next slide" disabled>→</button></div><button id="share-screen" class="button small ghost" type="button" disabled>Share in meeting</button></div>
+          <div class="presentation-editor"><label for="presentation-text" class="field-caption">MAKE A QUICK DECK</label><textarea id="presentation-text" rows="4" placeholder="A title for your first slide&#10;A few words to explain it.&#10;---&#10;Your next slide"></textarea><div class="flex flex-wrap items-center justify-between gap-3"><label class="import-label" for="import-slides">↥ Import text or JSON<input id="import-slides" type="file" accept=".txt,.md,.json,text/plain,text/markdown,application/json" class="sr-only"></label><button id="apply-slides" class="button small secondary" type="button">Update deck</button></div></div>
+        </section>
+        <!-- Context, durable notes, and coding work -->
+        <section class="panel context-panel lg:col-span-4"><div class="panel-heading"><h2>Before we begin</h2><p>Give Robo the context it should bring.</p></div><div class="panel-body"><label for="meeting-context" class="field-caption">MEETING CONTEXT</label><textarea id="meeting-context" rows="7" placeholder="What is this meeting about? Who’s here? What would you like help with?"></textarea><button id="save-context" class="button small secondary" type="button">Save context</button><span id="context-status" class="inline-status" aria-live="polite"></span></div></section>
+        <section class="panel notes-panel lg:col-span-4"><div class="panel-heading flex items-center justify-between"><h2>Things to remember</h2><span id="notes-count" class="muted">0 notes</span></div><div class="panel-body"><div id="notes-list" class="feed"><p class="empty-state">Decisions, details, and good ideas.<br>Your meeting notes will appear here.</p></div><form id="note-form" class="note-form flex gap-2"><label class="sr-only" for="note-text">Add a note</label><input id="note-text" placeholder="Add a note…" maxlength="8000" required><button class="icon-button" type="submit" aria-label="Save note">+</button></form></div></section>
+        <section class="panel tasks-panel lg:col-span-4"><div class="panel-heading flex items-center justify-between"><h2>Working on it</h2><span id="jobs-count" class="muted">0 tasks</span></div><div class="panel-body"><div id="jobs-list" class="feed"><p class="empty-state">Ask for help in the meeting.<br>Coding tasks and results appear here.</p></div><p class="task-caption">Robo keeps the conversation going while your coding agent works.</p></div></section>
+      </div>
+      <details class="activity-panel"><summary>Conversation & activity <span id="activity-count" class="muted">0 events</span></summary><div id="activity-list" class="activity-list" aria-live="polite"><p class="empty-state">Ready for your next conversation.</p></div></details>
+    </main>
+    <footer class="flex flex-wrap items-center justify-between gap-3"><span><span class="footer-dot"></span> Made for conversations, and the work that follows.</span><a id="preview-link" href="/?preview=1">Try local voice preview ↗</a></footer>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

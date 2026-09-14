@@ -1,0 +1,113 @@
+{
+  "scope": "Real GPT Live and local MCP tests; real Google Meet robot admission is pending.",
+  "voice": {
+    "startedAt": "2026-09-13T05:06:45.298Z",
+    "finishedAt": "2026-09-13T05:07:22.959Z",
+    "elapsedMs": 36563,
+    "syntheticInput": "Generated flite WAV; fake microphone only",
+    "maximumOutputRms": 0.1844752308488287,
+    "nonzeroAudioSamples": 46,
+    "notes": [],
+    "cleanup": {
+      "voice": {
+        "desired": "stopped",
+        "status": "idle",
+        "closeConfirmed": true
+      },
+      "closed": true,
+      "closeConfirmed": true,
+      "browserClosed": true
+    },
+    "errors": []
+  },
+  "noteDelegation": {
+    "startedAt": "2026-09-13T05:14:46.835Z",
+    "finishedAt": "2026-09-13T05:15:46.610Z",
+    "elapsedMs": 58275,
+    "syntheticInput": "Generated flite WAV; fake microphone only; persistent note at5s and coding task at30s",
+    "maximumOutputRms": 0.11160249232843243,
+    "nonzeroAudioSamples": 96,
+    "notes": [
+      {
+        "text": "Task deadline is Friday.",
+        "source": "voice"
+      }
+    ],
+    "cleanup": {
+      "voice": {
+        "desired": "stopped",
+        "status": "idle",
+        "closeConfirmed": true
+      },
+      "closed": true,
+      "closeConfirmed": true,
+      "browserClosed": true
+    },
+    "errors": []
+  },
+  "codingRoundtrip": {
+    "startedAt": "2026-09-13T05:20:35.884Z",
+    "finishedAt": "2026-09-13T05:21:01.973Z",
+    "elapsedMs": 23757,
+    "syntheticInput": "Generated flite WAV; fake microphone only; coding task at5s",
+    "maximumOutputRms": 0.12303294122518968,
+    "nonzeroAudioSamples": 60,
+    "notes": [],
+    "cleanup": {
+      "voice": {
+        "desired": "stopped",
+        "status": "idle",
+        "closeConfirmed": true
+      },
+      "closed": true,
+      "closeConfirmed": true,
+      "mcpClosed": true,
+      "browserClosed": true
+    },
+    "errors": [],
+    "responder": "Test-only MCP SDK client: only counts slides in the fixed example-slides.json file",
+    "mcpResult": {
+      "jobId": "e8ccc0ca-0694-46b8-b0c3-dda6f8b2ffe9",
+      "request": "Inspect the local file example-slides.json and report exactly how many slides it contains. Do not modify the file.",
+      "readFile": "/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/example-slides.json",
+      "actualCount": 2,
+      "readAt": "2026-09-13T05:20:55.108Z",
+      "repliedAt": "2026-09-13T05:20:55.145Z",
+      "outputNonzeroAtReply": 11
+    },
+    "actualCountSpoken": true,
+    "assistantAfterMcpReply": " the coding agent to check it. It contains 2 slides."
+  },
+  "closedVoiceSessions": [
+    {
+      "at": "2026-09-13T05:07:22.504Z",
+      "confirmed": true,
+      "reportedUsage": {
+        "seconds": 33
+      }
+    },
+    {
+      "at": "2026-09-13T05:15:46.173Z",
+      "confirmed": true,
+      "reportedUsage": {
+        "seconds": 46
+      }
+    },
+    {
+      "at": "2026-09-13T05:21:01.599Z",
+      "confirmed": true,
+      "reportedUsage": {
+        "seconds": 19
+      }
+    }
+  ],
+  "currentVoice": {
+    "desired": "stopped",
+    "status": "idle",
+    "closeConfirmed": true
+  },
+  "meeting": {
+    "robotAdmitted": false,
+    "authenticatedRobotTest": "Pending user login in the dedicated app profile"
+  }
+}

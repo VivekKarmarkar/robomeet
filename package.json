@@ -1,0 +1,9 @@
+{
+  "name": "robomeet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.6" },
+  "scripts": { "start": "node bin/start.mjs", "mcp": "node bin/mcp.mjs", "test": "node --test test/*.mjs" },
+  "dependencies": { "@modelcontextprotocol/sdk": "^1.26.0", "playwright": "^1.58.0", "ws": "^8.18.0", "zod": "^3.25.0" }
+}

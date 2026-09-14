@@ -1,0 +1,21 @@
+node_modules/
+data/
+.env*
+test-artifacts/
+
+# generated at run time (added 2026-09-14 before the first commit)
+*.log
+.env
+.env.local
+.DS_Store
+public/slides/*
+!public/slides/how-vivek-bot-works.png
+tools/latency/runs/
+tools/latency/clips/
+tools/latency/*.wav
+tools/latency/*.png
+tools/latency/run-*.json
+tools/latency/obs-run-*.json
+tools/latency/realtime/run-*.json
+tools/latency/meet-live-fixture-result.json
+__pycache__/

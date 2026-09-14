@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Realtime latency probe</title>
+<body style="font-family:system-ui;padding:20px">
+<button id="start">start</button> <span id="status">idle</span>
+<audio id="out" autoplay></audio>
+<script>
+const $ = id => document.getElementById(id);
+$('start').onclick = async () => {
+  $('status').textContent = 'connecting';
+  const mic = await navigator.mediaDevices.getUserMedia({ audio: true });
+  const pc = new RTCPeerConnection();
+  pc.addTrack(mic.getAudioTracks()[0], mic);
+  pc.ontrack = e => { try { e.receiver.jitterBufferTarget = 40; } catch {} $('out').srcObject = e.streams[0] || new MediaStream([e.track]); };
+  const dc = pc.createDataChannel('oai-events');
+  dc.onmessage = e => { try { const d = JSON.parse(e.data); if (d.type === 'session.created' || d.type === 'session.updated') $('status').textContent = 'active'; if (d.type === 'error') $('status').textContent = 'error: ' + (d.error && d.error.message); } catch {} };
+  await pc.setLocalDescription(await pc.createOffer());
+  await new Promise(r => { if (pc.iceGatheringState === 'complete') return r(); const t = setTimeout(r, 1500); pc.addEventListener('icegatheringstatechange', () => { if (pc.iceGatheringState === 'complete') { clearTimeout(t); r(); } }); });
+  const res = await fetch('/call', { method: 'POST', headers: { 'Content-Type': 'application/sdp' }, body: pc.localDescription.sdp });
+  if (!res.ok) { $('status').textContent = 'call failed: ' + (await res.text()).slice(0, 200); return; }
+  await pc.setRemoteDescription({ type: 'answer', sdp: await res.text() });
+  window.__pc = pc;
+};
+</script>
