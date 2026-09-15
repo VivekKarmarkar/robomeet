@@ -6,6 +6,8 @@ A meeting robot that joins a Google Meet from a link, talks with the people in t
 
 RoboMeet runs on one Linux laptop. A Node server drives a signed-in Chrome that joins the meeting as a normal participant; the GPT Live voice session runs inside that Meet tab, so what you hear is the model itself, about 1.2 to 1.7 s after your last word. A backend reasoning model (gpt-5.6-sol by default) handles longer thinking and tool calls: saving a meeting note, showing a slide deck on the robot's shared screen, or asking the coding session to do something. That session listens through the `robomeet` MCP server, does the job with its own tools, and replies; the robot speaks the result.
 
+When it presents, it shares its screen the way a person does: a sharp 1920x1080 picture of a PDF, slide deck, document, web page or image, scrolled or advanced part by part while it talks about exactly what is on screen.
+
 It was built to let a coding session sit in a meeting: present work, take notes, answer questions, and take requests, without a hosted relay, LiveKit, Recall, or any speech-to-text pipeline of its own.
 
 ## Features
@@ -19,12 +21,14 @@ It was built to let a coding session sit in a meeting: present work, take notes,
 - **Global MCP server and skills**: `/robomeet <link>` from any Claude Code or Codex session launches the robot and turns that session into its coding agent; `/robomeet-stop` ends it.
 - **No echo on the same laptop**: the robot's audio goes to a PulseAudio null sink, so a human can join from the same machine with speakers on.
 - **Latency harness** (`tools/latency/`) that measures the whole path with timed synthetic speech and a second participant, no human needed.
+- **Presentation lab** (`tools/present-lab/`): an offline picture-quality oracle (SSIM/PSNR through a bitrate-capped WebRTC hop), a narration-sync oracle, and a live observer that joins as a second participant and measures what it receives and hears. Results per test case are in `docs/presentation-spec.md`.
 
 ## Getting started
 
 ### Prerequisites
 
-- Linux with a display, Google Chrome at `/usr/bin/google-chrome`, PulseAudio or PipeWire (`pactl`), and `pdftoppm` (poppler) for PDF decks.
+- Linux with a display, Google Chrome at `/usr/bin/google-chrome`, and PulseAudio or PipeWire (`pactl`).
+- For presenting: poppler (`pdftoppm`, `pdftotext`, `pdfinfo`) for PDFs, LibreOffice (`soffice`) for slide decks and documents, and `ffmpeg`/`ffprobe` for pictures and web pages.
 - Node.js 22.6 or newer.
 - An OpenAI API key with GPT Live access, in `OPENAI_API_KEY` or an env file named by `ROBO_OPENAI_ENV`.
 - A Google account for the robot, signed in once into the app's own Chrome profile (below).
@@ -62,6 +66,7 @@ node bin/attend.mjs 'https://meet.google.com/abc-defg-hij' --agent "Claude Code"
 node bin/tool.mjs listen '{"after":0,"timeoutMs":50000}'
 node bin/tool.mjs reply '{"jobId":"ID_FROM_LISTEN","result":"The completed result"}'
 node bin/present-pdf.mjs /path/to/deck.pdf
+node bin/tool.mjs present_file '{"path":"/path/to/talk.pptx","enabled":true}'   # also .docx, .html, a URL, a picture
 node bin/attend-stop.mjs
 ```
 
@@ -91,6 +96,8 @@ src/pdf-slides.mjs      older page renderer (banded pages), kept for reference
 src/mcp.mjs, store.mjs  MCP tools; notes, jobs, events in data/state.json
 public/                 dashboard and renderer (slide canvas, audio gates)
 tools/latency/          measurement harness and reference runs
+tools/present-lab/      presentation oracles, live Meet observer, test runs and the final report
+docs/                   presentation spec with results, stage design, research notes
 test/                   node:test suites (fixtures, no paid calls)
 ```
 
@@ -109,12 +116,14 @@ test/                   node:test suites (fixtures, no paid calls)
 | `ROBOMEET_VOICE_IN_PAGE` | `1` runs the GPT Live session inside the Meet tab (default via the launcher). |
 | `ROBOMEET_CAMERA`, `ROBOMEET_GREETING`, `ROBOMEET_NULL_SINK` | Camera on/off, greeting cue text, null sink name. |
 | `ROBOMEET_CHROME_PATH`, `ROBOMEET_DISPLAY`, `ROBOMEET_HEADLESS` | Chrome binary, X display, headless. |
+| `ROBOMEET_SOFFICE_PATH` | LibreOffice binary used to convert slide decks and documents (default `soffice`). |
+| `ROBOMEET_SHARE_WARMUP_MS` | Pause after sharing starts, before a narrated presentation begins (default 3000). |
 
 The server binds to loopback, authorizes with a local control token, rejects cross-origin requests, and never sends the OpenAI key to the browser.
 
 ## Tech stack
 
-Node.js (ES modules), Playwright driving Google Chrome, WebRTC and Web Audio in the Meet tab, OpenAI GPT Live (`gpt-live-1`) with Responses delegation (`gpt-5.6-sol`), `@modelcontextprotocol/sdk` for the MCP server, `ws`, `zod`, `node:test`; `pdftoppm` for PDFs.
+Node.js (ES modules), Playwright driving Google Chrome, WebRTC and Web Audio in the Meet tab, OpenAI GPT Live (`gpt-live-1`) with Responses delegation (`gpt-5.6-sol`), `@modelcontextprotocol/sdk` for the MCP server, `ws`, `zod`, `node:test`. The shared screen is a canvas `captureStream` track marked `contentHint = 'detail'`; decks are rendered with poppler, LibreOffice, Chrome and ffmpeg.
 
 ## License
 
