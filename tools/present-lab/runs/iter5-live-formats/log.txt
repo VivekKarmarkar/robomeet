@@ -1,0 +1,20 @@
+   0.7s meeting https://meet.google.com/gdj-gjdx-vko
+   0.8s attend: join.requested 
+   1.8s attend: meeting.status launching
+   3.9s attend: meeting.status awaiting_admission
+   4.9s attend: meeting.status joined
+   4.9s attend: joined 
+   4.9s robot joined; sharing at join = false
+   4.9s attend: briefing.sent 
+  10.8s observer in the call
+  18.0s share on: command 1104 ms; observer sees a presentation after 3198 ms via contentType
+  24.5s received {"trackIdentifier":"ddc5e7ee-3f47-46a1-8056-0bcc233ed4f4","mid":"8","frameWidth":1143,"frameHeight":643,"framesPerSecond":20,"framesDecoded":137,"contentType":"screenshare","freezeCount":0,"bytesReceived":28071,"codec":"video/AV1","decoderImplementation":"dav1d"} | still {"size":"1143x643","ssimY":0.9988,"ssimAll":0.9995,"psnr":"38.815105"}
+  24.5s sent (robot side) {"stats":[{"matchedBy":"contentType","frameWidth":1143,"frameHeight":643,"framesPerSecond":21,"contentType":"screenshare","qualityLimitationReason":"none","scalabilityMode":"L1T2","targetBitrate":2381000,"bytesSent":44892,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":9318,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":0,"codec":"video/AV1"}],"stage":{"contentHint":"detail","sharing":true,"displayRequests":1,"lastConstraints":{"audio":{"autoGainCon
+  28.7s move to slide 1: {"firstChangeMs":342,"framesFirstSecond":20,"settledMs":584,"frames":68,"size":"1143x643"}
+  32.8s move to slide 2: {"firstChangeMs":422,"framesFirstSecond":20,"settledMs":627,"frames":66,"size":"1143x643"}
+  36.9s move to slide 0: {"firstChangeMs":400,"framesFirstSecond":21,"settledMs":563,"frames":67,"size":"1143x643"}
+  46.5s cycle 0: {"i":0,"offMs":4138,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":829,"observerSeesAgainMs":2908,"robotSharingAfterOn":true,"ok":true}
+  54.1s cycle 1: {"i":1,"offMs":789,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":916,"observerSeesAgainMs":2867,"robotSharingAfterOn":true,"ok":true}
+  58.7s attend: stopping 
+  59.3s attend: left 
+  59.3s attend: summary 

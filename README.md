@@ -14,7 +14,7 @@ It was built to let a coding session sit in a meeting: present work, take notes,
 - **Live voice from the moment it is in the call**, even while knocking, so the first hello is answered; greets in its own words when someone is there.
 - **Facts, then "be yourself"**: the launch briefing tells the model what it is, both models and how delegation works, the coding session it is linked to (agent and session name are launch parameters), its tools, why it is there and any extra context from the launching session. No scripted lines.
 - **Delegation that keeps talking**: when a request goes to the coding agent the robot says so and keeps the conversation going until the answer comes back.
-- **Slides on the shared screen**: text slides, picture slides (`image:/slides/<file>.png`), and PDFs page by page (`present_pdf`).
+- **Presenting like a person sharing a screen**: a 1920x1080 stage drawn inside the Meet tab and sent as screen content. PDFs, slide decks (.pptx .ppt .odp), documents (.docx .doc .odt .rtf), web pages (.html or a URL) and pictures become decks with pixel-exact renders: slides shown whole, documents and pages as screen-sized reading windows the robot scrolls through while it talks. A narrated presentation moves the screen to each part just before the robot speaks it, holds when someone talks, and continues on "continue" (`present_file`, `present_pdf`, `stage`, `narrate`, `presenter`).
 - **Meeting notes** saved locally and readable by the coding session.
 - **Global MCP server and skills**: `/robomeet <link>` from any Claude Code or Codex session launches the robot and turns that session into its coding agent; `/robomeet-stop` ends it.
 - **No echo on the same laptop**: the robot's audio goes to a PulseAudio null sink, so a human can join from the same machine with speakers on.
@@ -73,7 +73,8 @@ The dashboard at `http://127.0.0.1:4318` shows the meeting, voice, notes, jobs a
 bin/attend.mjs          launcher used by the skill: server, join, briefing, voice policy, greeting
 bin/attend-stop.mjs     stop voice, leave, unmute
 bin/start-live.mjs      server launcher; ROBOMEET_VOICE_IN_PAGE=1 selects the single-hop voice path
-bin/present-pdf.mjs     PDF -> picture slides
+bin/present-pdf.mjs     PDF -> scrolling deck on the shared screen
+bin/deck.mjs            build (any format, --fit page|width) / sheet / check decks (contact sheets to check narration by eye)
 bin/mcp.mjs, tool.mjs   stdio MCP server and a terminal client for the same protocol
 src/server.mjs          HTTP + SSE app, commands, durable state
 src/live.mjs            GPT Live session config, control connection, delegation tools, announce
@@ -81,7 +82,12 @@ src/meet-worker-live.mjs  Playwright worker: join, admission, screen share, sing
 src/meet-live.js        in-page overlay: meeting audio -> GPT Live -> fake microphone
 src/meet-media.js       in-page media adapter: synthetic camera, screen, audio mix
 src/in-page-voice.mjs   Node side of the single-hop session (create, heartbeat, teardown)
-src/pdf-slides.mjs      page rendering for present_pdf
+src/meet-stage.js       the shared screen, drawn inside the Meet tab (1920x1080, screen content, smooth scroll, highlights)
+src/stage-sync.mjs      mirrors the deck and position into the Meet tab
+src/deck-builder.mjs    PDF -> deck (reading windows snapped to whitespace, exact renders, visible text per window)
+src/deck-formats.mjs    any document -> deck: presentations and documents via LibreOffice, web pages via Chrome, pictures
+src/presenter.mjs       narrated presentations: screen first, then the robot presents that part
+src/pdf-slides.mjs      older page renderer (banded pages), kept for reference
 src/mcp.mjs, store.mjs  MCP tools; notes, jobs, events in data/state.json
 public/                 dashboard and renderer (slide canvas, audio gates)
 tools/latency/          measurement harness and reference runs
@@ -156,9 +162,11 @@ Both files use the house `SKILL.md` format (YAML frontmatter with `name` and `de
 ### `bin/attend.mjs` and `bin/attend-stop.mjs`
 
 ```bash
-node bin/attend.mjs <meet-url> [--name NAME] [--agent AGENT] [--cwd DIR] [--project NAME] [--session-id ID] [--session-name NAME] [--display-name NAME] [--no-share] [--no-voice-auto] [--voice-on presence|speech|join] [--camera on|off] [--mute-laptop] [--silence-ms MS] [--no-greet] [--voice-path direct|bridge] [--purpose TEXT] [--brief TEXT] [--json]
+node bin/attend.mjs <meet-url> [--name NAME] [--agent AGENT] [--cwd DIR] [--project NAME] [--session-id ID] [--session-name NAME] [--display-name NAME] [--share] [--no-voice-auto] [--voice-on presence|speech|join] [--camera on|off] [--mute-laptop] [--silence-ms MS] [--no-greet] [--voice-path direct|bridge] [--purpose TEXT] [--brief TEXT] [--json]
 node bin/attend-stop.mjs
 node bin/present-pdf.mjs <file.pdf> [--title TITLE] [--max-pages N] [--no-share]
+node bin/deck.mjs build <file-or-url> [--fit page|width] [--max-pages N] [--slug SLUG] [--title TITLE]
+node bin/tool.mjs present_deck '{"slug":"SLUG","enabled":true}'   # show a built deck and share the screen
 ```
 
 | Flag | Meaning |
@@ -168,7 +176,7 @@ node bin/present-pdf.mjs <file.pdf> [--title TITLE] [--max-pages N] [--no-share]
 | `--session-name`, `--display-name` | The coding session's name and the robot's participant name. They fill the fixed self-introduction the voice model is instructed to use: "I'm <display name>, joining this <Google Meet or Zoom> meeting, connected to a <agent> session named <session name>, via our in-house RoboMeet software." That text is sent with the `voice-prompt` command and becomes part of the model's instructions for every session. |
 | `--voice-on` | `presence` (default): start voice as soon as a human participant is in the call (`status.meeting.participants` > 1) and stop 30 s after the robot is alone; `speech`: start on first detected speech (old behaviour, costs the first sentence); `join`: start immediately at join. |
 | `--camera` | `off` (default): join without video, the account's profile picture shows; `on`: send the animated face. |
-| `--no-share` | Join without requesting the browser screenshare of the presentation. |
+| `--share` | Share the screen from the moment the robot joins (default: off; it turns on when a deck is presented). `--no-share` is accepted and is the default. |
 | `--no-voice-auto` | Do not start voice automatically on speech; start it yourself with `node bin/command.mjs start-voice`. |
 | `--mute-laptop` | Also mute the laptop's default output while attending. Not needed normally: the robot's audio is routed to a null sink (see Echo below). Never use it when you join from the same laptop. |
 | `--silence-ms` | Override the silence window after which voice is stopped (default 600000, ten minutes; presence normally decides). |
@@ -184,7 +192,7 @@ Both scripts talk to the app on `http://127.0.0.1:4318` with the bearer token fr
 ROBOMEET_PROFILE_DIR=data/browser-profile ROBO_BACKEND_MODEL=gpt-5.6-sol npm start
 ```
 
-`attend.mjs` creates the null audio sink if needed, starts the server with the robot's audio routed to it, joins, waits for admission, requests the screenshare, and runs the voice policy below, printing `joined` once the robot is in the call (`--json` makes every line machine-readable). `attend-stop.mjs` is the mirror: `stop-voice`, `leave`, unmute. The listen/reply loop is in neither script; the `/robomeet` skill (or you) runs it. Create a fresh open Meet space for the assistant account with:
+`attend.mjs` creates the null audio sink if needed, starts the server with the robot's audio routed to it, joins, waits for admission (sharing the screen at once only with `--share`; otherwise it starts when a deck is presented), and runs the voice policy below, printing `joined` once the robot is in the call (`--json` makes every line machine-readable). `attend-stop.mjs` is the mirror: `stop-voice`, `leave`, unmute. The listen/reply loop is in neither script; the `/robomeet` skill (or you) runs it. Create a fresh open Meet space for the assistant account with:
 
 ```bash
 GOOGLE_WORKSPACE_CLI_CONFIG_DIR="$PWD/data/gws-meet-auth" gws meet spaces create --json '{"config":{"accessType":"OPEN","entryPointAccess":"ALL"}}'
@@ -211,9 +219,39 @@ The moment a coding-agent request is queued, the server also cues the model (`se
 
 Any session can make the robot say something now: MCP tool `say` (`{"text": "..."}`) or the `announce` command (`exact: false` for a cue it phrases itself). It needs an active voice session.
 
-### Pictures and PDFs on the shared screen
+### Presenting: the stage (2026-09-15)
 
-A slide whose body is `image:/slides/<file>.png` is drawn full-frame on the slide canvas (files under `public/slides/`, served by the app). PDFs: MCP tool `present_pdf` `{"path": "/abs/file.pdf", "enabled": true}` or `node bin/present-pdf.mjs /abs/file.pdf` renders every page with `pdftoppm` into `public/slides/<slug>/` and presents them as picture slides. The slide canvas is redrawn continuously (a canvas capture stream only emits frames when the canvas changes; before 2026-09-14 Meet never received a first frame). The session voice is pinned to `marin` (`ROBO_VOICE` overrides), the voice Vivek chose in the playground.
+Spec: `docs/presentation-spec.md`. Design: `docs/stage-design.md`. Evidence: `docs/stage-research.md`.
+
+- **The shared screen is drawn inside the Meet tab** (`src/meet-stage.js`) at 1920x1080 and handed to Meet's
+  "Present now" as a track marked `contentHint = 'detail'`, so Chrome encodes it as screen content: it keeps full
+  resolution and uses the codecs' screen modes. Measured with `tools/present-lab/fixture.mjs` through a bitrate-capped
+  WebRTC hop: the old bridged path arrived at 480x270 to 640x360 (SSIM-Y 0.85-0.89), the stage at 1920x1080 (SSIM-Y
+  0.999). In a live Meet (`tools/present-lab/live-observer.mjs`) a second participant receives it as `screenshare`
+  (AV1) and sees a scroll 0.43-0.56 s after the command, at 17-23 fps.
+- **PDFs** (`present_pdf`, `node bin/present-pdf.mjs`, `node bin/deck.mjs build`) become decks of fit-to-width
+  reading windows, each starting in the whitespace between text rows, with a pixel-exact 1920x1080 render per window and
+  the text visible in it. `stage {slide, view}` scrolls smoothly between windows; a zoom crossfades.
+- **Everything else a person shares** (`present_file`, `node bin/deck.mjs build <file-or-url>`): slide decks and
+  documents go through LibreOffice to PDF; HTML files and http(s) URLs are captured by a sandboxed Chrome at 1920 px
+  wide (local pages may read only their own folder; URL pages get no file access and cannot reach this machine's local
+  or private-network services; a URL that serves a PDF or picture is built as one); pictures are shown upright, whole
+  or in fit-width steps. Anything left out (a page limit, a very long page) is reported as `truncated`.
+  `--fit page` shows each slide or page whole (default for presentations), `--fit width` scrolls reading windows
+  (default for the rest). Image slides also accept `slides/x.png`, percent-encoded names, GIF, BMP and AVIF.
+- **Narration** (`narrate` with beats `{slide, view, say}`): for each beat RoboMeet tells the voice what is on screen,
+  cues it, moves the screen the moment the voice accepts the cue (about a second before the first word), and waits for
+  the robot's own audio to end before the next beat. Someone talking pauses it; "continue", "go on", "next" resume it.
+  After an interruption, a part the robot already finished is not repeated; an unfinished one continues where it stopped.
+  The walk also pauses (and keeps the unfinished part) when the voice session drops or restarts, when the robot leaves
+  speak mode, when the screen stops being shared, or when a command moves the screen elsewhere; after someone speaks it
+  waits a full transcript-chunk gap (1.5 s) before cueing the next part, so a question is never talked over.
+  `presenter next`/`goto`/`pause`/`stop` in the middle of a part stop the robot talking (live: quiet 0.8 s after the
+  command), and a transcript only counts as someone speaking when there was meeting audio behind it.
+- **Sharing starts off** at join (`--share` opts in), so a deck from an earlier meeting never opens a meeting. `share
+  off` clicks Meet's stop button and falls back to ending the shared track the way the browser's own "Stop sharing"
+  bar does. Unexpected server errors are kept in the event log (`server.error`).
+- The voice is pinned to `marin` (`ROBO_VOICE` overrides), the voice Vivek chose in the playground.
 
 ### Latency (measured 2026-09-14, `tools/latency/`)
 

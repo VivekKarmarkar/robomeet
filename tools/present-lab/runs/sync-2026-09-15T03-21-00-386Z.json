@@ -1,0 +1,249 @@
+{
+  "checks": [
+    {
+      "name": "presenter finished",
+      "ok": true,
+      "detail": {
+        "id": 1,
+        "status": "done",
+        "beat": 3,
+        "total": 3,
+        "reason": null,
+        "style": "own-words",
+        "slide": null,
+        "view": null
+      }
+    },
+    {
+      "name": "a person talking paused the presentation",
+      "ok": true,
+      "detail": [
+        {
+          "reason": "person_speaking",
+          "beat": 1
+        }
+      ]
+    },
+    {
+      "name": "\"okay, continue\" resumed it",
+      "ok": true,
+      "detail": [
+        {
+          "by": "voice",
+          "beat": 1
+        }
+      ]
+    },
+    {
+      "name": "TC-S1 every stage move came before its beat was spoken, lead 0..1500 ms",
+      "ok": true,
+      "detail": [
+        811,
+        818
+      ]
+    },
+    {
+      "name": "TC-S2 the stage showed the beat view at every speech onset",
+      "ok": true,
+      "detail": [
+        [
+          "0:0",
+          "0:0"
+        ],
+        [
+          "0:1",
+          "0:1"
+        ],
+        [
+          "0:1",
+          "0:1"
+        ],
+        [
+          "0:2",
+          "0:2"
+        ]
+      ]
+    },
+    {
+      "name": "TC-L3 median gap between beats <= 2000 ms (excluding the interruption)",
+      "ok": true,
+      "detail": {
+        "gaps": [
+          1837,
+          1840
+        ],
+        "median": 1840
+      }
+    },
+    {
+      "name": "the interrupted, unfinished beat continued after resume (\"continue from where you stopped\")",
+      "ok": true,
+      "detail": {
+        "cues": [
+          "This page derives projectile motion from Newton se",
+          "Eliminating t gives the trajectory, and the three ",
+          "[You were interrupted while presenting th] Eliminating t gives the trajectory, and the three ",
+          "The observations box: best angle forty five degree"
+        ]
+      }
+    }
+  ],
+  "beats": [
+    {
+      "cue": 0,
+      "beat": 0,
+      "expected": "0:0",
+      "moved": false,
+      "leadMs": null,
+      "viewAtOnset": "0:0",
+      "speechMs": 2306,
+      "gapToNextMs": 1837,
+      "interrupted": false
+    },
+    {
+      "cue": 1,
+      "beat": 1,
+      "expected": "0:1",
+      "moved": true,
+      "leadMs": 811,
+      "viewAtOnset": "0:1",
+      "speechMs": 1157,
+      "gapToNextMs": 3920,
+      "interrupted": true
+    },
+    {
+      "cue": 2,
+      "beat": 1,
+      "expected": "0:1",
+      "moved": false,
+      "leadMs": null,
+      "viewAtOnset": "0:1",
+      "speechMs": 2280,
+      "gapToNextMs": 1840,
+      "interrupted": false
+    },
+    {
+      "cue": 3,
+      "beat": 2,
+      "expected": "0:2",
+      "moved": true,
+      "leadMs": 818,
+      "viewAtOnset": "0:2",
+      "speechMs": 2280,
+      "gapToNextMs": null,
+      "interrupted": false
+    }
+  ],
+  "presenterEvents": [
+    {
+      "type": "presenter.started",
+      "at": "2026-09-15T03:20:42.099Z",
+      "data": {
+        "total": 3,
+        "from": 0,
+        "style": "own-words"
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T03:20:42.811Z",
+      "data": {
+        "beat": 0,
+        "total": 3,
+        "slide": 0,
+        "view": 0,
+        "cueAt": 1789442442811
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T03:20:46.934Z",
+      "data": {
+        "beat": 0,
+        "endedBy": "speech_end",
+        "speechMs": 2306,
+        "coverage": 1,
+        "gapMs": null
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T03:20:46.940Z",
+      "data": {
+        "beat": 1,
+        "total": 3,
+        "slide": 0,
+        "view": 1,
+        "cueAt": 1789442446940
+      }
+    },
+    {
+      "type": "presenter.paused",
+      "at": "2026-09-15T03:20:48.809Z",
+      "data": {
+        "reason": "person_speaking",
+        "beat": 1
+      }
+    },
+    {
+      "type": "presenter.resumed",
+      "at": "2026-09-15T03:20:52.016Z",
+      "data": {
+        "by": "voice",
+        "beat": 1
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T03:20:52.029Z",
+      "data": {
+        "beat": 1,
+        "total": 3,
+        "slide": 0,
+        "view": 1,
+        "cueAt": 1789442452029
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T03:20:56.132Z",
+      "data": {
+        "beat": 1,
+        "endedBy": "speech_end",
+        "speechMs": 2280,
+        "coverage": 1,
+        "gapMs": null
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T03:20:56.156Z",
+      "data": {
+        "beat": 2,
+        "total": 3,
+        "slide": 0,
+        "view": 2,
+        "cueAt": 1789442456156
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T03:21:00.232Z",
+      "data": {
+        "beat": 2,
+        "endedBy": "speech_end",
+        "speechMs": 2280,
+        "coverage": 1,
+        "gapMs": 1840
+      }
+    },
+    {
+      "type": "presenter.done",
+      "at": "2026-09-15T03:21:00.238Z",
+      "data": {
+        "total": 3
+      }
+    }
+  ],
+  "elapsedMs": 18287
+}

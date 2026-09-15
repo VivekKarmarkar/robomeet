@@ -1,0 +1,29 @@
+   0.7s meeting https://meet.google.com/zct-yajj-zee
+   0.9s attend: join.requested 
+   1.9s attend: meeting.status launching
+   2.9s attend: meeting.status joining
+   3.9s attend: meeting.status awaiting_admission
+   4.9s attend: meeting.status joined
+   4.9s attend: joined 
+   4.9s robot joined; sharing at join = false
+   5.0s attend: briefing.sent 
+   6.0s attend: voice.start in call (joined)
+   7.0s attend: voice.status connecting
+   8.0s attend: voice.status active
+  10.9s observer in the call
+  18.5s share on: command 473 ms; observer sees a presentation after 3435 ms via contentType
+  24.9s received {"trackIdentifier":"1dfa32cd-84e0-434b-b433-eb42f157523f","mid":"8","frameWidth":1143,"frameHeight":643,"framesPerSecond":15,"framesDecoded":121,"contentType":"screenshare","freezeCount":1,"bytesReceived":206429,"codec":"video/AV1","decoderImplementation":"dav1d"} | still {"size":"1143x643","ssimY":0.976,"ssimAll":0.9883,"psnr":"27.618122"}
+  24.9s sent (robot side) {"stats":[{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":0,"codec":"video/AV1"},{"matchedBy":"contentType","frameWidth":1143,"frameHeight":643,"framesPerSecond":16,"contentType":"screenshare","qualityLimitationReason":"none","scalabilityMode":"L1T2","targetBitrate":2381000,"bytesSent":306043,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":66671,"codec":"video/AV1"}],"stage":{"contentHint":"detail","sharing":true,"displayRequests":1,"lastConstraints":{"audio":{"autoGainC
+  29.0s move to view 1: {"firstChangeMs":445,"framesFirstSecond":18,"settledMs":1081,"frames":64,"size":"1143x643"}
+  33.1s move to view 2: {"firstChangeMs":488,"framesFirstSecond":19,"settledMs":1085,"frames":62,"size":"1143x643"}
+  37.2s move to view 0: {"firstChangeMs":489,"framesFirstSecond":19,"settledMs":1320,"frames":66,"size":"1143x643"}
+  47.0s cycle 0: {"i":0,"offMs":4085,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":248,"observerSeesAgainMs":3098,"robotSharingAfterOn":true,"ok":true}
+  55.1s cycle 1: {"i":1,"offMs":1046,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":242,"observerSeesAgainMs":3093,"robotSharingAfterOn":true,"ok":true}
+  98.7s observer asked a question at 2026-09-15T01:39:20.442Z
+ 125.9s observer said continue; presenter was {"id":1,"status":"paused","beat":1,"total":3,"reason":"person_speaking","style":"own-words","slide":0,"view":1}
+ 126.9s presenter paused: person_speaking
+ 148.1s narration events 45 audio onsets 16 screen changes 17
+ 151.2s attend: stopping 
+ 151.7s attend: voice.stop exit
+ 154.8s attend: left 
+ 154.8s attend: summary 

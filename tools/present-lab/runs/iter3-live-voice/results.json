@@ -1,0 +1,579 @@
+{
+  "stamp": "2026-09-15T01-26-13-997Z",
+  "voice": true,
+  "narrate": true,
+  "slug": "projectile-motion-deck",
+  "checks": {
+    "X1_no_share_at_join": {
+      "sharing": false
+    },
+    "L2_share": {
+      "commandMs": 552,
+      "firstWideFrameMs": 3169,
+      "how": "contentType"
+    },
+    "R5_received": {
+      "trackIdentifier": "8faa4722-69c4-44f6-8705-689935f8d1ef",
+      "mid": "8",
+      "frameWidth": 1143,
+      "frameHeight": 643,
+      "framesPerSecond": 15,
+      "framesDecoded": 120,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 151424,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    },
+    "R1_sent": {
+      "stats": [],
+      "stage": {
+        "contentHint": "detail",
+        "sharing": true,
+        "displayRequests": 1,
+        "lastConstraints": {
+          "audio": {
+            "autoGainControl": false,
+            "echoCancellation": false,
+            "noiseSuppression": false,
+            "suppressLocalAudioPlayback": false,
+            "restrictOwnAudio": true
+          },
+          "video": {
+            "frameRate": {
+              "ideal": 30
+            },
+            "width": {
+              "max": 1920
+            },
+            "height": {
+              "max": 1200
+            }
+          },
+          "controller": {},
+          "systemAudio": "exclude",
+          "windowAudio": "exclude",
+          "selfBrowserSurface": "exclude",
+          "surfaceSwitching": "include"
+        },
+        "constraintLog": [
+          {
+            "at": 1789435589441,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          },
+          {
+            "at": 1789435589464,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          }
+        ],
+        "fps": 8
+      }
+    },
+    "R5_still": {
+      "size": "1143x643",
+      "ssimY": 0.976,
+      "ssimAll": 0.9883,
+      "psnr": "27.618122"
+    },
+    "L1_moves": [
+      {
+        "view": 1,
+        "firstChangeMs": 457,
+        "framesFirstSecond": 17,
+        "settledMs": 1130,
+        "frames": 64,
+        "size": "1143x643"
+      },
+      {
+        "view": 2,
+        "firstChangeMs": 559,
+        "framesFirstSecond": 21,
+        "settledMs": 1058,
+        "frames": 62,
+        "size": "1143x643"
+      },
+      {
+        "view": 0,
+        "firstChangeMs": 441,
+        "framesFirstSecond": 22,
+        "settledMs": 1142,
+        "frames": 67,
+        "size": "1143x643"
+      }
+    ],
+    "X2_cycles": [],
+    "S4_interrupt": {
+      "armed": false,
+      "question": {
+        "startAt": 1789435645608,
+        "endAt": 1789435648509
+      },
+      "pausedState": {
+        "id": 1,
+        "status": "paused",
+        "beat": 1,
+        "total": 3,
+        "reason": "person_speaking",
+        "style": "own-words",
+        "slide": 0,
+        "view": 1
+      },
+      "continued": {
+        "startAt": 1789435674079,
+        "endAt": 1789435675836
+      }
+    },
+    "S_narration": {
+      "startAt": 1789435610972,
+      "endAt": 1789435696003,
+      "presenterEvents": [
+        {
+          "type": "presenter.started",
+          "at": "2026-09-15T01:26:50.997Z",
+          "data": {
+            "total": 3,
+            "from": 0,
+            "style": "own-words"
+          }
+        },
+        {
+          "type": "presenter.beat",
+          "at": "2026-09-15T01:26:51.760Z",
+          "data": {
+            "beat": 0,
+            "total": 3,
+            "slide": 0,
+            "view": 0,
+            "cueAt": 1789435611760
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:26:53.469Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435613407,
+            "slide": 0,
+            "view": 0
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:09.230Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435628827,
+            "slide": 0,
+            "view": 0
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:09.330Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435629307,
+            "slide": 0,
+            "view": 0
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:14.675Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435634287,
+            "slide": 0,
+            "view": 0
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:14.784Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435634747,
+            "slide": 0,
+            "view": 0
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:20.371Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435640007,
+            "slide": 0,
+            "view": 0
+          }
+        },
+        {
+          "type": "presenter.beat_done",
+          "at": "2026-09-15T01:27:21.016Z",
+          "data": {
+            "beat": 0,
+            "endedBy": "speech_end",
+            "speechMs": 26600,
+            "coverage": 0.64,
+            "gapMs": null
+          }
+        },
+        {
+          "type": "stage-shown",
+          "at": "2026-09-15T01:27:21.091Z",
+          "data": {
+            "type": "stage-shown",
+            "slide": 0,
+            "view": 1,
+            "kind": "move",
+            "at": 1789435641078
+          }
+        },
+        {
+          "type": "presenter.beat",
+          "at": "2026-09-15T01:27:21.115Z",
+          "data": {
+            "beat": 1,
+            "total": 3,
+            "slide": 0,
+            "view": 1,
+            "cueAt": 1789435641115
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:22.845Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435642787,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:27.830Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435647427,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "presenter.paused",
+          "at": "2026-09-15T01:27:27.937Z",
+          "data": {
+            "reason": "person_speaking",
+            "beat": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:29.984Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435649947,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:30.571Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435650207,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:30.649Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435650587,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:55.972Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435675607,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:58.669Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435678607,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:27:59.329Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789435678927,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-15T01:28:03.943Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789435683907,
+            "slide": 0,
+            "view": 1
+          }
+        }
+      ],
+      "observerAudio": [
+        {
+          "phase": "onset",
+          "at": 1789435613655,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435621208,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435621838,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435624808,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435625324,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435628958,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435629448,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435634308,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435634938,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435640188,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435642968,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435647588,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435650137,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435653758,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435654228,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435660528,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435661167,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435666858,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435667338,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435671788,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435672268,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435675748,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435678798,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435679018,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435684078,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "offset",
+          "at": 1789435688468,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        },
+        {
+          "phase": "onset",
+          "at": 1789435689088,
+          "track": "17c2f566-1c6e-40d3-aa32-860302de8b49"
+        }
+      ],
+      "observerScreenChanges": [
+        1789435641446,
+        1789435641514,
+        1789435641548,
+        1789435641589,
+        1789435641622,
+        1789435641719,
+        1789435641824,
+        1789435641918,
+        1789435641946,
+        1789435641979,
+        1789435642046
+      ]
+    }
+  },
+  "meetUrl": "https://meet.google.com/mcz-ufsy-fhn",
+  "screenTrack": {
+    "id": "8faa4722-69c4-44f6-8705-689935f8d1ef",
+    "how": "contentType",
+    "stat": {
+      "trackIdentifier": "8faa4722-69c4-44f6-8705-689935f8d1ef",
+      "mid": "8",
+      "frameWidth": 1920,
+      "frameHeight": 1080,
+      "framesPerSecond": 43,
+      "framesDecoded": 6,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 58493,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    }
+  },
+  "voiceSessions": [
+    {
+      "type": "voice.closed",
+      "at": "2026-09-15T01:28:19.579Z",
+      "data": {
+        "sessionId": "live_u0_EOCE8sd4ZTv3uYZrdj5rt",
+        "reason": "requested",
+        "confirmed": true,
+        "usage": {
+          "seconds": 116
+        }
+      }
+    }
+  ],
+  "serverErrors": [],
+  "attend": [
+    "{\"at\":\"2026-09-15T01:26:14.707Z\",\"event\":\"join.requested\",\"url\":\"https://meet.google.com/mcz-ufsy-fhn\"}",
+    "{\"at\":\"2026-09-15T01:26:15.719Z\",\"event\":\"meeting.status\",\"status\":\"launching\"}",
+    "{\"at\":\"2026-09-15T01:26:17.728Z\",\"event\":\"meeting.status\",\"status\":\"awaiting_admission\"}",
+    "{\"at\":\"2026-09-15T01:26:18.735Z\",\"event\":\"meeting.status\",\"status\":\"joined\"}",
+    "{\"at\":\"2026-09-15T01:26:18.736Z\",\"event\":\"joined\",\"url\":\"https://meet.google.com/mcz-ufsy-fhn\",\"name\":\"Robomeet AI\"}",
+    "{\"at\":\"2026-09-15T01:26:18.815Z\",\"event\":\"briefing.sent\",\"agent\":\"Claude Code\",\"session\":\"meetingproject\",\"cwd\":\"/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet\",\"project\":\"robomeet\",\"chars\":3219,\"purpose\":true,\"brief\":true}",
+    "{\"at\":\"2026-09-15T01:26:19.869Z\",\"event\":\"voice.start\",\"trigger\":\"in call (joined)\",\"session\":1}",
+    "{\"at\":\"2026-09-15T01:26:20.875Z\",\"event\":\"voice.status\",\"status\":\"connecting\"}",
+    "{\"at\":\"2026-09-15T01:26:21.891Z\",\"event\":\"voice.status\",\"status\":\"active\"}",
+    "{\"at\":\"2026-09-15T01:28:18.959Z\",\"event\":\"stopping\",\"reason\":\"SIGTERM\"}",
+    "{\"at\":\"2026-09-15T01:28:19.612Z\",\"event\":\"voice.stop\",\"trigger\":\"exit\"}",
+    "{\"at\":\"2026-09-15T01:28:21.727Z\",\"event\":\"left\"}",
+    "{\"at\":\"2026-09-15T01:28:21.727Z\",\"event\":\"summary\",\"joinedAt\":\"2026-09-15T01:26:18.736Z\",\"voiceStarts\":1,\"voiceStops\":1,\"voiceSeconds\":103,\"reason\":\"SIGTERM\"}"
+  ]
+}

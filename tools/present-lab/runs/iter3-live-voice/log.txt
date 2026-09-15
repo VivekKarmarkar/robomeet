@@ -1,0 +1,45 @@
+   0.6s meeting https://meet.google.com/mcz-ufsy-fhn
+   0.7s attend: join.requested 
+   1.7s attend: meeting.status launching
+   3.7s attend: meeting.status awaiting_admission
+   4.7s attend: meeting.status joined
+   4.7s attend: joined 
+   4.8s robot joined; sharing at join = false
+   4.8s attend: briefing.sent 
+   5.9s attend: voice.start in call (joined)
+   6.9s attend: voice.status connecting
+   7.9s attend: voice.status active
+  10.9s observer in the call
+  18.2s share on: command 552 ms; observer sees a presentation after 3169 ms via contentType
+  24.7s received {"trackIdentifier":"8faa4722-69c4-44f6-8705-689935f8d1ef","mid":"8","frameWidth":1143,"frameHeight":643,"framesPerSecond":15,"framesDecoded":120,"contentType":"screenshare","freezeCount":0,"bytesReceived":151424,"codec":"video/AV1","decoderImplementation":"dav1d"} | still {"size":"1143x643","ssimY":0.976,"ssimAll":0.9883,"psnr":"27.618122"}
+  24.7s sent (robot side) {"stats":[],"stage":{"contentHint":"detail","sharing":true,"displayRequests":1,"lastConstraints":{"audio":{"autoGainControl":false,"echoCancellation":false,"noiseSuppression":false,"suppressLocalAudioPlayback":false,"restrictOwnAudio":true},"video":{"frameRate":{"ideal":30},"width":{"max":1920},"height":{"max":1200}},"controller":{},"systemAudio":"exclude","windowAudio":"exclude","selfBrowserSurface":"exclude","surfaceSwitching":"include"},"constraintLog":[{"at":1789435589441,"constraints":{"width":{"max":1920},"height":{"max":1184},"frameRate":{"min":0,"ideal":30}}},{"at":1789435589464,"const
+  28.8s move to view 1: {"firstChangeMs":457,"framesFirstSecond":17,"settledMs":1130,"frames":64,"size":"1143x643"}
+  32.9s move to view 2: {"firstChangeMs":559,"framesFirstSecond":21,"settledMs":1058,"frames":62,"size":"1143x643"}
+  37.0s move to view 0: {"firstChangeMs":441,"framesFirstSecond":22,"settledMs":1142,"frames":67,"size":"1143x643"}
+  74.5s observer asked a question at 2026-09-15T01:27:25.608Z
+ 101.8s observer said continue; presenter was {"id":1,"status":"paused","beat":1,"total":3,"reason":"person_speaking","style":"own-words","slide":0,"view":1}
+ 102.8s presenter paused: person_speaking
+ 103.9s presenter paused: person_speaking
+ 104.9s presenter paused: person_speaking
+ 105.9s presenter paused: person_speaking
+ 106.9s presenter paused: person_speaking
+ 107.9s presenter paused: person_speaking
+ 108.9s presenter paused: person_speaking
+ 109.9s presenter paused: person_speaking
+ 110.9s presenter paused: person_speaking
+ 111.9s presenter paused: person_speaking
+ 112.9s presenter paused: person_speaking
+ 113.9s presenter paused: person_speaking
+ 115.0s presenter paused: person_speaking
+ 116.0s presenter paused: person_speaking
+ 117.0s presenter paused: person_speaking
+ 118.0s presenter paused: person_speaking
+ 119.0s presenter paused: person_speaking
+ 120.0s presenter paused: person_speaking
+ 121.0s presenter paused: person_speaking
+ 122.0s presenter paused: person_speaking
+ 122.0s narration events 21 audio onsets 14 screen changes 11
+ 125.0s attend: stopping 
+ 125.6s attend: voice.stop exit
+ 127.7s attend: left 
+ 127.7s attend: summary 

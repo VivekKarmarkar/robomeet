@@ -37,7 +37,7 @@
         <!-- Independent screen-share output -->
         <section class="panel presentation-panel lg:col-span-5">
           <div class="panel-heading flex items-center justify-between"><h2><span class="tiny-square cream"></span> Presentation</h2><span id="slide-count" class="muted">No slides yet</span></div>
-          <div class="presentation-stage"><canvas id="slides-canvas" width="1280" height="720" aria-label="Presentation preview"></canvas></div>
+          <div class="presentation-stage"><canvas id="slides-canvas" width="1920" height="1080" aria-label="Presentation preview"></canvas></div>
           <div class="presentation-toolbar flex items-center justify-between gap-3"><div class="flex gap-2"><button id="previous-slide" class="icon-button" type="button" aria-label="Previous slide" disabled>←</button><button id="next-slide" class="icon-button" type="button" aria-label="Next slide" disabled>→</button></div><button id="share-screen" class="button small ghost" type="button" disabled>Share in meeting</button></div>
           <div class="presentation-editor"><label for="presentation-text" class="field-caption">MAKE A QUICK DECK</label><textarea id="presentation-text" rows="4" placeholder="A title for your first slide&#10;A few words to explain it.&#10;---&#10;Your next slide"></textarea><div class="flex flex-wrap items-center justify-between gap-3"><label class="import-label" for="import-slides">↥ Import text or JSON<input id="import-slides" type="file" accept=".txt,.md,.json,text/plain,text/markdown,application/json" class="sr-only"></label><button id="apply-slides" class="button small secondary" type="button">Update deck</button></div></div>
         </section>

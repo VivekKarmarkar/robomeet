@@ -10,9 +10,12 @@ import { chromium } from 'playwright';
 import { fileURLToPath } from 'node:url';
 import { prepareBrowserProfile } from './browser-profile.mjs';
 import { createInPageVoice } from './in-page-voice.mjs'; // single-hop
+import { createStageSync } from './stage-sync.mjs'; // stage: the shared picture is drawn inside the Meet page
 
 const mediaScript = fileURLToPath(new URL('./meet-media.js', import.meta.url));
 const liveScript = fileURLToPath(new URL('./meet-live.js', import.meta.url)); // single-hop
+const stageScript = fileURLToPath(new URL('./meet-stage.js', import.meta.url)); // stage: docs/stage-design.md
+const publicDir = fileURLToPath(new URL('../public', import.meta.url)); // stage: slide pictures
 const dataDir = process.env.ROBO_DATA_DIR || fileURLToPath(new URL('../data', import.meta.url)); // single-hop: control token
 const pause = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 const joinButtonName = /^(Ask to join(?: anyway)?|Join now|Join the call now|Join anyway|Join here too)$/i;
@@ -74,6 +77,7 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
   let meetingPage;
   let monitor;
   let voice; // single-hop: src/in-page-voice.mjs controller, one per joined meeting
+  let stage; // stage: src/stage-sync.mjs, mirrors the store's presentation into window.RoboMeetStage
   let generation = 0;
   let bridgeEpoch = 0;
   let reconnecting = false;
@@ -112,6 +116,8 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
     const ownedVoice = voice; // single-hop: end the paid session while the page that carries it is still open
     voice = null;
     await ownedVoice?.stop('meeting_closed').catch(() => {});
+    stage?.stop(); // stage:
+    stage = null;
     const ownedBrowser = browser;
     const ownedContext = context;
     browser = null;
@@ -123,7 +129,8 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
     await Promise.allSettled([
       ownedApp?.evaluate(async () => { window.__robomeetAppBridge?.close(); await window.robotApp?.stopVoice?.(); }),
       // single-hop: RoboMeetLive restores the globals it replaced before RoboMeetMedia restores the natives.
-      ownedMeet?.evaluate(() => { window.RoboMeetLive?.close(); window.RoboMeetMedia?.close(); }),
+      // stage: RoboMeetStage restores the getDisplayMedia it wrapped before the older layers restore theirs.
+      ownedMeet?.evaluate(() => { window.RoboMeetStage?.close(); window.RoboMeetLive?.close(); window.RoboMeetMedia?.close(); }),
     ]);
     // Persistent contexts own their browser process; closing them also flushes profile state.
     if (ownedContext) await ownedContext.close();
@@ -293,6 +300,7 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
       meetingPage = await context.newPage();
       await meetingPage.addInitScript({ path: mediaScript });
       await meetingPage.addInitScript({ path: liveScript }); // single-hop: after meet-media.js, never before
+      await meetingPage.addInitScript({ path: stageScript }); // stage: last, it wraps meet-media's getDisplayMedia
       await appPage.exposeFunction('__robomeetSignal', async item => {
         if (run === generation && meetingPage) await meetingPage.evaluate(item => window.RoboMeetMedia?.addCandidate(item), item).catch(() => {});
       });
@@ -304,6 +312,15 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
       });
       await meetingPage.exposeFunction('__robomeetLiveEvent', data => { // single-hop
         if (run === generation) emit(data);
+      });
+      await meetingPage.exposeFunction('__robomeetStageEvent', data => { // stage:
+        if (run !== generation) return;
+        emit(data);
+        // Meet stops the shared track when someone ends the presentation in Meet itself: follow the real state.
+        if (data?.type === 'stage-sharing' && typeof data.sharing === 'boolean' && state.sharing !== data.sharing && state.admitted) {
+          update({ sharing: data.sharing });
+          emit({ type: 'presentation-changed', enabled: data.sharing, by: 'meet' });
+        }
       });
       // single-hop: /?canvas=1 keeps public/app.js off the voice path (it owns voice only under ?meeting=1).
       const rendererUrl = new URL('/?canvas=1', baseUrl);
@@ -317,6 +334,9 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
       // single-hop: sessions start only once the store says voice.desired === 'started' and the meeting is joined.
       voice = createInPageVoice({ baseUrl, dataDir, getState, getPage: () => meetingPage, emit });
       voice.start();
+      stage = createStageSync({ getPage: () => meetingPage, getState, publicDir, emit }); // stage:
+      stage.start();
+      void stage.sync();
       update({ status: 'joining' });
       await requestAdmission(run, name);
       if (run !== generation) return;
@@ -352,25 +372,94 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
     return status();
   }
 
-  async function present({ enabled }) {
+  // stage: share on and share off run one at a time, each against the settled result of the one before (a stop
+  // sent while a start is still confirming must not be overtaken by it).
+  let presentChain = Promise.resolve();
+  function present(args) {
+    const next = presentChain.then(() => presentNow(args));
+    presentChain = next.catch(() => {});
+    return next;
+  }
+  async function presentNow({ enabled }) {
     if (!state.admitted || !meetingPage) throw new Error('RoboMeet must be admitted before sharing a presentation.');
     const desired = Boolean(enabled);
     if (state.sharing === desired) return status();
+    const presenting = () => meetingPage.getByText(/^(You.re presenting|You are presenting)$/i).first().isVisible().catch(() => false);
+    // stage: Meet ends the shared track when it stops presenting, so the stage's live clones are the ground truth;
+    // Meet's own text is a second signal (its wording can change).
+    const stillShared = async () => (await presenting()) || (await meetingPage.evaluate(() => Boolean(window.RoboMeetStage?.health().sharing)).catch(() => false));
+    const dismiss = async () => {
+      const gotIt = meetingPage.getByRole('button', { name: /^Got it$/i }).first();
+      if (await gotIt.isVisible().catch(() => false)) await gotIt.click({ timeout: 2000 }).catch(() => {});
+    };
+    const failure = async (what, error) => {
+      // stage: keep the evidence (visible buttons, a screenshot) so a Meet UI change is diagnosable, then fail.
+      const buttons = await meetingPage.getByRole('button').evaluateAll(list => list.filter(item => item.getClientRects().length).map(item => item.getAttribute('aria-label') || item.innerText).slice(0, 40)).catch(() => []);
+      const shot = `${dataDir}/present-failure-${Date.now()}.png`;
+      await meetingPage.screenshot({ path: shot }).catch(() => {});
+      emit({ type: 'presentation-failed', action: what, message: String(error?.message || error).split('\n')[0].slice(0, 300), buttons, screenshot: shot });
+      throw Object.assign(new Error(`Could not ${what} in Google Meet: ${String(error?.message || error).split('\n')[0].slice(0, 200)}`), { status: 502 });
+    };
     if (desired) {
-      await meetingPage.getByRole('button', { name: /Present now|Share screen|Present screen/i }).first().click({ timeout: 5000 });
-      const option = meetingPage.getByText(/^(Your entire screen|Entire screen|A tab|A window)$/i).first();
-      if (await option.isVisible().catch(() => false)) await option.click();
-      const confirmed = meetingPage.getByText(/^(You.re presenting|You are presenting|Stop presenting|Stop sharing)$/i).first();
-      await confirmed.waitFor({ state: 'visible', timeout: 10_000 });
+      // stage: Meet calls getDisplayMedia after "Present now"; RoboMeetStage counts those calls, which proves the click
+      // started a presentation even when Meet's confirmation text differs.
+      const before = await meetingPage.evaluate(() => window.RoboMeetStage?.health().displayRequests ?? 0).catch(() => 0);
+      let lastError = null;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          await dismiss();
+          await meetingPage.getByRole('button', { name: /Present now|Share screen|Present screen/i }).first().click({ timeout: 4000 });
+          const option = meetingPage.getByText(/^(Your entire screen|Entire screen|A tab|A window)$/i).first();
+          if (await option.isVisible().catch(() => false)) await option.click();
+          // stage: a display request alone is not a presentation (Meet can ask, then fail to publish and stop the
+          // track). Confirmed = Meet's own "You're presenting", or a new request whose shared track is still live
+          // after a short settle.
+          const stageShare = () => meetingPage.evaluate(() => { const h = window.RoboMeetStage?.health(); return { requests: h?.displayRequests ?? 0, sharing: Boolean(h?.sharing) }; }).catch(() => ({ requests: 0, sharing: false }));
+          const deadline = Date.now() + 10_000;
+          let confirmed = false;
+          while (Date.now() < deadline && !confirmed) {
+            if (await presenting()) { confirmed = true; break; }
+            const share = await stageShare();
+            if (share.requests > before && share.sharing) {
+              await pause(600);
+              confirmed = (await presenting()) || (await stageShare()).sharing;
+            }
+            if (!confirmed) await pause(250);
+          }
+          if (confirmed) { lastError = null; break; }
+          lastError = new Error('Meet did not start presenting');
+        } catch (error) { lastError = error; }
+        emit({ type: 'presentation-retry', action: 'start', attempt, message: String(lastError?.message).split('\n')[0].slice(0, 200) });
+      }
+      if (lastError) await failure('start presenting', lastError);
     } else {
-      let stop = meetingPage.getByRole('button', { name: /Stop presenting|Stop sharing/i }).first();
-      if (!(await stop.isVisible().catch(() => false))) stop = meetingPage.getByText(/^(Stop presenting|Stop sharing)$/i).first();
-      await stop.click({ timeout: 5000 });
+      let stopped = false;
+      let lastError = null;
+      try {
+        await dismiss();
+        let stop = meetingPage.getByRole('button', { name: /Stop presenting|Stop sharing/i }).first();
+        if (!(await stop.isVisible().catch(() => false))) stop = meetingPage.getByText(/^(Stop presenting|Stop sharing)$/i).first();
+        await stop.click({ timeout: 3000 });
+        const deadline = Date.now() + 5000;
+        while (Date.now() < deadline && (await stillShared())) await pause(250);
+        stopped = !(await stillShared());
+      } catch (error) { lastError = error; }
+      if (!stopped) {
+        // stage: end the shared track the way the browser's own "Stop sharing" bar does; Meet stops presenting.
+        const ended = await meetingPage.evaluate(() => window.RoboMeetStage?.endShare?.() ?? 0).catch(() => 0);
+        emit({ type: 'presentation-stop-fallback', ended, message: String(lastError?.message || 'stop button did not end the presentation').split('\n')[0].slice(0, 200) });
+        const deadline = Date.now() + 5000;
+        while (Date.now() < deadline && (await stillShared())) await pause(250);
+        stopped = !(await stillShared());
+      }
+      if (!stopped) await failure('stop presenting', lastError || new Error('Meet still shows the presentation'));
     }
     update({ sharing: desired });
     emit({ type: 'presentation-changed', enabled: desired });
     return status();
   }
+
+  async function syncStage() { await stage?.sync(); } // stage: called by the server on every presentation change
 
   async function setMode(mode) {
     if (appPage && !appPage.isClosed()) await appPage.evaluate(mode => window.robotApp?.setMode?.(mode), mode);
@@ -386,6 +475,9 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
       media: await meetingPage.evaluate(() => window.RoboMeetMedia?.health()),
       live: await meetingPage.evaluate(() => window.RoboMeetLive?.health()), // single-hop
       voice: voice?.status() || null, // single-hop
+      stage: await meetingPage.evaluate(() => window.RoboMeetStage?.health()).catch(() => null), // stage:
+      stageStats: await meetingPage.evaluate(() => window.RoboMeetStage?.stats?.()).catch(() => null), // stage: Meet's encoder view
+      stageSenders: await meetingPage.evaluate(() => window.RoboMeetStage?.senders?.()).catch(() => null), // stage: Meet's send parameters
       publication: await meetingPage.evaluate(() => window.RoboMeetMedia?.publicationStats()),
       buttons: await meetingPage.getByRole('button').evaluateAll(buttons => buttons.filter(button => button.getClientRects().length).map(button => button.getAttribute('aria-label') || button.innerText).slice(0, 40)),
     };
@@ -399,5 +491,5 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
     return diagnostics();
   }
 
-  return { join, leave, present, setMode, close: leave, status, diagnostics, diagnosticTone };
+  return { join, leave, present, syncStage, setMode, close: leave, status, diagnostics, diagnosticTone };
 }

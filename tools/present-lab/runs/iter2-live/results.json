@@ -1,0 +1,211 @@
+{
+  "stamp": "2026-09-15T01-21-33-450Z",
+  "voice": false,
+  "narrate": false,
+  "slug": "projectile-motion-deck",
+  "checks": {
+    "X1_no_share_at_join": {
+      "sharing": false
+    },
+    "L2_share": {
+      "commandMs": 496,
+      "firstWideFrameMs": 2860,
+      "how": "contentType"
+    },
+    "R5_received": {
+      "trackIdentifier": "7802ae87-f318-41f9-8902-527f52734431",
+      "mid": "8",
+      "frameWidth": 1143,
+      "frameHeight": 643,
+      "framesPerSecond": 15,
+      "framesDecoded": 120,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 151274,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    },
+    "R1_sent": {
+      "stats": [],
+      "stage": {
+        "contentHint": "detail",
+        "sharing": true,
+        "displayRequests": 1,
+        "lastConstraints": {
+          "audio": {
+            "autoGainControl": false,
+            "echoCancellation": false,
+            "noiseSuppression": false,
+            "suppressLocalAudioPlayback": false,
+            "restrictOwnAudio": true
+          },
+          "video": {
+            "frameRate": {
+              "ideal": 30
+            },
+            "width": {
+              "max": 1920
+            },
+            "height": {
+              "max": 1200
+            }
+          },
+          "controller": {},
+          "systemAudio": "exclude",
+          "windowAudio": "exclude",
+          "selfBrowserSurface": "exclude",
+          "surfaceSwitching": "include"
+        },
+        "constraintLog": [
+          {
+            "at": 1789435309924,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          },
+          {
+            "at": 1789435309933,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          }
+        ],
+        "fps": 8
+      }
+    },
+    "R5_still": {
+      "size": "1143x643",
+      "ssimY": 0.976,
+      "ssimAll": 0.9883,
+      "psnr": "27.618122"
+    },
+    "L1_moves": [
+      {
+        "view": 1,
+        "firstChangeMs": 462,
+        "framesFirstSecond": 19,
+        "settledMs": 1259,
+        "frames": 62,
+        "size": "1143x643"
+      },
+      {
+        "view": 2,
+        "firstChangeMs": 503,
+        "framesFirstSecond": 23,
+        "settledMs": 1073,
+        "frames": 69,
+        "size": "1143x643"
+      },
+      {
+        "view": 0,
+        "firstChangeMs": 427,
+        "framesFirstSecond": 21,
+        "settledMs": 1094,
+        "frames": 67,
+        "size": "1143x643"
+      }
+    ],
+    "X2_cycles": [
+      {
+        "i": 0,
+        "offMs": 3945,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 193,
+        "observerSeesAgainMs": 2770,
+        "robotSharingAfterOn": true,
+        "ok": true
+      },
+      {
+        "i": 1,
+        "offMs": 740,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 228,
+        "observerSeesAgainMs": 2814,
+        "robotSharingAfterOn": true,
+        "ok": true
+      },
+      {
+        "i": 2,
+        "offMs": 752,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 205,
+        "observerSeesAgainMs": 2512,
+        "robotSharingAfterOn": true,
+        "ok": true
+      },
+      {
+        "i": 3,
+        "offMs": 693,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 203,
+        "observerSeesAgainMs": 2513,
+        "robotSharingAfterOn": true,
+        "ok": true
+      },
+      {
+        "i": 4,
+        "offMs": 775,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 203,
+        "observerSeesAgainMs": 2655,
+        "robotSharingAfterOn": true,
+        "ok": true
+      }
+    ]
+  },
+  "meetUrl": "https://meet.google.com/pnh-ubzs-wpe",
+  "screenTrack": {
+    "id": "7802ae87-f318-41f9-8902-527f52734431",
+    "how": "contentType",
+    "stat": {
+      "trackIdentifier": "7802ae87-f318-41f9-8902-527f52734431",
+      "mid": "8",
+      "frameWidth": 1920,
+      "frameHeight": 1080,
+      "framesPerSecond": 48,
+      "framesDecoded": 8,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 58493,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    }
+  },
+  "voiceSessions": [],
+  "serverErrors": [],
+  "attend": [
+    "{\"at\":\"2026-09-15T01:21:35.050Z\",\"event\":\"join.requested\",\"url\":\"https://meet.google.com/pnh-ubzs-wpe\"}",
+    "{\"at\":\"2026-09-15T01:21:36.057Z\",\"event\":\"meeting.status\",\"status\":\"launching\"}",
+    "{\"at\":\"2026-09-15T01:21:37.064Z\",\"event\":\"meeting.status\",\"status\":\"joining\"}",
+    "{\"at\":\"2026-09-15T01:21:38.070Z\",\"event\":\"meeting.status\",\"status\":\"awaiting_admission\"}",
+    "{\"at\":\"2026-09-15T01:21:39.076Z\",\"event\":\"meeting.status\",\"status\":\"joined\"}",
+    "{\"at\":\"2026-09-15T01:21:39.077Z\",\"event\":\"joined\",\"url\":\"https://meet.google.com/pnh-ubzs-wpe\",\"name\":\"Robomeet AI\"}",
+    "{\"at\":\"2026-09-15T01:21:39.140Z\",\"event\":\"briefing.sent\",\"agent\":\"Claude Code\",\"session\":\"meetingproject\",\"cwd\":\"/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet\",\"project\":\"robomeet\",\"chars\":3219,\"purpose\":true,\"brief\":true}",
+    "{\"at\":\"2026-09-15T01:22:54.569Z\",\"event\":\"stopping\",\"reason\":\"SIGTERM\"}",
+    "{\"at\":\"2026-09-15T01:22:55.055Z\",\"event\":\"left\"}",
+    "{\"at\":\"2026-09-15T01:22:55.055Z\",\"event\":\"summary\",\"joinedAt\":\"2026-09-15T01:21:39.077Z\",\"voiceStarts\":0,\"voiceStops\":0,\"voiceSeconds\":1066,\"reason\":\"SIGTERM\"}"
+  ]
+}

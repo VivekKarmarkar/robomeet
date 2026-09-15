@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // RoboMeet attend — the robot-side launcher used by the /robomeet skill.
-// Ensures the local app is running, joins a Google Meet as the robot, shares the slide canvas, posts meeting
+// Ensures the local app is running, joins a Google Meet as the robot (sharing starts off; --share opts in), posts meeting
 // context, keeps the robot's audio off the laptop speakers (null sink), then runs a voice policy loop until the
 // meeting ends or a signal arrives.
 // Talks to the app only through its HTTP contract: GET /api/state and POST /api/command with the local bearer token.
@@ -11,17 +11,18 @@ import { basename, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs, promisify } from 'node:util';
 
-const usage = 'Usage: node bin/attend.mjs <meet-url> [--name NAME] [--agent "Claude Code"|"Codex"] [--cwd PATH] [--project NAME] [--session-id ID] [--no-share] [--session-name NAME] [--display-name NAME] [--no-voice-auto] [--voice-on presence|speech|join] [--camera on|off] [--mute-laptop] [--silence-ms 600000] [--no-greet] [--voice-path direct|bridge] [--purpose TEXT] [--brief TEXT] [--json]';
+const usage = 'Usage: node bin/attend.mjs <meet-url> [--name NAME] [--agent "Claude Code"|"Codex"] [--cwd PATH] [--project NAME] [--session-id ID] [--share] [--no-share] [--session-name NAME] [--display-name NAME] [--no-voice-auto] [--voice-on presence|speech|join] [--camera on|off] [--mute-laptop] [--silence-ms 600000] [--no-greet] [--voice-path direct|bridge] [--purpose TEXT] [--brief TEXT] [--json]';
 let options, positionals;
 try {
   ({ values: options, positionals } = parseArgs({ allowPositionals: true, options: {
     name: { type: 'string' }, agent: { type: 'string', default: 'Claude Code' }, cwd: { type: 'string', default: process.cwd() },
     project: { type: 'string' }, 'session-id': { type: 'string' }, 'session-name': { type: 'string' }, 'display-name': { type: 'string', default: process.env.ROBOMEET_DISPLAY_NAME || 'Vivek Bot' }, 'voice-on': { type: 'string', default: 'join' }, 'silence-ms': { type: 'string', default: '600000' },
-    'no-share': { type: 'boolean', default: false }, 'no-voice-auto': { type: 'boolean', default: false }, 'no-greet': { type: 'boolean', default: false }, 'voice-path': { type: 'string', default: process.env.ROBOMEET_VOICE_PATH || 'direct' }, purpose: { type: 'string' }, brief: { type: 'string' },
+    share: { type: 'boolean', default: false }, 'no-share': { type: 'boolean', default: false }, 'no-voice-auto': { type: 'boolean', default: false }, 'no-greet': { type: 'boolean', default: false }, 'voice-path': { type: 'string', default: process.env.ROBOMEET_VOICE_PATH || 'direct' }, purpose: { type: 'string' }, brief: { type: 'string' },
     camera: { type: 'string', default: 'off' }, 'mute-laptop': { type: 'boolean', default: false }, 'no-mute': { type: 'boolean', default: false }, json: { type: 'boolean', default: false }, help: { type: 'boolean', default: false },
   } }));
 } catch (error) { console.error(`${error.message}\n${usage}`); process.exit(1); }
 const [meetUrl] = positionals;
+const sharesAtJoin = options.share && !options['no-share']; // stage: --no-share is still accepted and is the default
 if (options.help || !meetUrl) { console.error(usage); process.exit(options.help ? 0 : 1); }
 
 const appDir = fileURLToPath(new URL('..', import.meta.url));
@@ -165,17 +166,18 @@ function buildBriefing(recap) {
   return [
     `You are ${displayName}, an AI participant in this ${platform} meeting.`,
     `How you exist: you were launched into this meeting by RoboMeet, software we built in house that runs on Vivek's laptop. It puts you in the call, carries your audio, and links you to a coding session.`,
-    `Your parts: your voice and live conversation are OpenAI's gpt-live-1, a full-duplex speech model that listens while it speaks and decides its own turns. Behind it is a backend reasoning model, gpt-5.6-sol, OpenAI's strong reasoning model. It does not talk. When you delegate, it receives the conversation so far, thinks, decides whether to use a tool, and hands back text for you to say in your own words. Its tools: take_note saves a meeting note in RoboMeet; present_slides shows a deck on your shared screen (text slides, or picture slides given as image paths); ask_coding_agent sends a request to the coding session and waits for its real answer.`,
+    `Your parts: your voice and live conversation are OpenAI's gpt-live-1, a full-duplex speech model that listens while it speaks and decides its own turns; your voice is ${process.env.ROBO_VOICE || 'marin'}, hard-coded. Behind it is a backend reasoning model, gpt-5.6-sol, OpenAI's strong reasoning model. It does not talk. When you delegate, it receives the conversation so far, thinks, decides whether to use a tool, and hands back text for you to say in your own words. Its tools: take_note saves a meeting note in RoboMeet; present_slides shows a deck on your shared screen (text slides, or picture slides given as image paths); ask_coding_agent sends a request to the coding session and waits for its real answer. If someone asks you something you do not have in your context, delegate it — either to your backend reasoning model or to the coding agent — rather than guessing or saying you do not know.`,
     `The coding session: a ${options.agent} session named ${sessionName}, connected to you through the RoboMeet MCP server. The agent (Claude Code or Codex) and the session name are launch parameters, passed in by whichever session launches you. It works in ${cwd} on the project ${project}. It can read files, run code, build slide decks (including from PDFs) and do research. It also reads the live meeting transcript through the same MCP server, so it knows what is being said, but it only acts when asked through ask_coding_agent.`,
     'While the coding agent works on a request you can keep talking with people; it may take a while, and the answer arrives when it is done.',
     options.camera === 'on' ? 'Your camera shows an animated robot face drawn by the app.' : 'Your camera is off; participants see your profile picture, a robot icon.',
     'You can hear everyone and speak. You cannot see video or open files yourself.',
-    options['no-share'] ? 'Screen sharing starts off and turns on when a deck is presented.' : "Your shared screen shows RoboMeet's slide canvas while a deck is presented.",
+    // stage: facts about the shared screen (docs/stage-design.md). Sharing starts off unless --share.
+    `Your shared screen ${sharesAtJoin ? 'is on from the start' : 'starts off'} and turns on when a deck is presented (your present_slides tool, or the coding session presenting a PDF, a slide deck, a document, a web page or a picture; a document scrolls one screen-sized part at a time). Only the coding session can move it, stop it, or run a narrated presentation, in which RoboMeet shows each part and asks you to present it.`,
     options.purpose ? `Why you are here: ${options.purpose}` : `Why you are here: Vivek sent you from his ${options.agent} session to take part in this meeting: talk with people, take notes, present slides, and hand work to the coding session when asked.`,
     options.brief ? `Extra context from the session that launched you: ${options.brief}` : '',
     recap ? `Earlier in this meeting, before you rejoined (a rejoin starts a fresh session, so this is what was said): ${recap}` : '',
     'The person speaking is Vivek unless told otherwise.',
-    'You are in a meeting, so do not disturb it unnecessarily. When someone asks you something, respond immediately with what you know. Be yourself.',
+    'You are in a meeting, so do not disturb it unnecessarily. When someone asks you something, respond immediately with what you know. Be yourself — express yourself freely, say what you think, and do not hold back.',
   ].filter(Boolean).join(' ');
 }
 
@@ -254,8 +256,23 @@ async function main() {
   let snapshot = await joinMeeting();
   stats.joinedAt = new Date().toISOString();
   log('joined', { url: meetUrl, name: snapshot.meeting.name, at: stats.joinedAt });
-  if (!options['no-share']) await command({ type: 'share', enabled: true }).then(() => log('share.on')).catch(error => log('share_failed', { message: error.message }));
-  const briefing = buildBriefing(await recapOfThisMeeting());
+  // stage: no sharing at join by default. A deck from an earlier meeting must never open a meeting (test 5).
+  if (sharesAtJoin) await command({ type: 'share', enabled: true }).then(() => log('share.on')).catch(error => log('share_failed', { message: error.message }));
+  let briefing = buildBriefing(await recapOfThisMeeting());
+  // The server refuses a voice prompt over 6000 characters (it would start without one): trim the launching session's
+  // free text (brief, then purpose, then the recap) to fit, and say so.
+  const LIMIT = 6000;
+  if (briefing.length > LIMIT) {
+    const before = briefing.length;
+    for (const key of ['brief', 'purpose']) {
+      const over = briefing.length - LIMIT;
+      if (over <= 0 || !options[key]) continue;
+      options[key] = `${options[key].slice(0, Math.max(0, options[key].length - over - 3))}...`;
+      briefing = buildBriefing(await recapOfThisMeeting());
+    }
+    if (briefing.length > LIMIT) briefing = `${briefing.slice(0, LIMIT - 3)}...`;
+    log('briefing.trimmed', { from: before, to: briefing.length });
+  }
   await command({ type: 'context', text: briefing });
   await command({ type: 'voice-prompt', text: briefing }).then(() => log('briefing.sent', { agent: options.agent, session: sessionName, cwd, project, chars: briefing.length, purpose: Boolean(options.purpose), brief: Boolean(options.brief) })).catch(error => log('voice.prompt_failed', { message: error.message }));
   let lastMeeting = snapshot.meeting.status, lastVoice = snapshot.voice.status, pollFailures = 0;

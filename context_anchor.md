@@ -277,3 +277,55 @@ Dictated by Vivek, recorded in his terms:
 ## 2026-09-14 03:31 EDT — Stopping for the night; where to pick up (Vivek's instruction)
 
 Vivek: no test now, sleep; tomorrow (or whenever) we test, and we must know where we are starting from and what test to run. Both are written in `robomeet/test_2026-09-14_0330.md`: the starting point (the link → join → natural conversation → introduces itself test works, acceptable latency, free prompt), everything resolved since (voice pinned to marin, freeze during delegation fixed and verified, full launch briefing with `--purpose`/`--brief`, pictures and PDFs on the shared screen, "Join here too" rejoin, single-hop voice path), the next test as seven ordered steps with expectations (greeting, hello, who are you, a note, a coding-agent job, a PDF, bye), the rule for the call (no rejoins, no windows, no published pages; say so and stop), and what stays untested after it. Companion file: `robomeet/errors_and_observations.md`. Robot idle, server idle, tests 16/16.
+
+## 2026-09-14 17:40 CDT — Test 4 completed; tiers.md created
+
+Test 4 (meeting https://meet.google.com/wvx-asjv-mxi) completed. Results:
+- Knock/admit: OK
+- Greeting: "Hey, I'm here. How's it going, Vivek?"
+- Conversation: answered identity, name, backend model, coding agent, hypothetical Codex launch — all correct in own words
+- Notes: "can you take notes?" answered; note saved ("Action item: Reach out to Sid over the coming weekend to schedule a meeting for the week of September 21, 2026.")
+- LaTeX job: one-page projectile motion PDF compiled and presented
+- Voice name question: answered "marin" (delegated to coding agent)
+- PDF quality: unreadable on 720px canvas → banding fix (1920×1080 halves) applied mid-call and re-presented
+- Screen share: Vivek asked to stop; robot falsely claimed to have stopped it (it cannot); coding agent stopped it
+- Confirmation question ("is the coding agent the one putting things on screen?"): delegated to coding agent; session hit context compaction → 6 minute delay (not a bug, session rebuilt context)
+- Voice: marin throughout, no voice change
+
+New observations from test 4:
+- Robot hallucinated PDF details ("numeric example and diagram") that didn't exist
+- Robot falsely claimed to stop screen share — needs standing fact in briefing that it cannot
+- Context compaction mid-call causes multi-minute job delays — a session with more headroom wouldn't hit this
+
+Post-test fixes applied to briefing (`bin/attend.mjs buildBriefing`):
+1. Voice name: "your voice is marin, hard-coded" now in the briefing
+2. Delegation instruction: "If someone asks you something you do not have in your context, delegate it — rather than guessing or saying you do not know"
+3. Expression: "Be yourself — express yourself freely, say what you think, and do not hold back"
+
+### tiers.md — capability tier structure (Vivek dictated 2026-09-14)
+Three tiers: Attend → Converse → Present. Full breakdown in `robomeet/tiers.md`.
+- Tier 1 (Attend): Google Meet works (join link, create link, phone or laptop); Zoom not implemented
+- Tier 2 (Converse): mostly working; new briefing items (marin, delegation, expression) untested; latency 1.4–1.5 s; hallucination and false claims are open issues
+- Tier 3 (Present): works but quality is poor; canvas is 1280×720, source images 1920×1080 get downscaled; needs canvas upgrade, PPT/HTML support, possibly native screen share
+
+## 2026-09-14 23:04 CDT — Tier 3 (Present) deep dive shipped: resolution, sync, latency
+
+Goal (Vivek, /goal): dive deep into screen sharing (resolution, sync, latency), use /behavioral-test-loop and small
+workflows, ship something that really works, notify on Telegram. Evidence: `robomeet/tools/present-lab/runs/final_report.md`,
+`robomeet/docs/presentation-spec.md` (results table), `robomeet/errors_and_observations.md`, `robomeet/tiers.md`.
+
+- **Resolution.** The shared screen is a 1920x1080 stage drawn inside the Meet tab and marked as screen content. The
+  old path reached participants at 480x270 (SSIM 0.85); the stage at 1920x1080 (SSIM 0.999 offline). Live, another
+  participant receives AV1 screenshare (1143x643 for a 1600x900 window): SSIM 0.976 for the PDF, 0.9988 for a slide.
+- **Formats.** `present_file`: PDF, .pptx/.ppt/.odp, .docx/.doc/.odt/.rtf, .html or a URL, pictures. Slides whole,
+  documents and pages as screen-sized reading windows with pixel-exact renders.
+- **Sync.** Narrated walk (`narrate`): the screen moves about 0.9 s before each part is spoken; a real question pauses
+  it; "Okay, continue" resumes it; a part the robot already covered is not repeated; "next" mid-part stops the robot
+  talking (0.8 s) and moves the screen (0.4-0.5 s).
+- **Latency.** A screen move reaches others in 342-528 ms. Not met live: the gap between parts is about 2.8-3 s
+  (1.8 s offline), set by GPT Live's own response time.
+- **Testing.** 8 iterations (4 live with voice, each recorded), 2 adversarial review workflows (28 agents) plus a fix
+  agent: about 60 defects found and fixed. 126 of 126 tests pass. Live runs found two things no offline test did:
+  exact-word coverage undercounts paraphrase, and input transcription can invent words in a silent room.
+- Nothing committed or pushed. The server runs idle with no deck. Next with Vivek: a live test of presenting,
+  when he says so.

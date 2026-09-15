@@ -19,3 +19,10 @@ tools/latency/obs-run-*.json
 tools/latency/realtime/run-*.json
 tools/latency/meet-live-fixture-result.json
 __pycache__/
+
+# Behavioral test loop: full-desktop screen recordings and the frames cut from them capture unrelated windows.
+# Kept locally; the annotated summary videos (cropped to the meeting) are committed.
+tools/present-lab/runs/**/*_recording.mp4
+tools/present-lab/runs/**/frame_*.png
+# Telegram audit log (chat, user and attachment ids): local only.
+Telegram_calls.md

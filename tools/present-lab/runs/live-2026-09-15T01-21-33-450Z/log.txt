@@ -1,0 +1,24 @@
+   1.5s meeting https://meet.google.com/pnh-ubzs-wpe
+   1.6s attend: join.requested 
+   2.6s attend: meeting.status launching
+   3.6s attend: meeting.status joining
+   4.6s attend: meeting.status awaiting_admission
+   5.6s attend: meeting.status joined
+   5.6s attend: joined 
+   5.6s robot joined; sharing at join = false
+   5.7s attend: briefing.sent 
+  11.9s observer in the call
+  18.9s share on: command 496 ms; observer sees a presentation after 2860 ms via contentType
+  25.4s received {"trackIdentifier":"7802ae87-f318-41f9-8902-527f52734431","mid":"8","frameWidth":1143,"frameHeight":643,"framesPerSecond":15,"framesDecoded":120,"contentType":"screenshare","freezeCount":0,"bytesReceived":151274,"codec":"video/AV1","decoderImplementation":"dav1d"} | still {"size":"1143x643","ssimY":0.976,"ssimAll":0.9883,"psnr":"27.618122"}
+  25.4s sent (robot side) {"stats":[],"stage":{"contentHint":"detail","sharing":true,"displayRequests":1,"lastConstraints":{"audio":{"autoGainControl":false,"echoCancellation":false,"noiseSuppression":false,"suppressLocalAudioPlayback":false,"restrictOwnAudio":true},"video":{"frameRate":{"ideal":30},"width":{"max":1920},"height":{"max":1200}},"controller":{},"systemAudio":"exclude","windowAudio":"exclude","selfBrowserSurface":"exclude","surfaceSwitching":"include"},"constraintLog":[{"at":1789435309924,"constraints":{"width":{"max":1920},"height":{"max":1184},"frameRate":{"min":0,"ideal":30}}},{"at":1789435309933,"const
+  29.6s move to view 1: {"firstChangeMs":462,"framesFirstSecond":19,"settledMs":1259,"frames":62,"size":"1143x643"}
+  33.7s move to view 2: {"firstChangeMs":503,"framesFirstSecond":23,"settledMs":1073,"frames":69,"size":"1143x643"}
+  37.8s move to view 0: {"firstChangeMs":427,"framesFirstSecond":21,"settledMs":1094,"frames":67,"size":"1143x643"}
+  47.1s cycle 0: {"i":0,"offMs":3945,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":193,"observerSeesAgainMs":2770,"robotSharingAfterOn":true,"ok":true}
+  54.7s cycle 1: {"i":1,"offMs":740,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":228,"observerSeesAgainMs":2814,"robotSharingAfterOn":true,"ok":true}
+  62.0s cycle 2: {"i":2,"offMs":752,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":205,"observerSeesAgainMs":2512,"robotSharingAfterOn":true,"ok":true}
+  69.2s cycle 3: {"i":3,"offMs":693,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":203,"observerSeesAgainMs":2513,"robotSharingAfterOn":true,"ok":true}
+  76.6s cycle 4: {"i":4,"offMs":775,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":203,"observerSeesAgainMs":2655,"robotSharingAfterOn":true,"ok":true}
+  81.1s attend: stopping 
+  81.6s attend: left 
+  81.6s attend: summary 

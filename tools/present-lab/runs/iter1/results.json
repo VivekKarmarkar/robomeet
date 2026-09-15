@@ -1,0 +1,294 @@
+[
+  {
+    "name": "old-720_VP9_1200k",
+    "mode": "old-720",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "nCHQBKbTuB1KoQbHMer4HGKA3AG/ZgrUKIPOCfHekKYjQ1Fbv1OWD/PIztv8QYGPpK26yYCH8XVEQ98zLUupYw==",
+        "frameRate": 30,
+        "height": 720,
+        "resizeMode": "none",
+        "width": 1280,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 480,
+      "height": 270,
+      "file": "tools/present-lab/runs/iter1/old-720_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 480,
+        "frameHeight": 270,
+        "framesPerSecond": 29,
+        "framesEncoded": 106,
+        "bytesSent": 144742,
+        "targetBitrate": 1200000,
+        "qualityLimitationReason": "bandwidth",
+        "keyFramesEncoded": 1,
+        "qpSum": 3274,
+        "totalEncodeTime": 0.731,
+        "scalabilityMode": "L1T1",
+        "avgQp": 30.9
+      },
+      "inbound": {
+        "frameWidth": 480,
+        "frameHeight": 270,
+        "framesPerSecond": 29,
+        "framesDecoded": 106,
+        "bytesReceived": 144742,
+        "freezeCount": 0,
+        "qpSum": 3274
+      },
+      "codec": "video/VP9"
+    },
+    "bridgeHealth": {
+      "input": "no-input",
+      "inputTracks": 0,
+      "liveInputTracks": 0,
+      "inputRms": 0,
+      "lastAudibleAt": null,
+      "bridge": "connected",
+      "audioContext": "running",
+      "cameraFrames": 123,
+      "screenFrames": 123
+    },
+    "change": {
+      "firstChangeMs": 155,
+      "receivedFramesFirstSecond": 26,
+      "settledMs": 321,
+      "lastFrameAt": 2471
+    },
+    "ssimY": 0.8494,
+    "ssimAll": 0.9393,
+    "psnr": "20.085098"
+  },
+  {
+    "name": "old-1080_VP9_1200k",
+    "mode": "old-1080",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "Th1j0RUu88F4E1KHYOCod7e4d6bznTGk0deFEDKeFZefePHwgQGDbhzp61FNhUohS4k/zShq3mJz+J5IH3xRVA==",
+        "frameRate": 30,
+        "height": 720,
+        "resizeMode": "none",
+        "width": 1280,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 480,
+      "height": 270,
+      "file": "tools/present-lab/runs/iter1/old-1080_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 480,
+        "frameHeight": 270,
+        "framesPerSecond": 30,
+        "framesEncoded": 107,
+        "bytesSent": 145517,
+        "targetBitrate": 1200000,
+        "qualityLimitationReason": "bandwidth",
+        "keyFramesEncoded": 1,
+        "qpSum": 3609,
+        "totalEncodeTime": 0.699,
+        "scalabilityMode": "L1T1",
+        "avgQp": 33.7
+      },
+      "inbound": {
+        "frameWidth": 480,
+        "frameHeight": 270,
+        "framesPerSecond": 30,
+        "framesDecoded": 107,
+        "bytesReceived": 145517,
+        "freezeCount": 0,
+        "qpSum": 3609
+      },
+      "codec": "video/VP9"
+    },
+    "bridgeHealth": {
+      "input": "no-input",
+      "inputTracks": 0,
+      "liveInputTracks": 0,
+      "inputRms": 0,
+      "lastAudibleAt": null,
+      "bridge": "connected",
+      "audioContext": "running",
+      "cameraFrames": 124,
+      "screenFrames": 123
+    },
+    "change": {
+      "firstChangeMs": 90,
+      "receivedFramesFirstSecond": 28,
+      "settledMs": 307,
+      "lastFrameAt": 2473
+    },
+    "ssimY": 0.8778,
+    "ssimAll": 0.9498,
+    "psnr": "21.187301"
+  },
+  {
+    "name": "new-exact_VP9_1200k",
+    "mode": "new-exact",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "detail",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "MOIu+meSSlBbwEmCObbuoadCGHV2G2v3DRmtIM8k7jO3fQbcRgpbJuhcdzXhrFk9TLRdfXrtGKWeJmQBQf0JAg==",
+        "frameRate": 30,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 1920,
+      "height": 1080,
+      "file": "tools/present-lab/runs/iter1/new-exact_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 8,
+        "framesEncoded": 29,
+        "bytesSent": 228219,
+        "targetBitrate": 1000000,
+        "qualityLimitationReason": "none",
+        "contentType": "screenshare",
+        "keyFramesEncoded": 1,
+        "qpSum": 3610,
+        "totalEncodeTime": 0.389,
+        "scalabilityMode": "L1T1",
+        "avgQp": 124.5
+      },
+      "inbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 7,
+        "framesDecoded": 29,
+        "bytesReceived": 228219,
+        "contentType": "screenshare",
+        "freezeCount": 0,
+        "qpSum": 3610
+      },
+      "codec": "video/VP9"
+    },
+    "stage": {
+      "fps": 8,
+      "contentHint": "detail",
+      "trackSettings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "MOIu+meSSlBbwEmCObbuoadCGHV2G2v3DRmtIM8k7jO3fQbcRgpbJuhcdzXhrFk9TLRdfXrtGKWeJmQBQf0JAg==",
+        "frameRate": 0,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920
+      },
+      "displayRequests": 1
+    },
+    "change": {
+      "firstChangeMs": 392,
+      "receivedFramesFirstSecond": 7,
+      "settledMs": 925,
+      "lastFrameAt": 2491
+    },
+    "ssimY": 0.9989,
+    "ssimAll": 0.9984,
+    "psnr": "51.941102"
+  },
+  {
+    "name": "new-page_VP9_1200k",
+    "mode": "new-page",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "detail",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "WjY1ea318frW/nONS6B4DZCt2Ny04P9fOteSjNdNWt3tx7vJaa2ioxceMgrzR1GwPdGdc1j6wREkPRT+0SQgAg==",
+        "frameRate": 30,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 1920,
+      "height": 1080,
+      "file": "tools/present-lab/runs/iter1/new-page_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 6,
+        "framesEncoded": 28,
+        "bytesSent": 217768,
+        "targetBitrate": 1000000,
+        "qualityLimitationReason": "none",
+        "contentType": "screenshare",
+        "keyFramesEncoded": 1,
+        "qpSum": 3635,
+        "totalEncodeTime": 0.394,
+        "scalabilityMode": "L1T1",
+        "avgQp": 129.8
+      },
+      "inbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 6,
+        "framesDecoded": 28,
+        "bytesReceived": 217768,
+        "contentType": "screenshare",
+        "freezeCount": 0,
+        "qpSum": 3635
+      },
+      "codec": "video/VP9"
+    },
+    "stage": {
+      "fps": 8,
+      "contentHint": "detail",
+      "trackSettings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "WjY1ea318frW/nONS6B4DZCt2Ny04P9fOteSjNdNWt3tx7vJaa2ioxceMgrzR1GwPdGdc1j6wREkPRT+0SQgAg==",
+        "frameRate": 0,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920
+      },
+      "displayRequests": 1
+    },
+    "change": {
+      "firstChangeMs": 159,
+      "receivedFramesFirstSecond": 7,
+      "settledMs": 893,
+      "lastFrameAt": 2476
+    },
+    "ssimY": 0.9841,
+    "ssimAll": 0.9931,
+    "psnr": "28.110162"
+  }
+]

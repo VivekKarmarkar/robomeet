@@ -1,0 +1,107 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.6in]{geometry}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\titlespacing*{\subsection}{0pt}{4pt}{1pt}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\dd}[2]{\frac{d #1}{d #2}}
+
+\title{Projectile Motion\\[3pt]
+\large From Newton's second law to range, height and time of flight}
+\author{Derivation Notes --- Claude Code session \texttt{meetingproject}, via RoboMeet}
+\date{September 2026}
+
+\begin{document}
+\begin{center}{\Large\bfseries Projectile Motion}\\[2pt]{\normalsize From Newton's second law to range, height and time of flight}\\[2pt]{\small Derivation notes --- Claude Code session \texttt{meetingproject}, via RoboMeet --- September 2026}\end{center}
+\vspace{-0.6em}
+\setlength{\parskip}{1pt}
+\setlength{\abovedisplayskip}{3pt}\setlength{\belowdisplayskip}{3pt}
+\small
+
+%% ============================================================
+\section{Setup}
+
+A point mass $m$ is launched from the origin with speed $v_0$ at angle $\theta$ above the horizontal.
+Gravity $g$ acts downward; air resistance is neglected.
+
+\begin{tcolorbox}[colback=blue!5, colframe=blue!50!black, title={Governing equations (Newton's second law, per component)}, boxsep=2pt, top=2pt, bottom=2pt]
+\begin{align}
+  \textbf{Horizontal:}& \quad m\,\ddot{x} = 0 \label{eq:x}\\[2pt]
+  \textbf{Vertical:}& \quad m\,\ddot{y} = -m g \label{eq:y}\\[2pt]
+  \textbf{Initial conditions:}& \quad x(0)=0,\; y(0)=0,\quad
+    \dot{x}(0)=v_0\cos\theta,\; \dot{y}(0)=v_0\sin\theta
+\end{align}
+\end{tcolorbox}
+
+\noindent
+The two directions are \emph{uncoupled}: gravity touches only $y$. Each equation integrates on its own.
+
+%% ============================================================
+\section{Integrate twice}
+
+\begin{align}
+  \dot{x}(t) &= v_0\cos\theta, &
+  x(t) &= v_0\cos\theta\; t \label{eq:xt}\\[3pt]
+  \dot{y}(t) &= v_0\sin\theta - g t, &
+  y(t) &= v_0\sin\theta\; t - \tfrac{1}{2} g t^2 \label{eq:yt}
+\end{align}
+
+\subsection*{Trajectory: eliminate $t$}
+From \eqref{eq:xt}, $t = x/(v_0\cos\theta)$. Substitute into \eqref{eq:yt}:
+\begin{equation}
+  \boxed{\,y(x) = x\tan\theta - \frac{g}{2 v_0^2\cos^2\theta}\,x^2\,}
+  \qquad\text{a parabola through the origin.}
+  \label{eq:traj}
+\end{equation}
+
+%% ============================================================
+\section{Three results}
+
+\subsection*{Time of flight: $y = 0$ again}
+\begin{equation}
+  v_0\sin\theta\; T - \tfrac{1}{2} g T^2 = 0
+  \;\Longrightarrow\;
+  \boxed{\,T = \frac{2 v_0\sin\theta}{g}\,}
+  \label{eq:T}
+\end{equation}
+
+\subsection*{Maximum height: $\dot{y} = 0$}
+The peak is reached at $t^\ast = v_0\sin\theta/g = T/2$ (by symmetry). Then
+\begin{equation}
+  H = v_0\sin\theta\, t^\ast - \tfrac{1}{2} g\, t^{\ast 2}
+  \;\Longrightarrow\;
+  \boxed{\,H = \frac{v_0^2\sin^2\theta}{2g}\,}
+  \label{eq:H}
+\end{equation}
+
+\subsection*{Range: $x$ at $t = T$}
+\begin{equation}
+  R = v_0\cos\theta\cdot\frac{2 v_0\sin\theta}{g}
+  \;\Longrightarrow\;
+  \boxed{\,R = \frac{v_0^2\sin 2\theta}{g}\,}
+  \qquad (\sin 2\theta = 2\sin\theta\cos\theta)
+  \label{eq:R}
+\end{equation}
+
+%% ============================================================
+\section{Observations}
+
+\begin{tcolorbox}[colback=green!5, colframe=green!40!black, title={What the formulas say}, boxsep=2pt, top=2pt, bottom=2pt]
+\begin{itemize}
+  \setlength{\itemsep}{2pt}
+  \item \textbf{Best angle.} $R$ is largest when $\sin 2\theta = 1$, i.e.\ $\theta = 45^\circ$, giving $R_{\max} = v_0^2/g$.
+  \item \textbf{Complementary angles.} $\theta$ and $90^\circ-\theta$ share the same range ($\sin 2\theta$ is symmetric about $45^\circ$) but not the same height or flight time.
+  \item \textbf{Scaling.} Doubling $v_0$ quadruples both $R$ and $H$; doubling $g$ halves them. Mass never appears.
+  \item \textbf{Symmetry.} Rise and fall take equal time $T/2$; the speed at landing equals the launch speed.
+  \item \textbf{Check.} $\theta = 90^\circ$: $R = 0$, $H = v_0^2/2g$, $T = 2v_0/g$ (straight up and down). $\theta = 0$: $T = 0$, nothing leaves the ground.
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

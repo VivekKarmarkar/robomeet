@@ -1,0 +1,234 @@
+{
+  "checks": [
+    {
+      "name": "presenter finished",
+      "ok": true,
+      "detail": {
+        "id": 1,
+        "status": "done",
+        "beat": 3,
+        "total": 3,
+        "reason": null,
+        "style": "own-words",
+        "slide": null,
+        "view": null
+      }
+    },
+    {
+      "name": "a person talking paused the presentation",
+      "ok": true,
+      "detail": [
+        {
+          "reason": "person_speaking",
+          "beat": 1
+        }
+      ]
+    },
+    {
+      "name": "\"okay, continue\" resumed it",
+      "ok": true,
+      "detail": [
+        {
+          "by": "voice",
+          "beat": 1
+        }
+      ]
+    },
+    {
+      "name": "TC-S1 stage moved before every spoken beat, lead 0..1500 ms",
+      "ok": false,
+      "detail": [
+        829,
+        5989,
+        810
+      ]
+    },
+    {
+      "name": "TC-S2 the stage showed the beat view at every speech onset",
+      "ok": false,
+      "detail": [
+        [
+          null,
+          "0:0"
+        ],
+        [
+          "0:1",
+          "0:1"
+        ],
+        [
+          "0:1",
+          "0:1"
+        ],
+        [
+          "0:2",
+          "0:2"
+        ]
+      ]
+    },
+    {
+      "name": "TC-L3 median gap between beats <= 2000 ms (excluding the interruption)",
+      "ok": false,
+      "detail": {
+        "gaps": [
+          2100,
+          2160,
+          4040
+        ],
+        "median": 2160
+      }
+    },
+    {
+      "name": "the interrupted beat was presented again after resume",
+      "ok": true,
+      "detail": {
+        "cues": 4
+      }
+    }
+  ],
+  "beats": [
+    {
+      "cue": 0,
+      "leadMs": null,
+      "viewAtOnset": "0:0",
+      "viewShown": null,
+      "speechMs": 2300,
+      "gapToNextMs": 2160
+    },
+    {
+      "cue": 1,
+      "leadMs": 829,
+      "viewAtOnset": "0:1",
+      "viewShown": "0:1",
+      "speechMs": 1120,
+      "gapToNextMs": 4040
+    },
+    {
+      "cue": 2,
+      "leadMs": 5989,
+      "viewAtOnset": "0:1",
+      "viewShown": "0:1",
+      "speechMs": 2280,
+      "gapToNextMs": 2100
+    },
+    {
+      "cue": 3,
+      "leadMs": 810,
+      "viewAtOnset": "0:2",
+      "viewShown": "0:2",
+      "speechMs": 2280,
+      "gapToNextMs": null
+    }
+  ],
+  "presenterEvents": [
+    {
+      "type": "presenter.started",
+      "at": "2026-09-15T01:18:38.733Z",
+      "data": {
+        "total": 3,
+        "from": 0,
+        "style": "own-words"
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:18:39.457Z",
+      "data": {
+        "beat": 0,
+        "total": 3,
+        "slide": 0,
+        "view": 0,
+        "cueAt": 1789435119457
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T01:18:43.827Z",
+      "data": {
+        "beat": 0,
+        "endedBy": "speech_end",
+        "speechMs": 2300,
+        "coverage": 1,
+        "gapMs": null
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:18:43.897Z",
+      "data": {
+        "beat": 1,
+        "total": 3,
+        "slide": 0,
+        "view": 1,
+        "cueAt": 1789435123897
+      }
+    },
+    {
+      "type": "presenter.paused",
+      "at": "2026-09-15T01:18:45.745Z",
+      "data": {
+        "reason": "person_speaking",
+        "beat": 1
+      }
+    },
+    {
+      "type": "presenter.resumed",
+      "at": "2026-09-15T01:18:49.052Z",
+      "data": {
+        "by": "voice",
+        "beat": 1
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:18:49.066Z",
+      "data": {
+        "beat": 1,
+        "total": 3,
+        "slide": 0,
+        "view": 1,
+        "cueAt": 1789435129066
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T01:18:53.437Z",
+      "data": {
+        "beat": 1,
+        "endedBy": "speech_end",
+        "speechMs": 2280,
+        "coverage": 1,
+        "gapMs": null
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:18:53.455Z",
+      "data": {
+        "beat": 2,
+        "total": 3,
+        "slide": 0,
+        "view": 2,
+        "cueAt": 1789435133455
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T01:18:57.826Z",
+      "data": {
+        "beat": 2,
+        "endedBy": "speech_end",
+        "speechMs": 2280,
+        "coverage": 1,
+        "gapMs": 2100
+      }
+    },
+    {
+      "type": "presenter.done",
+      "at": "2026-09-15T01:18:57.831Z",
+      "data": {
+        "total": 3
+      }
+    }
+  ],
+  "elapsedMs": 19304
+}

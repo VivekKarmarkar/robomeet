@@ -1,0 +1,244 @@
+{
+  "checks": [
+    {
+      "name": "presenter finished",
+      "ok": true,
+      "detail": {
+        "id": 1,
+        "status": "done",
+        "beat": 3,
+        "total": 3,
+        "reason": null,
+        "style": "own-words",
+        "slide": null,
+        "view": null
+      }
+    },
+    {
+      "name": "a person talking paused the presentation",
+      "ok": true,
+      "detail": [
+        {
+          "reason": "person_speaking",
+          "beat": 1
+        }
+      ]
+    },
+    {
+      "name": "\"okay, continue\" resumed it",
+      "ok": true,
+      "detail": [
+        {
+          "by": "voice",
+          "beat": 1
+        }
+      ]
+    },
+    {
+      "name": "TC-S1 every stage move came before its beat was spoken, lead 0..1500 ms",
+      "ok": true,
+      "detail": [
+        829,
+        824
+      ]
+    },
+    {
+      "name": "TC-S2 the stage showed the beat view at every speech onset",
+      "ok": true,
+      "detail": [
+        [
+          "0:0",
+          "0:0"
+        ],
+        [
+          "0:1",
+          "0:1"
+        ],
+        [
+          "0:1",
+          "0:1"
+        ],
+        [
+          "0:2",
+          "0:2"
+        ]
+      ]
+    },
+    {
+      "name": "TC-L3 median gap between beats <= 2000 ms (excluding the interruption)",
+      "ok": true,
+      "detail": {
+        "gaps": [
+          1840,
+          1860
+        ],
+        "median": 1860
+      }
+    },
+    {
+      "name": "the interrupted beat was presented again after resume",
+      "ok": true,
+      "detail": {
+        "cues": 4
+      }
+    }
+  ],
+  "beats": [
+    {
+      "cue": 0,
+      "beat": 0,
+      "expected": "0:0",
+      "moved": false,
+      "leadMs": null,
+      "viewAtOnset": "0:0",
+      "speechMs": 2280,
+      "gapToNextMs": 1860,
+      "interrupted": false
+    },
+    {
+      "cue": 1,
+      "beat": 1,
+      "expected": "0:1",
+      "moved": true,
+      "leadMs": 829,
+      "viewAtOnset": "0:1",
+      "speechMs": 1120,
+      "gapToNextMs": 4042,
+      "interrupted": true
+    },
+    {
+      "cue": 2,
+      "beat": 1,
+      "expected": "0:1",
+      "moved": false,
+      "leadMs": null,
+      "viewAtOnset": "0:1",
+      "speechMs": 2258,
+      "gapToNextMs": 1840,
+      "interrupted": false
+    },
+    {
+      "cue": 3,
+      "beat": 2,
+      "expected": "0:2",
+      "moved": true,
+      "leadMs": 824,
+      "viewAtOnset": "0:2",
+      "speechMs": 2280,
+      "gapToNextMs": null,
+      "interrupted": false
+    }
+  ],
+  "presenterEvents": [
+    {
+      "type": "presenter.started",
+      "at": "2026-09-15T01:19:55.301Z",
+      "data": {
+        "total": 3,
+        "from": 0,
+        "style": "own-words"
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:19:56.025Z",
+      "data": {
+        "beat": 0,
+        "total": 3,
+        "slide": 0,
+        "view": 0,
+        "cueAt": 1789435196025
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T01:20:00.101Z",
+      "data": {
+        "beat": 0,
+        "endedBy": "speech_end",
+        "speechMs": 2280,
+        "coverage": 1,
+        "gapMs": null
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:20:00.155Z",
+      "data": {
+        "beat": 1,
+        "total": 3,
+        "slide": 0,
+        "view": 1,
+        "cueAt": 1789435200155
+      }
+    },
+    {
+      "type": "presenter.paused",
+      "at": "2026-09-15T01:20:01.995Z",
+      "data": {
+        "reason": "person_speaking",
+        "beat": 1
+      }
+    },
+    {
+      "type": "presenter.resumed",
+      "at": "2026-09-15T01:20:05.304Z",
+      "data": {
+        "by": "voice",
+        "beat": 1
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:20:05.319Z",
+      "data": {
+        "beat": 1,
+        "total": 3,
+        "slide": 0,
+        "view": 1,
+        "cueAt": 1789435205319
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T01:20:09.403Z",
+      "data": {
+        "beat": 1,
+        "endedBy": "speech_end",
+        "speechMs": 2258,
+        "coverage": 1,
+        "gapMs": null
+      }
+    },
+    {
+      "type": "presenter.beat",
+      "at": "2026-09-15T01:20:09.422Z",
+      "data": {
+        "beat": 2,
+        "total": 3,
+        "slide": 0,
+        "view": 2,
+        "cueAt": 1789435209422
+      }
+    },
+    {
+      "type": "presenter.beat_done",
+      "at": "2026-09-15T01:20:13.503Z",
+      "data": {
+        "beat": 2,
+        "endedBy": "speech_end",
+        "speechMs": 2280,
+        "coverage": 1,
+        "gapMs": 1840
+      }
+    },
+    {
+      "type": "presenter.done",
+      "at": "2026-09-15T01:20:13.509Z",
+      "data": {
+        "total": 3
+      }
+    }
+  ],
+  "elapsedMs": 18283
+}
