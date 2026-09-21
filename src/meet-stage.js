@@ -193,6 +193,9 @@
     pendingDeck = normalizeDeck(next);
     return { slides: pendingDeck.slides.length };
   }
+  // P6: same slides, pictures and view rectangles (highlights, narration and text may differ).
+  const shape = value => JSON.stringify((value?.slides || []).map(item => [item.kind, item.asset, item.title, item.body, (item.views || []).map(v => [v.x, v.y, v.w, v.h, v.asset])]));
+  const sameGeometry = (a, b) => Boolean(a?.slides?.length) && shape(a) === shape(b);
   async function show({ slide = 0, view = 0, transitionMs } = {}) {
     if (closed) throw new Error('The stage is closed.');
     const incoming = pendingDeck;
@@ -202,17 +205,26 @@
     const index = Math.min(Math.max(0, Number(view) || 0), item.views.length - 1);
     const wanted = item.views[index];
     await Promise.all([decoded(item.asset), decoded(wanted.asset)]);
+    let restyled = false;
     if (incoming) {
       if (pendingDeck !== incoming) return show({ slide, view, transitionMs }); // replaced while decoding
+      // P6: a deck that differs only in highlights (a pointer came or went) is the same picture: keep the position,
+      // so a move still scrolls. A single-frame cut reached a live viewer 3.8 s late (test 6 and iteration 10).
+      restyled = sameGeometry(deck, incoming);
       deck = incoming;
       pendingDeck = null;
-      target = null; // a new deck cuts in; there is nothing of it on stage to scroll from
-      from = null;
-      motion = { kind: 'none', start: 0, duration: 0 };
+      if (!restyled) {
+        target = null; // a new deck: nothing of it on stage to scroll from; it fades in (below), never cuts
+        from = null;
+        motion = { kind: 'none', start: 0, duration: 0 };
+      }
     }
     const rect = { x: wanted.x, y: wanted.y, w: wanted.w, h: wanted.h };
     const now = performance.now();
-    if (target && target.slide === slide && target.view === index && progress(now) >= 1) return { changedAt: lastChangeAt, slide, view: index, kind: 'none' };
+    if (target && target.slide === slide && target.view === index && progress(now) >= 1) {
+      if (restyled) { settledAt = Date.now(); stillValid = false; dirty = true; lastChangeAt = Date.now(); tick(); return { changedAt: lastChangeAt, slide, view: index, kind: 'restyle' }; } // P6: highlight fades in
+      return { changedAt: lastChangeAt, slide, view: index, kind: 'none' };
+    }
     const current = currentCamera(now);
     // A change during a crossfade fades on from the half-blended frame on screen, not from its target at full weight
     // (that would cut to the target for one frame).
@@ -225,7 +237,8 @@
     const duration = transitionMs !== undefined ? Math.max(0, Number(transitionMs) || 0) : scroll ? tune.moveMs : tune.fadeMs;
     from = midFade && current ? { ...current, snapshot: true } : current;
     target = { slide, view: index, rect };
-    motion = { kind: !current || duration === 0 ? 'none' : scroll ? 'move' : 'fade', start: now, duration };
+    // P6: a new deck fades in from the background (several changing frames) instead of one cut frame.
+    motion = { kind: duration === 0 ? 'none' : !current ? 'fade' : scroll ? 'move' : 'fade', start: now, duration };
     settledAt = motion.kind === 'none' ? Date.now() : null;
     lastChangeAt = Date.now();
     stillValid = false;

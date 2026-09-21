@@ -50,7 +50,7 @@ log('meeting', meetUrl);
 // ---- robot
 const attendArgs = ['bin/attend.mjs', meetUrl, '--agent', 'Claude Code', '--cwd', app, '--project', 'robomeet', '--session-name', 'meetingproject', '--json', '--no-greet',
   '--purpose', 'Self-test of the RoboMeet presentation stage by the Claude Code session; no human is in this meeting, only a second device of the robot account that measures what it receives.',
-  '--brief', 'Present the deck you are given when cued. Nobody will speak to you in this test.', ...(voice ? ['--voice-on', 'join'] : ['--no-voice-auto'])];
+  '--brief', (process.env.INTERRUPT === '1' || process.env.DELEGATE === '1' || process.env.POINT === '1' ? 'This is an automated test. A second participant (a test voice) may ask you questions and ask you to hand requests to the coding agent or to point at things on your screen; treat it like a person. Present the deck you are given when cued.' : 'Present the deck you are given when cued. Nobody will speak to you in this test.'), ...(voice ? ['--voice-on', 'join'] : ['--no-voice-auto'])];
 const attend = spawn('node', attendArgs, { cwd: app, env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
 const attendLog = [];
 attend.stdout.on('data', data => { for (const line of data.toString().split('\n').filter(Boolean)) { attendLog.push(line); try { const item = JSON.parse(line); if (!/^media/.test(item.event)) log('attend:', item.event, item.status || item.trigger || item.message || ''); } catch {} } });
@@ -136,6 +136,34 @@ try {
     log(`move to ${bySlide ? `slide ${target.slide}` : `view ${target.view}`}:`, JSON.stringify(change));
   }
 
+  // ---- TC-P6: a long jump (first window to the last and back) versus the short moves above; JUMP=1
+  if (process.env.JUMP === '1') {
+    results.checks.P6_jumps = [];
+    const last = views - 1;
+    for (const view of [last, 0, Math.min(3, last), last]) {
+      const at = Date.now();
+      await api('/api/command', { type: 'stage', slide: 0, view });
+      await sleep(5000);
+      const change = await page.evaluate(([id, since]) => window.__pobsApi.change(id, since), [screenId, at]);
+      results.checks.P6_jumps.push({ view, ...change });
+      log(`jump to view ${view}:`, JSON.stringify(change));
+    }
+  }
+  // ---- TC-P3a live: a highlight on the view on screen reaches the participant; HIGHLIGHT=<phrase>
+  if (process.env.HIGHLIGHT) {
+    await api('/api/command', { type: 'stage', slide: 0, view: 0 });
+    await sleep(3000);
+    const at = Date.now();
+    await api('/api/command', { type: 'highlight', phrase: process.env.HIGHLIGHT });
+    await sleep(2500);
+    const change = await page.evaluate(([id, since]) => window.__pobsApi.change(id, since, 0.3), [screenId, at]); // a thin box is a small change
+    results.checks.P3_highlight = { phrase: process.env.HIGHLIGHT, ...change };
+    log('highlight:', JSON.stringify(results.checks.P3_highlight));
+    await shot('highlight');
+    await api('/api/command', { type: 'highlight', off: true });
+    await sleep(1500);
+  }
+
   // ---- share off/on cycles (TC-X2)
   results.checks.X2_cycles = [];
   for (let i = 0; i < cycles; i++) {
@@ -162,6 +190,71 @@ try {
     await sleep(1500);
   }
 
+  // ---- TC-P1d: the observer plays the coding agent. It asks the robot to delegate, answers after JOB_MS, and asks an
+  // unrelated question 20 s into the wait: the robot should answer it within 3 s, and speak the result when it lands.
+  if (voice && process.env.DELEGATE === '1') {
+    const jobMs = Number(process.env.JOB_MS || 60000);
+    const clipOf = name => [...readFileSync(join(here, 'clips', `${name}.wav`))];
+    const heard = () => page.evaluate(() => window.__pobs.audio);
+    const startCursor = (await api('/api/state')).cursor;
+    const p1 = { jobMs };
+    const asked = await page.evaluate(bytes => window.__pobsApi.say(bytes), clipOf('delegate'));
+    p1.askedEndAt = asked.endAt;
+    let job = null;
+    for (let i = 0; i < 60 && !job; i++) {
+      const batch = await api(`/api/listen?after=${startCursor}&timeout=1000&types=agent.request`);
+      job = batch.jobs.find(item => Date.parse(item.createdAt) >= asked.startAt - 1000) || null;
+    }
+    if (!job) { p1.error = 'the robot did not delegate'; log('P1: no job'); }
+    else {
+      p1.jobAt = Date.parse(job.createdAt); p1.request = job.request.slice(0, 200);
+      log('P1: job', Math.round((p1.jobAt - asked.endAt) / 100) / 10, 's after the ask:', job.request.slice(0, 80));
+      await sleep(Math.max(0, p1.jobAt + 20000 - Date.now()));
+      // wait for a quiet room (up to 8 s) so the question is not talked over
+      for (let i = 0; i < 40; i++) { const a = await heard(); if (!a.length || a.at(-1).phase === 'offset') break; await sleep(200); }
+      const q = await page.evaluate(bytes => window.__pobsApi.say(bytes), clipOf('question'));
+      p1.questionEndAt = q.endAt;
+      await sleep(8000);
+      const answer = (await heard()).find(item => item.phase === 'onset' && item.at > q.startAt + 300);
+      p1.answerAfterQuestionMs = answer ? answer.at - q.endAt : null;
+      log('P1: robot answered the question', p1.answerAfterQuestionMs, 'ms after it ended');
+      await sleep(Math.max(0, p1.jobAt + jobMs - Date.now()));
+      p1.repliedAt = Date.now();
+      await api('/api/command', { type: 'reply', jobId: job.id, result: 'There are 21 test files in the RoboMeet project, under the test folder.' });
+      for (let i = 0; i < 30; i++) { await sleep(1000); const a = await heard(); if (a.some(item => item.phase === 'onset' && item.at > p1.repliedAt)) break; }
+      const spoken = (await heard()).find(item => item.phase === 'onset' && item.at > p1.repliedAt);
+      p1.resultSpokenAfterMs = spoken ? spoken.at - p1.repliedAt : null;
+      const delivered = (await api(`/api/listen?after=${startCursor}&timeout=0&types=voice.job_result_delivered`)).events;
+      p1.delivered = delivered.map(event => event.data);
+      await sleep(6000);
+      p1.transcript = (await api(`/api/listen?after=${startCursor}&timeout=0&types=transcript`)).events.map(event => `${event.data.role}: ${event.data.text}`).join(' | ').slice(-3000);
+      log('P1: result spoken', p1.resultSpokenAfterMs, 'ms after the reply; delivered', JSON.stringify(p1.delivered));
+    }
+    results.checks.P1_delegation = p1;
+  }
+  // ---- TC-P2 live: where can the robot get help? Both the backend reasoning model and the coding session.
+  if (voice && process.env.HELP === '1') {
+    const startCursor = (await api('/api/state')).cursor;
+    await page.evaluate(bytes => window.__pobsApi.say(bytes), [...readFileSync(join(here, 'clips', 'help.wav'))]);
+    await sleep(14000);
+    const answer = (await api(`/api/listen?after=${startCursor}&timeout=0&types=transcript`)).events.filter(event => event.data.role === 'assistant').map(event => event.data.text).join('');
+    results.checks.P2_help = { answer, backend: /backend|reasoning|gpt-5/i.test(answer), coding: /coding (agent|session)/i.test(answer) };
+    log('P2:', JSON.stringify(results.checks.P2_help));
+  }
+  // ---- TC-P3b live: the observer asks the robot to point at equation three (projectile deck, part 1)
+  if (voice && process.env.POINT === '1') {
+    await api('/api/command', { type: 'stage', slide: 0, view: 0 });
+    await sleep(3000);
+    const startCursor = (await api('/api/state')).cursor;
+    const said = await page.evaluate(bytes => window.__pobsApi.say(bytes), [...readFileSync(join(here, 'clips', 'point.wav'))]);
+    let pointer = null;
+    for (let i = 0; i < 25 && !pointer; i++) { await sleep(1000); pointer = (await api(`/api/listen?after=${startCursor}&timeout=0&types=presentation.pointer`)).events.find(event => !event.data.off) || null; }
+    const change = pointer ? await page.evaluate(([id, since]) => window.__pobsApi.change(id, since, 0.3), [screenId, Date.parse(pointer.at)]) : null;
+    results.checks.P3_point = { pointer: pointer?.data ?? null, pointedAfterAskMs: pointer ? Date.parse(pointer.at) - said.endAt : null, frame: change };
+    log('P3: pointer', JSON.stringify(results.checks.P3_point));
+    await sleep(3000);
+    await shot('pointed');
+  }
   // ---- narration sync (TC-S1, S2, L3), voice only
   if (narrate) {
     const beats = [

@@ -154,3 +154,81 @@ Live iterations (robot plus a second participant on the same account, voice on, 
   slide presents", which paused the walk until a "continue" that never came. The stage now reports meeting audio
   (`stage-input`) and a transcript only counts as a person when meeting audio preceded it.
 - **Iteration 8.** Clean: "next" mid-part, a real question, "Okay, continue", no repetition, the walk finished.
+
+## Test 6 (2026-09-16, 15:33-16:08 CDT): first live presenting test with Vivek
+
+Meet evq-umst-jio, Vivek alone with the robot, 35 minutes, 9 delegated jobs, 9 notes taken by voice. What was
+presented: the one-page projectile-motion PDF (three windows, then a custom window on Section 2), and the OpenAI
+page "On the Navier–Stokes Millennium Prize Problem" (captured as a 1920 px wide picture, 14 windows, then a
+custom window on the opening paragraph and the vortex figure). Vivek's own verdicts (his notes): the PDF test a
+partial success, the web-page test successful, the freeze during changes the major unresolved issue.
+
+**What worked, seen by a human for the first time:** sharp text and figures at full width; scrolling to a
+section on request; a custom window framed on exactly the part asked for; the robot explaining what is on screen,
+answering probing questions (down to "give me the calculus, not an analogy") and correcting itself from the
+exact text I sent it; a web page that blocks bots still presented, from a screenshot.
+
+**What went wrong, with the cause where I found it:**
+1. **The robot said the initial vertical velocity was "on the second line of the blue box".** It is on the third
+   line. The screen was right; the description was the model's embellishment. Its per-view screen context is
+   clipped to 350 characters, so it never had the box's third line. Fix: send the full visible text per view
+   (`lines`), structured, not a 350-character clip; my mid-call workaround was `send_context` with the exact lines.
+2. **Its explanations were cut off.** Two causes. (a) My restart of the narration re-cued the robot while it was
+   mid-sentence: the presenter's quiet gate treats a 350 ms gap in the robot's audio as "not speaking", and an
+   `instructions.append` interrupts speech in progress. The gate needs about a second of silence after the robot's
+   own speech, and a restart must never cue while it is talking. (b) GPT Live stops when the person starts
+   talking (barge-in); that is the model, and Vivek's "no, no, no" interjections did that.
+3. **It froze while I worked on a delegated job** (jobs of 40-124 s: the robot spoke 60-100 characters while
+   Vivek spoke up to 980; "are you still there... I guess you are frozen again"). While a delegated function
+   call is open, the voice model mostly does not take new turns, and the "keep the conversation going" commentary
+   cue is not enough. It also narrated the newly adjusted screen instead of answering the question it had been
+   asked. Proposed fix (design change in `src/live.mjs`): answer the function call at once with an acknowledgment
+   ("the coding agent has it; I will tell you when it is done"), so the model's turn closes, and deliver the real
+   result later as a spoken cue (`announce`) when the coding agent replies. That is how a person would behave.
+4. **It named only the coding agent as where it can get help, not the backend reasoning model.** The briefing
+   says "delegate, either to your backend reasoning model or to the coding agent"; the model summarized it wrong.
+   Make the delegation path a plain, separate fact in the briefing.
+5. **"I see nothing" for a few seconds after a long jump down the page** (window 15 to window 5, about 3700 px).
+   The robot side was transmitting throughout (frames, bytes, 960x540 at 20 fps, no quality limit); the picture
+   arrived late at Vivek's client. A scroll away and back forced fresh full frames. Worth measuring with the live
+   observer: time to a stable picture after a long jump, versus a short scroll.
+6. **Tooling found wanting mid-call:** the MCP `present` tool's schema drops `views` (zod strips unknown keys), so
+   a deck with custom views must go through `bin/command.mjs present FILE` (found when re-presenting with a
+   Section 2 window); MCP `reply`, `narrate` and `stage` return the whole state snapshot (60-75 KB) instead of a
+   short acknowledgment; `present_file` on openai.com fails with HTTP 403 (bot detection) while a script with a
+   normal user agent, `headless: true` and `--disable-blink-features=AutomationControlled` gets the page, so the
+   deck builder should use that; a picture deck has no text layer, so I extracted the article text with positions
+   and stored it per window (`lines`) by hand.
+7. **Vivek's ask: a laser pointer or highlight while explaining.** The stage already draws a highlight box per
+   view (`highlight` rect, or a phrase resolved by `highlightFor`); nothing lets the robot ask for one yet. A
+   `highlight` request from the voice model (a phrase or an equation number) through delegation, or a `stage`
+   option, would give it a pointer.
+
+Next, in Vivek's priority order: 3 (no freezing during changes), 4 (delegation facts), 7 (pointer); then 2a and 1
+(cue gate, full visible text), and the tooling in 6.
+
+## P1-P7 fixed (2026-09-16 evening, from `docs/problems/presenting-v1.md`)
+
+Offline tests 148/148, narration oracle 8/8, picture oracle unchanged (SSIM-Y 0.998). Live iterations 9-12 (robot plus
+a second participant that also played the coding agent), each recorded.
+
+- **P1 freeze.** A delegated request is now answered at once; the result is told later (`src/late-results.mjs`).
+  Live: the robot answered "which company makes your voice model" while a 45 s job ran, and reported the result
+  1.2-1.9 s after it arrived.
+- **P2 help.** Its own sentence in the briefing (`src/briefing-facts.mjs`); live it named both places.
+- **P3 pointer.** `point_at` for the robot, `highlight` for the coding session (`src/pointer.mjs`); live the box
+  landed exactly on the equation row it was asked for.
+- **P4 screen text.** Full visible text, line by line, on every move (`src/screen-context.mjs`). Found while testing:
+  numbering lines "(1)" collided with the document's own equation numbers; lines are "[line 1]" now.
+- **P5 cut-offs.** Two causes fixed in the presenter: an answer longer than 15 s was treated as stale (the cue then
+  interrupted it; the limit is now 120 s), and a restart hushed the robot (a restart now never does); cues also wait
+  about a second after the robot's own audio.
+- **P6 late picture.** Long jumps were fine (1.03-1.18 s). The real cause, found in iteration 10: a deck swap (a
+  pointer coming or going, or re-presenting) became a one-frame cut, and a live viewer got it 3.8 s late. A deck
+  that differs only in highlights now keeps its position and scrolls; a new deck fades in. After the fix: 0.46 s.
+- **P7 tooling.** MCP `present` keeps `views`; commands return a short summary; openai.com decks build (a normal
+  user agent and no automation flag); over-long beats say their length. Also found: a server close left a running
+  walk alive (fixed).
+- **Still open:** when a pointing reply and a narrated part overlap, the robot finished its sentence for 3 s after
+  "next" (iteration 11); GPT Live's delegated-response speech did not stop at once for the "stop talking" instruction.
+  The gap between parts live is still about 3 s.

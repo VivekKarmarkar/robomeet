@@ -186,6 +186,23 @@ test('buildDeck: an http(s) URL (served locally) gets a hostname+path slug and i
   assert.deepEqual(await readdir(slidesRoot), [deck.slug]);
 });
 
+test('TC-P7b: a site that refuses automated browsers (HeadlessChrome agent, navigator.webdriver) still becomes a deck with its text', { timeout: 60_000 }, async t => {
+  // Refuses like openai.com did (HTTP 403 for a headless agent), and hides its text from an automated page.
+  const server = createServer((request, response) => {
+    if (/HeadlessChrome/.test(request.headers['user-agent'] || '')) { response.writeHead(403, { 'content-type': 'text/plain' }); response.end('forbidden'); return; }
+    response.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    response.end(`<!doctype html><title>Guarded</title><body style="font:24px sans-serif"><h1 id="t">Guarded article</h1><p>Only for people.</p><script>if (navigator.webdriver) document.body.textContent = 'bot';</script></body>`);
+  });
+  await new Promise(done => server.listen(0, '127.0.0.1', done));
+  t.after(() => { server.closeAllConnections(); server.close(); });
+  const slidesRoot = await tempDir(t);
+  const deck = await buildDeck(`http://127.0.0.1:${server.address().port}/article`, { slidesRoot });
+  assert.equal(deck.title, 'Guarded');
+  const text = deck.slides[0].views.flatMap(view => view.lines.map(line => line.text)).join(' ');
+  assert.match(text, /Guarded article/);
+  assert.match(text, /Only for people\./);
+});
+
 test('buildDeck: pictures — a tall one steps down in 1920x1080 crops, a wide one is one view, fit page is one view', { timeout: 60_000 }, async t => {
   const dir = await tempDir(t);
   const slidesRoot = join(dir, 'slides');

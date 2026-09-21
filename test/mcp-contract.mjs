@@ -65,3 +65,23 @@ test('real stdio MCP bridge controls isolated app and preserves durable job curs
   await call('leave'); assert.ok(closes.includes('meeting_left'));
   assert.equal(stderr, '', 'MCP must not print credentials or diagnostics into its transport');
 });
+
+test('TC-P7a: present keeps views, and command tools answer with a short summary', async t => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'robomeet-mcp-p7-'));
+  const app = await createApp({ port: 0, dataDir, workerFactory: () => ({ leave: async () => {}, join: async () => {}, present: async () => {}, syncStage: async () => {} }), liveFactory: () => ({ sessions: new Map(), closeAll: async () => {}, setMode() {}, context() {}, activeSession: () => null, onTranscript: () => () => {} }) });
+  const client = new Client({ name: 'p7', version: '1.0.0' });
+  const transport = new StdioClientTransport({ command: process.execPath, args: [resolve(appDirectory, 'bin/mcp.mjs')], cwd: appDirectory, env: { ROBO_URL: app.baseUrl, ROBO_DATA_DIR: dataDir }, stderr: 'pipe' });
+  t.after(async () => { await client.close(); await app.close(); await rm(dataDir, { recursive: true, force: true }); });
+  await client.connect(transport);
+  const call = async (name, args = {}) => { const result = await client.callTool({ name, arguments: args }); assert.notEqual(result.isError, true, JSON.stringify(result.content)); return { text: result.content[0].text, value: JSON.parse(result.content[0].text) }; };
+  const views = [{ x: 0, y: 0, w: 1, h: 0.4, lines: ['Top part'] }, { x: 0, y: 0.5, w: 1, h: 0.4, say: 'The lower part.' }];
+  const presented = await call('present', { title: 'Long page', slides: [{ title: 'Page', body: 'image:/slides/p/page-1.png', views }] });
+  assert.equal(app.store.state.slides[0].views.length, 2, 'views reached the server');
+  assert.deepEqual([presented.value.ok, presented.value.slides, presented.value.views], [true, 1, 2]);
+  assert.equal('notes' in presented.value || 'events' in presented.value || 'jobs' in presented.value, false);
+  const moved = await call('stage', { slide: 0, view: 1 });
+  assert.deepEqual([moved.value.slideIndex, moved.value.viewIndex], [0, 1]);
+  for (let i = 0; i < 30; i++) app.store.note(`note ${i} ${'x'.repeat(500)}`);
+  assert.ok((await call('stage', { slide: 0, view: 0 })).text.length < 1500, 'small however large the state is');
+  assert.ok((await call('status')).value.notes.length >= 30, 'status still gives everything');
+});

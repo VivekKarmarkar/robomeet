@@ -1,0 +1,250 @@
+{
+  "stamp": "2026-09-16T21-52-08-645Z",
+  "voice": false,
+  "narrate": false,
+  "slug": "openai-navier-stokes-web",
+  "checks": {
+    "X1_no_share_at_join": {
+      "sharing": false
+    },
+    "L2_share": {
+      "commandMs": 1319,
+      "firstWideFrameMs": 2916,
+      "how": "contentType"
+    },
+    "R5_received": {
+      "trackIdentifier": "3c10478e-ba63-4cc1-b954-280c6f360611",
+      "mid": "8",
+      "frameWidth": 1143,
+      "frameHeight": 643,
+      "framesPerSecond": 21,
+      "framesDecoded": 132,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 139810,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    },
+    "R1_sent": {
+      "stats": [
+        {
+          "matchedBy": "contentType",
+          "frameWidth": 1143,
+          "frameHeight": 643,
+          "framesPerSecond": 21,
+          "contentType": "screenshare",
+          "qualityLimitationReason": "none",
+          "scalabilityMode": "L1T2",
+          "targetBitrate": 2381000,
+          "bytesSent": 213008,
+          "codec": "video/AV1"
+        },
+        {
+          "matchedBy": "contentType",
+          "contentType": "screenshare",
+          "qualityLimitationReason": "none",
+          "bytesSent": 0,
+          "codec": "video/AV1"
+        },
+        {
+          "matchedBy": "contentType",
+          "contentType": "screenshare",
+          "qualityLimitationReason": "none",
+          "bytesSent": 46878,
+          "codec": "video/AV1"
+        }
+      ],
+      "stage": {
+        "contentHint": "detail",
+        "sharing": true,
+        "displayRequests": 1,
+        "lastConstraints": {
+          "audio": {
+            "autoGainControl": false,
+            "echoCancellation": false,
+            "noiseSuppression": false,
+            "suppressLocalAudioPlayback": false,
+            "restrictOwnAudio": true
+          },
+          "video": {
+            "frameRate": {
+              "ideal": 30
+            },
+            "width": {
+              "max": 1920
+            },
+            "height": {
+              "max": 1200
+            }
+          },
+          "controller": {},
+          "systemAudio": "exclude",
+          "windowAudio": "exclude",
+          "selfBrowserSurface": "exclude",
+          "surfaceSwitching": "include"
+        },
+        "constraintLog": [
+          {
+            "at": 1789595544647,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          },
+          {
+            "at": 1789595544658,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          }
+        ],
+        "fps": 11
+      }
+    },
+    "R5_still": {
+      "size": "1143x643",
+      "ssimY": 0.9848,
+      "ssimAll": 0.9946,
+      "psnr": "29.747490"
+    },
+    "L1_moves": [
+      {
+        "slide": 0,
+        "view": 1,
+        "firstChangeMs": 487,
+        "framesFirstSecond": 13,
+        "settledMs": 1420,
+        "frames": 58,
+        "size": "1143x643"
+      },
+      {
+        "slide": 0,
+        "view": 2,
+        "firstChangeMs": 543,
+        "framesFirstSecond": 24,
+        "settledMs": 1189,
+        "frames": 72,
+        "size": "1143x643"
+      },
+      {
+        "slide": 0,
+        "view": 0,
+        "firstChangeMs": 467,
+        "framesFirstSecond": 19,
+        "settledMs": 1128,
+        "frames": 66,
+        "size": "1143x643"
+      }
+    ],
+    "P6_jumps": [
+      {
+        "view": 14,
+        "firstChangeMs": 429,
+        "framesFirstSecond": 15,
+        "settledMs": 1152,
+        "frames": 79,
+        "size": "1143x643"
+      },
+      {
+        "view": 0,
+        "firstChangeMs": 476,
+        "framesFirstSecond": 19,
+        "settledMs": 1177,
+        "frames": 78,
+        "size": "1143x643"
+      },
+      {
+        "view": 3,
+        "firstChangeMs": 456,
+        "framesFirstSecond": 19,
+        "settledMs": 1085,
+        "frames": 85,
+        "size": "1143x643"
+      },
+      {
+        "view": 14,
+        "firstChangeMs": 427,
+        "framesFirstSecond": 21,
+        "settledMs": 1031,
+        "frames": 81,
+        "size": "1143x643"
+      }
+    ],
+    "P3_highlight": {
+      "phrase": "Millennium Prize Problem",
+      "firstChangeMs": null,
+      "framesFirstSecond": 0,
+      "settledMs": 578,
+      "frames": 40,
+      "size": "1143x643"
+    },
+    "X2_cycles": [
+      {
+        "i": 0,
+        "offMs": 792,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 953,
+        "observerSeesAgainMs": 2303,
+        "robotSharingAfterOn": true,
+        "ok": true
+      }
+    ]
+  },
+  "meetUrl": "https://meet.google.com/fxh-thag-kio",
+  "screenTrack": {
+    "id": "3c10478e-ba63-4cc1-b954-280c6f360611",
+    "how": "contentType",
+    "stat": {
+      "trackIdentifier": "3c10478e-ba63-4cc1-b954-280c6f360611",
+      "mid": "8",
+      "frameWidth": 1920,
+      "frameHeight": 1080,
+      "framesDecoded": 1,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 60188,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    }
+  },
+  "voiceSessions": [],
+  "serverErrors": [
+    {
+      "type": "stage-error",
+      "at": "2026-09-16T21:53:24.654Z",
+      "data": {
+        "type": "stage-error",
+        "message": "page.evaluate: Target page, context or browser has been closed"
+      }
+    }
+  ],
+  "attend": [
+    "{\"at\":\"2026-09-16T21:52:10.372Z\",\"event\":\"join.requested\",\"url\":\"https://meet.google.com/fxh-thag-kio\"}",
+    "{\"at\":\"2026-09-16T21:52:11.379Z\",\"event\":\"meeting.status\",\"status\":\"launching\"}",
+    "{\"at\":\"2026-09-16T21:52:13.398Z\",\"event\":\"meeting.status\",\"status\":\"awaiting_admission\"}",
+    "{\"at\":\"2026-09-16T21:52:14.403Z\",\"event\":\"meeting.status\",\"status\":\"joined\"}",
+    "{\"at\":\"2026-09-16T21:52:14.403Z\",\"event\":\"joined\",\"url\":\"https://meet.google.com/fxh-thag-kio\",\"name\":\"Robomeet AI\"}",
+    "{\"at\":\"2026-09-16T21:52:14.454Z\",\"event\":\"briefing.sent\",\"agent\":\"Claude Code\",\"session\":\"meetingproject\",\"cwd\":\"/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet\",\"project\":\"robomeet\",\"chars\":3810,\"purpose\":true,\"brief\":true}",
+    "{\"at\":\"2026-09-16T21:53:24.405Z\",\"event\":\"stopping\",\"reason\":\"SIGTERM\"}",
+    "{\"at\":\"2026-09-16T21:53:25.159Z\",\"event\":\"left\"}",
+    "{\"at\":\"2026-09-16T21:53:25.159Z\",\"event\":\"summary\",\"joinedAt\":\"2026-09-16T21:52:14.403Z\",\"voiceStarts\":0,\"voiceStops\":0,\"voiceSeconds\":2077,\"reason\":\"SIGTERM\"}"
+  ]
+}

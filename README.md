@@ -15,7 +15,8 @@ It was built to let a coding session sit in a meeting: present work, take notes,
 - **Joins any Google Meet link** as a signed-in participant (`vivekkmk.assistant@gmail.com` in a dedicated Chrome profile), knocks when it is not the organizer, and leaves cleanly.
 - **Live voice from the moment it is in the call**, even while knocking, so the first hello is answered; greets in its own words when someone is there.
 - **Facts, then "be yourself"**: the launch briefing tells the model what it is, both models and how delegation works, the coding session it is linked to (agent and session name are launch parameters), its tools, why it is there and any extra context from the launching session. No scripted lines.
-- **Delegation that keeps talking**: when a request goes to the coding agent the robot says so and keeps the conversation going until the answer comes back.
+- **Delegation that keeps talking**: a request to the coding agent is acknowledged at once, so the robot keeps talking and answering while the work runs; the result is told to it as its own message when the room is quiet, even across a voice-session restart (`ROBO_ASYNC_JOBS=0` restores the old blocking behaviour).
+- **A pointer**: the robot can point at a phrase or an equation on its shared screen (`point_at`), and the coding session can too (`highlight`); the box goes away when the screen moves.
 - **Presenting like a person sharing a screen**: a 1920x1080 stage drawn inside the Meet tab and sent as screen content. PDFs, slide decks (.pptx .ppt .odp), documents (.docx .doc .odt .rtf), web pages (.html or a URL) and pictures become decks with pixel-exact renders: slides shown whole, documents and pages as screen-sized reading windows the robot scrolls through while it talks. A narrated presentation moves the screen to each part just before the robot speaks it, holds when someone talks, and continues on "continue" (`present_file`, `present_pdf`, `stage`, `narrate`, `presenter`).
 - **Meeting notes** saved locally and readable by the coding session.
 - **Global MCP server and skills**: `/robomeet <link>` from any Claude Code or Codex session launches the robot and turns that session into its coding agent; `/robomeet-stop` ends it.
@@ -92,6 +93,10 @@ src/stage-sync.mjs      mirrors the deck and position into the Meet tab
 src/deck-builder.mjs    PDF -> deck (reading windows snapped to whitespace, exact renders, visible text per window)
 src/deck-formats.mjs    any document -> deck: presentations and documents via LibreOffice, web pages via Chrome, pictures
 src/presenter.mjs       narrated presentations: screen first, then the robot presents that part
+src/late-results.mjs    coding-agent results told to the robot later, when the room is quiet
+src/pointer.mjs         resolves a phrase or equation number to a box on the view on screen
+src/screen-context.mjs  the full visible text of the view on screen, sent to the robot on every move
+src/briefing-facts.mjs  plain facts for the launch briefing (where to get help, waiting, the pointer)
 src/pdf-slides.mjs      older page renderer (banded pages), kept for reference
 src/mcp.mjs, store.mjs  MCP tools; notes, jobs, events in data/state.json
 public/                 dashboard and renderer (slide canvas, audio gates)
@@ -118,6 +123,7 @@ test/                   node:test suites (fixtures, no paid calls)
 | `ROBOMEET_CHROME_PATH`, `ROBOMEET_DISPLAY`, `ROBOMEET_HEADLESS` | Chrome binary, X display, headless. |
 | `ROBOMEET_SOFFICE_PATH` | LibreOffice binary used to convert slide decks and documents (default `soffice`). |
 | `ROBOMEET_SHARE_WARMUP_MS` | Pause after sharing starts, before a narrated presentation begins (default 3000). |
+| `ROBO_ASYNC_JOBS` | `0` keeps a delegated coding-agent call open until the result (the old behaviour); default answers at once and tells the result later. |
 
 The server binds to loopback, authorizes with a local control token, rejects cross-origin requests, and never sends the OpenAI key to the browser.
 

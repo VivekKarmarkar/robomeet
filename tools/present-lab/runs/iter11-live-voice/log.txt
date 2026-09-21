@@ -1,0 +1,32 @@
+   0.9s meeting https://meet.google.com/kwf-xyca-mjd
+   1.1s attend: join.requested 
+   2.1s attend: meeting.status launching
+   4.1s attend: meeting.status awaiting_admission
+   5.1s attend: meeting.status joined
+   5.1s attend: joined 
+   5.2s robot joined; sharing at join = false
+   5.2s attend: briefing.sent 
+   6.3s attend: voice.start in call (joined)
+   7.3s attend: voice.status active
+  10.7s observer in the call
+  17.6s share on: command 1245 ms; observer sees a presentation after 2796 ms via contentType
+  24.1s received {"trackIdentifier":"54f8183b-0b24-4566-b17f-57ef77fcd7d7","mid":"8","frameWidth":1143,"frameHeight":643,"framesPerSecond":20,"framesDecoded":139,"contentType":"screenshare","freezeCount":0,"bytesReceived":208570,"codec":"video/AV1","decoderImplementation":"dav1d"} | still {"size":"1143x643","ssimY":0.9759,"ssimAll":0.9883,"psnr":"27.619296"}
+  24.1s sent (robot side) {"stats":[{"matchedBy":"contentType","frameWidth":1143,"frameHeight":643,"framesPerSecond":20,"contentType":"screenshare","qualityLimitationReason":"none","scalabilityMode":"L1T2","targetBitrate":2381000,"bytesSent":321959,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":57424,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":0,"codec":"video/AV1"}],"stage":{"contentHint":"detail","sharing":true,"displayRequests":1,"lastConstraints":{"audio":{"autoGainC
+  28.2s move to view 1: {"firstChangeMs":507,"framesFirstSecond":14,"settledMs":1183,"frames":48,"size":"1143x643"}
+  32.3s move to view 2: {"firstChangeMs":554,"framesFirstSecond":15,"settledMs":1128,"frames":53,"size":"1143x643"}
+  36.5s move to view 0: {"firstChangeMs":506,"framesFirstSecond":15,"settledMs":1139,"frames":52,"size":"1143x643"}
+  45.5s cycle 0: {"i":0,"offMs":3937,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":944,"observerSeesAgainMs":2514,"robotSharingAfterOn":true,"ok":true}
+  57.8s P1: job 3.6 s after the ask: Count how many test files the RoboMeet project has. Inspect the project in the c
+  89.5s P1: robot answered the question 1727 ms after it ended
+ 110.9s P1: result spoken 1175 ms after the reply; delivered [{"jobId":"1caa44c6-36e3-4495-95e3-270e5c1fd05f","sessionId":"live_u2_EOs1bp3oMSgQp4mjPenpGbi4Hg7wGdVq","earlier":false,"waitedMs":1004}]
+ 121.4s P3: pointer {"pointer":{"slide":0,"view":0,"how":"equation","rect":{"x":0.2512,"y":0.2537,"w":0.6582,"h":0.02}},"pointedAfterAskMs":3997,"frame":{"firstChangeMs":null,"framesFirstSecond":0,"settledMs":null,"frames":0,"size":null}}
+ 125.1s observer: presenter next, 3 s into part 1
+ 136.2s observer asked a question at 2026-09-16T22:06:18.502Z
+ 162.3s observer said continue; presenter was {"id":1,"status":"paused","beat":1,"total":3,"reason":"person_speaking","style":"own-words","slide":0,"view":1}
+ 163.3s presenter paused: person_speaking
+ 184.5s next mid-part: {"armed":false,"at":1789596370129,"commandMs":124,"robotStoppedMs":3042,"part2StartedMs":5657,"screenFirstChangeMs":456}
+ 184.5s narration events 26 audio onsets 9 screen changes 20
+ 187.5s attend: stopping 
+ 187.8s attend: voice.stop exit
+ 191.3s attend: left 
+ 191.3s attend: summary 

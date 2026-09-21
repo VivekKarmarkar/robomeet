@@ -147,6 +147,23 @@ const median = gaps.length ? gaps[Math.floor(gaps.length / 2)] : null;
 check('TC-L3 median gap between beats <= 2000 ms (excluding the interruption)', median !== null && median <= 2000, { gaps, median });
 // The part is re-sent unchanged; RoboMeet's guidance to continue from where it stopped travels beside it as the note.
 check('the interrupted, unfinished beat continued after resume ("continue from where you stopped")', cues.length === says.length + 1 && /^You were interrupted/.test(cues[interruptBeat + 1]?.note || '') && cues[interruptBeat + 1]?.text === cues[interruptBeat]?.text, { cues: cues.map(cue => `${cue.note ? `[${cue.note.slice(0, 40)}] ` : ''}${cue.text.slice(0, 50)}`) });
+// TC-P5 (docs/problems/presenting-v1.md): the robot is in a 6 s answer when the walk is restarted, as the server's narrate
+// does (stop 'restarted', then start). The first cue must wait for its real audio to end plus about a second.
+{
+  const cuesBefore = cues.length, restartCursor = store.state.cursor;
+  await page.evaluate(() => window.fx.speak(6000));
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  presenter.stop('restarted');
+  presenter.start({ style: 'own-words' });
+  const until = Date.now() + 20000;
+  while (Date.now() < until && cues.length === cuesBefore) await new Promise(resolve => setTimeout(resolve, 50));
+  const after = store.readEvents(restartCursor, 500).events;
+  const answerEnd = after.find(event => event.type === 'stage-speech' && event.data.phase === 'end');
+  const firstCue = cues[cuesBefore];
+  const waited = firstCue && answerEnd ? firstCue.at - answerEnd.data.at : null;
+  check('TC-P5 a restart during a long answer cues only after the robot finished and paused about a second', waited !== null && waited >= 900 && waited <= 3500, { waitedAfterRobotAudioMs: waited });
+  presenter.stop('fixture_restart_done');
+}
 results.presenterEvents = events.filter(event => event.type.startsWith('presenter.')).map(event => ({ type: event.type, at: event.at, data: event.data }));
 results.elapsedMs = Date.now() - startedAt;
 const out = join(app, 'tools/present-lab/runs', `sync-${new Date().toISOString().replace(/[:.]/g, '-')}.json`);

@@ -33,3 +33,20 @@ The defects and fixes are listed in `errors_and_observations.md` (sections "Adve
 | `iter3-live-voice/`, `iter4-live-voice/` | first live voice runs |
 | `iter5-live-formats/iter5_recording.mp4` | live .pptx deck |
 | `iter6-live-voice/`, `iter7-live-voice/`, `iter8-live-voice/` | recordings, `results.json`, observer screenshots and logs |
+
+# Round 2: problems P1-P7 from live test 6 (2026-09-16)
+
+**Spec:** `docs/problems/presenting-v1.md`, test cases TC-P1..P7 in `docs/presentation-spec.md` (results table there).
+**Final result:** all seven pass, offline and live. `npm test` 148/148, narration oracle 8/8, picture oracle SSIM-Y 0.998.
+
+| Iter | Kind | What it showed | Result |
+|---|---|---|---|
+| 9 | live, no voice | long jumps settle in 1.03-1.18 s; the coding session's highlight reaches the participant, but padded too tall on a web page | P6 pass, P3 padding fixed |
+| 10 | live, voice | the robot answers during a 45 s job (1.55 s) and speaks the result (1.15 s); it points at equation (3) by voice; but "next" after a pointer reached the participant 3.8 s late (a deck swap became a one-frame cut) | P1, P3 pass; P6 cause found, fixed |
+| 11 | live, voice | "next" after a pointer: 0.46 s; P1 again (1.73 s, 1.18 s); the box sits exactly on the equation row | pass |
+| 12 | live, voice | where can you get help: both places; P1 (1.32 s, 1.86 s); pointer; question, "okay, continue", covered part skipped, walk done | pass |
+
+Video: `presenting_v1_summary_video.mp4` (44 s). Recordings: `iter9-live-jumps/` to `iter12-live-voice/`.
+
+Open: the gap between narrated parts live is about 3 s; when a delegated reply overlaps a narrated part, the robot
+finished its sentence for 3 s after "next" (iteration 11).

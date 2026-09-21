@@ -1,0 +1,24 @@
+   1.6s meeting https://meet.google.com/fxh-thag-kio
+   1.7s attend: join.requested 
+   2.7s attend: meeting.status launching
+   4.8s attend: meeting.status awaiting_admission
+   5.8s attend: meeting.status joined
+   5.8s attend: joined 
+   5.8s robot joined; sharing at join = false
+   5.8s attend: briefing.sent 
+  11.4s observer in the call
+  18.4s share on: command 1319 ms; observer sees a presentation after 2916 ms via contentType
+  24.9s received {"trackIdentifier":"3c10478e-ba63-4cc1-b954-280c6f360611","mid":"8","frameWidth":1143,"frameHeight":643,"framesPerSecond":21,"framesDecoded":132,"contentType":"screenshare","freezeCount":0,"bytesReceived":139810,"codec":"video/AV1","decoderImplementation":"dav1d"} | still {"size":"1143x643","ssimY":0.9848,"ssimAll":0.9946,"psnr":"29.747490"}
+  24.9s sent (robot side) {"stats":[{"matchedBy":"contentType","frameWidth":1143,"frameHeight":643,"framesPerSecond":21,"contentType":"screenshare","qualityLimitationReason":"none","scalabilityMode":"L1T2","targetBitrate":2381000,"bytesSent":213008,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":0,"codec":"video/AV1"},{"matchedBy":"contentType","contentType":"screenshare","qualityLimitationReason":"none","bytesSent":46878,"codec":"video/AV1"}],"stage":{"contentHint":"detail","sharing":true,"displayRequests":1,"lastConstraints":{"audio":{"autoGainC
+  29.0s move to view 1: {"firstChangeMs":487,"framesFirstSecond":13,"settledMs":1420,"frames":58,"size":"1143x643"}
+  33.2s move to view 2: {"firstChangeMs":543,"framesFirstSecond":24,"settledMs":1189,"frames":72,"size":"1143x643"}
+  37.3s move to view 0: {"firstChangeMs":467,"framesFirstSecond":19,"settledMs":1128,"frames":66,"size":"1143x643"}
+  42.5s jump to view 14: {"firstChangeMs":429,"framesFirstSecond":15,"settledMs":1152,"frames":79,"size":"1143x643"}
+  47.6s jump to view 0: {"firstChangeMs":476,"framesFirstSecond":19,"settledMs":1177,"frames":78,"size":"1143x643"}
+  52.8s jump to view 3: {"firstChangeMs":456,"framesFirstSecond":19,"settledMs":1085,"frames":85,"size":"1143x643"}
+  57.9s jump to view 14: {"firstChangeMs":427,"framesFirstSecond":21,"settledMs":1031,"frames":81,"size":"1143x643"}
+  63.9s highlight: {"phrase":"Millennium Prize Problem","firstChangeMs":null,"framesFirstSecond":0,"settledMs":578,"frames":40,"size":"1143x643"}
+  71.3s cycle 0: {"i":0,"offMs":792,"observerStoppedReceiving":true,"robotSharingAfterOff":false,"onMs":953,"observerSeesAgainMs":2303,"robotSharingAfterOn":true,"ok":true}
+  75.8s attend: stopping 
+  76.5s attend: left 
+  76.5s attend: summary 

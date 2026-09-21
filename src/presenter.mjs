@@ -11,12 +11,15 @@
 // resume). It resumes on control('resume') or a short standalone "continue / go on / next ..." from the room.
 // Matched on the utterance with punctuation stripped (live: GPT Live transcribed "Okay, continue" as " Okay" and
 // ", continue", about 1.2 s apart).
+import { viewText } from './screen-context.mjs'; // P4
 export const RESUME = /^(?:(?:ok(?:ay)?|yes|yeah|sure|alright|all right|great|thanks|thank you|got it|good)\s+)?(?:please\s+)?(?:continue|go on|carry on|keep going|next(?: slide| part| page)?|resume|go ahead|move on|proceed)(?:\s+please)?$/i;
 // The lead-in of a resume phrase, said alone so far ("All right," then ", continue" a chunk later): not yet a question.
 export const LEAD_IN = /^(?:ok(?:ay)?|yes|yeah|sure|alright|all right|great|thanks|thank you|got it|good)(?:\s+please)?$/i;
 export const cleanUtterance = text => String(text || '').replace(/[^\p{L}\p{N}\s']/gu, ' ').replace(/\s+/g, ' ').trim();
 export const TIMING = {
   quietMs: 700, quietMaxMs: 15000,   // a: silence needed before a cue, and the longest wait for it
+  robotQuietMs: 1000,                // a (P5): the robot's own audio silent this long before a cue (a breath is ~350 ms; a cue interrupts speech)
+  speakingStaleMs: 120000,           // a (P5): an onset without an end counts as speaking this long (test 6: a 25 s answer was ignored at 15 s)
   utteranceQuietMs: 1500,            // a: after someone speaks (not a "continue" that resumed): one utterance arrives in chunks ~1.2 s apart
   retryMs: 1000,                     // c: pause before the one retry of an unaccepted cue
   onsetTimeoutMs: 4000,              // d: cue to speech onset, before the one re-cue
@@ -117,7 +120,7 @@ export function createPresenter({ store, live, sync = async () => {}, timing = {
     const data = event.data || {};
     if (event.type === 'stage-speech') {
       const mark = { seq: ++speech.seq, at: Number.isFinite(data.at) ? data.at : Date.parse(event.at), arrived: Date.now() };
-      if (data.phase === 'onset') { speech.onset = mark; speech.speaking = !fromHistory || Date.now() - mark.at < T.quietMaxMs; }
+      if (data.phase === 'onset') { speech.onset = mark; speech.speaking = !fromHistory || Date.now() - mark.at < T.speakingStaleMs; }
       // An end remembers how much of the beat's transcript had arrived: verbatim coverage is judged as of that end, so
       // the next stretch's text (which can reach us before its onset event) never ends the beat early.
       else if (data.phase === 'end') { speech.end = { ...mark, spoken: run?.live?.spoken.length ?? 0 }; speech.speaking = false; }
@@ -261,7 +264,8 @@ export function createPresenter({ store, live, sync = async () => {}, timing = {
   // Nobody has spoken, or their last words were a "continue" that resumed the walk: quietMs. Otherwise they may be
   // mid-utterance between two transcript chunks: utteranceQuietMs.
   const quietFor = () => (!user.spokeAt || user.resumedAt >= user.lastAt ? T.quietMs : T.utteranceQuietMs);
-  const quiet = () => Date.now() - user.lastAt >= quietFor() && !speech.speaking;
+  const robotQuiet = () => !speech.speaking && (!speech.end || Date.now() - (Number.isFinite(speech.end.at) ? speech.end.at : speech.end.arrived) >= T.robotQuietMs); // P5
+  const quiet = () => Date.now() - user.lastAt >= quietFor() && robotQuiet();
   const title = () => String(store.state.title || '').trim() || 'the deck';
   // false when the text did not go out (no session, or its control socket is re-attaching); screen context is best effort
   async function tell(text) { try { return await live.context?.(text, false, { replay: false }); } catch { return false; } }
@@ -359,7 +363,8 @@ export function createPresenter({ store, live, sync = async () => {}, timing = {
     await move(); // a voice without the beforeCue hook: move right after the cue, still before the first word
     // What is on screen, as quiet context for questions later. Sent after the cue: before it, it delayed the cue's
     // acknowledgment (live, 2026-09-15).
-    if (lines) void tell(`On your shared screen now: ${title()}, ${screen}. Visible text: ${clip(lines, 350)}`);
+    // P4: the full visible text, line by line (a 350-character clip misplaced an equation in test 6).
+    if (lines) void tell(viewText({ ...store.state, slideIndex: item.slide, viewIndex: item.view }));
     // d: the robot's own speech onset, strictly after the cue was sent
     const onsetAfterCue = () => speech.onset && speech.onset.seq > cueSeq && speech.onset.at >= cueAt ? speech.onset : null;
     let onset = await until(token, attempt, onsetAfterCue, T.onsetTimeoutMs);
@@ -426,7 +431,7 @@ export function createPresenter({ store, live, sync = async () => {}, timing = {
   function stop(reason = 'stopped') {
     const token = run;
     if (!token) return status();
-    if (['running', 'paused'].includes(token.status)) hushIfPresenting(token);
+    if (['running', 'paused'].includes(token.status) && reason !== 'restarted') hushIfPresenting(token); // P5: a restart is not a move; never cut the robot for it
     token.attempt?.abort();
     if (['running', 'paused'].includes(token.status)) {
       Object.assign(token, { status: 'stopped', reason, live: null });

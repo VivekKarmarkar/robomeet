@@ -5,6 +5,7 @@
 // meeting ends or a signal arrives.
 // Talks to the app only through its HTTP contract: GET /api/state and POST /api/command with the local bearer token.
 import { execFile, spawn } from 'node:child_process';
+import { HELP_FACT, WAITING_FACT, POINTER_FACT } from '../src/briefing-facts.mjs'; // P1-P3
 import { closeSync, mkdirSync, openSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
@@ -168,7 +169,7 @@ function buildBriefing(recap) {
     `How you exist: you were launched into this meeting by RoboMeet, software we built in house that runs on Vivek's laptop. It puts you in the call, carries your audio, and links you to a coding session.`,
     `Your parts: your voice and live conversation are OpenAI's gpt-live-1, a full-duplex speech model that listens while it speaks and decides its own turns; your voice is ${process.env.ROBO_VOICE || 'marin'}, hard-coded. Behind it is a backend reasoning model, gpt-5.6-sol, OpenAI's strong reasoning model. It does not talk. When you delegate, it receives the conversation so far, thinks, decides whether to use a tool, and hands back text for you to say in your own words. Its tools: take_note saves a meeting note in RoboMeet; present_slides shows a deck on your shared screen (text slides, or picture slides given as image paths); ask_coding_agent sends a request to the coding session and waits for its real answer. If someone asks you something you do not have in your context, delegate it — either to your backend reasoning model or to the coding agent — rather than guessing or saying you do not know.`,
     `The coding session: a ${options.agent} session named ${sessionName}, connected to you through the RoboMeet MCP server. The agent (Claude Code or Codex) and the session name are launch parameters, passed in by whichever session launches you. It works in ${cwd} on the project ${project}. It can read files, run code, build slide decks (including from PDFs) and do research. It also reads the live meeting transcript through the same MCP server, so it knows what is being said, but it only acts when asked through ask_coding_agent.`,
-    'While the coding agent works on a request you can keep talking with people; it may take a while, and the answer arrives when it is done.',
+    HELP_FACT, WAITING_FACT, POINTER_FACT, // P1-P3: src/briefing-facts.mjs
     options.camera === 'on' ? 'Your camera shows an animated robot face drawn by the app.' : 'Your camera is off; participants see your profile picture, a robot icon.',
     'You can hear everyone and speak. You cannot see video or open files yourself.',
     // stage: facts about the shared screen (docs/stage-design.md). Sharing starts off unless --share.

@@ -102,6 +102,7 @@ test('putAsset takes a Uint8Array, and a settled view with an exact render shows
       RoboMeetStage.setDeck({ title: 'fixture', slides: [{ kind: 'image', asset: 'page', views: [{ x: 0, y: 0, w: 1, h: 0.36, asset: 'exact' }] }] });
       await RoboMeetStage.show({ slide: 0, view: 0 });
     });
+    await page.waitForTimeout(450); // a new deck fades in (P6)
     const points = [[0, 0], [959, 540], [960, 540], [1919, 1079], [100, 100], [101, 100], [150, 151], [163, 163]];
     const shot = await page.evaluate(snapshotPixels, points);
     assert.equal(shot.width, 1920);
@@ -119,6 +120,9 @@ test('a highlight fades in over the pixel-exact view render, never a resampled p
     await page.evaluate(async ([exact, picture]) => { await RoboMeetStage.putAsset('exact', exact); await RoboMeetStage.putAsset('page', picture); }, [exact, picture]);
     // Highlight box in page coordinates -> stage pixels: x 0.6*1920 = 1152, y 0.1*(1080/0.36) = 300 (pad 14 -> stroke at x 1138).
     const points = [[100, 100], [101, 100], [150, 151], [163, 163], [1138, 375]];
+    // The picture is on screen first; the highlight then arrives as the same deck with a box (how a pointer lands).
+    await page.evaluate(async () => { RoboMeetStage.setDeck({ title: 'fixture', slides: [{ kind: 'image', asset: 'page', views: [{ x: 0, y: 0, w: 1, h: 0.36, asset: 'exact' }] }] }); await RoboMeetStage.show({ slide: 0, view: 0 }); });
+    await page.waitForTimeout(450);
     const shownAt = await page.evaluate(async () => {
       RoboMeetStage.setDeck({ title: 'fixture', slides: [{ kind: 'image', asset: 'page', views: [{ x: 0, y: 0, w: 1, h: 0.36, asset: 'exact', highlight: { x: 0.6, y: 0.1, w: 0.2, h: 0.05 } }] }] });
       return (await RoboMeetStage.show({ slide: 0, view: 0 })).changedAt;
@@ -133,6 +137,46 @@ test('a highlight fades in over the pixel-exact view render, never a resampled p
     assert.deepEqual(settled.pixels.slice(0, 4), [black, white, white, black], 'and after it');
     const [r, g, b] = settled.pixels[4];
     assert(r > 200 && g > 120 && b < 80, `highlight stroke drawn at full strength: ${settled.pixels[4]}`);
+  } finally { await page.context().close(); }
+});
+
+test('TC-P3a: a highlight added to the view on screen shows within 300 ms without moving the picture', { timeout: 30_000 }, async () => {
+  const page = await stagePage();
+  try {
+    const exact = await page.evaluate(makePng, { width: 1920, height: 1080, kind: 'exact' });
+    const picture = await page.evaluate(makePng, { width: 2400, height: 3000, kind: 'page' });
+    await page.evaluate(async ([exact, picture]) => { await RoboMeetStage.putAsset('exact', exact); await RoboMeetStage.putAsset('page', picture); }, [exact, picture]);
+    const view = { x: 0, y: 0, w: 1, h: 0.36, asset: 'exact' };
+    await page.evaluate(async view => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views: [view] }] }); await RoboMeetStage.show({ slide: 0, view: 0 }); }, view);
+    await page.waitForTimeout(500);
+    const points = [[100, 100], [101, 100], [1138, 375]];
+    const before = await page.evaluate(snapshotPixels, points);
+    // What stage-sync does when the server adds a pointer: the same deck with a highlight on the current view.
+    const at = await page.evaluate(async view => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views: [{ ...view, highlight: { x: 0.6, y: 0.1, w: 0.2, h: 0.05 } }] }] }); return (await RoboMeetStage.show({ slide: 0, view: 0 })).changedAt; }, view);
+    await page.waitForTimeout(Math.max(0, 300 - (Date.now() - at)));
+    const after = await page.evaluate(snapshotPixels, points);
+    assert.deepEqual(after.pixels.slice(0, 2), before.pixels.slice(0, 2), 'the picture did not move');
+    const [r, g, b] = after.pixels[2];
+    assert(r > 200 && g > 120 && b < 80, `box stroke visible by 300 ms: ${after.pixels[2]}`);
+  } finally { await page.context().close(); }
+});
+
+test('TC-P6: a new deck fades in over several frames; a highlight-only change keeps the position so a move still scrolls', { timeout: 30_000 }, async () => {
+  const page = await stagePage();
+  try {
+    const picture = await page.evaluate(makePng, { width: 2400, height: 3000, kind: 'page' });
+    await page.evaluate(async picture => { await RoboMeetStage.putAsset('page', picture); }, picture);
+    const views = [{ x: 0, y: 0, w: 1, h: 0.36 }, { x: 0, y: 0.5, w: 1, h: 0.36 }];
+    const first = await page.evaluate(async views => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views }] }); return RoboMeetStage.show({ slide: 0, view: 0 }); }, views);
+    assert.equal(first.kind, 'fade', 'a new deck fades in, it does not cut');
+    await page.waitForTimeout(450);
+    const restyle = await page.evaluate(async views => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views: [{ ...views[0], highlight: { x: 0.1, y: 0.1, w: 0.2, h: 0.05 } }, views[1]] }] }); return RoboMeetStage.show({ slide: 0, view: 0 }); }, views);
+    assert.equal(restyle.kind, 'restyle');
+    await page.waitForTimeout(400);
+    // the pointer is cleared and the screen moves in the same step, as the presenter's next does
+    const moved = await page.evaluate(async views => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views }] }); return RoboMeetStage.show({ slide: 0, view: 1 }); }, views);
+    assert.equal(moved.kind, 'move', 'a scroll, not a cut');
+    assert.ok(await framesOver(page, 500) >= 10, 'the scroll paints many frames');
   } finally { await page.context().close(); }
 });
 
@@ -191,6 +235,7 @@ test('a slide change during a crossfade fades on from the half-blended frame, ne
     await page.evaluate(async () => {
       RoboMeetStage.setDeck({ title: 'fades', slides: ['a', 'b', 'c'].map(asset => ({ kind: 'image', asset, views: [{ x: 0, y: 0, w: 1, h: 1 }] })) });
       await RoboMeetStage.show({ slide: 0, view: 0 });
+      await new Promise(resolve => setTimeout(resolve, 450)); // the new deck has faded in (P6)
       await RoboMeetStage.show({ slide: 1, view: 0, transitionMs: 600 }); // blue -> red
     });
     await page.waitForTimeout(280); // about halfway

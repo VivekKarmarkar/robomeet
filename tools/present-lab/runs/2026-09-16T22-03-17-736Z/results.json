@@ -1,0 +1,294 @@
+[
+  {
+    "name": "old-720_VP9_1200k",
+    "mode": "old-720",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "JPdchn5AspVBJ3ifi3z1lUfg98zZ3/QEztjOgB4g5P6P76yTuyxJCmeNXYY9cfmUe0SLNJ6Zu2hDMuEAMJlddw==",
+        "frameRate": 30,
+        "height": 720,
+        "resizeMode": "none",
+        "width": 1280,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 640,
+      "height": 360,
+      "file": "/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/present-lab/runs/2026-09-16T22-03-17-736Z/old-720_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 640,
+        "frameHeight": 360,
+        "framesPerSecond": 29,
+        "framesEncoded": 107,
+        "bytesSent": 182861,
+        "targetBitrate": 1200000,
+        "qualityLimitationReason": "bandwidth",
+        "keyFramesEncoded": 1,
+        "qpSum": 3709,
+        "totalEncodeTime": 0.708,
+        "scalabilityMode": "L1T1",
+        "avgQp": 34.7
+      },
+      "inbound": {
+        "frameWidth": 640,
+        "frameHeight": 360,
+        "framesPerSecond": 28,
+        "framesDecoded": 106,
+        "bytesReceived": 182861,
+        "freezeCount": 0,
+        "qpSum": 3701
+      },
+      "codec": "video/VP9"
+    },
+    "bridgeHealth": {
+      "input": "no-input",
+      "inputTracks": 0,
+      "liveInputTracks": 0,
+      "inputRms": 0,
+      "lastAudibleAt": null,
+      "bridge": "connected",
+      "audioContext": "running",
+      "cameraFrames": 123,
+      "screenFrames": 123
+    },
+    "change": {
+      "firstChangeMs": 172,
+      "receivedFramesFirstSecond": 27,
+      "settledMs": 322,
+      "lastFrameAt": 2488
+    },
+    "ssimY": 0.8546,
+    "ssimAll": 0.9416,
+    "psnr": "20.237541"
+  },
+  {
+    "name": "old-1080_VP9_1200k",
+    "mode": "old-1080",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "dufRnPI0HbabANc5vr5BYmWpPccADEbDVcEcDGMD6Wwk16i9I1HhL/KgE5Ld0EU9ZylZCvDmev1hZ5f+VrMOvg==",
+        "frameRate": 30,
+        "height": 720,
+        "resizeMode": "none",
+        "width": 1280,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 320,
+      "height": 180,
+      "file": "/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/present-lab/runs/2026-09-16T22-03-17-736Z/old-1080_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 320,
+        "frameHeight": 180,
+        "framesPerSecond": 28,
+        "framesEncoded": 106,
+        "bytesSent": 53798,
+        "targetBitrate": 1200000,
+        "qualityLimitationReason": "bandwidth",
+        "keyFramesEncoded": 1,
+        "qpSum": 2969,
+        "totalEncodeTime": 0.466,
+        "scalabilityMode": "L1T1",
+        "avgQp": 28
+      },
+      "inbound": {
+        "frameWidth": 320,
+        "frameHeight": 180,
+        "framesPerSecond": 29,
+        "framesDecoded": 106,
+        "bytesReceived": 54148,
+        "freezeCount": 0,
+        "qpSum": 2969
+      },
+      "codec": "video/VP9"
+    },
+    "bridgeHealth": {
+      "input": "no-input",
+      "inputTracks": 0,
+      "liveInputTracks": 0,
+      "inputRms": 0,
+      "lastAudibleAt": null,
+      "bridge": "connected",
+      "audioContext": "running",
+      "cameraFrames": 124,
+      "screenFrames": 123
+    },
+    "change": {
+      "firstChangeMs": 153,
+      "receivedFramesFirstSecond": 25,
+      "settledMs": 353,
+      "lastFrameAt": 2503
+    },
+    "ssimY": 0.851,
+    "ssimAll": 0.9405,
+    "psnr": "20.298067"
+  },
+  {
+    "name": "new-exact_VP9_1200k",
+    "mode": "new-exact",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "detail",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "IE3KLR9Dk32vcPDf1Pf4xT8u5m0OQoKW4EVuHPZ6osNLbxfBEdtcXjHqEwxMzF+qvccDwwsZhzMX135UU3MX0g==",
+        "frameRate": 30,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 1920,
+      "height": 1080,
+      "file": "/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/present-lab/runs/2026-09-16T22-03-17-736Z/new-exact_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 10,
+        "framesEncoded": 40,
+        "bytesSent": 283472,
+        "targetBitrate": 1200000,
+        "qualityLimitationReason": "none",
+        "contentType": "screenshare",
+        "keyFramesEncoded": 1,
+        "qpSum": 6163,
+        "totalEncodeTime": 0.504,
+        "scalabilityMode": "L1T1",
+        "avgQp": 154.1
+      },
+      "inbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 10,
+        "framesDecoded": 40,
+        "bytesReceived": 283472,
+        "contentType": "screenshare",
+        "freezeCount": 0,
+        "qpSum": 6163
+      },
+      "codec": "video/VP9"
+    },
+    "stage": {
+      "fps": 11,
+      "contentHint": "detail",
+      "trackSettings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "IE3KLR9Dk32vcPDf1Pf4xT8u5m0OQoKW4EVuHPZ6osNLbxfBEdtcXjHqEwxMzF+qvccDwwsZhzMX135UU3MX0g==",
+        "frameRate": 0,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920
+      },
+      "displayRequests": 1
+    },
+    "change": {
+      "firstChangeMs": 123,
+      "receivedFramesFirstSecond": 10,
+      "settledMs": 823,
+      "lastFrameAt": 2423
+    },
+    "ssimY": 0.9982,
+    "ssimAll": 0.9981,
+    "psnr": "50.721491"
+  },
+  {
+    "name": "new-page_VP9_1200k",
+    "mode": "new-page",
+    "codec": "VP9",
+    "maxBitrate": 1200000,
+    "hint": "keep",
+    "track": {
+      "contentHint": "detail",
+      "settings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "x2eufB4X5J18USYUagxK0TapFgsePVE3KitF6iJCpxBE+bFYfWLl/Jn8zOfyCIo+dtGzsJnAtzwXWW4M1VJYeQ==",
+        "frameRate": 30,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920,
+        "displaySurface": "browser",
+        "logicalSurface": true
+      }
+    },
+    "received": {
+      "width": 1920,
+      "height": 1080,
+      "file": "/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/present-lab/runs/2026-09-16T22-03-17-736Z/new-page_VP9_1200k.png"
+    },
+    "stats": {
+      "outbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 9,
+        "framesEncoded": 34,
+        "bytesSent": 227050,
+        "targetBitrate": 1000000,
+        "qualityLimitationReason": "none",
+        "contentType": "screenshare",
+        "keyFramesEncoded": 1,
+        "qpSum": 5915,
+        "totalEncodeTime": 0.423,
+        "scalabilityMode": "L1T1",
+        "avgQp": 174
+      },
+      "inbound": {
+        "frameWidth": 1920,
+        "frameHeight": 1080,
+        "framesPerSecond": 10,
+        "framesDecoded": 34,
+        "bytesReceived": 227050,
+        "contentType": "screenshare",
+        "freezeCount": 0,
+        "qpSum": 5915
+      },
+      "codec": "video/VP9"
+    },
+    "stage": {
+      "fps": 11,
+      "contentHint": "detail",
+      "trackSettings": {
+        "aspectRatio": 1.7777777777777777,
+        "deviceId": "x2eufB4X5J18USYUagxK0TapFgsePVE3KitF6iJCpxBE+bFYfWLl/Jn8zOfyCIo+dtGzsJnAtzwXWW4M1VJYeQ==",
+        "frameRate": 0,
+        "height": 1080,
+        "resizeMode": "none",
+        "width": 1920
+      },
+      "displayRequests": 1
+    },
+    "change": {
+      "firstChangeMs": 140,
+      "receivedFramesFirstSecond": 9,
+      "settledMs": 773,
+      "lastFrameAt": 2407
+    },
+    "ssimY": 0.9816,
+    "ssimAll": 0.9917,
+    "psnr": "28.066706"
+  }
+]

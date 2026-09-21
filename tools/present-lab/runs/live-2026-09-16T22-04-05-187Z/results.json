@@ -1,0 +1,684 @@
+{
+  "stamp": "2026-09-16T22-04-05-187Z",
+  "voice": true,
+  "narrate": true,
+  "slug": "projectile-motion-deck",
+  "checks": {
+    "X1_no_share_at_join": {
+      "sharing": false
+    },
+    "L2_share": {
+      "commandMs": 1245,
+      "firstWideFrameMs": 2796,
+      "how": "contentType"
+    },
+    "R5_received": {
+      "trackIdentifier": "54f8183b-0b24-4566-b17f-57ef77fcd7d7",
+      "mid": "8",
+      "frameWidth": 1143,
+      "frameHeight": 643,
+      "framesPerSecond": 20,
+      "framesDecoded": 139,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 208570,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    },
+    "R1_sent": {
+      "stats": [
+        {
+          "matchedBy": "contentType",
+          "frameWidth": 1143,
+          "frameHeight": 643,
+          "framesPerSecond": 20,
+          "contentType": "screenshare",
+          "qualityLimitationReason": "none",
+          "scalabilityMode": "L1T2",
+          "targetBitrate": 2381000,
+          "bytesSent": 321959,
+          "codec": "video/AV1"
+        },
+        {
+          "matchedBy": "contentType",
+          "contentType": "screenshare",
+          "qualityLimitationReason": "none",
+          "bytesSent": 57424,
+          "codec": "video/AV1"
+        },
+        {
+          "matchedBy": "contentType",
+          "contentType": "screenshare",
+          "qualityLimitationReason": "none",
+          "bytesSent": 0,
+          "codec": "video/AV1"
+        }
+      ],
+      "stage": {
+        "contentHint": "detail",
+        "sharing": true,
+        "displayRequests": 1,
+        "lastConstraints": {
+          "audio": {
+            "autoGainControl": false,
+            "echoCancellation": false,
+            "noiseSuppression": false,
+            "suppressLocalAudioPlayback": false,
+            "restrictOwnAudio": true
+          },
+          "video": {
+            "frameRate": {
+              "ideal": 30
+            },
+            "width": {
+              "max": 1920
+            },
+            "height": {
+              "max": 1200
+            }
+          },
+          "controller": {},
+          "systemAudio": "exclude",
+          "windowAudio": "exclude",
+          "selfBrowserSurface": "exclude",
+          "surfaceSwitching": "include"
+        },
+        "constraintLog": [
+          {
+            "at": 1789596260376,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          },
+          {
+            "at": 1789596260388,
+            "constraints": {
+              "width": {
+                "max": 1920
+              },
+              "height": {
+                "max": 1184
+              },
+              "frameRate": {
+                "min": 0,
+                "ideal": 30
+              }
+            }
+          }
+        ],
+        "fps": 11
+      }
+    },
+    "R5_still": {
+      "size": "1143x643",
+      "ssimY": 0.9759,
+      "ssimAll": 0.9883,
+      "psnr": "27.619296"
+    },
+    "L1_moves": [
+      {
+        "slide": 0,
+        "view": 1,
+        "firstChangeMs": 507,
+        "framesFirstSecond": 14,
+        "settledMs": 1183,
+        "frames": 48,
+        "size": "1143x643"
+      },
+      {
+        "slide": 0,
+        "view": 2,
+        "firstChangeMs": 554,
+        "framesFirstSecond": 15,
+        "settledMs": 1128,
+        "frames": 53,
+        "size": "1143x643"
+      },
+      {
+        "slide": 0,
+        "view": 0,
+        "firstChangeMs": 506,
+        "framesFirstSecond": 15,
+        "settledMs": 1139,
+        "frames": 52,
+        "size": "1143x643"
+      }
+    ],
+    "X2_cycles": [
+      {
+        "i": 0,
+        "offMs": 3937,
+        "observerStoppedReceiving": true,
+        "robotSharingAfterOff": false,
+        "onMs": 944,
+        "observerSeesAgainMs": 2514,
+        "robotSharingAfterOn": true,
+        "ok": true
+      }
+    ],
+    "P1_delegation": {
+      "jobMs": 45000,
+      "askedEndAt": 1789596299389,
+      "jobAt": 1789596302967,
+      "request": "Count how many test files the RoboMeet project has. Inspect the project in the current meetingproject session, state the matching criteria/patterns used, and return the exact count concisely.",
+      "questionEndAt": 1789596326624,
+      "answerAfterQuestionMs": 1727,
+      "repliedAt": 1789596347976,
+      "resultSpokenAfterMs": 1175,
+      "delivered": [
+        {
+          "jobId": "1caa44c6-36e3-4495-95e3-270e5c1fd05f",
+          "sessionId": "live_u2_EOs1bp3oMSgQp4mjPenpGbi4Hg7wGdVq",
+          "earlier": false,
+          "waitedMs": 1004
+        }
+      ],
+      "transcript": "user:  Please ask the | user:  coding agent to | user:  count how many test | user:  files the Robo | user: Meet project | user:  has. | assistant:  Sure. | assistant:  I’m handing that | assistant:  to the coding agent | assistant:  now. | assistant:  Alright, I’ve asked the coding | assistant:  agent to check | assistant:  the RoboMeet project | assistant:  and count the test | assistant:  files. I’ll report | assistant:  back as soon as it tells | assistant:  me. | user:  While we wait | user: , which company | user:  makes your voice | user:  model | assistant:  OpenAI | assistant:  makes it. | assistant:  I’ve heard back: there | assistant:  are twenty-one | assistant:  test files, | assistant:  and they’re | assistant:  all under the test | assistant:  folder based | assistant:  on their naming."
+    },
+    "P3_point": {
+      "pointer": {
+        "slide": 0,
+        "view": 0,
+        "how": "equation",
+        "rect": {
+          "x": 0.2512,
+          "y": 0.2537,
+          "w": 0.6582,
+          "h": 0.02
+        }
+      },
+      "pointedAfterAskMs": 3997,
+      "frame": {
+        "firstChangeMs": null,
+        "framesFirstSecond": 0,
+        "settledMs": null,
+        "frames": 0,
+        "size": null
+      }
+    },
+    "S4_interrupt": {
+      "armed": false,
+      "beatSeenAt": 1789596370513,
+      "question": {
+        "startAt": 1789596378502,
+        "endAt": 1789596381394
+      },
+      "pausedState": {
+        "id": 1,
+        "status": "paused",
+        "beat": 1,
+        "total": 3,
+        "reason": "person_speaking",
+        "style": "own-words",
+        "slide": 0,
+        "view": 1
+      },
+      "continued": {
+        "startAt": 1789596405720,
+        "endAt": 1789596407474
+      }
+    },
+    "S5_next": {
+      "armed": false,
+      "at": 1789596370129,
+      "commandMs": 124,
+      "robotStoppedMs": 3042,
+      "part2StartedMs": 5657,
+      "screenFirstChangeMs": 456
+    },
+    "S_narration": {
+      "startAt": 1789596369800,
+      "endAt": 1789596429695,
+      "presenterEvents": [
+        {
+          "type": "presenter.started",
+          "at": "2026-09-16T22:06:09.827Z",
+          "data": {
+            "total": 3,
+            "from": 0,
+            "style": "own-words"
+          }
+        },
+        {
+          "type": "stage-shown",
+          "at": "2026-09-16T22:06:10.220Z",
+          "data": {
+            "type": "stage-shown",
+            "slide": 0,
+            "view": 1,
+            "kind": "move",
+            "at": 1789596370192
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:13.444Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596373041,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "presenter.beat",
+          "at": "2026-09-16T22:06:14.091Z",
+          "data": {
+            "beat": 1,
+            "total": 3,
+            "slide": 0,
+            "view": 1,
+            "cueAt": 1789596374091
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:15.676Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596375621,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:17.950Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596377541,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:18.080Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596378000,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:20.642Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596380261,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "presenter.paused",
+          "at": "2026-09-16T22:06:20.932Z",
+          "data": {
+            "reason": "person_speaking",
+            "beat": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:22.060Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596382020,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:32.190Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596391820,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:32.456Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596392401,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:41.542Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596401181,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:41.700Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596401660,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:43.388Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596403020,
+            "slide": 0,
+            "view": 1
+          }
+        },
+        {
+          "type": "presenter.resumed",
+          "at": "2026-09-16T22:06:48.984Z",
+          "data": {
+            "by": "voice",
+            "beat": 1
+          }
+        },
+        {
+          "type": "presenter.beat_done",
+          "at": "2026-09-16T22:06:49.057Z",
+          "data": {
+            "beat": 1,
+            "endedBy": "covered_after_interruption",
+            "coverage": 1,
+            "speechMs": null,
+            "gapMs": null
+          }
+        },
+        {
+          "type": "stage-shown",
+          "at": "2026-09-16T22:06:49.349Z",
+          "data": {
+            "type": "stage-shown",
+            "slide": 0,
+            "view": 2,
+            "kind": "move",
+            "at": 1789596409311
+          }
+        },
+        {
+          "type": "presenter.beat",
+          "at": "2026-09-16T22:06:49.373Z",
+          "data": {
+            "beat": 2,
+            "total": 3,
+            "slide": 0,
+            "view": 2,
+            "cueAt": 1789596409373
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:06:50.880Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596410841,
+            "slide": 0,
+            "view": 2
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:07:01.442Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596421081,
+            "slide": 0,
+            "view": 2
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:07:01.503Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596421481,
+            "slide": 0,
+            "view": 2
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:07:05.019Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "onset",
+            "at": 1789596424941,
+            "slide": 0,
+            "view": 2
+          }
+        },
+        {
+          "type": "stage-speech",
+          "at": "2026-09-16T22:07:08.889Z",
+          "data": {
+            "type": "stage-speech",
+            "phase": "end",
+            "at": 1789596428520,
+            "slide": 0,
+            "view": 2
+          }
+        },
+        {
+          "type": "presenter.beat_done",
+          "at": "2026-09-16T22:07:09.542Z",
+          "data": {
+            "beat": 2,
+            "endedBy": "speech_end",
+            "speechMs": 17679,
+            "coverage": 0.84,
+            "gapMs": 1784
+          }
+        },
+        {
+          "type": "presenter.done",
+          "at": "2026-09-16T22:07:09.609Z",
+          "data": {
+            "total": 3
+          }
+        }
+      ],
+      "observerAudio": [
+        {
+          "phase": "offset",
+          "at": 1789596373171,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596375786,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596380401,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596382201,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596386531,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596387001,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596391961,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596392556,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596396801,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596397391,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596401281,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596401821,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596403151,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596410991,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596417541,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596418031,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596423051,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "onset",
+          "at": 1789596423541,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        },
+        {
+          "phase": "offset",
+          "at": 1789596428621,
+          "track": "07f6ff1b-f792-4464-904e-47fb17a422db"
+        }
+      ],
+      "observerScreenChanges": [
+        1789596370585,
+        1789596370684,
+        1789596370753,
+        1789596370785,
+        1789596370853,
+        1789596370926,
+        1789596370948,
+        1789596371018,
+        1789596371086,
+        1789596371157,
+        1789596427099,
+        1789596427201,
+        1789596427334,
+        1789596427437,
+        1789596427700,
+        1789596427797,
+        1789596427867,
+        1789596427966,
+        1789596428038,
+        1789596428134
+      ]
+    }
+  },
+  "meetUrl": "https://meet.google.com/kwf-xyca-mjd",
+  "screenTrack": {
+    "id": "54f8183b-0b24-4566-b17f-57ef77fcd7d7",
+    "how": "contentType",
+    "stat": {
+      "trackIdentifier": "54f8183b-0b24-4566-b17f-57ef77fcd7d7",
+      "mid": "8",
+      "frameWidth": 1920,
+      "frameHeight": 1080,
+      "framesDecoded": 1,
+      "contentType": "screenshare",
+      "freezeCount": 0,
+      "bytesReceived": 82765,
+      "codec": "video/AV1",
+      "decoderImplementation": "dav1d"
+    }
+  },
+  "voiceSessions": [
+    {
+      "type": "voice.closed",
+      "at": "2026-09-16T22:07:12.959Z",
+      "data": {
+        "sessionId": "live_u2_EOs1bp3oMSgQp4mjPenpGbi4Hg7wGdVq",
+        "reason": "requested",
+        "confirmed": true,
+        "usage": {
+          "seconds": 179
+        }
+      }
+    }
+  ],
+  "serverErrors": [],
+  "attend": [
+    "{\"at\":\"2026-09-16T22:04:06.260Z\",\"event\":\"join.requested\",\"url\":\"https://meet.google.com/kwf-xyca-mjd\"}",
+    "{\"at\":\"2026-09-16T22:04:07.267Z\",\"event\":\"meeting.status\",\"status\":\"launching\"}",
+    "{\"at\":\"2026-09-16T22:04:09.276Z\",\"event\":\"meeting.status\",\"status\":\"awaiting_admission\"}",
+    "{\"at\":\"2026-09-16T22:04:10.290Z\",\"event\":\"meeting.status\",\"status\":\"joined\"}",
+    "{\"at\":\"2026-09-16T22:04:10.290Z\",\"event\":\"joined\",\"url\":\"https://meet.google.com/kwf-xyca-mjd\",\"name\":\"Robomeet AI\"}",
+    "{\"at\":\"2026-09-16T22:04:10.379Z\",\"event\":\"briefing.sent\",\"agent\":\"Claude Code\",\"session\":\"meetingproject\",\"cwd\":\"/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet\",\"project\":\"robomeet\",\"chars\":3967,\"purpose\":true,\"brief\":true}",
+    "{\"at\":\"2026-09-16T22:04:11.447Z\",\"event\":\"voice.start\",\"trigger\":\"in call (joined)\",\"session\":1}",
+    "{\"at\":\"2026-09-16T22:04:12.462Z\",\"event\":\"voice.status\",\"status\":\"active\"}",
+    "{\"at\":\"2026-09-16T22:07:12.662Z\",\"event\":\"stopping\",\"reason\":\"SIGTERM\"}",
+    "{\"at\":\"2026-09-16T22:07:12.991Z\",\"event\":\"voice.stop\",\"trigger\":\"exit\"}",
+    "{\"at\":\"2026-09-16T22:07:16.479Z\",\"event\":\"left\"}",
+    "{\"at\":\"2026-09-16T22:07:16.479Z\",\"event\":\"summary\",\"joinedAt\":\"2026-09-16T22:04:10.290Z\",\"voiceStarts\":1,\"voiceStops\":1,\"voiceSeconds\":340,\"reason\":\"SIGTERM\"}"
+  ]
+}

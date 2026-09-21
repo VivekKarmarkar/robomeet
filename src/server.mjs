@@ -8,7 +8,10 @@ import { Store } from './store.mjs';
 import { LiveManager } from './live.mjs';
 import { createPresenter } from './presenter.mjs'; // stage: narrated presentations (docs/stage-design.md)
 import { highlightFor } from './deck-builder.mjs'; // stage: phrase highlights in deck.json views
-import { slideAsset, isSlideAsset } from './stage-sync.mjs'; // stage: one rule for picture paths, shared with the stage
+import { slideAsset, isSlideAsset } from './stage-sync.mjs';
+import { resolvePointer, readDeck } from './pointer.mjs';
+import { resolveScroll } from './scroll-target.mjs'; // the voice model's own scroll tool
+import { watchScreen } from './screen-context.mjs'; // P3: highlight / point_at // stage: one rule for picture paths, shared with the stage
 
 export const appDirectory = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const fail = (message, status = 400) => Object.assign(new Error(message), { status });
@@ -47,7 +50,7 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
     if (Array.isArray(view?.lines)) out.lines = view.lines.slice(0, 60).map(line => String(typeof line === 'string' ? line : line?.text || '').slice(0, 240)).filter(Boolean);
     return out;
   }) : undefined;
-  const present = async ({ slides, title = '', enabled }) => {
+  const present = async ({ slides, title = '', enabled, slug = null }) => { // P3: slug names the deck.json with line boxes
     if (!Array.isArray(slides) || slides.length > 400) throw fail('Provide at most 400 slides.');
     const clean = slides.map(slide => {
       const item = { title: typeof slide.title === 'string' ? slide.title.slice(0, 300) : '', body: typeof slide.body === 'string' ? slide.body.slice(0, 5000) : '' };
@@ -58,7 +61,7 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
     // stage: remember which meeting the deck belongs to, so a later meeting never opens with it on screen.
     const owner = terminalStates.includes(store.state.meeting.status) ? 'prepared' : store.state.meeting.url || 'prepared';
     stopPresenter('deck_replaced'); // stage: a narrated walk over the old deck must not go on over the new one
-    store.update({ slides: clean, title: String(title).slice(0, 300), slideIndex: 0, viewIndex: 0, presentationMeetingUrl: owner }, 'presentation.updated', { count: clean.length });
+    store.update({ slides: clean, title: String(title).slice(0, 300), slideIndex: 0, viewIndex: 0, presentationMeetingUrl: owner, deckSlug: slug, pointer: null }, 'presentation.updated', { count: clean.length });
     await worker?.syncStage?.(); // stage: the deck is on the stage before Meet shows it
     // Sharing needs an admitted robot; before that the deck is ready on the stage and shares when asked.
     if (enabled !== undefined && (store.state.meeting.admitted || !enabled)) await worker?.present({ enabled: Boolean(enabled), slides: clean, title });
@@ -69,10 +72,59 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
     if (typeof slug !== 'string' || !/^[a-z0-9][a-z0-9-]{0,80}$/.test(slug)) throw fail('Deck slug must be lowercase letters, digits and dashes.');
     let deck;
     try { deck = JSON.parse(await readFile(join(publicDir, 'slides', slug, 'deck.json'), 'utf8')); } catch { throw fail(`No deck named ${slug}. Build it first (node bin/deck.mjs build <pdf>).`, 404); }
-    return present({ title: deck.title || slug, slides: deck.slides || [], enabled });
+    return present({ title: deck.title || slug, slides: deck.slides || [], enabled, slug });
   };
-  const live = liveFactory ? liveFactory({ store, present }) : new LiveManager({ store, present, maxDurationMs: Math.min(3600000, Math.max(10000, Number(process.env.ROBO_MAX_SESSION_MS || 600000))) });
+  // P3: point at something on the view that is on screen. request: { phrase } | { equation } | { x, y, w, h } | { off }.
+  // The box lives on that view until the screen moves (or off); a view's own highlight comes back afterwards.
+  const clearPointer = () => {
+    const pointer = store.state.pointer;
+    if (!pointer) return false;
+    const slides = structuredClone(store.state.slides);
+    const view = slides[pointer.slide]?.views?.[pointer.view];
+    if (view) { if (pointer.previous) view.highlight = pointer.previous; else delete view.highlight; }
+    store.update({ slides, pointer: null }, 'presentation.pointer', { off: true });
+    return true;
+  };
+  const pointAt = async (request = {}) => {
+    const slide = Number(store.state.slideIndex) || 0, viewIndex = Number(store.state.viewIndex) || 0;
+    if (request.off) { const was = clearPointer(); await worker?.syncStage?.(); return { cleared: was }; }
+    const views = store.state.slides[slide]?.views;
+    if (!views?.[viewIndex]) throw fail('Nothing with views is on screen to point at.', 409);
+    const deck = await readDeck(publicDir, store.state.deckSlug);
+    const found = resolvePointer({ slide: deck?.slides?.[slide], view: views[viewIndex], request });
+    if (found.error) throw fail(found.error, 404);
+    clearPointer();
+    const slides = structuredClone(store.state.slides);
+    const target = slides[slide].views[viewIndex];
+    const previous = target.highlight || null;
+    target.highlight = cleanViews([{ x: 0, y: 0, w: 1, h: 1, highlight: found.rect }])[0].highlight;
+    store.update({ slides, pointer: { slide, view: viewIndex, previous } }, 'presentation.pointer', { slide, view: viewIndex, how: found.how, rect: target.highlight });
+    await worker?.syncStage?.();
+    return { pointed: true, how: found.how, rect: target.highlight };
+  };
+  // A move clears the pointer (it belongs to the view it was drawn on).
+  let clearing = false;
+  const pointerWatch = () => {
+    const pointer = store.state.pointer;
+    if (clearing || !pointer || (pointer.slide === Number(store.state.slideIndex) && pointer.view === Number(store.state.viewIndex))) return;
+    clearing = true;
+    try { clearPointer(); void worker?.syncStage?.(); } finally { clearing = false; }
+  };
+  store.on('change', pointerWatch);
+  // The robot moves its own screen. Before this it had to ask the coding agent, which is a several-second round
+  // trip for something the server does in a millisecond. Same shape as pointAt: resolve what was said, then reuse
+  // the stage command so a scroll behaves exactly like any other move (the pointer clears, the presenter holds).
+  const scrollTo = async (target = '') => {
+    const found = resolveScroll({ slides: store.state.slides, slideIndex: store.state.slideIndex, viewIndex: store.state.viewIndex, target });
+    if (found.error) throw fail(found.error, 409);
+    if (found.slide === Number(store.state.slideIndex) && found.view === Number(store.state.viewIndex)) return { moved: false, slide: found.slide, view: found.view, how: found.how, note: 'The screen is already there.' };
+    await command({ type: 'stage', slide: found.slide, view: found.view });
+    const views = store.state.slides[found.slide]?.views?.length || 1;
+    return { moved: true, slide: found.slide, view: found.view, how: found.how, page: found.slide + 1, part: found.view + 1, parts: views };
+  };
+  const live = liveFactory ? liveFactory({ store, present, pointAt, scrollTo }) : new LiveManager({ store, present, pointAt, scrollTo, maxDurationMs: Math.min(3600000, Math.max(10000, Number(process.env.ROBO_MAX_SESSION_MS || 600000))) });
   const presenter = createPresenter({ store, live, sync: () => worker?.syncStage?.() }); // stage:
+  const unwatchScreen = watchScreen({ store, live }); // P4: full visible text on every manual move
   // stage: a narrate that is still sharing or warming up is cancelled by any stop (a new generation).
   let narrateGeneration = 0;
   const stopPresenter = reason => { narrateGeneration++; return presenter.stop(reason); };
@@ -165,6 +217,10 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
         await worker?.syncStage?.(); break;
       }
       case 'present-deck': await presentDeck(input); break; // stage:
+      case 'highlight': { // P3
+        const request = input.off ? { off: true } : { phrase: typeof input.phrase === 'string' ? input.phrase.slice(0, 300) : undefined, equation: typeof input.equation === 'string' ? input.equation.slice(0, 30) : undefined, x: input.x, y: input.y, w: input.w, h: input.h };
+        await pointAt(request); break;
+      }
       case 'narrate': { // stage: optional narration per view, then a narrated walk through them
         if (!store.state.slides.length) throw fail('Present a deck first.', 409);
         if (Array.isArray(input.beats)) {
@@ -174,7 +230,14 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
             if (!slide || !Number.isInteger(beat.view) || beat.view < 0) throw fail('Each beat needs a valid slide and view index.');
             slide.views ??= [{ x: 0, y: 0, w: 1, h: 1 }];
             if (beat.view >= slide.views.length) throw fail(`Slide ${beat.slide} has no view ${beat.view}.`);
+            if (typeof beat.say !== 'string' || beat.say.trim().length > 900) throw fail(`Narration for slide ${beat.slide} view ${beat.view} is ${String(beat.say ?? '').trim().length} characters; the limit is 900.`); // P7
             slide.views[beat.view].say = string(beat.say, 'Narration', 900);
+            if (typeof beat.highlight === 'string' && beat.highlight.trim()) { // P3: a narrated part can point at something
+              const deck = await readDeck(publicDir, store.state.deckSlug);
+              const found = resolvePointer({ slide: deck?.slides?.[beat.slide], view: slide.views[beat.view], request: { phrase: beat.highlight } });
+              if (found.error) throw fail(`Beat on slide ${beat.slide} view ${beat.view}: ${found.error}`);
+              slide.views[beat.view].highlight = cleanViews([{ x: 0, y: 0, w: 1, h: 1, highlight: found.rect }])[0].highlight;
+            }
           }
           store.update({ slides }, 'presentation.narration', { beats: input.beats.length });
         }
@@ -282,10 +345,12 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
   }, onEvent: event => store.event(event.type || 'meeting.event', event) });
   return { server, store, live, command, baseUrl, token, async close() {
     if (closing) return; closing = true;
+    stopPresenter('server_shutdown'); // a running walk must not keep the process alive
     await live.closeAll('server_shutdown');
     await (worker?.close?.() || worker?.leave?.());
     for (const client of clients) client.end();
-    store.off('change', emit);
+    store.off('change', emit); store.off('change', pointerWatch); // P3
+    unwatchScreen(); // P4
     store.off('telemetry', emit);
     await new Promise(resolveClose => server.close(resolveClose));
   } };

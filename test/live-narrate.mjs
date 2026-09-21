@@ -328,8 +328,8 @@ test('narration text cannot close the quotes around it or add lines to the instr
   await pending;
 });
 
-test('a tool result that finishes while the control socket is re-attaching is delivered after the re-attach', async t => {
-  const { live, sockets, store } = await setup(t, { reattachDelaysMs: [80, 80, 80] });
+test('a tool result that finishes while the control socket is re-attaching is delivered after the re-attach (blocking path)', async t => {
+  const { live, sockets, store } = await setup(t, { reattachDelaysMs: [80, 80, 80], asyncJobs: false });
   await live.create({ sdp: 'offer' });
   const record = live.sessions.get('live_test');
   const nested = event => live.receive(record, { type: 'response.event', delegation_id: 'delegation_test', event });
@@ -425,8 +425,8 @@ test('a mode change and context sent while the control socket re-attaches reach 
   assert.deepEqual(after.filter(event => event.type === 'session.thinking.append').map(event => event.content), ['Agenda: the Q3 review.']);
 });
 
-test('tool results that never reached the model are named when the session closes', async t => {
-  const { live, sockets, store } = await setup(t, { reattachDelaysMs: [500, 500, 500] });
+test('tool results that never reached the model are named when the session closes (blocking path)', async t => {
+  const { live, sockets, store } = await setup(t, { reattachDelaysMs: [500, 500, 500], asyncJobs: false });
   await live.create({ sdp: 'offer' });
   const record = live.sessions.get('live_test');
   const nested = event => live.receive(record, { type: 'response.event', delegation_id: 'delegation_test', event });

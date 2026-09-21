@@ -19,7 +19,7 @@ async function until(predicate, label = 'condition', timeout = 4000) {
   throw new Error(`timed out waiting for ${label}`);
 }
 // Fast clock for tests; each test overrides what it exercises.
-const FAST = { quietMs: 40, utteranceQuietMs: 80, quietMaxMs: 400, retryMs: 30, onsetTimeoutMs: 150, ownWordsTailMs: 60, verbatimTailMs: 120, interruptWindowMs: 150, utteranceGapMs: 60, resumeConfirmMs: 30, shownWaitMs: 50, tickMs: 4, budget: () => 1500 };
+const FAST = { quietMs: 40, utteranceQuietMs: 80, robotQuietMs: 30, quietMaxMs: 400, retryMs: 30, onsetTimeoutMs: 150, ownWordsTailMs: 60, verbatimTailMs: 120, interruptWindowMs: 150, utteranceGapMs: 60, resumeConfirmMs: 30, shownWaitMs: 50, tickMs: 4, budget: () => 1500 };
 const SAYS = ['Part one explains the launch angle of thirty degrees.', 'Part two shows the range formula for 45 degrees.', 'Part three compares measured and predicted heights.'];
 // Page 1 has two views (beats 0 and 1), page 2 one view (beat 2).
 const deck = () => ({ title: 'Projectile motion', mode: 'speak', slideIndex: 0, viewIndex: 0, slides: [
@@ -114,7 +114,7 @@ test('walks 3 beats in order; the stage moves before each part is spoken and the
   assert.equal(live.log[0].text, 'You are about to present Projectile motion in 3 parts. RoboMeet moves your shared screen to each part and asks you to present it. If someone asks something, answer briefly; do not move ahead on your own. RoboMeet continues when someone says continue or next.');
   assert.equal(live.contexts.filter(text => text.startsWith('You are about to present')).length, 1);
   assert.equal(live.log[1].kind, 'narrate');
-  assert.equal(live.log[2].text, 'On your shared screen now: Projectile motion, page 1, part 1 of 3. Visible text: Launch angle 30 degrees Initial speed 20 m/s');
+  assert.equal(live.log[2].text, "On your shared screen now: Projectile motion, page 1, part 1 of 2. The visible text, line by line from the top, exactly as written: [line 1] Launch angle 30 degrees [line 2] Initial speed 20 m/s Refer to lines exactly as listed; never place something on a line it is not on.");
   assert.equal(live.contexts.filter(text => text.startsWith('On your shared screen now')).length, 2); // beat 1 has no lines
   // Stage before cue: the last sync before each narration showed that beat's view, and the store event order agrees.
   live.narrations.forEach((call, index) => {
@@ -534,6 +534,33 @@ test('a transcript with no meeting audio behind it does not pause the part; real
   live.say('user', ' Wait, one question');
   await until(() => presenter.status().status === 'paused', 'paused by real speech');
   assert.equal(presenter.status().reason, 'person_speaking');
+});
+
+test('TC-P5: a restart while the robot is in a long answer waits for it to finish and a real pause, and never hushes it', async t => {
+  const { store, live, presenter } = await setup(t, { timing: { robotQuietMs: 150, quietMaxMs: 3000 } });
+  // The robot started answering a question 25 s ago and is still talking (test 6: this was treated as stale).
+  store.event('stage-speech', { type: 'stage-speech', phase: 'onset', at: Date.now() - 25000 });
+  presenter.start();
+  presenter.start(); // the coding agent restarts the walk (server narrate does stop('restarted') then start)
+  await wait(200);
+  assert.equal(live.narrations.length, 0, 'no cue while the robot talks');
+  assert.equal(live.log.filter(entry => entry.kind === 'hush').length, 0, 'a restart never cuts the robot');
+  const endAt = Date.now();
+  store.event('stage-speech', { type: 'stage-speech', phase: 'end', at: endAt });
+  await until(() => live.narrations.length === 1, 'first cue', 3000);
+  assert.ok(live.narrations[0].at - endAt >= 150, `cued ${live.narrations[0].at - endAt} ms after the robot's last sound`);
+});
+
+test('TC-P5: a breath shorter than robotQuietMs between two stretches of the robot is not a gap to cue into', async t => {
+  const { store, live, presenter } = await setup(t, { voice: false, timing: { robotQuietMs: 200 } });
+  presenter.start();
+  store.event('stage-speech', { type: 'stage-speech', phase: 'onset', at: Date.now() });
+  await wait(20);
+  store.event('stage-speech', { type: 'stage-speech', phase: 'end', at: Date.now() });
+  await wait(80); // a breath
+  store.event('stage-speech', { type: 'stage-speech', phase: 'onset', at: Date.now() });
+  await wait(250);
+  assert.equal(live.narrations.length, 0, 'still speaking after the breath');
 });
 
 test('next / previous / goto move the stage at once and cue the new beat', async t => {

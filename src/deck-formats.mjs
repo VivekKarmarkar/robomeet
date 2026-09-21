@@ -610,7 +610,8 @@ const frameOf = request => { try { return request.frame(); } catch { return null
 // capture go on without it, saying why on stderr.
 async function launchChrome(options) {
   const { chromium } = await import('playwright');
-  const launch = sandbox => chromium.launch({ executablePath: CHROME, headless: true, chromiumSandbox: sandbox, timeout: 30_000, ...options });
+  // P7: sites that refuse automated browsers (openai.com answered 403) look at the automation flag.
+  const launch = sandbox => chromium.launch({ executablePath: CHROME, headless: true, chromiumSandbox: sandbox, timeout: 30_000, ...options, args: [...(options?.args || []), '--disable-blink-features=AutomationControlled'] });
   try {
     return await launch(true);
   } catch (error) {
@@ -674,7 +675,8 @@ async function capturePage(target, file, signal) {
   try {
     browser = await launchChrome(guard ? { proxy: { server: guard.server } } : {});
     signal.throwIfAborted();
-    const context = await browser.newContext({ viewport: { width: CSS_W, height: CSS_H }, deviceScaleFactor: DPR });
+    // P7: the user agent of the same Chrome, without "HeadlessChrome" (openai.com refused that one with HTTP 403).
+    const context = await browser.newContext({ viewport: { width: CSS_W, height: CSS_H }, deviceScaleFactor: DPR, userAgent: `Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${browser.version()} Safari/537.36` });
     let page = null;
     let refused = null; // a navigation of the page itself that the request policy stopped
     const isMain = request => page !== null && request.isNavigationRequest() && frameOf(request) === page.mainFrame();

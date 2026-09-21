@@ -44,8 +44,8 @@ test('durable jobs deduplicate within their session and preserve exact reply cor
   assert.equal(restored.readEvents(0).events.filter(event => event.type === 'agent.request').length, 2);
 });
 
-test('Responses tools run once and continue only after every correlated result is ready', async t => {
-  const store = new Store(await fixture(t)); const { live, sockets } = manager(store); t.roboCleanup.push(() => live.closeAll());
+test('Responses tools run once and continue only after every correlated result is ready (blocking path, ROBO_ASYNC_JOBS=0)', async t => {
+  const store = new Store(await fixture(t)); const { live, sockets } = manager(store, { asyncJobs: false }); t.roboCleanup.push(() => live.closeAll());
   await live.create({ sdp: 'offer' }); const record = live.sessions.get('live_test');
   nested(live, record, { type: 'response.created', response: { id: 'r1' } });
   const request = { type: 'response.output_item.done', item: { type: 'function_call', call_id: 'c1', name: 'ask_coding_agent', arguments: '{"request":"Find a bug"}' } };

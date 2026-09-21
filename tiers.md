@@ -68,6 +68,11 @@ Spec with numbered test cases: `docs/presentation-spec.md`. Design: `docs/stage-
 | "Next" or "go to" while the robot is mid-sentence | ✅ Live: the robot stops talking 0.77-0.88 s after the command (it used to finish the old part over the new screen); the screen moves in 0.4-0.5 s |
 | Robust to a phantom transcript (speech recognition inventing words in a silent room) | ✅ Only transcripts with meeting audio behind them pause the walk (found live 2026-09-15: "this slide presents" from a silent room held the walk) |
 | The robot knows it cannot stop the share itself | ✅ in the briefing facts |
+| Keeps talking while the coding agent works (test 6: it froze) | ✅ Live, 3 runs: answered a question 1.3-1.7 s after it ended during a 45 s job; spoke the result 1.2-1.9 s after it arrived |
+| Points at what it explains | ✅ Live: "point at equation three" boxed exactly that row 2.6-4.0 s later; the coding session can point too (`highlight`) |
+| Knows exactly what is on screen (test 6: misplaced an equation) | ✅ The full visible text, line by line, on every move |
+| Says where it can get help | ✅ Live: "my backend reasoning model or the coding session" |
+| Web pages that block bots | ✅ openai.com builds as a 15-window deck with its text |
 
 ### Why the old presentation looked bad (measured)
 1. The picture Meet received was redrawn on a 1280x720 canvas after a local WebRTC encode/decode (two encodes, one downscale).
@@ -91,4 +96,4 @@ Spec with numbered test cases: `docs/presentation-spec.md`. Design: `docs/stage-
 |---|---|---|
 | 1 — Attend | Can it join and stay in a call? | ✅ Google Meet works; Zoom not implemented |
 | 2 — Converse | Can it talk correctly with low latency? | ✅ Mostly working; new briefing items untested |
-| 3 — Present | Can it show content like a human? | ✅ Sharp, scrolling, synced, measured offline and in 8 iterations (4 live with voice); PDF, slides, documents, web pages, pictures |
+| 3 — Present | Can it show content like a human? | ✅ Sharp, scrolling, synced; keeps talking while work runs; points at what it explains. First human test (test 6) partial success; its seven problems fixed and measured in iterations 9-12 |

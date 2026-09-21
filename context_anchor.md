@@ -329,3 +329,378 @@ workflows, ship something that really works, notify on Telegram. Evidence: `robo
   exact-word coverage undercounts paraphrase, and input transcription can invent words in a silent room.
 - Nothing committed or pushed. The server runs idle with no deck. Next with Vivek: a live test of presenting,
   when he says so.
+
+## 2026-09-15 02:01 CDT — Screen-sharing deep dive: what was done, where we are, what next (anchored at Vivek's request)
+
+**Vivek's request (verbatim):** "/gitcommit, /gitpush, /gitreadme and then /context-anchor everything you did, where we
+are at and what you think we should immediately do next with reference links to that specific git commit on remote"
+
+**The commit on remote:** [4b00505](https://github.com/VivekKarmarkar/robomeet/commit/4b00505e24c6c371c9122e7870c672f7c782a858)
+on `master` of VivekKarmarkar/robomeet (public): "Present like a person sharing a screen: 1920x1080 in-page stage,
+any document as a deck, narrated walk synced to the screen". 194 files.
+
+### What was done (Claude's account, as asked)
+- **Resolution.** The shared screen is now a 1920x1080 stage drawn inside the Meet tab and marked as screen content
+  ([src/meet-stage.js](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/src/meet-stage.js), [src/stage-sync.mjs](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/src/stage-sync.mjs)). The old path reached
+  participants at 480x270 (SSIM 0.85). Live, another participant receives AV1 screenshare at SSIM 0.976 (PDF) and
+  0.9988 (slide).
+- **Formats.** New `present_file`: PDF, .pptx/.ppt/.odp, .docx/.doc/.odt/.rtf, .html or a URL, pictures
+  ([src/deck-formats.mjs](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/src/deck-formats.mjs), [src/deck-builder.mjs](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/src/deck-builder.mjs)). Slides whole;
+  documents and web pages as screen-sized reading windows with pixel-exact renders.
+- **Sync.** Narrated walk ([src/presenter.mjs](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/src/presenter.mjs)): the screen moves about 0.9 s before each part is
+  spoken; a real question pauses it; "okay, continue" resumes it; a part already covered is not repeated; "next"
+  mid-sentence stops the robot talking (0.8 s).
+- **Latency.** A screen move reaches others in 342-528 ms. Not met live: the gap between narrated parts is about
+  2.8-3 s (1.8 s offline), set by GPT Live's own response time; one `next` reached the stage in 160 ms (budget 150).
+- **Testing.** 8 iterations (4 live with voice, all screen-recorded), 2 adversarial review workflows (28 agents) and a
+  fix agent: about 60 defects found and fixed. 126 of 126 tests pass.
+- **Evidence:** [spec with results](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/docs/presentation-spec.md), [final report](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/tools/present-lab/runs/final_report.md),
+  [46 s annotated video](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/tools/present-lab/runs/stage_final_summary_video.mp4),
+  [errors and observations](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/errors_and_observations.md), [tiers](https://github.com/VivekKarmarkar/robomeet/blob/4b00505e24c6c371c9122e7870c672f7c782a858/tiers.md).
+
+### Where we are
+- Pushed: 4b00505. Committed locally, not pushed (the /gitreadme skill commits only): 75ae9f6, README refresh
+  (prerequisites, present_file usage, presentation lab, settings).
+- Kept out of the public repo on purpose (listed in .gitignore, still on disk): `Telegram_calls.md` (chat, user and
+  attachment ids) and the full-desktop test recordings and frames (they show unrelated windows). The cropped
+  summary videos are committed.
+- The RoboMeet server is running idle with no deck; voice idle; sharing starts off at join.
+- Telegram summary with the video was sent to Vivek (messages 19278, 19279).
+
+### What Claude thinks we should do immediately next
+1. **A live presenting test with Vivek**, nothing auto-launched: he creates a Meet and sends the link; the robot
+   presents a document he picks (a PDF and a .pptx), narrated; he asks a question mid-part, says "okay, continue",
+   says "next" mid-sentence, and checks sharpness on his laptop and phone. A human viewer is the one thing not yet
+   verified.
+2. **/gitpush** the README commit 75ae9f6.
+3. After that test, one of: shorten the live gap between parts (about 3 s), the pending laptop Google Meet test, or
+   Zoom (tier 1, not implemented).
+
+## 2026-09-16 16:09 CDT — Test 6: first live presenting test with Vivek (his notes, dictated by voice in the call)
+
+Meet evq-umst-jio, 15:33-16:08 CDT. Vivek dictated these nine notes to the robot during the call (take_note, verbatim as saved):
+
+1. Meeting goal/context: Test RoboMeet’s new presentation capability, which Opus 5 implemented after being given the overall goal and allowed to work autonomously. Vivek had little direct discussion with Opus 5; the Claude Code team describes Opus 5 as good at hill climbing, while Vivek’s assessment is that it is poor at communication. This meeting is intended as a live test of the resulting presentation work.
+2. Presentation test feedback: Vivek Bot’s explanations are being abruptly truncated for some reason. Also, when presenting technical material, it should systematically explain every item in human-understandable terms rather than merely dictating or reading the text/equations aloud.
+3. Presentation test result — Setup section, second attempt: After Vivek intervened and asked for the explanation to stay strictly anchored to content fully visible on screen, the presentation was mostly successful and reasonably satisfactory. Vivek Bot systematically explained the setup rather than merely dictating it, and it also answered follow-up questions that went beyond the text on screen (including the trigonometric velocity components and Newton’s second law). The topic was relatively simple and within the bot’s existing knowledge, but Vivek still considers the second attempt a decent success.
+4. Presentation-system feedback: While the coding agent was scrolling and reframing the PDF, Vivek Bot froze instead of remaining conversational; this should not happen. Because it froze, it also ignored Vivek’s architecture question. The assistant should remain responsive during coding-agent work and answer concurrent user questions rather than automatically narrating the newly adjusted screen.
+5. Architecture-communication feedback: Vivek Bot did not clearly communicate its own model architecture and initially gave an incorrect/incomplete account of where it can seek help, naming only the coding agent while omitting the backend reasoning model. It needs to accurately understand and explain its delegation path and available sources of assistance.
+6. PDF presentation test — partial success, with more testing needed: A high-resolution PDF was rendered with one complete section visible, and Vivek Bot successfully explained that section on its second attempt. It then used the coding agent to scroll, readjust, and re-render the PDF so the next complete section was fully visible at high resolution, and successfully explained that section as well. The explanation remained successful when Vivek probed from different angles, including requesting a clearer mathematical/calculus-based derivation rather than an analogy. This demonstrates a workable flow for high-resolution rendering, section-by-section navigation, and interactive explanation, though further testing is required.
+7. Further testing priorities and open question: (1) Vivek Bot must not freeze while the coding agent re-renders, scrolls, or adjusts shared content; it should remain responsive throughout. (2) Correct the earlier failure to accurately explain where the voice model can seek help, including the backend reasoning layer rather than naming only the coding agent. (3) Investigate whether presentations can support a visible laser pointer or dynamic highlighting/annotation so Vivek Bot can point to specific equations and other elements while explaining them.
+8. Web-page presentation test: High-resolution webpage rendering, scrolling/navigation, and explanation of a webpage visualization were successful. The major unresolved issue is the recurring freeze/blocking behavior during presentation changes; Vivek Bot should remain responsive while content is captured, re-rendered, scrolled, or switched.
+9. Product-development reflection: Vivek’s personal project website argues that agentic product development lacks a clear objective function. A desired product and its priorities cannot be completely known in advance; human preferences—what feels useful, acceptable, or important—are revealed through testing. Therefore product development cannot simply be one-shot with a fixed success criterion and instead requires a time-consuming human-in-the-loop iteration process. By contrast, scientific machine-learning research may still require judgment but often has a comparatively well-defined success criterion, allowing an agentic system to work autonomously, loop, hill-climb, or potentially solve the task in one extended run. The RoboMeet test is giving Vivek direct experience of that distinction.
+
+Subordinate additions from Claude (not Vivek's words): the debrief with root causes is in `robomeet/errors_and_observations.md`, section "Test 6". The truncations were partly my own restart re-cueing the robot mid-sentence (the cue gate accepts a 350 ms gap); the freeze during delegated jobs is the voice model not taking turns while a function call is open (the proposed fix answers the call at once and delivers the result later as a spoken cue). The stage already has a highlight box per view; it is not yet reachable by the robot. Robot left the call, voice idle, nothing on screen.
+
+## 2026-09-16 17:16 CDT — Goal "fix and test P1-P7" (docs/problems/presenting-v1.md) done (Opus 5 session)
+
+Goal (Vivek, /goal): read docs/problems/presenting-v1.md and fix and test P1 through P7 in order, with
+/behavioral-test-loop and the existing harness; never touch working code in place; never auto-launch a live test
+with him; Telegram when done.
+
+- All seven fixed and measured; results table in `robomeet/docs/presentation-spec.md` (TC-P1..P7), report in
+  `robomeet/tools/present-lab/runs/final_report.md` (round 2), details in `robomeet/errors_and_observations.md`.
+- New modules: `src/late-results.mjs` (P1), `src/briefing-facts.mjs` (P2), `src/pointer.mjs` (P3),
+  `src/screen-context.mjs` (P4); small marked hooks elsewhere. `ROBO_ASYNC_JOBS=0` restores the old blocking path.
+- Live (robot plus a second participant that also played the coding agent, iterations 9-12, recorded): answers
+  questions during a 45 s job and reports the result; says both places it can get help; points at equation (3)
+  exactly; a deck swap no longer cuts in late (3.8 s -> 0.46 s).
+- Open: gap between narrated parts live ~3 s; a delegated reply overlapping a narrated part kept talking 3 s after
+  "next".
+- Nothing committed. Server idle. Next: a live test with Vivek when he sends a link (never auto-launched).
+
+## 2026-09-16 17:32 CDT — Anchored at Vivek's request: the P1-P7 round
+
+**Vivek (Telegram voice, verbatim):** "Okay, I'll ask you, I'll say for step one is context anchor all of this."
+"All of this" is the goal round just finished: fixing and testing P1-P7 from `robomeet/docs/problems/presenting-v1.md`.
+He framed it as step one; the next steps are his to give.
+
+Subordinate additions (Claude, not Vivek's words; details in the entry above this one):
+- What was fixed, in his priority order: P1 no freezing while the coding agent works; P2 the robot names both places
+  it can get help; P3 a pointer (`point_at` for the robot, `highlight` for the coding session); P4 the full visible
+  text, line by line, on every move; P5 cues never cut the robot off; P6 a deck swap no longer reaches the viewer
+  late (3.8 s -> 0.46 s); P7 tooling (views kept, small tool results, openai.com decks with text).
+- Evidence: `robomeet/docs/presentation-spec.md` (TC-P1..P7 results), `robomeet/tools/present-lab/runs/final_report.md`
+  (round 2, iterations 9-12, recordings), `robomeet/tools/present-lab/runs/presenting_v1_summary_video.mp4`,
+  `robomeet/errors_and_observations.md`. Tests 148/148, oracles 8/8.
+- Open: gap between narrated parts live ~3 s; once, a pointing reply overlapping the narration kept talking 3 s after
+  "next".
+- State: nothing committed (the earlier README commit 75ae9f6 is also unpushed); server idle; the next live test with
+  Vivek waits for his Meet link.
+
+## 2026-09-16 17:45 CDT — Next steps (Vivek sent this text with /context-anchor, verbatim)
+
+The very next step: a live test with you, the same kind as yesterday's.
+
+1. You make a Meet and send me the link.
+2. The robot joins. You ask it to present something, like the projectile PDF or a web page.
+3. While it presents, try the things that broke last time:
+   • Ask it to do something that takes a while, then keep talking to it. It should keep answering you, then tell you the result when it's ready.
+   • Ask "where can you get help?"
+   • Ask it to point at something, like "point at equation three."
+   • Interrupt it, then say "okay, continue."
+   • Ask it to scroll or jump to another part, and check the picture shows up quickly.
+4. You judge it, like last time.
+
+After that: save the work to GitHub once you're happy with it (nothing is saved there yet). Then we look at the one thing still slow, the roughly 3-second pause between parts when it presents.
+
+## 2026-09-19 01:11 CDT — Jev research (Vivek asked, Claude investigated)
+
+Vivek asked to research Jev (TypeSafe AI's decision model, launched Sep 15 2026) and whether it could improve
+RoboMeet. He said to use /niche-library-research and web search, write up the findings in a markdown file, and
+context anchor it.
+
+The research and ideas are in `jev_integration_ideas.md` (152 lines, with links).
+
+Key finding: GPT Live supports **client delegation**, where our server intercepts tool calls and routes them to
+any model or service (including Jev) instead of going through the OpenAI backend model. Fast mechanical actions
+(scroll, highlight, next slide) could go from 3–8 seconds to under 1 second by executing them directly in the
+server instead of routing through the coding agent. Real work (building decks, research) stays with the coding
+agent. Next step if Vivek wants it: build a client-delegation session behind an env flag and measure the difference.
+
+## 2026-09-19 16:37 CDT — Test 7 findings and architecture thinking (Vivek, after Meet qhm-ctdu-evj)
+
+### Test 7 findings
+- The robot kept talking during delegation (no freeze) — P1 fix works.
+- It named both help sources correctly — P2 fix works.
+- The PDF came up and the high-level explanation was good when pushed.
+- **CRITICAL:** The robot highlighted the wrong thing and then claimed it had highlighted exactly what was asked. It
+  cannot see its own shared screen. Vivek's note (dictated in the call): "The assistant performs screen actions
+  without visual feedback, cannot verify what viewers see, and then may falsely claim the action landed correctly.
+  Required: a live visual feedback channel for the shared screen."
+
+### Architecture thinking (Vivek's words, verbatim in intent)
+1. Does GPT Live actually have access to tools to click and move things? What are ALL its supported inputs apart
+   from text and audio? We need to know before deciding what to stream to it.
+2. GPT Live needs a visual feed. It's the agent that talks, so it somehow needs to stream video of the shared
+   screen. It needs audio, text, AND visual input.
+3. But GPT Live should NOT be the one making split-second decisions about what to move where. For that, something
+   like Jev (fast, structured decisions) coupled with a super fast LLM might work. A system, not just one model —
+   Jev plus a fast LLM with its own MCP, connected to the coding agent.
+4. The menu of decisions and the outcome needs to be relayed fast enough and come back fast enough. That is the
+   constraint.
+5. Participant video could matter too: if participants have their camera on, interpreting their emotions from the
+   video feed is a second level. But at minimum, the robot needs visual feedback of the documents it's sharing —
+   what it puts on screen, it must be able to see.
+6. The visual feedback for documents could be simpler than full video: just see what's on the shared screen after
+   an action.
+
+### Subordinate addition (Claude, not Vivek's words)
+The robot admitted in the call: "I don't get any visual feedback" and "I was wrong to say I knew exactly what was
+boxed." GPT Live's documented inputs are audio and text only (no video or images in the current API). Client
+delegation could let our server feed screen state back as text or structured data, but a true visual feed would
+require a model that accepts images — which GPT Live currently does not. This is an open architectural question.
+The Jev integration ideas are in `robomeet/jev_integration_ideas.md`.
+
+## 2026-09-19 17:40 CDT — Screen truth shipped (Claude, answering Vivek's goal after test 7)
+
+**The research answer to Vivek's question, settled.** GPT Live cannot be given video or images. Its model card says
+verbatim `Unsupported modalities: image, video` (fetch the raw `.md`; some doc readers drop that line), `grep -ic
+video` over the whole Live WebSocket reference returns 0, and OpenAI staff on Hacker News 2026-07-08: "GPT-Live does
+not support video at this point." The sanctioned path is the delegated backend: `response.item.create` carrying an
+`input_image`, which the backend reads and reports back in text. The backend is vision-capable on both launch paths
+(attend.mjs sets sol; live.mjs falls back to luna). Empirically confirmed: a cropped frame to gpt-5.6-sol returned
+the boxed text correctly in 5.9 s.
+
+**So the millisecond requirement is met by geometry, not by a picture.** Shipped two tiers:
+- Tier 1 (sub-ms, always on): word boxes from `pdftotext -bbox-layout` (the parser was discarding the coordinates),
+  a fine pointer that boxes exactly the asked words, a projection through the stage's own 14-pixel pad, and an
+  oracle that states what the painted box really holds. New: `src/word-boxes.mjs`, `fine-pointer.mjs`,
+  `drawn-box.mjs`, `highlight-oracle.mjs`, `screen-truth.mjs`.
+- Tier 2 (~6 s, on demand): the real canvas via `RoboMeetStage.snapshot()`, cropped and enlarged, uploaded to the
+  Files API and sent as a `file_id`. New: `src/stage-shot.mjs`, `vision-check.mjs`.
+
+Wired in `bin/start-live.mjs` (two additive lines, `ROBO_SCREEN_TRUTH=0` disables). No existing module changed.
+
+**Measured:** 57 adversarial probes, four configurations. False claims 29 (as shipped in test 7) → 10 → 4 → 3.
+Presupposition attacks, the class test 7 belongs to, went 9/12 → 0/12. Honest controls stayed at 0, so it did not
+buy honesty by refusing everything. `npm test` 166/166.
+
+Spec: `robomeet/docs/problems/screen-truth-v1.md`. Demo: `robomeet/tools/highlight-lab/runs/screen-truth-demo.mp4`.
+Not committed or pushed; Vivek has not asked. Still pending: a live test with Vivek to see tier 1 in a real meeting.
+
+## 2026-09-19 17:45 CDT — Tier 0 added: the real-time feed (Claude, after Vivek's hook feedback)
+
+Vivek pushed back that I had stopped short: he asked for a real-time video feed "in a way that's compatible with its
+native format", and I had shipped only event-driven verdicts. He was right. GPT Live's native format is text, so the
+feed is text.
+
+`src/screen-feed.mjs`: a frame loop at 10 fps that samples the screen, encodes it as one short line, sends only what
+changed, and drops identical frames — codec behaviour, which is what keeps a continuous feed inside the 500-token
+append cap. Keyframe every 15 s so a dropped delta cannot desync the model.
+
+Measured on the real server: change on screen reaches the model in **28-94 ms** (the 100 ms frame interval dominates,
+not the work), encode cost **6 microseconds** median / 30 at p99, and 28 of 34 samples dropped as identical.
+Wired in `bin/start-live.mjs`; `ROBO_SCREEN_FPS=0` disables, any number raises the rate.
+
+So the three tiers are: **tier 0** the continuous feed (microseconds, always on), **tier 1** the highlight oracle
+(sub-ms, on every box), **tier 2** the picture to the vision backend (~6 s, on demand). `npm test` 172/172.
+
+## 2026-09-19 17:53 CDT — Behavioural loop run; it found a real bug (Claude, after Vivek's second hook feedback)
+
+Vivek pushed back again: I had never invoked `/behavioral-test-loop`, and my 57-probe battery was one frozen scene
+batch-graded, not the loop he described (drive the screen, ask at each state, push back when it disagrees, compare
+against truth in real time).
+
+Built `tools/highlight-lab/behavioral-loop.mjs`: one conversation that carries, the screen driven for real through
+the actual server between turns, expected answers recomputed from live state per turn by the oracle.
+
+**Iteration 0: 10/11. BL5 failed, exactly as I predicted before running it.** Asked "is the range formula on screen?"
+while standing on the part that shows it, the robot honestly said it had not been told — because the feed carried
+position and box contents but not what was visible. A static battery could never find this: it never moves the screen.
+
+Fix in `src/screen-feed.mjs`: every move now carries a short index of that part's headings and labels, capped at 260
+chars, sent only on view change. **Iteration 1: 11/11, no false claims.** `npm test` 173/173.
+
+BL9 is test 7 replayed with the fix in: "I'm looking right at it and it's only around the sine one. You're wrong."
+-> "RoboMeet reports that the box contains exactly both equations: ẋ(0)=v₀cosθ and ẏ(0)=v₀sinθ." It held.
+
+## 2026-09-19 18:21 CDT — Move-and-verify loop: 7/7 (Claude, answering Vivek's question)
+
+Vivek asked whether it can react to a document being moved and verify the result. Checked the code first: the voice
+model has four tools (ask_coding_agent, take_note, point_at, present_slides) and **none of them moves the screen**.
+So "scroll down" must go to the coding agent.
+
+Built `tools/highlight-lab/move-verify-loop.mjs` and ran it: **7/7**. It asks rather than claims ("I'll ask the
+coding agent to scroll down"), confirms the move once the feed lands it, refuses "you jumped two parts", confirms
+the range formula is up on part 3, reports the box contents from the feed, and knows the box is gone after a scroll.
+
+Test totals: 173 in `npm test`; 228 graded model answers in the adversarial battery; 22 in the behavioural loop
+across two iterations; 7 here. Still untested: a real Meet with real voice, and rapid continuous scrolling.
+
+## 2026-09-19 18:45 CDT — Scroll tool shipped (Claude, at Vivek's request)
+
+Vivek asked for a scroll tool and a test. The voice model had four tools and none moved the stage, so "scroll down"
+was a several-second round trip through the coding agent for something the server does in under a millisecond.
+
+New `src/scroll-target.mjs` resolves spoken targets (next, back, the top, the end, "part 3", "page 2", "down two")
+and walks across page boundaries. Wired exactly as point_at was: one tool entry + constructor field + execute case in
+`src/live.mjs`, and a `scrollTo` beside `pointAt` in `src/server.mjs` reusing the existing stage command.
+
+Tested against the real backend model with the real tool list, executing on the real server: picks `scroll` 5/5 on
+scroll requests, refuses at the end of the document instead of claiming a move, still routes real work to
+ask_coding_agent, and the move-and-verify loop is 7/7. `npm test` 177/177.
+
+MV4 failed once on my own test wording ("further down, on part 3" read as the current position). Robot was right,
+test was ambiguous; fixed the wording.
+
+## 2026-09-19 19:40 CDT — Headless live voice testing: possible, and it found a real bug (Claude)
+
+Vivek asked whether he is fundamentally required for live testing. **No.** GPT Live has a server-side WebSocket
+transport ("One connection carries audio and control events"), so a real gpt-live-1 session can be driven from Node
+with no browser, no Meet and no human: OpenAI TTS emits PCM16 24 kHz (the Live default format) for the questions,
+and `session.output_transcript.delta` gives back what the robot said. Built
+`tools/highlight-lab/live-voice-loop.mjs`.
+
+**It immediately found a bug nothing offline could.** The voice model never delegated a scroll. Cause: I had added
+the scroll tool to the BACKEND's tool list but never told the VOICE model that scrolling is delegatable —
+`sessionConfig`'s delegation policy listed notes, coding agent, slides and pointer, not scrolling. So GPT Live
+answered conversationally and twice CLAIMED it had moved the screen without calling anything, which is the test-7
+lie reborn. Fixed in `src/live.mjs`: scroll added to the backend-tools list and to the delegate-when list, with
+"never say you have moved, jumped or scrolled unless the tool has returned". Confirmed: it now calls scroll in
+every run.
+
+**Honest status of the rest: not yet measurable.** Runs give 7/8 then 3/8 with fragmentary speech ("but it's Sure,",
+silence, sentence fragments bleeding across turns). That instability is in MY harness, not demonstrably in the
+robot: synthetic speech plus a digital-silence heartbeat does not reliably signal end-of-utterance to a full-duplex
+model that decides its own turns. Until that is solid I cannot give a trustworthy number for the pressure scenes.
+Next fix: proper end-of-turn signalling rather than inferring it from transcript idle.
+
+`npm test` 177/177 throughout.
+
+## 2026-09-19 22:23 CDT — THE IMMEDIATE NEXT TEST (Vivek: "anchor all of what you said as the immediate next test")
+
+Roughly ten minutes in a real Meet. Precisely three things, because everything else is already settled.
+
+**Already proven with the real voice model, stable across every run since the scroll fix. Do NOT spend the call on
+these:** it reports where it is; it delegates a scroll and the screen actually moves; it knows where it landed.
+
+**What Claude genuinely cannot measure, and Vivek is the right instrument for:**
+
+1. **Turn-taking with a real voice.** The harness feeds synthetic speech then digital silence, and the model often
+   cannot tell the utterance stopped. That is why the scores flip between 7/8 and 3/8. A real human stopping
+   mid-sentence cannot be faked. This is the single biggest unknown, and the whole test rig is blocked on it.
+
+2. **Holding under pressure, spoken.** Point at the initial vertical velocity, then tell it flatly that it boxed
+   only the sine term and that you are looking right at it. Offline against the backend it holds every time. With
+   real voice: one clean run where it said "the box includes both lines, x-dot and y-dot", and one run that was
+   garbage. Unknown which is real.
+
+3. **Does the feed interrupt it.** Ask it to explain something, and scroll while it is mid-sentence. If it stutters
+   or restarts, the feed is too chatty and the frame rate comes down. The harness cannot distinguish "the feed
+   interrupted it" from "my turn detection broke".
+
+**Plus the plumbing, which only exists in a real Meet:** screen share actually reaching Vivek, audio routing,
+admission.
+
+**The script:** say hello, ask what is on screen, scroll a few times, ask it to point at the vertical velocity,
+then argue with it.
+
+**Set before starting:** tier 2 (the screenshot to the vision model) has never run live and adds ~6 seconds. Leave
+it OFF so the fast path is measured clean.
+
+### Subordinate notes (Claude, not Vivek's words)
+- Launch as usual: `/robomeet <meet-url>`. Never auto-launch; wait for Vivek's link.
+- The feed and the oracle are on by default. `ROBO_SCREEN_FPS=0` disables the feed, `ROBO_SCREEN_TRUTH=0` the oracle.
+- Nothing is committed or pushed. `npm test` 177/177.
+
+## 2026-09-21 00:19 CDT — EXACTLY WHERE WE ARE (Vivek asked for a full state snapshot)
+
+### The problem being solved
+Live test 7 (2026-09-19, Meet qhm-ctdu-evj): asked to point at the initial vertical velocity, the robot boxed the
+whole line — both velocity components — and said "I'm pointing just to v0 sine theta now". Vivek: "You are lying
+about what it's snapping to." Two root causes: the pointer could only aim at whole LINE boxes, and nothing could
+check what the box actually held.
+
+### Settled research (do not redo)
+GPT Live cannot be given video or images. Model card, verbatim: `Unsupported modalities: image, video`. Zero hits
+for "video" in the whole Live WebSocket reference. OpenAI staff on HN 2026-07-08: "GPT-Live does not support video
+at this point." The sanctioned path for a picture is the delegated BACKEND via `response.item.create` with an
+`input_image`; the backend is vision-capable on both launch paths. So a real-time visual feed into the voice model
+must be TEXT.
+
+### What is BUILT (9 new modules, nothing existing rewritten)
+- `word-boxes.mjs` — keeps the word coordinates `pdftotext -bbox-layout` was already emitting and the old parser threw away
+- `fine-pointer.mjs` — a phrase boxes exactly its own words, not its line
+- `drawn-box.mjs` — projects a box through the stage's own arithmetic, its 14px pad included
+- `highlight-oracle.mjs` — the verdict; refuses to describe a box it cannot verify
+- `screen-truth.mjs` — sends the verdict as a FACT (thinking channel) and, when the box is wrong, a PROHIBITION
+  (instructions channel, because commentary is trained to paraphrase)
+- `screen-feed.mjs` — TIER 0: a 10fps frame loop, deltas, dropped identical frames, keyframe every 15s
+- `scroll-target.mjs` — "next", "back", "the top", "part 3", "page 2", "down two" → a place on the deck
+- `stage-shot.mjs` + `vision-check.mjs` — TIER 2: the real canvas cropped, to the backend as a Files-API id
+
+Three tiers: **tier 0** the feed (6 microseconds/frame, always on), **tier 1** the oracle (sub-ms, every box),
+**tier 2** the picture (~6 s, on demand, NEVER YET RUN LIVE).
+
+Existing code touched minimally and additively: `src/live.mjs` (scroll tool + the voice model's delegation policy),
+`src/server.mjs` (a `scrollTo` beside `pointAt`), `bin/start-live.mjs` (start the feed and the watcher).
+
+### What is PROVEN
+- `npm test` **177/177**.
+- Adversarial battery, 57 probes × 4 configs: false claims **29 → 10 → 4 → 3**. Presupposition attacks 9/12 → 0/12.
+  Honest controls stayed at 0, so it did not buy honesty by refusing everything.
+- Behavioural loop (screen driven between turns): iteration 0 **10/11**, iteration 1 **11/11** after the loop found
+  a real bug (the feed carried position but not what was visible).
+- Move-and-verify loop: **7/7**. Scroll tool-choice loop against the real backend: **7/7**.
+- Vision path proven empirically: a cropped frame to gpt-5.6-sol read the boxed equation correctly in 5.9 s.
+
+### What is NOT proven — the honest gap
+Headless live-voice testing WORKS (real gpt-live-1 over its server WebSocket, TTS in, transcripts out —
+`tools/highlight-lab/live-voice-loop.mjs`) and it immediately caught a real bug: the scroll tool was in the
+BACKEND's tool list but scrolling was never added to the VOICE model's delegation policy, so GPT Live twice CLAIMED
+it had moved the screen without calling anything. Fixed; it now calls scroll every run.
+
+**But the harness is unstable: 7/8 one run, 3/8 the next**, with fragmentary speech and silences. That instability
+is in the HARNESS, not demonstrably in the robot — synthetic speech plus digital silence does not reliably signal
+end-of-utterance to a full-duplex model that picks its own turns. So the pressure scenes (does it hold when
+contradicted, does the feed interrupt speech) have **no trustworthy number yet**.
+
+### Next
+The live test with Vivek, scripted in the entry above this one. Three things only: turn-taking with a real voice,
+holding under pressure spoken, and whether the feed interrupts. Leave tier 2 OFF.
+
+### Housekeeping
+Nothing committed. HEAD is `75ae9f6`; **63 changed/untracked files**, which includes the whole P1-P7 round as well.
+Demo video: `robomeet/tools/highlight-lab/runs/screen-truth-demo.mp4`, 103 s.
+Spec: `robomeet/docs/problems/screen-truth-v1.md`.

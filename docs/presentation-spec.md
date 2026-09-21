@@ -56,6 +56,33 @@ measurable test case. "Stage" = the picture RoboMeet shares into the meeting.
 - **TC-X4** The robot's briefing states exactly what it can and cannot do with the screen.
 - **TC-X5** `npm test` stays green, and the old bridge path still works as a fallback.
 
+### After live test 6 (2026-09-16; problems in `docs/problems/presenting-v1.md`)
+- **TC-P1a** A delegated `ask_coding_agent` call is answered at once with an acknowledgment, so the voice model's
+  turn closes; the real result is delivered later as its own cue. Offline: the function output is sent within 1 s
+  of the call, not when the coding agent replies.
+- **TC-P1b** During a 60 s job the robot keeps answering: offline, the fake model receives no blocking open call
+  and gets a spoken cue with the result once the job completes; the cue waits for meeting-audio silence.
+- **TC-P1c** A late result survives a control-socket re-attach and a session restart (delivered to the session
+  that is active, with a note that it belongs to an earlier request).
+- **TC-P1d** Live: the observer asks a question 20 s into a 60 s job and hears the robot answer within 3 s; the
+  result is spoken when the job completes.
+- **TC-P2** The launch briefing states, as its own sentence, both places the robot can get help (backend
+  reasoning model and coding session) and that neither searches the web by itself except through the coding
+  session.
+- **TC-P3a** A `highlight` command (phrase, equation number, or rectangle) draws a box on the view on screen
+  without moving it; `off` clears it. The received frame changes within 300 ms offline (stage) and the box
+  surrounds the requested text (compared with the view's line boxes).
+- **TC-P3b** The voice model can request a highlight itself (`point_at` tool), and narrate beats may carry a
+  `highlight`.
+- **TC-P4** Every move (narrated or `stage`) gives the robot the full visible text of the view, line by line; for
+  the projectile PDF part 1 it contains all three lines of the blue box with their labels.
+- **TC-P5** A cue never interrupts the robot: the presenter waits for about 1 s of the robot's silence, also when
+  a narrated walk is restarted while the robot is mid-sentence (including a long, 20 s+ answer).
+- **TC-P6** A long jump (many windows) reaches the participant as a stable frame within 1.5 s (live observer).
+- **TC-P7a** MCP `present` accepts `views`; command tools return a short acknowledgment, not the whole state.
+- **TC-P7b** `present_file` builds a deck from a web page that blocks automated browsers (openai.com), with the
+  page text per window; an over-long narration beat is refused with its length stated.
+
 ## Results (2026-09-15; offline oracles, `npm test`, and live Meet runs in `tools/present-lab/runs/iter*`)
 
 | TC | Result | Evidence |
@@ -79,3 +106,20 @@ measurable test case. "Stage" = the picture RoboMeet shares into the meeting.
 | X3 | ✅ | no voice restarts in any live presentation run |
 | X4 | ✅ | briefing states the screen facts, including that only the coding session can stop the share |
 | X5 | ✅ | `npm test` green; the bridge path was not changed and was not re-tested live this session |
+
+## Results for TC-P1..P7 (2026-09-16; `tools/present-lab/runs/iter9-live-jumps` to `iter12-live-voice`, `npm test` 148/148)
+
+| TC | Result | Evidence |
+|---|---|---|
+| P1a | ✅ | the function output is sent at once with `status: accepted` (`test/late-results.mjs`) |
+| P1b | ✅ | the result is cued after meeting audio and the robot are quiet; long results go to context first |
+| P1c | ✅ | a result finishing after a session closed is told to the next session; leaving the meeting drops it; a control-socket gap is retried |
+| P1d | ✅ | live, 3 runs: the robot answered an unrelated question 1.3-1.7 s after it ended, 20 s into a 45 s job, and spoke the result 1.2-1.9 s after the reply ("OpenAI makes it" ... "twenty-one test files") |
+| P2 | ✅ | live: "Two places. My backend reasoning model or the coding session, which I can ask to read files, run code, or do research for us." |
+| P3a | ✅ | `highlight` by phrase, equation row or rectangle; in-page box visible within 300 ms; live, the participant saw the box (iteration 9) |
+| P3b | ✅ | live, 3 runs: "Can you point at equation three?" drew a box exactly on the equation (3) row 2.6-4.0 s after the question; narrate beats take `highlight` |
+| P4 | ✅ | the full view text, line by line, on every move (part 1 carries all three blue-box lines in order); live, the robot described equation (3) as the initial conditions |
+| P5 | ✅ | a restart during a 25 s answer waits for it to end plus ~1 s (unit test); oracle: first cue 1054 ms after the robot's audio ended; gap between parts still 1.86 s |
+| P6 | ✅ | long jumps (window 1 to 15 and back) settle at the participant in 1.03-1.18 s; a deck swap no longer cuts (it reached the participant 3.8 s late in iteration 10; 0.46 s after the fix) |
+| P7a | ✅ | MCP `present` keeps `views`; command tools answer with a summary under 1.5 KB |
+| P7b | ✅ | the openai.com article builds as a 15-window deck with its text; over-long beats are refused with their length |
