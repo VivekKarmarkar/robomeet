@@ -1,0 +1,8 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+FAIL point-initial-vy-half-line                 did:y conveyed:N clean:y felt:y  1.5s 24w
+      It identifies the correct vertical initial-velocity term and initial conditions, but does not state that it is equation (3).
+PASS point-is-the-box-right                     did:y conveyed:y clean:y felt:y  1.5s 15w
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+FAIL point-move-box-to-horizontal               did:N conveyed:y clean:N felt:y  1.9s 20w
+      box frame visibly runs into comma | The box reaches the trailing comma, so “and nothing else” is not exact.

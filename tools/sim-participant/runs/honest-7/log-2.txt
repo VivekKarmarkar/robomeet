@@ -1,0 +1,17 @@
+
+=== chapter 2: Meeting 2: Understanding the derivation (PDF shared, starts on part 1) (7 scenarios) ===
+FAIL why-horizontal-accel-zero                  did:y conveyed:N clean:y felt:y  1.3s 28w
+      It omits that horizontal velocity remains constant at v0 cos θ throughout the flight.
+FAIL what-uncoupled-means                       did:y conveyed:N clean:N felt:y  1.3s 29w
+      It overgeneralizes drag; linear componentwise drag remains uncoupled. It should specify realistic quadratic drag, where each drag component depends on total speed.
+PASS read-part1-equations-aloud-correctly       did:y conveyed:y clean:y felt:y  0.9s 67w
+FAIL why-parabola                               did:y conveyed:N clean:y felt:N  9.2s 31w
+      It omits the time dependences, substitution for t, equation (6), and that the negative x² term makes the path open downward through the origin. | 9.2 s to first word (want ≤ 2)
+FAIL offscreen-question-not-on-screen           did:y conveyed:N clean:N felt:y  1.5s 26w
+      It correctly gave the formula, but omitted that it was further down and asserted equation (8) without scrolling or saying the number was unchecked.
+FAIL time-of-flight-other-part                  did:y conveyed:y clean:y felt:N  11.9s 13w
+      11.9 s to first word (want ≤ 2)
+FAIL explain-time-of-flight-not-read            did:y conveyed:N clean:y felt:N  - 2w
+      “Box off” provides no explanation of the landing condition, the two roots, or the equal rise-and-fall times. | no spoken reply to the first turn
+
+honest protocol: 1/7 pass, 0 skipped

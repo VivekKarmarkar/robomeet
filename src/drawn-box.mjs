@@ -7,7 +7,8 @@
 // same arithmetic the stage uses, so the answer is the rectangle that is really painted. Pure. One job.
 export const STAGE_W = 1920;
 export const STAGE_H = 1080;
-export const DRAW_PAD_PX = 14; // meet-stage.js drawHighlight: `const pad = 14`
+export const DRAW_PAD_PX = 6;  // meet-stage.js drawHighlight: `const pad = 6` (was 14; test/tight-box.mjs checks they match)
+export const STROKE_PX = 4;    // meet-stage.js drawHighlight: `context.lineWidth = 4`; the stroke is centred on the path
 
 // The stage's map for a settled frame: { ox, oy, sx, sy } taking page-normalized coordinates to canvas pixels.
 // `asset` is the pixel size of the view's exact render ({ width, height }) when it has one; otherwise `page` is the
@@ -48,6 +49,15 @@ export function paintedBox({ rect, box, asset = null, page = null, pad = DRAW_PA
   const map = stageMap({ rect, asset, page, stageW, stageH });
   const padX = pad / map.sx, padY = pad / map.sy;
   return { x: box.x - padX, y: box.y - padY, w: box.w + padX * 2, h: box.h + padY * 2, padX, padY, map };
+}
+
+// The OUTER edge of the painted stroke, in page-normalized units: what actually covers pixels. A neighbouring word
+// that intersects this is visibly clipped by the box.
+export function strokeOuterBox(args) {
+  const painted = paintedBox(args);
+  if (!painted) return null;
+  const ox = (STROKE_PX / 2) / painted.map.sx, oy = (STROKE_PX / 2) / painted.map.sy;
+  return { x: painted.x - ox, y: painted.y - oy, w: painted.w + ox * 2, h: painted.h + oy * 2 };
 }
 
 // Pixel size of a PNG from its header, without decoding it. The stage needs the render's aspect to place a box.

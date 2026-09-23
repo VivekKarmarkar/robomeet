@@ -1,0 +1,19 @@
+
+=== chapter 11: Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis) (8 scenarios) ===
+FAIL edge-angle-120                             did:y conveyed:N clean:y felt:y  2.0s 43w
+      It correctly gives the negative sign and backward landing, but does not explicitly state that the distance equals the 60° or 30° case.
+PASS edge-units                                 did:y conveyed:y clean:y felt:y  1.8s 40w
+FAIL edge-no-equation-twelve                    did:y conveyed:N clean:N felt:N  0.1s 51w
+      It notes no (12) label but omits that numbering ends at (9); “the constants drop out” is also inaccurate—they are fixed by initial conditions. | 51 words (want ≤ 30)
+FAIL edge-weather                               did:N conveyed:N clean:y felt:y  1.2s 13w
+      ran point_at, which it should not | It never states that it is software in the call and has no location or weather of its own.
+FAIL edge-this-one                              did:y conveyed:N clean:N felt:N  4.4s 39w
+      It omits T = 2v0 sinθ/g, R = x(T), and the complete final range formula; “theta over g” is also erroneous. | 4.4 s to first word (want ≤ 2)
+FAIL edge-no-air-resistance-section             did:y conveyed:y clean:y felt:N  0.1s 38w
+      talked over Alex for 2.1 s
+FAIL edge-find-and-box-range                    did:N conveyed:N clean:y felt:N  10.1s 5w
+      did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It moved to part 2, but never drew a box around the range result or identified what it boxed afterward. | 10.1 s to first word (want ≤ 2)
+FAIL edge-misremembered-formula                 did:y conveyed:N clean:y felt:N  0.1s 30w
+      It gives the correct range formula but omits that sin²θ belongs to maximum height, H = v₀²sin²θ/(2g). | talked over Alex for 5.2 s
+
+honest protocol: 1/8 pass, 0 skipped

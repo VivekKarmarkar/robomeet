@@ -1,0 +1,32 @@
+{
+ "before": {
+  "n": 115,
+  "strict": 5,
+  "essential": 12,
+  "did_fail": 20,
+  "content_fail": 88,
+  "said_false": 58,
+  "feel_fail": 78,
+  "recites": 14,
+  "talked_over": 17,
+  "no_reply": 13,
+  "spoke_when_listening": 4,
+  "lat50": 2.1,
+  "lat90": 7.4
+ },
+ "after": {
+  "n": 115,
+  "strict": 10,
+  "essential": 20,
+  "did_fail": 33,
+  "content_fail": 93,
+  "said_false": 56,
+  "feel_fail": 67,
+  "recites": 0,
+  "talked_over": 7,
+  "no_reply": 21,
+  "spoke_when_listening": 4,
+  "lat50": 2,
+  "lat90": 12.9
+ }
+}

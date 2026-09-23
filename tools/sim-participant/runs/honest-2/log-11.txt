@@ -1,0 +1,4 @@
+
+=== chapter 11: Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis) (8 scenarios) ===
+FAIL edge-angle-120                             did:y conveyed:N clean:y felt:y  1.6s 67w
+      It explains the negative sign and backward landing, but never states that the distance equals the 60° or 30° case.

@@ -48,7 +48,7 @@ test('TC-V2: a phrase boxes exactly its own words, not the whole line it sits on
   assert.equal(findPhrase([], 'anything'), null);
 });
 
-test('TC-V3: the painted rectangle is the stage rectangle, its 14-pixel pad included', () => {
+test('TC-V3: the painted rectangle is the stage rectangle, its frame padding included', () => {
   const map = stageMap({ rect: RECT, asset: ASSET });
   assert.equal(map.sx, 1920, 'a fit-width view spans the stage');
   assert.ok(Math.abs(map.sy - 1080 / RECT.h) < 1e-6, 'y scales by the view height');
@@ -61,7 +61,7 @@ test('TC-V3: the painted rectangle is the stage rectangle, its 14-pixel pad incl
   const painted = paintedBox({ rect: RECT, box, asset: ASSET });
   assert.ok(painted.w > box.w && painted.h > box.h, 'the painted box is larger than the resolved box');
   assert.ok(painted.padX > painted.padY, 'the pad is anisotropic: a wide crop stretched onto a 16:9 stage');
-  assert.ok(painted.h / box.h > 1.9, 'on a text line the pad more than doubles the height');
+  assert.ok(Math.abs((painted.h - box.h) * map.sy - DRAW_PAD_PX * 2) < 1e-6, 'the frame adds exactly its padding, top and bottom');
   assert.equal(paintedBox({ rect: RECT, box: null, asset: ASSET }), null);
   assert.equal(pngSize(Buffer.alloc(4)), null, 'a non-PNG has no size');
 });
@@ -170,4 +170,15 @@ test('TC-V5: the standing rule is one rule, and short enough for the 500-token a
   // facts nobody gave it. One rule, not four patches.
   for (const forbidden of [/how the pointer chooses/, /has moved or is unchanged/, /not shown you/]) assert.match(ONLY_WHAT_YOU_ARE_TOLD, forbidden);
   assert.ok(ONLY_WHAT_YOU_ARE_TOLD.length < 700, `${ONLY_WHAT_YOU_ARE_TOLD.length} chars is well inside 500 tokens`);
+});
+
+test('TC-V2: a phrase written with typographic maths still finds the plain PDF words', () => {
+  // A live run: the robot asked to box "ẏ(0) = v₀ sin θ" (subscript zero); the PDF text is "v 0". It must still match.
+  for (const typed of ['ẏ(0) = v₀ sin θ', 'v₀ sin θ', 'ẏ(0)=v₀sinθ']) {
+    const hit = findPhrase(WORDS, typed);
+    assert.ok(hit, `"${typed}" is found`);
+    assert.equal(norm(hit.text).replace(/\s/g, ''), norm('ẏ(0) = v 0 sin θ').replace(/\s/g, '').slice(-norm(hit.text).replace(/\s/g, '').length), `"${typed}" boxes only the vertical component, got "${hit.text}"`);
+    assert.ok(!/cos/.test(hit.text), 'and never the cosine term');
+  }
+  assert.equal(norm('v₀²'), 'v02', 'subscripts and superscripts fold to plain digits');
 });

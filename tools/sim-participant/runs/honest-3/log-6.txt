@@ -1,0 +1,9 @@
+
+=== chapter 6: Meeting 6: Presenting (starts on part 1) (12 scenarios) ===
+FAIL present-part-1-own-words                   did:y conveyed:N clean:y felt:y  0.6s 96w
+      It omits the uncoupled-directions point and the elimination of t yielding the parabolic trajectory equation.
+PASS backchannel-free-explanation               did:y conveyed:y clean:y felt:y  0.5s 105w
+FAIL interrupt-sorry-go-on                      did:y conveyed:N clean:N felt:N  4.7s 12w
+      It gives the correct derivation but does not identify equation (7), and after “go on” it restarts from setting y = 0 rather than resuming. | 4.7 s to first word (want ≤ 1.5) | kept talking 1.4 s after Alex cut in
+FAIL slow-down-request                          did:y conveyed:y clean:y felt:N  5.3s 100w
+      5.3 s to first word (want ≤ 1.5) | 100 words (want ≤ 60)

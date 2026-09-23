@@ -12,6 +12,9 @@ import { watchPointerTruth } from '../src/screen-truth.mjs';
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const until = async (predicate, timeout = 5000) => { const end = Date.now() + timeout; while (Date.now() < end) { if (predicate()) return true; await wait(10); } return false; };
 const SRC = new URL('../public/slides/projectile-motion-deck/', import.meta.url);
+import { readFileSync } from 'node:fs';
+const DECK_JSON = JSON.parse(readFileSync(new URL('deck.json', SRC), 'utf8'));
+const DECK_LINE = () => DECK_JSON.slides[0].views[0].lines.find(l => l.text.includes('cos') && l.text.includes('sin'));
 
 async function server(t) {
   const dir = await mkdtemp(join(tmpdir(), 'robomeet-truthsrv-'));
@@ -44,15 +47,27 @@ test('TC-V6: the real highlight command produces a verdict the robot is told', a
   assert.equal(orders.length, 0, 'a correct box needs no prohibition');
 });
 
-test('TC-V6: a phrase that is half a line is caught, and the robot is forbidden to over-claim', async t => {
+test('TC-V6: a phrase that is half a line is now boxed word by word, and the robot is told the box is exact', async t => {
   const { app, facts, orders, setPhrase } = await server(t);
   const phrase = 'ẏ(0) = v 0 sin θ';
   setPhrase(phrase);
-  // src/pointer.mjs resolves this to the whole line: this is the test-7 box, produced by the shipping code path.
+  // Live test 7 boxed the whole line here, both velocity components. The live pointer now boxes the words.
   await app.command({ type: 'highlight', phrase });
-  // The box is still drawn: the check reports on the pointer, it never gates it.
-  assert.ok(app.store.state.pointer, 'a pointer is recorded');
-  assert.ok(app.store.state.slides[0].views[0].highlight, 'the box is on the view');
+  const box = app.store.state.slides[0].views[0].highlight;
+  assert.ok(box, 'the box is on the view');
+  const line = DECK_LINE();
+  assert.ok(box.w < line.w * 0.6, `the box (${box.w}) is well under the whole line (${line.w})`);
+  assert.ok(box.x > line.x, 'and starts right of the line start: the horizontal component is left out');
+  assert.ok(await until(() => facts.length > 0), 'the robot was told what the box holds');
+  assert.match(facts[0].normalize('NFC'), /contains exactly/);
+  assert.equal(orders.length, 0, 'an exact box needs no prohibition');
+});
+
+test('TC-V6: a box that holds more than was asked for still reaches the robot as a prohibition', async t => {
+  const { app, facts, orders, setPhrase } = await server(t);
+  // Asked for the vertical velocity, the robot points at equation (3): that boxes the whole row of initial conditions.
+  setPhrase('ẏ(0) = v 0 sin θ');
+  await app.command({ type: 'highlight', equation: '(3)' });
   assert.ok(await until(() => orders.length > 0), 'the robot was forbidden to over-claim');
   const told = `${facts.join(' ')} ${orders.join(' ')}`.normalize('NFC');
   assert.ok(told.includes('cos'), 'the component that came along is named');
@@ -61,10 +76,10 @@ test('TC-V6: a phrase that is half a line is caught, and the robot is forbidden 
 });
 
 test('TC-V6: clearing the box tells the robot nothing is boxed, and a failure never blocks a highlight', async t => {
-  const { app, orders, setPhrase } = await server(t);
+  const { app, setPhrase } = await server(t);
   setPhrase('ẏ(0) = v 0 sin θ');
   await app.command({ type: 'highlight', phrase: 'ẏ(0) = v 0 sin θ' });
-  assert.ok(await until(() => orders.length > 0));
+  assert.ok(await until(() => app.store.state.pointer), 'a box was drawn');
   await app.command({ type: 'highlight', off: true });
   assert.equal(app.store.state.pointer, null, 'the pointer is gone');
   assert.equal(app.store.state.slides[0].views[0].highlight, undefined, 'and so is the box');

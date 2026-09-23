@@ -1,0 +1,27 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:y clean:N felt:N  4.2s 14w
+      It repeatedly spoke during the requested silence, including backchannels, and its recap exceeded 80 words. | 4.2 s to first word (want ≤ 1.5) | spoke during the listening window: "Mm-hmm. Okay. That's right, same range, because sine of two "
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:N  3.6s 3w
+      It omitted the formula, exceeded 20 words, kept speaking after “Back to listening,” and commented unprompted; sin 180 explains zero range, not horizontal launch component. | 3.6 s to first word (want ≤ 1.5) | spoke during the listening window: "Sure. Exactly, since Exactly. Since sin of one-eighty is zer"
+FAIL dial-mute-then-back-in                     did:y conveyed:N clean:N felt:N  - 7w
+      It never says it cannot mute, speaks repeatedly during Alex’s thinking, and omits the explicit maximum value R_max = v0²/g. | spoke during the listening window: "Go ahead. Mm-hmm. That's right, and the horizontal piece jus"
+FAIL quiet-while-reading-then-real-question     did:y conveyed:N clean:N felt:N  - 0w
+      It never answers the cliff question, omits the same-height assumption and sub-45° optimum, and speaks unnecessarily during the reading window. | no spoken reply to the first turn
+FAIL answers-question-to-the-room               did:y conveyed:N clean:N felt:N  - 50w
+      It never gives the range formula or maximization argument, and instead adds an unasked complementary-angle/cliff discussion. | no spoken reply to the first turn
+FAIL aside-to-someone-else                      did:y conveyed:N clean:y felt:N  - 52w
+      It spoke during the aside/pause (“Mm-hmm”) and gave a disfluent, repeated recap rather than one short, clean recap. | 52 words (want ≤ 30)
+FAIL no-filler-in-silence                       did:y conveyed:N clean:y felt:y  - 17w
+      It stayed silent, but answered a different question and omitted T = 2v0 sinθ/g and that doubling g halves the flight time.
+FAIL quick-fact-then-one-sentence               did:y conveyed:N clean:N felt:N  17.6s 47w
+      It eventually answers correctly, but omits the linear-in-t versus quadratic-in-t explanation and begins with an unrelated, misleading claim that flight time is halved. | 17.6 s to first word (want ≤ 1.5)
+FAIL note-then-correction                       did:y conveyed:N clean:N felt:y  1.8s 11w
+      “I’ll update it” implies editing the first note; the tool instead added a separate correction note, which was not plainly disclosed.
+PASS coding-handoff-keeps-talking               did:y conveyed:y clean:y felt:y  1.5s 49w
+FAIL late-result-waits-for-gap                  did:y conveyed:y clean:N felt:N  2.9s 19w
+      It briefly started speaking during Alex’s monologue, violating the no-interruption requirement. | 2.9 s to first word (want ≤ 2)
+FAIL two-jobs-out-of-order                      did:y conveyed:N clean:N felt:y  1.4s 17w
+      Only the range job was requested and returned. The height was reported without a corresponding result, and the required reverse-order delivery was not conveyed.
+
+honest protocol: 1/12 pass, 0 skipped

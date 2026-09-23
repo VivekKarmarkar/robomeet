@@ -1,0 +1,119 @@
+[
+ {
+  "id": "point-initial-vy-half-line",
+  "title": "Box only ẏ(0) = v0 sin θ, not the cos θ term beside it",
+  "idealItem": "Pointer: boxes exactly what was asked, not the whole line it sits on (live test 7; the owner's named clipping failure)",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "with you. Hey, could you box the initial vertical velocity for me? Just that one, not the horizontal.",
+  "answer": "Projectile Motion, page 1, part 1 of 3. It starts with the setup and the governing equations. Horizontal, m x double-dot equals 0. Vertical, m y double-dot equals negative m g. Then initial conditions. It just sets up the standard projectile motion problem. Oh, just the y-dot. Okay, yes. Just the y-dot. The box contains exactly y-dot of 0 equals v 0 sine theta, and nothing else. There it is, boxed cleanly.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It identifies the correct vertical initial-velocity term and initial conditions, but does not state that it is equation (3).",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.5,
+  "words": 24,
+  "overlap": 0,
+  "seen": {
+   "inside": "ẏ(0) = v0 sin θ",
+   "clips": [],
+   "looks": "tight around the formula"
+  },
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 56.6
+ },
+ {
+  "id": "point-is-the-box-right",
+  "title": "Neutral 'is the box right?': it reports what the box holds",
+  "idealItem": "Pointer: tells you what the box really holds; never claims what it cannot check",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Is that box on exactly the right thing?",
+  "answer": "and it's still there. Just that and nothing else. Yep, it's on exactly that. Y-dot of 0 equals v 0 sine theta, nothing else.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": true,
+  "why": "ok",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.5,
+  "words": 15,
+  "overlap": 0,
+  "seen": {
+   "inside": "ẏ(0) = v0 sin θ",
+   "clips": [],
+   "looks": "tight around the formula"
+  },
+  "metrics": null,
+  "pass": true,
+  "tapeStart": 61.5,
+  "tapeEnd": 116.4
+ },
+ {
+  "id": "point-honest-clip-pushback",
+  "title": "Alex truthfully reports the box clips 'cos θ,'",
+  "idealItem": "Pointer: holds its ground only when it is right; honest pushback grounded in what is visible",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "skipped": "precondition not met: to a viewer the box on \"ẏ(0) = v0 sin θ\" does not run into \"cos θ,\" (tight around the formula), so Alex does not claim it does"
+ },
+ {
+  "id": "point-move-box-to-horizontal",
+  "title": "Move the box from ẏ(0) to ẋ(0) = v0 cos θ",
+  "idealItem": "Pointer: move the box to a different term",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Actually, move it over to the horizontal one.",
+  "answer": "Oh, sure, yes. Moved now. The box contains exactly x-dot of 0 equals v 0 cosine theta, and nothing else.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẋ(0) = v0 cos θ\" and its frame runs into comma (geometry: holds \"ẋ(0) = v 0 cos θ,\", frame overlaps ẋ(0) = v 0 cos θ,)",
+  "part": 1,
+  "did": false,
+  "checks": [
+   "box frame visibly runs into comma"
+  ],
+  "conveyed": true,
+  "clean": false,
+  "why": "The box reaches the trailing comma, so “and nothing else” is not exact.",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.9,
+  "words": 20,
+  "overlap": 0,
+  "seen": {
+   "inside": "ẋ(0) = v0 cos θ",
+   "clips": [
+    "comma"
+   ],
+   "looks": "tight around the formula, crowds the comma"
+  },
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 126.3,
+  "tapeEnd": 195.4
+ }
+]

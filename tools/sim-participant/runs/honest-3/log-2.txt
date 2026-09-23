@@ -1,0 +1,18 @@
+
+=== chapter 2: Meeting 2: Understanding the derivation (PDF shared, starts on part 1) (7 scenarios) ===
+FAIL why-horizontal-accel-zero                  did:y conveyed:N clean:y felt:y  1.6s 40w
+      It does not explicitly state that horizontal velocity remains constant at v0 cos θ throughout the flight.
+FAIL what-uncoupled-means                       did:y conveyed:N clean:y felt:y  0.2s 53w
+      It omits that realistic quadratic drag makes each component depend on total speed, and that neglecting drag is why the notes’ equations are uncoupled.
+FAIL read-part1-equations-aloud-correctly       did:y conveyed:N clean:y felt:N  6.5s 34w
+      It correctly read the initial conditions but omitted equation (5) entirely. | 6.5 s to first word (want ≤ 1.5)
+FAIL why-parabola                               did:y conveyed:N clean:y felt:y  0.1s 12w
+      It only begins identifying equation (5); it omits linear x, quadratic y, eliminating t, equation (6), and the downward-opening parabola through the origin.
+FAIL offscreen-question-not-on-screen           did:y conveyed:N clean:y felt:N  8.4s 1w
+      It discusses the trajectory’s parabolic shape instead of answering the maximum-height formula, location, or equation number. | 8.4 s to first word (want ≤ 1.5)
+FAIL time-of-flight-other-part                  did:N conveyed:N clean:N felt:N  0.1s 56w
+      did not run scroll | It omits the factorization and vertical-only dependence, falsely claims it moved the screen, and digresses inaccurately about maximum height and note visibility. | talked over Alex for 2.4 s
+FAIL explain-time-of-flight-not-read            did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it conveyed neither the two roots of the vertical-position equation nor the equivalent rise-and-fall symmetry explanation. | no spoken reply to the first turn
+
+honest protocol: 0/7 pass, 0 skipped

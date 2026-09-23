@@ -1,0 +1,12 @@
+
+=== chapter 3: Meeting 3: Understanding the results and observations (parts 2 and 3) (16 scenarios) ===
+FAIL read-eq-8-and-9-correctly                  did:y conveyed:y clean:y felt:N  2.1s 44w
+      2.1 s to first word (want ≤ 1.5)
+FAIL concede-only-when-actually-wrong           did:y conveyed:N clean:y felt:N  2.6s 15w
+      It correctly distinguishes sin²θ from sin(2θ), but never states the full result: H = v0² sin²θ/(2g). | 2.6 s to first word (want ≤ 1.5)
+FAIL no-stray-section-numbers                   did:y conveyed:y clean:y felt:N  4.9s 62w
+      4.9 s to first word (want ≤ 1.5)
+FAIL same-question-twice                        did:y conveyed:N clean:y felt:N  4.9s 14w
+      It gives the correct identical formula twice, but omits equation (8), the peak time t*=v0 sinθ/g=T/2, and the condition ẏ=0. | 4.9 s to first word (want ≤ 1.5)
+FAIL why-45-maximises-range                     did:y conveyed:N clean:y felt:N  12.9s 35w
+      It omits R_max, the time-versus-horizontal-speed intuition, and the air-resistance answer that the optimum is below 45°. | 12.9 s to first word (want ≤ 2)

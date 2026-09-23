@@ -1,0 +1,62 @@
+[
+ {
+  "id": "why-horizontal-accel-zero",
+  "title": "Explains why horizontal acceleration is zero in equation (1)",
+  "idealItem": "What it is: a robot scientist (understands the material it shares)",
+  "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+  "asked": "Why is the horizontal acceleration zero in equation one? || What would it take to make it non-zero?",
+  "answer": "'projectile-motion-deck', page 1, part 1 of 3. It shows 'Projectile Motion', then the setup. mass m launched from the origin with speed v zero at angle theta, gravity down, air resistance neglected. Then Newton's second law per component: m x double dot equals 0, m y double dot equals minus mg, with initial conditions. Position zero in both directions, and velocity components v zero times cos theta and v zero times sin theta. Then the beginning of \"Integrate twice\", giving x dot of t and x of t. Because with air resistance neglected, there’s no horizontal force —only gravity downward—so the horizontal acceleration is zero. Yeah. Okay. Go on. Hmm.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It explains zero acceleration from no horizontal force, but omits constant horizontal velocity and examples of forces making acceleration nonzero.",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 2.1,
+  "words": 34,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 87.3
+ },
+ {
+  "id": "what-uncoupled-means",
+  "title": "Explains what 'uncoupled' means and when it would break",
+  "idealItem": "What it is: a robot scientist (understands the material it shares)",
+  "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+  "asked": "The notes say the two directions are uncoupled. What does that actually mean here? || Would that still hold with air resistance?",
+  "answer": "Newton's second law, a sub x equals F sub x over m. Things like air drag, wind, engine thrust, or any other applied force could do it. For example, a steady push horizontally gives you a constant a sub x. With drag, it usually varies with speed and time. Yeah. Hang on. It means the horizontal and vertical motions don't affect each other. Here, x double-dot equals zero, y double-dot equals minus g, and x never shows up in y's equation or vice versa. So, they're only linked by time, not by forces between them. If you added drag, for instance, the equations could become coupled. Yeah. Go on Good question. No. With linear drag, they're still uncoupled. But with the more realistic quadratic drag, the drag depends on the total speed, and that ties the components together, so they're coupled. In that case, you usually have to solve them numerically. Yeah. Yup.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It never explicitly states that the notes neglect air resistance and that this assumption is why the displayed equations are uncoupled.",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 2.1,
+  "words": 57,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 88.5,
+  "tapeEnd": 202.8
+ }
+]

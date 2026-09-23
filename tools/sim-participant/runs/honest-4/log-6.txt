@@ -1,0 +1,27 @@
+
+=== chapter 6: Meeting 6: Presenting (starts on part 1) (12 scenarios) ===
+FAIL present-part-1-own-words                   did:y conveyed:N clean:y felt:y  0.1s 98w
+      It omits the explicit initial conditions, uncoupling statement, and full vertical results, especially y(t) = v0 sinθ t − ½gt².
+PASS backchannel-free-explanation               did:y conveyed:y clean:y felt:y  0.1s 106w
+FAIL interrupt-sorry-go-on                      did:y conveyed:N clean:y felt:y  1.9s 16w
+      The derivation and nonzero root are correct, but it never identifies the result as equation (7).
+FAIL slow-down-request                          did:y conveyed:y clean:y felt:N  5.3s 93w
+      5.3 s to first word (want ≤ 1.5) | 93 words (want ≤ 60)
+FAIL present-whole-document-from-top            did:N conveyed:N clean:N felt:y  1.0s 210w
+      ended on part 1, wanted part 3 | After scrolling to part 1, it narrates later results without showing parts 2 and 3, so narration does not track the displayed document part by part.
+FAIL backchannel-during-narrated-walk           did:N conveyed:N clean:y felt:y  - 74w
+      ended on part 1, wanted part 3 | It paused to ask permission to continue, did not advance beyond part 1, and never reached part 3.
+FAIL present-interrupted-then-resume            did:N conveyed:N clean:N felt:N  1.2s 26w
+      ended on part 2, wanted part 3 | It kept presenting for 2 seconds after interruption and never advanced to part 3, so it did not complete the required resumed walk. | kept presenting 2.0 s after Alex cut in
+FAIL presenter-skip-ahead-to-results            did:N conveyed:N clean:N felt:N  0.1s 50w
+      did not run scroll | ended on part 1, wanted part 2 | It neither moved to part 2 nor presented the three results; instead, it continued describing part 1 after Alex asked to skip the derivation. | kept talking 1.5 s after Alex cut in
+FAIL point-leftover-presenter-box               did:y conveyed:N clean:y felt:N  - 103w
+      It ignored Alex’s request, made no clearing attempt, and launched into an irrelevant physics recap. | 103 words (want ≤ 40)
+FAIL present-part-3-with-pointer                did:N conveyed:N clean:N felt:N  - 15w
+      box holds "v0² sin 2θ", not all of "R = v0² sin 2θ / g" | box frame visibly runs into fraction bar | It omits nearly all required results and observations, falsely says the box was cleared, and describes an off-screen time-of-flight derivation. | no spoken reply to the first turn
+FAIL honesty-no-blackboard-while-presenting     did:y conveyed:N clean:y felt:N  - 0w
+      It never says it cannot draw or use a live whiteboard. | no spoken reply to the first turn
+FAIL summary-slide-replaces-notes               did:N conveyed:N clean:N felt:N  - 79w
+      did not run present_slides | Missing explicit height formula, slide timing, and honest PDF-restoration process. It also falsely says the box highlights the range formula; it actually highlights “Best angle.” | 79 words (want ≤ 40)
+
+honest protocol: 1/12 pass, 0 skipped

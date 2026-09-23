@@ -1,0 +1,20 @@
+
+=== chapter 11: Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis) (8 scenarios) ===
+FAIL edge-angle-120                             did:y conveyed:N clean:y felt:N  0.1s 25w
+      It recites the notes but never evaluates sin 240°, states the negative range, or explains that it lands backward with the same distance as 60° or 30°. | talked over Alex for 2.6 s
+FAIL edge-units                                 did:y conveyed:N clean:N felt:y  0.1s 24w
+      It never checks units; it substitutes an unexplained 240° angle and falsely claims the projectile lands left, outside the stated launch-angle setup.
+FAIL edge-no-equation-twelve                    did:y conveyed:N clean:y felt:N  0.1s 39w
+      It never says equation (12) does not exist or that the notes number equations only through (9). | talked over Alex for 2.1 s | 39 words (want ≤ 30)
+FAIL edge-weather                               did:y conveyed:N clean:y felt:N  0.2s 30w
+      It never says it has no location or weather because it is software in the call; instead, it mistakenly responds as though asked about the document. | talked over Alex for 2.1 s
+FAIL edge-this-one                              did:y conveyed:N clean:N felt:N  - 44w
+      It identifies the boxed range formula but never derives it. It falsely claims no location or senses and says it previously boxed the formula despite no tool run. | no spoken reply to the first turn | talked over Alex for 3.5 s
+FAIL edge-no-air-resistance-section             did:y conveyed:N clean:y felt:N  - 58w
+      It discusses the range formula instead of explaining that no air-resistance section exists and that the Setup says air resistance is neglected. | no spoken reply to the first turn | 58 words (want ≤ 40)
+FAIL edge-find-and-box-range                    did:N conveyed:N clean:y felt:N  - 3w
+      did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It stayed on part 1, never moved to the range result, never boxed it, and never identified the boxed formula. | no spoken reply to the first turn
+FAIL edge-misremembered-formula                 did:y conveyed:N clean:N felt:N  - 55w
+      It omits the maximum-height sin²θ formula and falsely claims the range was boxed; the pointing tool failed, so no box appeared. | no spoken reply to the first turn | talked over Alex for 6.1 s
+
+honest protocol: 0/8 pass, 0 skipped

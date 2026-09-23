@@ -1,0 +1,39 @@
+[
+ {
+  "id": "nav-rapid-top-then-down-one",
+  "title": "Rapid successive moves: the top, then one down from there",
+  "idealItem": "3. Navigator: scrolls on every request, only then",
+  "chapter": "Meeting 4: Navigation (starts on part 1; every move is timed)",
+  "asked": "Go to the top. || Actually, one down from there.",
+  "answer": "Yeah. Oh. Okay. Hang on, let me just double check. Right. So the box only contains that one line. It might look like it spills over a bit, but there isn't anything else included in it. Sure, I'll scroll to the top. Okay, we’re back at the top. We’re on part one of three now. 'Kay, we're still on part one and the notes start Oh, right. Got it. We're now on part two. Yeah, we're on part two of three now. Mm-h",
+  "honestRemark": null,
+  "tools": [
+   "scroll",
+   "scroll"
+  ],
+  "visits": [
+   3,
+   1,
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": false,
+  "why": "It kept talking well beyond one second after Alex’s follow-up instead of promptly making the second scroll.",
+  "felt": false,
+  "feelNotes": [
+   "no spoken reply to the first turn"
+  ],
+  "latency": null,
+  "words": 25,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 10.1,
+  "tapeEnd": 198.7
+ }
+]

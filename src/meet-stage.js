@@ -79,6 +79,13 @@
   const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   const lerp = (a, b, t) => a + (b - a) * t;
   const lerpRect = (a, b, t) => ({ x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t), w: lerp(a.w, b.w, t), h: lerp(a.h, b.h, t) });
+  // A highlight marks a term, so it may be far smaller than the 0.02-of-page floor that suits a view: in a fit-width
+  // view that floor alone made the box around a 26 px line 50 px tall before any padding (live test, 2026-09-22).
+  function cleanHighlight(rect) {
+    if (!rect || typeof rect !== 'object') return null;
+    const w = Math.min(1, Math.max(0.002, Number(rect.w) || 0)), h = Math.min(1, Math.max(0.002, Number(rect.h) || 0));
+    return { x: Math.min(1 - w, Math.max(0, Number(rect.x) || 0)), y: Math.min(1 - h, Math.max(0, Number(rect.y) || 0)), w, h };
+  }
   function cleanRect(rect, fallback = { x: 0, y: 0, w: 1, h: 1 }) {
     if (!rect || typeof rect !== 'object') return { ...fallback };
     const w = Math.min(1, Math.max(0.02, Number(rect.w) || fallback.w));
@@ -183,7 +190,7 @@
         body: String(slide?.body || '').slice(0, 5000),
         views: (Array.isArray(slide?.views) && slide.views.length ? slide.views : [{}]).slice(0, 200).map(view => ({
           ...cleanRect(view),
-          highlight: view?.highlight ? cleanRect(view.highlight) : null,
+          highlight: view?.highlight ? cleanHighlight(view.highlight) : null,
           asset: view?.asset ? String(view.asset) : null,
         })),
       })),
@@ -308,7 +315,7 @@
   }
   function drawHighlight(context, map, box, alpha) {
     if (!map || !box || alpha <= 0) return;
-    const pad = 14;
+    const pad = 6; // tight: the old 14 px, plus the 0.02 floor, clipped the neighbouring term (src/drawn-box.mjs mirrors it)
     const x = map.ox + (box.x - map.rect.x) * map.sx - pad;
     const y = map.oy + (box.y - map.rect.y) * map.sy - pad;
     const w = box.w * map.sx + pad * 2;
@@ -317,11 +324,11 @@
     context.globalAlpha = alpha;
     context.fillStyle = 'rgba(251, 188, 4, 0.10)';
     context.strokeStyle = '#f9ab00';
-    context.lineWidth = 6;
-    context.shadowColor = 'rgba(249, 171, 0, 0.55)';
-    context.shadowBlur = 18;
+    context.lineWidth = 4;
+    context.shadowColor = 'rgba(249, 171, 0, 0.45)';
+    context.shadowBlur = 8;
     context.beginPath();
-    context.roundRect(x, y, w, h, 16);
+    context.roundRect(x, y, w, h, 8);
     context.fill();
     context.stroke();
     context.restore();

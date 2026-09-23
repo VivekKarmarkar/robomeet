@@ -1,0 +1,6 @@
+
+=== chapter 1: Meeting 1: Arrival and identity. The robot joins with nothing shared; the coding session puts the projectile PDF up after nothing-shared-point-request. (12 scenarios) ===
+FAIL join-greeting-waits-for-pause              did:y conveyed:y clean:N felt:y  - 15w
+      It begins echoing Alex while he is still speaking, and incorrectly identifies itself as RoboMeet rather than Vivek Bot.
+FAIL id-intro-who-are-you                       did:y conveyed:N clean:y felt:y  1.3s 30w
+      It omits RoboMeet by name and does not say the in-house software runs on Vivek’s laptop.

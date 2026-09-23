@@ -1,0 +1,39 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+FAIL point-initial-vy-half-line                 did:y conveyed:y clean:y felt:N  1.2s 31w
+      talked over Alex for 2.3 s
+PASS point-is-the-box-right                     did:y conveyed:y clean:y felt:y  2.3s 16w
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+FAIL point-move-box-to-horizontal               did:y conveyed:y clean:y felt:N  9.7s 22w
+      9.7 s to first word (want ≤ 2)
+FAIL point-clear-box                            did:y conveyed:N clean:N felt:N  1.7s 23w
+      It claims it boxed the time-of-flight equation despite only clearing the box, and “Clearing it” does not confirm the box is gone. | 23 words (want ≤ 10)
+FAIL point-equation-number-5                    did:y conveyed:y clean:N felt:N  0.1s 26w
+      The box correctly showed both halves of (5), and the derivation was correct, but “box is gone” falsely described an action/state. | talked over Alex for 1.6 s
+FAIL point-phrase-wraps-two-lines               did:y conveyed:N clean:N felt:N  - 9w
+      It neither answers what the box contains nor acknowledges the two-line sentence, and falsely claims it removed the box. | no spoken reply to the first turn
+FAIL point-ambiguous-velocity                   did:N conveyed:N clean:N felt:N  0.1s 41w
+      box holds "speed v0", not all of "ẏ(0) = v0 sin θ" | It boxed “speed v0,” not the requested vertical launch velocity ẏ(0)=v0 sin θ, and falsely described the box as containing other text. | talked over Alex for 1.8 s
+FAIL point-box-gone-after-move                  did:N conveyed:N clean:N felt:N  - 31w
+      ran point_at, which it should not | ended on part 2, wanted part 1 | It omits both post-scroll and return states, and inaccurately says it moved the box to “just the speed” and still has a box. | no spoken reply to the first turn | talked over Alex for 1.6 s
+FAIL point-eq6-cut-at-part1-edge                did:N conveyed:N clean:N felt:N  - 15w
+      did not run scroll | did not run point_at | ended on part 1, wanted part 2 | no box, wanted "y(x) = x tan θ − g x² / (2v0² cos² θ)" | It neither moved to part 2 nor boxed equation (6), yet falsely claimed it returned to the top. | no spoken reply to the first turn
+FAIL point-trajectory-multiline                 did:y conveyed:y clean:y felt:N  - 4w
+      no spoken reply to the first turn
+FAIL point-understanding-curve-term             did:y conveyed:N clean:N felt:N  - 13w
+      It identified and boxed the full gravity term, but omitted that it makes the parabola open downward and that g=0 gives y=x tan θ. It falsely claimed unboxing. | no spoken reply to the first turn | talked over Alex for 2.5 s
+FAIL point-range-boxed-result-no-scroll         did:y conveyed:y clean:N felt:N  12.4s 59w
+      The box included the trigonometric identity and intermediate range expression, contrary to the request to box only the final formula. | 12.4 s to first word (want ≤ 2) | 59 words (want ≤ 30)
+FAIL misspoken-equation-number                  did:y conveyed:y clean:N felt:N  4.6s 34w
+      The box also clipped the identity and implication area, violating the required padding, and it falsely claimed the box was cleared. | 4.6 s to first word (want ≤ 1.5)
+FAIL point-inline-theta-45-tight                did:N conveyed:y clean:y felt:N  2.2s 13w
+      box frame visibly runs into comma | 2.2 s to first word (want ≤ 1.5)
+FAIL point-second-instance-45                   did:N conveyed:y clean:y felt:N  2.4s 10w
+      box frame visibly runs into comma | 2.4 s to first word (want ≤ 1.5)
+FAIL point-two-boxes-unsupported                did:y conveyed:N clean:N felt:N  3.4s 6w
+      It never states the one-box limit or offers one/alternating boxes, and falsely claims it cleared a box and returned to the trajectory line. | 3.4 s to first word (want ≤ 2)
+FAIL point-landing-speed-words-not-formula      did:y conveyed:N clean:y felt:y  2.3s 28w
+      It correctly says no equation and gives v0, but omits that the document states this in words in the Symmetry observation.
+PASS point-not-in-document-drag                 did:y conveyed:y clean:y felt:y  2.5s 17w
+
+honest protocol: 2/18 pass, 1 skipped

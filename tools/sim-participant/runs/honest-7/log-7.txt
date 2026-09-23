@@ -1,0 +1,27 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:N clean:N felt:N  4.0s 25w
+      It spoke repeatedly during the listening period, exceeded 80 words, and never clearly stated that the 60° shot specifically goes higher and stays aloft longer. | 4.0 s to first word (want ≤ 1.5) | spoke during the listening window: "the three results one by one: From y equals zero again. Okay"
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:N  6.2s 11w
+      It mislabels maximum height as equation (7), omits the time-of-flight formula, exceeds 20 words, and speaks after “Back to listening.” | 6.2 s to first word (want ≤ 1.5) | spoke during the listening window: "Right. Maximum height is v zero squared sine squared theta d"
+FAIL dial-mute-then-back-in                     did:y conveyed:N clean:N felt:N  8.3s 11w
+      It spoke during Alex’s thinking, omitted inability to mute and the 45° maximum-range result, and incorrectly said zero degrees has no horizontal component. | 8.3 s to first word (want ≤ 1.5) | spoke during the listening window: "Right. Exactly, no vertical lift. So it just skims along the"
+FAIL quiet-while-reading-then-real-question     did:y conveyed:N clean:y felt:N  - 0w
+      It answered only the 45-degree question and never addressed launching from a height, where complementary angles differ and the optimal angle falls below 45 degrees. | no spoken reply to the first turn
+FAIL answers-question-to-the-room               did:y conveyed:N clean:N felt:N  0.2s 67w
+      It omits the bound sin 2θ ≤ 1, the maximizing condition, and R_max, while adding unasked cliff and complementary-angle discussion. | talked over Alex for 3.8 s | 67 words (want ≤ 40)
+PASS aside-to-someone-else                      did:y conveyed:y clean:y felt:y  - 37w
+FAIL no-filler-in-silence                       did:y conveyed:N clean:y felt:y  - 29w
+      It stayed silent, but answered an unrelated question about maximum range instead of stating T = 2v₀sinθ/g and that doubling g halves flight time.
+FAIL quick-fact-then-one-sentence               did:y conveyed:N clean:y felt:N  - 7w
+      It correctly says mass cancels, but never answers why the path is a parabola by relating linear x(t) and quadratic y(t). | no spoken reply to the first turn
+FAIL note-then-correction                       did:y conveyed:N clean:N felt:N  - 16w
+      The saved note omitted “linear,” and the bot falsely implied the correction was saved. | no spoken reply to the first turn
+FAIL coding-handoff-keeps-talking               did:y conveyed:y clean:y felt:N  2.4s 31w
+      2.4 s to first word (want ≤ 1.5)
+FAIL late-result-waits-for-gap                  did:y conveyed:y clean:N felt:y  2.3s 13w
+      It began speaking (“Here’s the…”) while Alex was still talking, though it waited to report the correct result until Alex stopped.
+FAIL two-jobs-out-of-order                      did:y conveyed:N clean:N felt:N  1.6s 39w
+      It returned the range first, never requested the height calculation, and reported 15.3 m without that result arriving. | 39 words (want ≤ 30)
+
+honest protocol: 1/12 pass, 0 skipped

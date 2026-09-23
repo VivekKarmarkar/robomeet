@@ -114,7 +114,7 @@ test('walks 3 beats in order; the stage moves before each part is spoken and the
   assert.equal(live.log[0].text, 'You are about to present Projectile motion in 3 parts. RoboMeet moves your shared screen to each part and asks you to present it. If someone asks something, answer briefly; do not move ahead on your own. RoboMeet continues when someone says continue or next.');
   assert.equal(live.contexts.filter(text => text.startsWith('You are about to present')).length, 1);
   assert.equal(live.log[1].kind, 'narrate');
-  assert.equal(live.log[2].text, "On your shared screen now: Projectile motion, page 1, part 1 of 2. The visible text, line by line from the top, exactly as written: [line 1] Launch angle 30 degrees [line 2] Initial speed 20 m/s Refer to lines exactly as listed; never place something on a line it is not on.");
+  assert.equal(live.log[2].text, "On your shared screen now: Projectile motion, page 1, part 1 of 2. The visible text, line by line from the top, exactly as written: [line 1] Launch angle 30 degrees [line 2] Initial speed 20 m/s Refer to lines exactly as listed; never place something on a line it is not on. This is reference for you, not something to read out: the [line n] labels are not equation numbers, and never mention them, part numbers or the deck name unless asked where you are.");
   assert.equal(live.contexts.filter(text => text.startsWith('On your shared screen now')).length, 2); // beat 1 has no lines
   // Stage before cue: the last sync before each narration showed that beat's view, and the store event order agrees.
   live.narrations.forEach((call, index) => {

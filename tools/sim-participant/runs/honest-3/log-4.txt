@@ -1,0 +1,5 @@
+
+=== chapter 4: Meeting 4: Navigation (starts on part 1; every move is timed) (16 scenarios) ===
+PASS nav-rapid-top-then-down-one                did:y conveyed:y clean:y felt:y  0.1s 6w
+FAIL nav-scroll-without-monologue               did:y conveyed:y clean:N felt:N  3.3s 12w
+      It correctly ends by confirming the middle part, but falsely says it is “back to the top part.” | 3.3 s to first word (want ≤ 1) | 12 words (want ≤ 8)

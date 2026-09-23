@@ -15,6 +15,8 @@ import { createStageSync } from './stage-sync.mjs'; // stage: the shared picture
 const mediaScript = fileURLToPath(new URL('./meet-media.js', import.meta.url));
 const liveScript = fileURLToPath(new URL('./meet-live.js', import.meta.url)); // single-hop
 const stageScript = fileURLToPath(new URL('./meet-stage.js', import.meta.url)); // stage: docs/stage-design.md
+const faceScript = fileURLToPath(new URL('./face.js', import.meta.url)); // face: ROBOMEET_FACE=1
+const faceHookScript = fileURLToPath(new URL('./meet-face-hook.js', import.meta.url)); // face: after meet-live.js
 const publicDir = fileURLToPath(new URL('../public', import.meta.url)); // stage: slide pictures
 const dataDir = process.env.ROBO_DATA_DIR || fileURLToPath(new URL('../data', import.meta.url)); // single-hop: control token
 const pause = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -130,7 +132,7 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
       ownedApp?.evaluate(async () => { window.__robomeetAppBridge?.close(); await window.robotApp?.stopVoice?.(); }),
       // single-hop: RoboMeetLive restores the globals it replaced before RoboMeetMedia restores the natives.
       // stage: RoboMeetStage restores the getDisplayMedia it wrapped before the older layers restore theirs.
-      ownedMeet?.evaluate(() => { window.RoboMeetStage?.close(); window.RoboMeetLive?.close(); window.RoboMeetMedia?.close(); }),
+      ownedMeet?.evaluate(() => { window.RoboMeetFaceHook?.close(); window.RoboMeetStage?.close(); window.RoboMeetLive?.close(); window.RoboMeetMedia?.close(); }), // face: first, the newest layer unwinds first
     ]);
     // Persistent contexts own their browser process; closing them also flushes profile state.
     if (ownedContext) await ownedContext.close();
@@ -301,6 +303,11 @@ export function createSingleHopWorker({ baseUrl, getState = () => ({}), onState 
       await meetingPage.addInitScript({ path: mediaScript });
       await meetingPage.addInitScript({ path: liveScript }); // single-hop: after meet-media.js, never before
       await meetingPage.addInitScript({ path: stageScript }); // stage: last, it wraps meet-media's getDisplayMedia
+      if (process.env.ROBOMEET_FACE === '1') { // face: an animated face on the camera, moved by the voice Meet sends
+        await meetingPage.addInitScript(cfg => { window.__robomeetFaceConfig = cfg; }, { character: process.env.ROBOMEET_FACE_CHARACTER || 'robot', name: process.env.ROBOMEET_FACE_NAME || undefined });
+        await meetingPage.addInitScript({ path: faceScript });
+        await meetingPage.addInitScript({ path: faceHookScript }); // wraps meet-live's getUserMedia, so it goes after it
+      }
       await appPage.exposeFunction('__robomeetSignal', async item => {
         if (run === generation && meetingPage) await meetingPage.evaluate(item => window.RoboMeetMedia?.addCandidate(item), item).catch(() => {});
       });

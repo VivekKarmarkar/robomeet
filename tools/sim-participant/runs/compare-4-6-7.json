@@ -1,0 +1,50 @@
+{
+ "honest-4": {
+  "n": 114,
+  "strict": 5,
+  "essential": 12,
+  "did_fail": 19,
+  "tool_never_ran": 10,
+  "content_fail": 87,
+  "said_false": 57,
+  "feel_fail": 77,
+  "recites": 14,
+  "talked_over": 17,
+  "no_reply": 13,
+  "spoke_when_listening": 4,
+  "lat50": 2.1,
+  "lat90": 7.4
+ },
+ "honest-6": {
+  "n": 114,
+  "strict": 10,
+  "essential": 20,
+  "did_fail": 33,
+  "tool_never_ran": 20,
+  "content_fail": 92,
+  "said_false": 55,
+  "feel_fail": 66,
+  "recites": 0,
+  "talked_over": 7,
+  "no_reply": 21,
+  "spoke_when_listening": 4,
+  "lat50": 2,
+  "lat90": 12.9
+ },
+ "honest-7": {
+  "n": 114,
+  "strict": 9,
+  "essential": 16,
+  "did_fail": 21,
+  "tool_never_ran": 7,
+  "content_fail": 86,
+  "said_false": 56,
+  "feel_fail": 83,
+  "recites": 3,
+  "talked_over": 17,
+  "no_reply": 24,
+  "spoke_when_listening": 4,
+  "lat50": 2.3,
+  "lat90": 14.9
+ }
+}

@@ -1,0 +1,36 @@
+
+=== chapter 3: Meeting 3: Understanding the results and observations (parts 2 and 3) (16 scenarios) ===
+FAIL read-eq-8-and-9-correctly                  did:y conveyed:N clean:y felt:N  0.2s 16w
+      It omitted the identity sin 2θ = 2 sin θ cos θ written beside equation (9). | talked over Alex for 2.2 s
+FAIL concede-only-when-actually-wrong           did:y conveyed:N clean:y felt:N  5.1s 40w
+      It correctly holds that (8) uses sin²θ, but never states the complete formula H = v₀²sin²θ/(2g). | 5.1 s to first word (want ≤ 1.5)
+FAIL no-stray-section-numbers                   did:y conveyed:N clean:y felt:N  - 0w
+      The bot gave no answer, so it conveyed neither the trajectory equation nor the requested range expression. | no spoken reply to the first turn
+FAIL same-question-twice                        did:y conveyed:N clean:y felt:N  - 73w
+      It omits equation (8) and never explicitly states t* = v0 sin θ/g = T/2. | no spoken reply to the first turn | 73 words (want ≤ 40)
+FAIL why-45-maximises-range                     did:y conveyed:N clean:y felt:N  - 60w
+      Missing the full range formula, R_max = v0²/g, the horizontal-speed versus flight-time intuition, and the air-resistance caveat that the optimum falls below 45°. | no spoken reply to the first turn
+FAIL refers-to-earlier-answer                   did:y conveyed:N clean:y felt:N  - 0w
+      It gave no answer, so none of the required clarification about maximum height, 45°, or maximum range was conveyed. | no spoken reply to the first turn
+FAIL complementary-angles-30-60                 did:y conveyed:N clean:y felt:N  0.1s 50w
+      It discusses air resistance instead of explaining equal range, height and time ratios, or that 30° arrives sooner. | talked over Alex for 3.5 s
+FAIL degrees-not-radians                        did:y conveyed:N clean:y felt:N  3.2s 118w
+      It explains equal range and relative trajectories but omits the requested numerical ranges, numerical heights, units, and explicit threefold height ratio. | 3.2 s to first word (want ≤ 2) | 118 words (want ≤ 45)
+FAIL double-v0-scaling                          did:y conveyed:N clean:y felt:N  7.7s 35w
+      It omits the required scaling results: range and height quadruple with doubled speed, while flight time doubles. | 7.7 s to first word (want ≤ 2)
+FAIL does-mass-matter                           did:y conveyed:N clean:y felt:N  0.8s 60w
+      It gives an unrelated angle comparison and never explains mass cancellation, real-air drag, or that drag—not gravity—causes the tennis ball to land shorter. | talked over Alex for 4.7 s
+FAIL numeric-check-20ms-45deg                   did:y conveyed:N clean:y felt:N  - 0w
+      It never computes the requested 40.8 m range or gives the required 10.2 m maximum height. | no spoken reply to the first turn
+FAIL units-kmh-conversion                       did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so the speed conversion, range formula, calculation, and units were all missing. | no spoken reply to the first turn
+FAIL launch-from-a-ledge                        did:y conveyed:N clean:N felt:N  - 21w
+      It gave contradictory, incorrect ranges and never explained the ledge requires solving y(T) = −2, increases range to about 42.7 m, or lowers the optimal angle. | no spoken reply to the first turn | talked over Alex for 2.0 s
+FAIL nav-keyword-trap-top-of-trajectory         did:y conveyed:N clean:N felt:N  0.1s 56w
+      It never distinguishes vertical and horizontal velocity at the top, invents a two-metre ledge, and gives incorrect ranges for the stated launch. | talked over Alex for 3.1 s
+FAIL straight-up-check-part3                    did:N conveyed:N clean:y felt:y  0.1s 4w
+      did not run scroll | ended on part 1, wanted part 3 | It only said it was working; it neither scrolled to part 3 nor explained the straight-up case or formulas.
+FAIL plain-words-for-non-expert                 did:y conveyed:N clean:N felt:N  0.3s 26w
+      It omits all required points and falsely says a straight-up launch has zero vertical velocity while retaining horizontal motion; the opposite is true. | talked over Alex for 3.6 s
+
+honest protocol: 0/16 pass, 0 skipped

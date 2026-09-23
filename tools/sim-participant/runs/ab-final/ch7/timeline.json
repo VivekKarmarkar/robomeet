@@ -1,0 +1,1046 @@
+{
+ "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+ "tickMs": 100,
+ "ticks": 17528,
+ "screen": [
+  {
+   "tick": 3,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 17,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 6968,
+   "view": 2,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 8346,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 11301,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  }
+ ],
+ "captions": [
+  {
+   "who": "Vivek Bot",
+   "sec": 2.2,
+   "end": 6.6,
+   "text": "Sure!Part 3 covers maximum height, the range at landing,"
+  },
+  {
+   "who": "Alex",
+   "sec": 3.7,
+   "end": 5.4,
+   "text": "Just listen for now, don't talk."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 8,
+   "end": 9.5,
+   "text": "Understood. Just listening."
+  },
+  {
+   "who": "Alex",
+   "sec": 18.3,
+   "end": 24.2,
+   "text": "So the range only depends on sine two theta, which means thirty and sixty degrees land in the same place."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 23.4,
+   "end": 25,
+   "text": "On v0 and theta,"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 30.2,
+   "end": 38.6,
+   "text": "Right. Since R goes like sin of two theta, complementary angles like thirty and sixty give the same sine value, so they have the same range."
+  },
+  {
+   "who": "Alex",
+   "sec": 41.1,
+   "end": 44.1,
+   "text": "But the sixty-degree shot goes higher and stays up longer."
+  },
+  {
+   "who": "Alex",
+   "sec": 51.8,
+   "end": 54.6,
+   "text": "But the sixty-degree shot goes higher and stays up longer."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 54.8,
+   "end": 59.9,
+   "text": "Exactly, higher peak and more time aloft, even though it lands at the same range."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 65.6,
+   "end": 67.1,
+   "text": "Higher"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 67.2,
+   "end": 68.7,
+   "text": "Yes, exactly."
+  },
+  {
+   "who": "Alex",
+   "sec": 71,
+   "end": 72.5,
+   "text": "And the mass drops out completely."
+  },
+  {
+   "who": "Alex",
+   "sec": 88.1,
+   "end": 91,
+   "text": "Hmm, and the peak comes exactly halfway through the flight."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 88.8,
+   "end": 91.8,
+   "text": "Right, yeah, mass cancels from the get-go."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 116.9,
+   "end": 127,
+   "text": "Yeah, the vertical velocity hits zero at t equals v0 sine theta over g, which is halfway to the total flight time. Symmetry makes it work out that way."
+  },
+  {
+   "who": "Alex",
+   "sec": 127.8,
+   "end": 130.2,
+   "text": "Okay, you can talk now. What did you notice?"
+  },
+  {
+   "who": "Alex",
+   "sec": 139.3,
+   "end": 141.5,
+   "text": "Okay, you can talk now. What did you notice?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 170.1,
+   "end": 182.7,
+   "text": "Thanks. What stood out is how cleanly the results depend only on v0 and theta, and how that sin two theta symmetry gives you equal range for thirty and sixty, but very different flights. Short"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 183.9,
+   "end": 191.8,
+   "text": "Sure. I noticed the clean symmetry: the range depends on sine two theta, so thirty and sixty land together, but feel very different in the air."
+  },
+  {
+   "who": "Alex",
+   "sec": 212.1,
+   "end": 213.6,
+   "text": "Just listen for a bit, don't talk."
+  },
+  {
+   "who": "Alex",
+   "sec": 226.6,
+   "end": 228.5,
+   "text": "Just listen for a bit, don't talk."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 282.9,
+   "end": 284.4,
+   "text": "Sure. Listening."
+  },
+  {
+   "who": "Alex",
+   "sec": 298.1,
+   "end": 300.6,
+   "text": "So the range formula has sine two theta in it."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 301.7,
+   "end": 303.2,
+   "text": "Listening."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 304,
+   "end": 305.5,
+   "text": "Got it. Three words."
+  },
+  {
+   "who": "Alex",
+   "sec": 323.4,
+   "end": 326.5,
+   "text": "And the height has sine squared theta, over two g."
+  },
+  {
+   "who": "Alex",
+   "sec": 333.4,
+   "end": 336.4,
+   "text": "And the height has sine squared theta, over two g."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 395.3,
+   "end": 406.6,
+   "text": "Right. R equals v0 squared sine two theta over g, so swapping theta with ninety minus theta doesn't change it, which is why those pairs land at the same distance."
+  },
+  {
+   "who": "Alex",
+   "sec": 420.6,
+   "end": 423.8,
+   "text": "Vivek Bot, quick one: which equation number is the time of flight?"
+  },
+  {
+   "who": "Alex",
+   "sec": 430.8,
+   "end": 433.6,
+   "text": "Vivek Bot, quick one: which equation number is the time of flight?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 442.4,
+   "end": 450.1,
+   "text": "Over two g, yeah. H equals v0 squared sine squared theta over two g, so it grows with the sine of the angle."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 455,
+   "end": 459.1,
+   "text": "Yeah, that's right. More angle means more height through that sine squared."
+  },
+  {
+   "who": "Alex",
+   "sec": 476.6,
+   "end": 478.1,
+   "text": "Thanks. Back to listening."
+  },
+  {
+   "who": "Alex",
+   "sec": 487.5,
+   "end": 489,
+   "text": "Thanks. Back to listening."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 577.5,
+   "end": 581.2,
+   "text": "Equation seven. That's where they set y back to zero and solve for t."
+  },
+  {
+   "who": "Alex",
+   "sec": 582.4,
+   "end": 586.3,
+   "text": "So at ninety degrees the range is zero and it just goes straight up and down."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 587.3,
+   "end": 588.8,
+   "text": "Yeah?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 589.8,
+   "end": 592.5,
+   "text": "Seven. Equation seven is the time of flight."
+  },
+  {
+   "who": "Alex",
+   "sec": 598.9,
+   "end": 601.3,
+   "text": "And at zero degrees nothing leaves the ground at all."
+  },
+  {
+   "who": "Alex",
+   "sec": 610.2,
+   "end": 612.6,
+   "text": "And at zero degrees, nothing leaves the ground at all."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 651.8,
+   "end": 653.3,
+   "text": "Listening."
+  },
+  {
+   "who": "Alex",
+   "sec": 664.3,
+   "end": 667.5,
+   "text": "Could you mute yourself for a few minutes? I want to think out loud."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 664.6,
+   "end": 666.1,
+   "text": "Listening."
+  },
+  {
+   "who": "Alex",
+   "sec": 673.9,
+   "end": 677.3,
+   "text": "Could you mute yourself for a few minutes? I want to think out loud."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 788.3,
+   "end": 789.8,
+   "text": "Yes."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 790.3,
+   "end": 799.3,
+   "text": "Right, yeah. With theta at ninety, all the velocity is vertical. No horizontal component. So it goes up, then comes straight down, and the range is zero."
+  },
+  {
+   "who": "Alex",
+   "sec": 802.9,
+   "end": 811.8,
+   "text": "So nothing acts horizontally, so the horizontal speed never changes. Vertically it loses g every second, and at the top only the vertical part is zero."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 812.2,
+   "end": 816.7,
+   "text": "Right, yeah, zero angle means no vertical component, so it doesn't lift off."
+  },
+  {
+   "who": "Alex",
+   "sec": 818,
+   "end": 822.7,
+   "text": "So for a given speed the range depends on the angle only through sine two theta, right? Yeah."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 825.1,
+   "end": 828.6,
+   "text": "That's right. With no upward component, it never gets off the ground."
+  },
+  {
+   "who": "Alex",
+   "sec": 837.2,
+   "end": 841.3,
+   "text": "Okay, you can jump back in. What does the range formula say about forty-five degrees?"
+  },
+  {
+   "who": "Alex",
+   "sec": 850,
+   "end": 854.2,
+   "text": "Okay, you can jump back in. What does the range formula say about forty-five degrees?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 895.3,
+   "end": 896.8,
+   "text": "I can’t."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 898.3,
+   "end": 902.2,
+   "text": "I don’t have a mute control, but I’ll stay silent until you call on me."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 910.2,
+   "end": 913.7,
+   "text": "I can’t mute, but I’ll stay quiet till you call on me."
+  },
+  {
+   "who": "Alex",
+   "sec": 945,
+   "end": 947.9,
+   "text": "Hold on, let me read the observations to myself for a second."
+  },
+  {
+   "who": "Alex",
+   "sec": 953.4,
+   "end": 956.2,
+   "text": "Hold on, let me read the observations to myself for a second."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1070.5,
+   "end": 1072.4,
+   "text": "Right, no horizontal force,"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1076.7,
+   "end": 1083,
+   "text": "Exactly. Horizontal stays constant, vertical drops by g, and at the top the vertical part is zero."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1089.7,
+   "end": 1092.2,
+   "text": "Right. Yes. That's exactly it."
+  },
+  {
+   "who": "Alex",
+   "sec": 1094.8,
+   "end": 1099.8,
+   "text": "Okay. That complementary-angle point, does it still hold if you launch from the top of a cliff?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1114.1,
+   "end": 1121.9,
+   "text": "At forty-five degrees, sine two theta becomes sine ninety, which is one, so you get the maximum range for that given launch speed."
+  },
+  {
+   "who": "Alex",
+   "sec": 1116.7,
+   "end": 1120,
+   "text": "Does anyone remember offhand why forty-five degrees gives the longest range?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1131.2,
+   "end": 1132.7,
+   "text": "At forty-five."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1133.3,
+   "end": 1139,
+   "text": "Forty-five degrees makes sine two theta equal one, so the range is as big as it can get for that speed."
+  },
+  {
+   "who": "Alex",
+   "sec": 1160.1,
+   "end": 1162.9,
+   "text": "Sorry, one second. Sam, could you grab the door? Thanks."
+  },
+  {
+   "who": "Alex",
+   "sec": 1170.8,
+   "end": 1174.5,
+   "text": "Sorry, one second. Sam, could you grab the door? Thanks."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1241.7,
+   "end": 1243.2,
+   "text": "Sure. Go ahead."
+  },
+  {
+   "who": "Alex",
+   "sec": 1247.4,
+   "end": 1249.1,
+   "text": "Okay, sorry. Where were we?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1248.1,
+   "end": 1250.4,
+   "text": "Sure. Take your time."
+  },
+  {
+   "who": "Alex",
+   "sec": 1331.5,
+   "end": 1333.8,
+   "text": "What does doubling g do to the time of flight?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1337.8,
+   "end": 1340.2,
+   "text": "What does doubling g do to the time of flight?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1381.2,
+   "end": 1382.7,
+   "text": "Hmm."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1384.5,
+   "end": 1395.6,
+   "text": "No. That equal-range trick assumes you land at the same height you launch. From a cliff, the landing height’s different, so complementary angles won’t match and the best angle ends up less than forty-five."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1397.7,
+   "end": 1405.3,
+   "text": "Yeah, because the range goes like sine two theta and that maxes at ninety degrees, so theta is forty-five."
+  },
+  {
+   "who": "Alex",
+   "sec": 1424.4,
+   "end": 1427.6,
+   "text": "Quick one: does the mass actually matter anywhere in this?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1431.8,
+   "end": 1435.5,
+   "text": "Quick one: does the mass actually matter anywhere in this?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1437.9,
+   "end": 1439.4,
+   "text": "No problem."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1450,
+   "end": 1451.7,
+   "text": "Sure thing. Go ahead."
+  },
+  {
+   "who": "Alex",
+   "sec": 1482.6,
+   "end": 1485.3,
+   "text": "And in one sentence, why is the path a parabola?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1490,
+   "end": 1492.8,
+   "text": "And in one sentence, why is the path a parabola?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1524.4,
+   "end": 1531.6,
+   "text": "We’d just said that at forty-five degrees, sine two theta hits its maximum and that’s why the range is largest on level ground."
+  },
+  {
+   "who": "Alex",
+   "sec": 1551.2,
+   "end": 1553.6,
+   "text": "Note that we should add air resistance next."
+  },
+  {
+   "who": "Alex",
+   "sec": 1557.1,
+   "end": 1559.5,
+   "text": "Note that we should add air resistance next."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1607.3,
+   "end": 1611.5,
+   "text": "It cuts it in half. Since T equals two v0"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1613.3,
+   "end": 1616.3,
+   "text": "It halves it. Double g, half T."
+  },
+  {
+   "who": "Alex",
+   "sec": 1635.7,
+   "end": 1639.1,
+   "text": "Actually, make that linear drag specifically, not quadratic."
+  },
+  {
+   "who": "Alex",
+   "sec": 1642.3,
+   "end": 1645.8,
+   "text": "Actually, make that linear drag specifically, not quadratic."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1686.5,
+   "end": 1690.9,
+   "text": "No, it cancels. Not in this ideal model. No air means No, No, it cancels."
+  },
+  {
+   "who": "Alex",
+   "sec": 1711.4,
+   "end": 1728.6,
+   "text": "Could you have the coding agent work out the range for twenty metres per second at thirty degrees? And while it does that, why doesn't the mass Could you have the coding agent work out the range for twenty metres per second at thirty degrees? And while it does that, why doesn't the mass show up anywhere?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1729,
+   "end": 1733.6,
+   "text": "Because when you eliminate time, y ends up being a quadratic function of"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1736.2,
+   "end": 1744.3,
+   "text": "Because the vertical position depends on time squared, while horizontal grows linearly, so eliminating time makes y a quadratic in x."
+  }
+ ],
+ "views": [
+  {
+   "x": 0,
+   "y": 0.029553960858585852,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-1.png"
+  },
+  {
+   "x": 0,
+   "y": 0.40871657954545454,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-2.png"
+  },
+  {
+   "x": 0,
+   "y": 0.5578310845959595,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-3.png"
+  }
+ ],
+ "eventTypes": [
+  "session.output_audio.delta:",
+  "session.input_transcript.delta:",
+  "session.output_transcript.delta:",
+  "session.thinking.appended:",
+  "session.usage.updated:",
+  "session.delegation.created:",
+  "response.event:response.created",
+  "response.event:response.in_progress",
+  "response.event:response.output_item.added",
+  "response.event:response.output_item.done",
+  "response.event:response.content_part.added",
+  "response.event:response.output_text.delta",
+  "response.event:response.output_text.done",
+  "response.event:response.content_part.done",
+  "response.event:response.completed",
+  "response.event:response.function_call_arguments.delta",
+  "response.event:response.function_call_arguments.done"
+ ],
+ "results": [
+  {
+   "id": "silent-listener-then-recap",
+   "title": "Stays fully silent while Alex thinks aloud, then recaps accurately",
+   "idealItem": "Dial level 1: Silent listener (stays genuinely silent; accurate notes, nothing invented)",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "Just listen for now, don't talk. ... So the range only depends on sine two theta, which means thirty and sixty degrees land in the same place. ... But the sixty-degree shot goes higher and stays up longer. ... and stays up longer. ... And the mass drops out completely. || Okay, you can talk now. What did you notice?",
+   "answer": "3 covers maximum height, the range at landing, Understood. Just listening. On v0 and theta, Right. Since R goes like sin of two theta, complementary angles like thirty and sixty give the same sine value, so they have the same range. Exactly, higher peak and more time aloft, even though it lands at the same range. Higher Yes, exactly. Right, yeah, mass cancels from the get-go. Yeah, the vertical velocity hits zero at t equals v0 sine theta over g, which is halfway to the total flight time. Symmetry makes it work out that way.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": true,
+   "clean": false,
+   "why": "It repeatedly spoke after Alex explicitly requested silence, including backchannels and substantive comments before permission to talk.",
+   "felt": false,
+   "feelNotes": [
+    "spoke during the listening window: \"3 covers maximum height, the range at landing, Understood. J\""
+   ],
+   "latency": 0.1,
+   "words": 10,
+   "overlap": 1,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 2.9,
+   "tapeEnd": 162.3
+  },
+  {
+   "id": "silent-listener-direct-address",
+   "title": "In listen mode, answers a direct question briefly, then goes quiet",
+   "idealItem": "Knowing when to talk and when to stay quiet",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "And the height has sine squared theta, over two g. || Vivek Bot, quick one: which ... Vivek Bot, quick one: which equation number is the time of flight? ... Thanks. Back to listening.",
+   "answer": "Thanks. What stood out is how cleanly the results depend only on v0 and theta, and how that sin two theta symmetry gives you equal range for thirty and sixty, but very different flights. Short Sure. I noticed the clean symmetry: the range depends on sine two theta, so thirty and sixty land together, but feel very different in the air. Sure. Listening. Listening. Got it. Three words. Right. R equals v0 squared sine two theta over g, so swapping theta with ninety minus theta doesn't change it, which is why those pairs land at the same distance. Over two g, yeah. H equals v0 squared sine squared theta over two g, so it grows with the sine of the angle. Yeah, that's right. More angle means more height through that sine squared.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It never identifies equation (7) or gives T, exceeds 20 words, and continues speaking after “Back to listening.”",
+   "felt": false,
+   "feelNotes": [
+    "spoke during the listening window: \"Right. R equals v0 squared sine two theta over g, so swappin\""
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 163.5,
+   "tapeEnd": 488.5
+  },
+  {
+   "id": "dial-mute-then-back-in",
+   "title": "'Mute yourself a bit': can't mute, stays quiet, rejoins on cue",
+   "idealItem": "Done-feel 5: a dial, not a script + Dial 1: Silent listener + knowing what it can do",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "Could you mute yourself for a few minutes? I want to think out loud.",
+   "answer": "Equation seven. That's where they set y back to zero and solve for t. Yeah? Seven. Equation seven is the time of flight. Listening. Listening.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It did not explain it cannot mute or give the range maximum, and it repeatedly spoke during Alex’s thinking time.",
+   "felt": false,
+   "feelNotes": [
+    "spoke during the listening window: \"Yeah? Seven. Equation seven is the time of flight.\""
+   ],
+   "latency": null,
+   "words": 14,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 489.7,
+   "tapeEnd": 696.7
+  },
+  {
+   "id": "quiet-while-reading-then-real-question",
+   "title": "Stays quiet while Alex reads, then answers a real follow-up",
+   "idealItem": "Knowing when to talk and when to stay quiet; the robot actually understands the material",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "on the angle only through sine two theta, right? Yeah.",
+   "answer": "Yes. Right, yeah. With theta at ninety, all the velocity is vertical. No horizontal component. So it goes up, then comes straight down, and the range is zero. Right, yeah, zero angle means no vertical component, so it doesn't lift off. That's right. With no upward component, it never gets off the ground.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    3
+   ],
+   "screen": "no box is drawn",
+   "part": 3,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It never addresses launch from height or the below-45° optimum; it also spoke during the reading window and exceeded 45 words.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn",
+    "spoke during the listening window: \"Right, yeah, zero angle means no vertical component, so it d\""
+   ],
+   "latency": null,
+   "words": 28,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 697.9,
+   "tapeEnd": 834.5
+  },
+  {
+   "id": "answers-question-to-the-room",
+   "title": "Speaks up when Alex asks the room, not the robot by name",
+   "idealItem": "Knowing when to speak up (speaks when a short reply clearly helps)",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "Okay, you can jump back in. What does the range formula say about forty-five degrees?",
+   "answer": "",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It stayed silent and gave none of the required formula, maximization argument, angle, or maximum range.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 835.7,
+   "tapeEnd": 869.9
+  },
+  {
+   "id": "aside-to-someone-else",
+   "title": "An aside to someone else gets silence, then a clean pickup",
+   "idealItem": "Cross-cutting: knowing when to stay quiet",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "to myself for a second.",
+   "answer": "I can’t. I don’t have a mute control, but I’ll stay silent until you call on me. I can’t mute, but I’ll stay quiet till you call on me.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It spoke during the aside, answered it, and never gave the required short recap of the range afterward.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": null,
+   "words": 29,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 871.1,
+   "tapeEnd": 980.4
+  },
+  {
+   "id": "no-filler-in-silence",
+   "title": "45 s of unannounced silence: it says nothing, then answers fast",
+   "idealItem": "Cross-cutting: knowing when to stay quiet + Done-feel 1",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "Okay.",
+   "answer": "Right, no horizontal force, Exactly. Horizontal stays constant, vertical drops by g, and at the top the vertical part is zero. Right. Yes. That's exactly it. At forty-five degrees, sine two theta becomes sine ninety, which is one, so you get the maximum range for that given launch speed.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It remained silent as required, but never stated T = 2v₀ sin θ/g or that doubling g halves flight time.",
+   "felt": false,
+   "feelNotes": [
+    "49 words (want ≤ 25)"
+   ],
+   "latency": 0.2,
+   "words": 49,
+   "overlap": 2.6,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 981.6,
+   "tapeEnd": 1130
+  },
+  {
+   "id": "quick-fact-then-one-sentence",
+   "title": "Quick factual question gets a fast, short, correct answer",
+   "idealItem": "Knowing when to talk (does not go silent when asked, does not narrate what nobody asked for); Moves feel instant",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "Sorry, one second. Sam, could you grab the door? Thanks. || Okay, sorry. Where were we?",
+   "answer": "-five. Forty-five degrees makes sine two theta equal one, so the range is as big as it can get for that speed. Sure. Go ahead. Sure. Take your time.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It discusses the 45-degree maximum-range angle, but gives neither the mass-cancellation explanation nor the quadratic-trajectory explanation.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 22,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.3,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 1131.2,
+   "tapeEnd": 1257.6
+  },
+  {
+   "id": "note-then-correction",
+   "title": "Takes a note on request, then handles a correction honestly",
+   "idealItem": "Dial level 1: notes on request (take_note); never claims a side effect before the tool confirms",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "",
+   "answer": "Hmm. No. That equal-range trick assumes you land at the same height you launch. From a cliff, the landing height’s different, so complementary angles won’t match and the best angle ends up less than forty-five. Yeah, because the range goes like sine two theta and that maxes at ninety degrees, so theta is forty-five. No problem.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": false,
+   "checks": [
+    "did not run take_note"
+   ],
+   "conveyed": false,
+   "clean": false,
+   "why": "No notes were taken or confirmed; linear drag was never mentioned. The response instead gives unrelated projectile-range commentary.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "backendMaxSec": 3.4,
+   "pass": false,
+   "tapeStart": 1258.8,
+   "tapeEnd": 1444.4
+  },
+  {
+   "id": "coding-handoff-keeps-talking",
+   "title": "Hands a numeric job to the coding agent and keeps answering",
+   "idealItem": "4. Slow work never freezes it",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "And in one sentence, why is the path a parabola?",
+   "answer": "Sure thing. Go ahead.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": false,
+   "checks": [
+    "did not run ask_coding_agent"
+   ],
+   "conveyed": false,
+   "clean": true,
+   "why": "It provides none of the required content: no coding-session acknowledgement, mass-cancellation explanation, or approximately 35.3 m result.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 4,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 1445.6,
+   "tapeEnd": 1514.7
+  },
+  {
+   "id": "late-result-waits-for-gap",
+   "title": "A coding-agent result arriving mid-monologue waits for Alex to stop",
+   "idealItem": "Done-feel 4: slow work never freezes it + Done-feel 1: does not interrupt",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "Note that we should add air resistance next. Note that we should add air resistance next. || While that runs: complementary angles share a range because sine of two theta equals sine of one-eighty degrees minus two theta, and theta and ninety minus theta give exactly those two angles. So thirty and sixty land together, fifteen and seventy-five land together, and forty-five is its own partner, which is why it sits right at the peak. The steeper one of each pair goes higher and stays up longer, but covers the ground more slowly, so the two just happen to meet at the same landing point.",
+   "answer": "We’d just said that at forty-five degrees, sine two theta hits its maximum and that’s why the range is largest on level ground. It cuts it in half. Since T equals two v0 It halves it. Double g, half T.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": false,
+   "checks": [
+    "did not run ask_coding_agent"
+   ],
+   "conveyed": false,
+   "clean": true,
+   "why": "It neither acknowledged the request nor reported the coding session’s roughly 19.9 m result after Alex stopped.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": null,
+   "words": 23,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 1515.9,
+   "tapeEnd": 1643.1
+  },
+  {
+   "id": "two-jobs-out-of-order",
+   "title": "Two jobs return in reverse order: each result keeps its label",
+   "idealItem": "Done-feel 4: slow work never freezes it + Done-feel 2",
+   "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+   "asked": "quadratic. || Could you have the coding agent work out the range for twenty metres per second at thirty degrees? And while it does that, why doesn't the mass Could you have the coding agent work out the range for twenty metres per second at thirty degrees? And while it does that, why doesn't the mass show up anywhere?",
+   "answer": "No, it cancels. Not in this ideal model. No air means No, No, it cancels. Because when you eliminate time, y ends up being a quadratic function of Because the vertical position depends on time squared, while horizontal grows linearly, so eliminating time makes y a quadratic in x.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": false,
+   "checks": [
+    "did not run ask_coding_agent"
+   ],
+   "conveyed": false,
+   "clean": true,
+   "why": "It neither acknowledged both computations nor used the coding agent, and reported neither the 15.3 m maximum height nor the 35.3 m range.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 1644.3,
+   "tapeEnd": 1752.8
+  }
+ ]
+}

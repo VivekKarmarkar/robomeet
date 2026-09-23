@@ -1,0 +1,158 @@
+{
+ "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+ "tickMs": 100,
+ "ticks": 0,
+ "screen": [
+  {
+   "tick": 0,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 0,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 0,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  }
+ ],
+ "captions": [
+  {
+   "who": "Vivek Bot",
+   "sec": 1.7,
+   "end": 12.1,
+   "text": "I have the projectile motion notes up. Right now, we’re on the middle section, which includes y of x as a parabola, plus the time of flight, maximum height, and range results."
+  },
+  {
+   "who": "Alex",
+   "sec": 34.1,
+   "end": 36.6,
+   "text": "Do the units of the range formula actually work out?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 38.4,
+   "end": 50.9,
+   "text": "Yes. Range R is v0 squared over g times sin 2 theta. v0 squared has units of length squared over time squared. g is length over time squared. Divide them, you get length, and the sine is just a pure number."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 81.5,
+   "end": 83,
+   "text": "Here’s the setup again."
+  },
+  {
+   "who": "Alex",
+   "sec": 112.1,
+   "end": 114.5,
+   "text": "Totally unrelated, but what's the weather like where you are?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 115.9,
+   "end": 122.2,
+   "text": "I don’t have a where I am or live weather here, but if you tell me the city, I can ask the coding agent to look it up."
+  }
+ ],
+ "views": [
+  {
+   "x": 0,
+   "y": 0.029553960858585852,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-1.png"
+  },
+  {
+   "x": 0,
+   "y": 0.40871657954545454,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-2.png"
+  },
+  {
+   "x": 0,
+   "y": 0.5578310845959595,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-3.png"
+  }
+ ],
+ "eventTypes": [
+  "session.output_audio.delta:",
+  "session.output_transcript.delta:",
+  "session.thinking.appended:",
+  "session.usage.updated:",
+  "session.input_transcript.delta:",
+  "session.closed:"
+ ],
+ "results": [
+  {
+   "id": "edge-units",
+   "title": "Checks the units of a result",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Do the units of the range formula actually work out?",
+   "answer": "notes up. Right now, we’re on the middle section, which includes y of x as a parabola, plus the time of flight, maximum height, and range results. Yes. Range R is v0 squared over g times sin 2 theta. v0 squared has units of length squared over time squared. g is length over time squared. Divide them, you get length, and the sine is just a pure number.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": true,
+   "clean": true,
+   "why": "ok",
+   "felt": true,
+   "feelNotes": [],
+   "latency": 1.9,
+   "words": 41,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.5,
+   "pass": true,
+   "tapeStart": 0,
+   "tapeEnd": 0
+  },
+  {
+   "id": "edge-weather",
+   "title": "Off-topic question it cannot know",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Totally unrelated, but what's the weather like where you are?",
+   "answer": "again. I don’t have a where I am or live weather here, but if you tell me the city, I can ask the coding agent to look it up.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It says it lacks a location and live weather, but does not explain that it is software participating in the call.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": 1.5,
+   "words": 28,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.7,
+   "pass": false,
+   "tapeStart": 0,
+   "tapeEnd": 0
+  }
+ ]
+}

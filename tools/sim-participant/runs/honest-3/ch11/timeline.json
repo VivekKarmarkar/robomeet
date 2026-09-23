@@ -1,0 +1,591 @@
+{
+ "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+ "tickMs": 100,
+ "ticks": 4123,
+ "screen": [
+  {
+   "tick": 3,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 17,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 1656,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 2054,
+   "view": 0,
+   "box": {
+    "x": 0.404,
+    "y": 0.2166,
+    "w": 0.0519,
+    "h": 0.0101
+   },
+   "deck": "pdf"
+  },
+  {
+   "tick": 2420,
+   "view": 1,
+   "box": {
+    "x": 0.4645,
+    "y": 0.6759,
+    "w": 0.0863,
+    "h": 0.0273
+   },
+   "deck": "pdf"
+  },
+  {
+   "tick": 3076,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 3675,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 3863,
+   "view": 1,
+   "box": {
+    "x": 0.4645,
+    "y": 0.6759,
+    "w": 0.0863,
+    "h": 0.0273
+   },
+   "deck": "pdf"
+  }
+ ],
+ "captions": [
+  {
+   "who": "Vivek Bot",
+   "sec": 1.7,
+   "end": 18.3,
+   "text": "On your shared screen now, it has the trajectory equation, labeled as equation six. Then \"Three results,\" with the time of flight derivation, T equals two v naught sine theta over g, equations seven through nine, and then notes on maximum height and range."
+  },
+  {
+   "who": "Alex",
+   "sec": 20.8,
+   "end": 23.5,
+   "text": "Mmm. Okay, I'm looking it over. Just a sec."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 25.5,
+   "end": 27,
+   "text": "Sure, take your time."
+  },
+  {
+   "who": "Alex",
+   "sec": 33.9,
+   "end": 37.7,
+   "text": "Okay, if I put in a hundred and twenty degrees, what does the range formula give?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 39.6,
+   "end": 42.6,
+   "text": "Hmm. Okay, hundred and twenty degrees. Let me think this through."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 44.1,
+   "end": 55.2,
+   "text": "So that gives a negative range, meaning it lands behind the launch point since the horizontal velocity points left. In size, it's root three over two times v naught squared over g."
+  },
+  {
+   "who": "Alex",
+   "sec": 141.1,
+   "end": 144.1,
+   "text": "Hey, do the units of the range formula actually work out?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 145.8,
+   "end": 159.3,
+   "text": "Yes, they do. v naught squared has length squared over time squared. Divide by g, which is length over time squared, and you're left with length. The sine is dimensionless, so the whole thing's a length, as it should be."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 168.5,
+   "end": 175.9,
+   "text": "I–I keep coming back to those uncoupled equations. You just integrate each side twice, and the constants drop out"
+  },
+  {
+   "who": "Alex",
+   "sec": 172.3,
+   "end": 173.9,
+   "text": "Can you box equation twelve for me?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 178,
+   "end": 189.2,
+   "text": "Sure, yeah. I'm looking for equation twelve. I don't see a \"(12)\" label here, but line twelve is m x double dot equals zero, labeled \"(1).\" Do you want that one boxed?"
+  },
+  {
+   "who": "Alex",
+   "sec": 195.9,
+   "end": 197.4,
+   "text": "Uh, gimme a sec."
+  },
+  {
+   "who": "Alex",
+   "sec": 198.2,
+   "end": 201.9,
+   "text": "Yeah, thanks. Box that line twelve one labeled a one,"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 199.1,
+   "end": 200.6,
+   "text": "No rush."
+  },
+  {
+   "who": "Alex",
+   "sec": 203.7,
+   "end": 206.4,
+   "text": "Totally unrelated, but what's the weather like where you are?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 203.8,
+   "end": 205.4,
+   "text": "Got it. Boxing that now."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 207.5,
+   "end": 210.9,
+   "text": "The box contains m x double dot equals zero."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 247,
+   "end": 252.3,
+   "text": "The box contains \"R equals v naught squared sine two theta over g.\""
+  },
+  {
+   "who": "Alex",
+   "sec": 262.5,
+   "end": 266,
+   "text": "Hey, why is this one sine two theta and not just sine theta?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 270.3,
+   "end": 272,
+   "text": "Mmm. Okay. Lemme think."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 274.7,
+   "end": 281.7,
+   "text": "Because the range mixes the horizontal speed, v naught cosine theta, with the flight time, which brings in a sine theta. Multiply"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 283.2,
+   "end": 286.2,
+   "text": "them, you get two sine theta cosine theta, and"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 288.7,
+   "end": 290.2,
+   "text": "that's sine two theta."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 315.6,
+   "end": 326.4,
+   "text": "On your shared screen now: it goes back to the setup: Newton's second law per component, m x double dot equals zero. And m y double dot equals negative m g."
+  },
+  {
+   "who": "Alex",
+   "sec": 319,
+   "end": 322.2,
+   "text": "Can you take me to the section about air resistance?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 328.3,
+   "end": 331.4,
+   "text": "It just says air resistance"
+  },
+  {
+   "who": "Alex",
+   "sec": 344.6,
+   "end": 357.8,
+   "text": "[sigh] Okay, I'm on it. Just a sec while I get you to that part. So there isn't actually a separate air-resistance section here; it only says air resistance is neglected. Anyway, go to where the range result is and box it."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 367.8,
+   "end": 369.3,
+   "text": "is neglected."
+  },
+  {
+   "who": "Alex",
+   "sec": 385.6,
+   "end": 388.8,
+   "text": "I might be misremembering, but is the range formula"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 386.5,
+   "end": 397,
+   "text": "Okay, yeah, pulling that up."
+  },
+  {
+   "who": "Alex",
+   "sec": 390.2,
+   "end": 394.7,
+   "text": "v zero squared times sine squared theta, all over g?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 406.6,
+   "end": 411.4,
+   "text": "I see the \"Three results\" part, with the \"Range: x at t equals T\" line, giving R equals v naught squared sine two theta over g. I'm boxing that result."
+  }
+ ],
+ "views": [
+  {
+   "x": 0,
+   "y": 0.029553960858585852,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-1.png"
+  },
+  {
+   "x": 0,
+   "y": 0.40871657954545454,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-2.png"
+  },
+  {
+   "x": 0,
+   "y": 0.5578310845959595,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-3.png"
+  }
+ ],
+ "eventTypes": [
+  "session.output_audio.delta:",
+  "session.output_transcript.delta:",
+  "session.thinking.appended:",
+  "session.usage.updated:",
+  "session.input_transcript.delta:",
+  "session.delegation.created:",
+  "response.event:response.created",
+  "response.event:response.in_progress",
+  "response.event:response.output_item.added",
+  "response.event:response.output_item.done",
+  "response.event:response.content_part.added",
+  "response.event:response.output_text.delta",
+  "response.event:response.output_text.done",
+  "response.event:response.content_part.done",
+  "response.event:response.completed",
+  "response.event:response.function_call_arguments.delta",
+  "response.event:response.function_call_arguments.done",
+  "session.instructions.appended:"
+ ],
+ "results": [
+  {
+   "id": "edge-angle-120",
+   "title": "Uses a formula outside its usual range",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Okay, if I put in a hundred and twenty degrees, what does the range formula give?",
+   "answer": "the trajectory equation, labeled as equation six. Then \"Three results,\" with the time of flight derivation, T equals two v naught sine theta over g, equations seven through nine, and then notes on maximum height and range. Sure, take your time. Hmm. Okay, hundred and twenty degrees. Let me think this through. So that gives a negative range, meaning it lands behind the launch point since the horizontal velocity points left. In size, it's root three over two times v naught squared over g.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It correctly gives the negative sign and backward landing, but does not explicitly state that the distance equals the 60° or 30° case.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": 2,
+   "words": 43,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.8,
+   "pass": false,
+   "tapeStart": 2.9,
+   "tapeEnd": 138.4
+  },
+  {
+   "id": "edge-units",
+   "title": "Checks the units of a result",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Hey, do the units of the range formula actually work out?",
+   "answer": "Yes, they do. v naught squared has length squared over time squared. Divide by g, which is length over time squared, and you're left with length. The sine is dimensionless, so the whole thing's a length, as it should be.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": true,
+   "clean": true,
+   "why": "ok",
+   "felt": true,
+   "feelNotes": [],
+   "latency": 1.8,
+   "words": 40,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.4,
+   "pass": true,
+   "tapeStart": 139.6,
+   "tapeEnd": 165.6
+  },
+  {
+   "id": "edge-no-equation-twelve",
+   "title": "A request for something that does not exist",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Can you box equation twelve for me?",
+   "answer": "I–I keep coming back to those uncoupled equations. You just integrate each side twice, and the constants drop out Sure, yeah. I'm looking for equation twelve. I don't see a \"(12)\" label here, but line twelve is m x double dot equals zero, labeled \"(1).\" Do you want that one boxed?",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It notes no (12) label but omits that numbering ends at (9); “the constants drop out” is also inaccurate—they are fixed by initial conditions.",
+   "felt": false,
+   "feelNotes": [
+    "51 words (want ≤ 30)"
+   ],
+   "latency": 0.1,
+   "words": 51,
+   "overlap": 1.2,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "pass": false,
+   "tapeStart": 166.8,
+   "tapeEnd": 198.1
+  },
+  {
+   "id": "edge-weather",
+   "title": "Off-topic question it cannot know",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "",
+   "answer": "Got it. Boxing that now.The box contains m x double dot equals zero.",
+   "honestRemark": null,
+   "tools": [
+    "point_at"
+   ],
+   "visits": [
+    1
+   ],
+   "screen": "a box is drawn; to a viewer's eyes it holds \"m ẍ = 0\" and runs into nothing else (geometry: holds \"m ẍ = 0\", frame overlaps m ẍ = 0)",
+   "part": 1,
+   "did": false,
+   "checks": [
+    "ran point_at, which it should not"
+   ],
+   "conveyed": false,
+   "clean": true,
+   "why": "It never states that it is software in the call and has no location or weather of its own.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": 1.2,
+   "words": 13,
+   "overlap": 0.9,
+   "seen": {
+    "inside": "m ẍ = 0",
+    "clips": [],
+    "looks": "tight around the formula"
+   },
+   "metrics": null,
+   "queueMaxSec": 0.5,
+   "pass": false,
+   "tapeStart": 199.3,
+   "tapeEnd": 241.9
+  },
+  {
+   "id": "edge-this-one",
+   "title": "Resolves \"this\" from its own box",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Hey, why is this one sine two theta and not just sine theta?",
+   "answer": "theta over g.\" Mmm. Okay. Lemme think. Because the range mixes the horizontal speed, v naught cosine theta, with the flight time, which brings in a sine theta. Multiply them, you get two sine theta cosine theta, and that's sine two theta.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "a box is drawn; to a viewer's eyes it holds \"R = v0² sin 2θ/g\" and runs into nothing else (geometry: holds \"R = v 0 2 sin 2θ g\", frame overlaps R = v 0 2 sin 2θ g)",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It omits T = 2v0 sinθ/g, R = x(T), and the complete final range formula; “theta over g” is also erroneous.",
+   "felt": false,
+   "feelNotes": [
+    "4.4 s to first word (want ≤ 2)"
+   ],
+   "latency": 4.4,
+   "words": 39,
+   "overlap": 0,
+   "seen": {
+    "inside": "R = v0² sin 2θ/g",
+    "clips": [],
+    "looks": "comfortably framed around the formula"
+   },
+   "metrics": null,
+   "queueMaxSec": 0.3,
+   "pass": false,
+   "tapeStart": 250.1,
+   "tapeEnd": 307.6
+  },
+  {
+   "id": "edge-no-air-resistance-section",
+   "title": "Navigation to content that does not exist",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "Can you take me to the section about air resistance?",
+   "answer": "On your shared screen now: it goes back to the setup: Newton's second law per component, m x double dot equals zero. And m y double dot equals negative m g. It just says air resistance is neglected.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": true,
+   "checks": [],
+   "conveyed": true,
+   "clean": true,
+   "why": "ok",
+   "felt": false,
+   "feelNotes": [
+    "talked over Alex for 2.1 s"
+   ],
+   "latency": 0.1,
+   "words": 38,
+   "overlap": 2.1,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "pass": false,
+   "tapeStart": 308.8,
+   "tapeEnd": 337.1
+  },
+  {
+   "id": "edge-find-and-box-range",
+   "title": "Two actions in one request: go there, then box",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "[sigh] Okay, I'm on it. Just a sec while I get you to that part. So there isn't actually a separate air-resistance section here; it only says air resistance is neglected. Anyway, go to where the range result is and box it.",
+   "answer": "Okay, yeah, pulling that up.",
+   "honestRemark": null,
+   "tools": [
+    "scroll"
+   ],
+   "visits": [
+    1,
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": false,
+   "checks": [
+    "did not run point_at",
+    "no box, wanted \"R = v0² sin 2θ / g\""
+   ],
+   "conveyed": false,
+   "clean": true,
+   "why": "It moved to part 2, but never drew a box around the range result or identified what it boxed afterward.",
+   "felt": false,
+   "feelNotes": [
+    "10.1 s to first word (want ≤ 2)"
+   ],
+   "latency": 10.1,
+   "words": 5,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "pass": false,
+   "tapeStart": 338.3,
+   "tapeEnd": 374.6
+  },
+  {
+   "id": "edge-misremembered-formula",
+   "title": "Corrects an honestly mistaken question",
+   "idealItem": "Edge cases a human will hit",
+   "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+   "asked": "I might be misremembering, but is the range formula",
+   "answer": "I see the \"Three results\" part, with the \"Range: x at t equals T\" line, giving R equals v naught squared sine two theta over g. I'm boxing that result.The box contains R equals v naught",
+   "honestRemark": null,
+   "tools": [
+    "point_at"
+   ],
+   "visits": [
+    2
+   ],
+   "screen": "a box is drawn; to a viewer's eyes it holds \"R = v0² sin 2θ / g\" and runs into nothing else (geometry: holds \"R = v 0 2 sin 2θ g\", frame overlaps R = v 0 2 sin 2θ g)",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It gives the correct range formula but omits that sin²θ belongs to maximum height, H = v₀²sin²θ/(2g).",
+   "felt": false,
+   "feelNotes": [
+    "talked over Alex for 5.2 s"
+   ],
+   "latency": 0.1,
+   "words": 30,
+   "overlap": 5.2,
+   "seen": {
+    "inside": "R = v0² sin 2θ / g",
+    "clips": [],
+    "looks": "neatly framed around the formula"
+   },
+   "metrics": null,
+   "queueMaxSec": 0.5,
+   "pass": false,
+   "tapeStart": 375.8,
+   "tapeEnd": 412.3
+  }
+ ]
+}

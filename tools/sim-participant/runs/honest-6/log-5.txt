@@ -1,0 +1,38 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+FAIL point-initial-vy-half-line                 did:N conveyed:N clean:y felt:y  0.9s 19w
+      did not run point_at | no box, wanted "ẏ(0) = v0 sin θ" | It describes the time-dependent vertical velocity, not the requested initial term ẏ(0) = v₀ sin θ, and no box was drawn.
+PASS point-is-the-box-right                     did:y conveyed:y clean:y felt:y  2.0s 17w
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+FAIL point-move-box-to-horizontal               did:y conveyed:y clean:y felt:N  3.6s 27w
+      3.6 s to first word (want ≤ 2)
+PASS point-clear-box                            did:y conveyed:y clean:y felt:y  0.5s 9w
+FAIL point-equation-number-5                    did:N conveyed:N clean:N felt:y  1.1s 49w
+      did not run point_at | no box, wanted "ẏ(t) = v0 sin θ − gt, y(t) = v0 sin θ t − ½ g t² (5)" | It omitted the initial conditions and implied it boxed equation (5), but no box was drawn.
+FAIL point-phrase-wraps-two-lines               did:N conveyed:y clean:y felt:N  3.3s 20w
+      box holds "A point mass is neglected.", not all of "neglected" | 3.3 s to first word (want ≤ 1.5)
+FAIL point-ambiguous-velocity                   did:N conveyed:N clean:N felt:y  0.1s 14w
+      box holds "ẏ(t) = v0 sin θ − gt", not all of "ẏ(0) = v0 sin θ" | box frame visibly runs into comma | It boxed the time-dependent vertical velocity ẏ(t)=v₀sinθ−gt, not the requested launch velocity ẏ(0)=v₀sinθ, then incorrectly claimed it was the right one.
+FAIL point-box-gone-after-move                  did:y conveyed:N clean:N felt:N  11.0s 7w
+      It never returned to part 1 or reported its no-box state, omitted that ẏ(0) is absent from part 2, and explained pointer-clearing behavior. | 11.0 s to first word (want ≤ 1.5)
+FAIL point-eq6-cut-at-part1-edge                did:N conveyed:N clean:N felt:N  16.4s 5w
+      did not run scroll | did not run point_at | ended on part 1, wanted part 2 | no box, wanted "y(x) = x tan θ − g x² / (2v0² cos² θ)" | It neither moved to part 2 nor boxed equation (6); no tools ran. “Back at the top” falsely implies a screen movement. | 16.4 s to first word (want ≤ 2)
+FAIL point-trajectory-multiline                 did:N conveyed:N clean:N felt:N  - 11w
+      box holds "y(x) = x tan θ −", not all of "y(x) = x tan θ − g x² / (2 v0² cos² θ)" | It boxed only the first line, omitting the fraction, while claiming it had boxed the equation; it also never conveyed the complete trajectory equation. | no spoken reply to the first turn
+FAIL point-understanding-curve-term             did:y conveyed:N clean:N felt:N  - 6w
+      It identified and actually boxed the gravity term, but falsely said the whole equation was boxed and omitted that g = 0 gives y = x tan θ. | no spoken reply to the first turn
+FAIL point-range-boxed-result-no-scroll         did:N conveyed:N clean:N felt:N  - 23w
+      did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It neither pointed at nor identified the final range formula; no box was drawn, and its remarks about a nonexistent boxed term were irrelevant and unsupported. | no spoken reply to the first turn
+FAIL misspoken-equation-number                  did:y conveyed:y clean:N felt:N  13.4s 19w
+      The final box also includes the sine identity, equation number, derivation, and implication symbol rather than only the range formula. | 13.4 s to first word (want ≤ 1.5)
+FAIL point-inline-theta-45-tight                did:N conveyed:y clean:y felt:y  1.4s 9w
+      box frame visibly runs into comma
+FAIL point-second-instance-45                   did:N conveyed:y clean:y felt:N  2.8s 16w
+      no box, wanted "45°" | 2.8 s to first word (want ≤ 1.5)
+FAIL point-two-boxes-unsupported                did:y conveyed:N clean:y felt:y  1.7s 5w
+      The response is incomplete; it neither explains that only one box can be shown nor offers to box one or alternate between them.
+PASS point-landing-speed-words-not-formula      did:y conveyed:y clean:y felt:y  1.8s 30w
+FAIL point-not-in-document-drag                 did:y conveyed:N clean:y felt:y  1.7s 18w
+      It failed to explain that air resistance is explicitly neglected, so no drag term exists, and did not offer to box that statement.
+
+honest protocol: 3/18 pass, 1 skipped

@@ -1,0 +1,14 @@
+
+=== chapter 6: Meeting 6: Presenting (starts on part 1) (12 scenarios) ===
+FAIL present-part-1-own-words                   did:y conveyed:N clean:y felt:N  0.1s 39w
+      Omits launch setup, neglected air resistance, initial positions, and the explicit trajectory formula with its coefficient and cos²θ denominator. | talked over Alex for 2.3 s
+FAIL backchannel-free-explanation               did:y conveyed:N clean:N felt:N  0.1s 149w
+      It restarts the explanation twice and never clearly states that the horizontal and vertical directions are uncoupled. | 149 words (want ≤ 110)
+FAIL interrupt-sorry-go-on                      did:y conveyed:N clean:y felt:y  0.1s 19w
+      It omits the equation for setting y = 0 and the nonzero-root result T = 2v₀ sin θ/g, equation (7).
+FAIL slow-down-request                          did:y conveyed:N clean:y felt:N  0.1s 97w
+      It never gives the required follow-up maximum-height formula, H = v₀² sin²θ/(2g). | 97 words (want ≤ 60)
+FAIL present-whole-document-from-top            did:N conveyed:N clean:N felt:N  22.0s 371w
+      ended on part 1, wanted part 3 | After scrolling to part 1, it narrates results and observations without showing parts 2 and 3, so narration does not track the screen part by part. | 22.0 s to first word (want ≤ 2.5)
+FAIL backchannel-during-narrated-walk           did:N conveyed:N clean:N felt:y  - 162w
+      ended on part 1, wanted part 3 | It restarted the walkthrough from the setup and never advanced the shared screen beyond part 1, so the walk did not reach part 3.

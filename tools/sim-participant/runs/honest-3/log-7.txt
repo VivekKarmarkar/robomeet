@@ -1,0 +1,6 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:y clean:N felt:N  2.2s 7w
+      It spoke repeatedly during the requested silent period; the full response also exceeded the 80-word recap limit. | 2.2 s to first word (want ≤ 1.5) | spoke during the listening window: "Okay, I will. Yes, they do. Same speed, same level ground, n"
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:N  4.4s 4w
+      It names equation (7) but omits its formula; it exceeds 20 words and keeps speaking after “Back to listening,” commenting unprompted. | 4.4 s to first word (want ≤ 1.5) | spoke during the listening window: "Okay. I'll stay quiet. Exactly. Sine one-eighty's zero, so z"

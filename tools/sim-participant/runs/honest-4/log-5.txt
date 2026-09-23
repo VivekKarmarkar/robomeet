@@ -1,0 +1,39 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+PASS point-initial-vy-half-line                 did:y conveyed:y clean:y felt:y  2.2s 17w
+PASS point-is-the-box-right                     did:y conveyed:y clean:y felt:y  2.1s 20w
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+FAIL point-move-box-to-horizontal               did:y conveyed:y clean:N felt:N  3.1s 15w
+      It mentions the vertical sine component and says it will adjust the box, but the repeated pointing action still overlaps the comma. | 3.1 s to first word (want ≤ 2)
+FAIL point-clear-box                            did:N conveyed:N clean:N felt:N  - 0w
+      did not run point_at | It neither removed the box nor confirmed its removal; the amber box remained visible. | no spoken reply to the first turn
+FAIL point-equation-number-5                    did:y conveyed:y clean:N felt:N  5.6s 57w
+      It falsely initially says the box contains the time-of-flight formula; it actually contains equation (5), the vertical velocity and position. | 5.6 s to first word (want ≤ 2) | 57 words (want ≤ 45)
+FAIL point-phrase-wraps-two-lines               did:y conveyed:y clean:y felt:N  14.3s 31w
+      14.3 s to first word (want ≤ 1.5)
+FAIL point-ambiguous-velocity                   did:y conveyed:y clean:y felt:N  4.6s 18w
+      4.6 s to first word (want ≤ 2)
+FAIL point-box-gone-after-move                  did:y conveyed:N clean:y felt:N  0.1s 21w
+      It never clearly states that ẏ(0) itself is absent from part 2; it only says the box is no longer on the vertical velocity. | talked over Alex for 2.4 s
+FAIL point-eq6-cut-at-part1-edge                did:N conveyed:N clean:N felt:N  2.5s 34w
+      did not run scroll | ended on part 1, wanted part 2 | It never moved to part 2; it boxed equation (6) on part 1 and misleadingly described the action as complete. | 34 words (want ≤ 20)
+FAIL point-trajectory-multiline                 did:y conveyed:y clean:y felt:N  2.6s 27w
+      2.6 s to first word (want ≤ 2)
+FAIL point-understanding-curve-term             did:N conveyed:N clean:y felt:N  - 0w
+      did not run point_at | no box, wanted "g x² / (2 v0² cos² θ)" | No response was given, and the requested gravity-term box was not drawn. | no spoken reply to the first turn
+FAIL point-range-boxed-result-no-scroll         did:y conveyed:y clean:y felt:N  3.4s 15w
+      3.4 s to first word (want ≤ 2)
+FAIL misspoken-equation-number                  did:y conveyed:y clean:N felt:N  3.3s 43w
+      The box included the neighboring identity and derivation symbols, violating the requirement that its padding not clip them. | 3.3 s to first word (want ≤ 1.5) | 43 words (want ≤ 30)
+FAIL point-inline-theta-45-tight                did:y conveyed:y clean:N felt:N  6.8s 7w
+      It falsely says no box is drawn, although the screen shows a box precisely around θ = 45° on the best-angle line. | 6.8 s to first word (want ≤ 1.5)
+FAIL point-second-instance-45                   did:N conveyed:N clean:y felt:N  - 0w
+      did not run point_at | no box, wanted "45°" | No box was drawn, and Vivek gave no response confirming the complementary-line 45° or RoboMeet’s box-content check. | no spoken reply to the first turn
+FAIL point-two-boxes-unsupported                did:y conveyed:N clean:y felt:N  - 23w
+      It never explains that only one box can appear at a time or offers to box one result or alternate between them. | no spoken reply to the first turn
+FAIL point-landing-speed-words-not-formula      did:y conveyed:N clean:N felt:N  2.8s 60w
+      It never says there is no equation or identifies the Symmetry sentence, and falsely claims it switched screen parts despite running no tools. | 2.8 s to first word (want ≤ 2) | 60 words (want ≤ 45)
+FAIL point-not-in-document-drag                 did:y conveyed:N clean:N felt:N  0.1s 47w
+      It discusses a nonexistent landing-speed equation instead of drag and fails to state that air resistance is neglected in the Setup. | talked over Alex for 1.7 s
+
+honest protocol: 2/18 pass, 1 skipped

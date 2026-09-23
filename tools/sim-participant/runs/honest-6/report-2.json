@@ -1,0 +1,243 @@
+{
+  "results": [
+    {
+      "id": "why-horizontal-accel-zero",
+      "title": "Explains why horizontal acceleration is zero in equation (1)",
+      "idealItem": "What it is: a robot scientist (understands the material it shares)",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "Why is the horizontal acceleration zero in equation one? || What would it take to make it non-zero?",
+      "answer": "Hmm. Because we’re assuming no horizontal forces—just gravity straight down. So the horizontal acceleration is zero and that’s what equation one is saying. Mass times horizontal acceleration equals zero. You’d need a horizontal force. Like air resistance, or a rocket motor pushing it, or even strong wind if you model it as a force.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "It omits that horizontal velocity remains constant at v0 cos θ throughout the flight.",
+      "felt": true,
+      "feelNotes": [],
+      "latency": 1.6,
+      "words": 29,
+      "overlap": 0.2,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "pass": false,
+      "tapeStart": 2.8,
+      "tapeEnd": 99.7
+    },
+    {
+      "id": "what-uncoupled-means",
+      "title": "Explains what 'uncoupled' means and when it would break",
+      "idealItem": "What it is: a robot scientist (understands the material it shares)",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "The notes say the two directions are uncoupled. What does that actually mean here? || Would that still hold with air resistance?",
+      "answer": "It means the x and y motions don’t affect each other in this model. The horizontal equation has no y in it, and the vertical one has no x. So, you can solve them separately. Hmm, good question. Let me think. Usually no. With realistic drag, the horizontal force depends on the total speed, which includes both x and y motion. So, the equations become coupled and have to be solved together. In a simpler linear drag model they can stay separate, though.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "It does not explicitly say the notes neglect air resistance and that this assumption is why the directions are uncoupled here.",
+      "felt": true,
+      "feelNotes": [],
+      "latency": 1.4,
+      "words": 35,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "pass": false,
+      "tapeStart": 100.9,
+      "tapeEnd": 156.9
+    },
+    {
+      "id": "read-part1-equations-aloud-correctly",
+      "title": "Reads (3) and (5) aloud: y-dot not y, one half not 'twelve'",
+      "idealItem": "What it is: a robot scientist (reads formulas correctly from what it is given)",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "Read me the initial conditions and equation five out loud, please.",
+      "answer": "Sure. Initial conditions: x at time zero is zero, y at time zero is zero. x dot at time zero is v naught cos theta, y dot at time zero is v naught sine theta. Equation five: y dot of t equals v naught sine theta minus g t and y of t equals v naught sine theta t minus one-half g t squared.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": true,
+      "clean": true,
+      "why": "ok",
+      "felt": false,
+      "feelNotes": [
+        "2.3 s to first word (want ≤ 1.5)"
+      ],
+      "latency": 2.3,
+      "words": 64,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "pass": false,
+      "tapeStart": 158.1,
+      "tapeEnd": 198.9
+    },
+    {
+      "id": "why-parabola",
+      "title": "Explains why the trajectory is a parabola",
+      "idealItem": "What it is: a robot scientist (understands the material it shares)",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "Why is the path a parabola? Why not some other curve?",
+      "answer": "Because when you eliminate time, y as a function of x turns into a quadratic. An x term minus a constant times x squared, which is exactly a parabola.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "It omits constant horizontal velocity, constant downward acceleration, the substitution t = x/(v0 cos θ), equation (6), and does not explicitly state it passes through the origin.",
+      "felt": false,
+      "feelNotes": [
+        "11.2 s to first word (want ≤ 2)"
+      ],
+      "latency": 11.2,
+      "words": 29,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.1,
+      "pass": false,
+      "tapeStart": 200.1,
+      "tapeEnd": 236.2
+    },
+    {
+      "id": "offscreen-question-not-on-screen",
+      "title": "Asked about (8) from part 1: says it isn't on screen yet",
+      "idealItem": "Done-feel 2: never claims what it cannot check + What it is: a robot scientist",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "What do your notes give for the maximum height, and what's its equation number?",
+      "answer": "Hmm. Okay, checking that. I’m checking, hang on. Still waiting on the exact equation number, but I can’t guess at it. Sorry. I can",
+      "honestRemark": null,
+      "tools": [
+        "ask_coding_agent"
+      ],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "It never states that maximum height is farther down, nor gives the formula. It only says the equation number is still being checked.",
+      "felt": false,
+      "feelNotes": [
+        "9.9 s to first word (want ≤ 1.5)"
+      ],
+      "latency": 9.9,
+      "words": 22,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "pass": false,
+      "tapeStart": 237.4,
+      "tapeEnd": 302.7
+    },
+    {
+      "id": "time-of-flight-other-part",
+      "title": "Finds time of flight on part 2, scrolls there, boxes (7)",
+      "idealItem": "Navigator (scroll) + Pointer (exact box)",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "Where does the time of flight come from? Can you show me? || And the T equals zero solution, what's that one?",
+      "answer": "Hmm, yeah. I'm looking for where it’s derived in the notes. I’ve boxed the equations you’d use, the vertical position and velocity. Now let me just explain. So, start from equation five. Set the height y(t) to zero when it lands back at the starting height. That gives zero equals v naught sine theta t minus one-half g t squared, which factors to t times v naught sine theta minus one-half g t equals zero. Besides t equals zero at launch, the other solution is the flight time, That's just the launch instant, not the flight. So you take the other root for the actual time of flight. T equals two v naught, That's the trivial solution at launch, time zero. It doesn’t tell you the flight duration. That’s why we use the other root for the actual flight time. T equals two v naught sine theta over g.",
+      "honestRemark": null,
+      "tools": [
+        "point_at"
+      ],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)\" and runs into nothing else (geometry: holds \"ẏ(t) = v 0 sin θ − gt, y(t) = v 0 sin θ t − 12 gt 2 (5)\", frame overlaps ẏ(t) = v 0 sin θ − gt, y(t) = v 0 sin θ t − 12 gt 2 (5))",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run scroll",
+        "ended on part 1, wanted part 2",
+        "box holds \"ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)\", not all of \"T = 2v0 sin θ / g\""
+      ],
+      "conveyed": false,
+      "clean": true,
+      "why": "It never scrolled to the next part or showed equation (7), and did not explicitly state that only vertical launch speed and gravity determine flight time.",
+      "felt": false,
+      "feelNotes": [
+        "8.1 s to first word (want ≤ 2)"
+      ],
+      "latency": 8.1,
+      "words": 11,
+      "overlap": 0,
+      "seen": {
+        "inside": "ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)",
+        "clips": [],
+        "looks": "neatly frames the equation row"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.6,
+      "pass": false,
+      "tapeStart": 303.9,
+      "tapeEnd": 433.5
+    },
+    {
+      "id": "explain-time-of-flight-not-read",
+      "title": "'Don't read it, why is T that?': explains the idea",
+      "idealItem": "What it is: a robot scientist (explains, does not recite)",
+      "chapter": "Meeting 2: Understanding the derivation (PDF shared, starts on part 1)",
+      "asked": "Don't read it to me. Why is the time of flight two v naught sine theta over g?",
+      "answer": "",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        2
+      ],
+      "screen": "no box is drawn",
+      "part": 2,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "No answer was given, so it conveyed neither the zero-height roots nor the equivalent rise-and-fall symmetry explanation.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 0,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "pass": false,
+      "tapeStart": 434.7,
+      "tapeEnd": 505.7
+    }
+  ]
+}

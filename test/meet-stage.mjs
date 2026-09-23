@@ -118,8 +118,9 @@ test('a highlight fades in over the pixel-exact view render, never a resampled p
     const exact = await page.evaluate(makePng, { width: 1920, height: 1080, kind: 'exact' });
     const picture = await page.evaluate(makePng, { width: 2400, height: 3000, kind: 'page' });
     await page.evaluate(async ([exact, picture]) => { await RoboMeetStage.putAsset('exact', exact); await RoboMeetStage.putAsset('page', picture); }, [exact, picture]);
-    // Highlight box in page coordinates -> stage pixels: x 0.6*1920 = 1152, y 0.1*(1080/0.36) = 300 (pad 14 -> stroke at x 1138).
-    const points = [[100, 100], [101, 100], [150, 151], [163, 163], [1138, 375]];
+    // Highlight box in page coordinates -> stage pixels: x 0.6*1920 = 1152, y 0.1*(1080/0.36) = 300 (pad 6 -> stroke at x 1146;
+    // it was pad 14 -> 1138 until the frame was tightened, 2026-09-22).
+    const points = [[100, 100], [101, 100], [150, 151], [163, 163], [1146, 375]];
     // The picture is on screen first; the highlight then arrives as the same deck with a box (how a pointer lands).
     await page.evaluate(async () => { RoboMeetStage.setDeck({ title: 'fixture', slides: [{ kind: 'image', asset: 'page', views: [{ x: 0, y: 0, w: 1, h: 0.36, asset: 'exact' }] }] }); await RoboMeetStage.show({ slide: 0, view: 0 }); });
     await page.waitForTimeout(450);
@@ -149,7 +150,7 @@ test('TC-P3a: a highlight added to the view on screen shows within 300 ms withou
     const view = { x: 0, y: 0, w: 1, h: 0.36, asset: 'exact' };
     await page.evaluate(async view => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views: [view] }] }); await RoboMeetStage.show({ slide: 0, view: 0 }); }, view);
     await page.waitForTimeout(500);
-    const points = [[100, 100], [101, 100], [1138, 375]];
+    const points = [[100, 100], [101, 100], [1146, 375]];
     const before = await page.evaluate(snapshotPixels, points);
     // What stage-sync does when the server adds a pointer: the same deck with a highlight on the current view.
     const at = await page.evaluate(async view => { RoboMeetStage.setDeck({ title: 't', slides: [{ kind: 'image', asset: 'page', views: [{ ...view, highlight: { x: 0.6, y: 0.1, w: 0.2, h: 0.05 } }] }] }); return (await RoboMeetStage.show({ slide: 0, view: 0 })).changedAt; }, view);

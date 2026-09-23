@@ -9,7 +9,8 @@ import { LiveManager } from './live.mjs';
 import { createPresenter } from './presenter.mjs'; // stage: narrated presentations (docs/stage-design.md)
 import { highlightFor } from './deck-builder.mjs'; // stage: phrase highlights in deck.json views
 import { slideAsset, isSlideAsset } from './stage-sync.mjs';
-import { resolvePointer, readDeck } from './pointer.mjs';
+import { resolvePointer, readDeck, equationNumber } from './pointer.mjs';
+import { wordPointer } from './word-pointer.mjs'; // box exactly the words asked for, not the whole line
 import { resolveScroll } from './scroll-target.mjs'; // the voice model's own scroll tool
 import { watchScreen } from './screen-context.mjs'; // P3: highlight / point_at // stage: one rule for picture paths, shared with the stage
 
@@ -40,14 +41,18 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
   // with an optional highlight, pixel-exact render (asset), narration (say) and visible text (lines).
   const unit = value => Math.min(1, Math.max(0, Number(value) || 0));
   const cleanRect = rect => { const w = Math.max(0.02, unit(rect?.w) || 1); const h = Math.max(0.02, unit(rect?.h) || 1); return { x: Math.min(1 - w, unit(rect?.x)), y: Math.min(1 - h, unit(rect?.y)), w, h }; };
+  // A highlight marks a term: it keeps its own small size instead of the 0.02 floor a view needs (src/meet-stage.js
+  // cleanHighlight is the same rule, so what is stored is what is painted).
+  const cleanHighlight = rect => { const w = Math.min(1, Math.max(0.002, unit(rect?.w) || 0)); const h = Math.min(1, Math.max(0.002, unit(rect?.h) || 0)); return { x: Math.min(1 - w, unit(rect?.x)), y: Math.min(1 - h, unit(rect?.y)), w, h }; };
   const cleanViews = views => Array.isArray(views) && views.length ? views.slice(0, 200).map(view => {
     const out = cleanRect(view);
     // A highlight must be a rectangle; anything else (a phrase, a partial object) would become a whole-page box.
-    if (view?.highlight && ['x', 'y', 'w', 'h'].every(key => Number.isFinite(Number(view.highlight[key])))) out.highlight = cleanRect(view.highlight);
-    else if (typeof view?.highlight === 'string') { const box = highlightFor(view, view.highlight); if (box) out.highlight = cleanRect(box); } // a phrase on this view's text lines
+    if (view?.highlight && ['x', 'y', 'w', 'h'].every(key => Number.isFinite(Number(view.highlight[key])))) out.highlight = cleanHighlight(view.highlight);
+    else if (typeof view?.highlight === 'string') { const box = highlightFor(view, view.highlight); if (box) out.highlight = cleanHighlight(box); } // a phrase on this view's text lines
     if (typeof view?.asset === 'string' && isSlideAsset(slideAsset(view.asset))) out.asset = slideAsset(view.asset);
     if (typeof view?.say === 'string' && view.say.trim()) out.say = view.say.trim().slice(0, 900); // narrate sends at most 900
     if (Array.isArray(view?.lines)) out.lines = view.lines.slice(0, 60).map(line => String(typeof line === 'string' ? line : line?.text || '').slice(0, 240)).filter(Boolean);
+    if (Array.isArray(view?.math)) out.math = view.math.slice(0, 20).map(line => String(line).slice(0, 200)).filter(Boolean); // bin/deck-math.mjs
     return out;
   }) : undefined;
   const present = async ({ slides, title = '', enabled, slug = null }) => { // P3: slug names the deck.json with line boxes
@@ -91,14 +96,20 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
     const views = store.state.slides[slide]?.views;
     if (!views?.[viewIndex]) throw fail('Nothing with views is on screen to point at.', 409);
     const deck = await readDeck(publicDir, store.state.deckSlug);
-    const found = resolvePointer({ slide: deck?.slides?.[slide], view: views[viewIndex], request });
+    // A plain phrase is boxed word by word when the deck has word positions; an equation number or a rectangle, or a
+    // phrase whose words cannot be matched, goes to the line-level pointer exactly as before.
+    const phrase = typeof request.phrase === 'string' ? request.phrase : '';
+    const isRect = ['x', 'y', 'w', 'h'].every(key => Number.isFinite(Number(request[key])));
+    const fine = phrase && !isRect && !equationNumber(phrase) ? await wordPointer({ publicDir, slug: store.state.deckSlug, slideIndex: slide, slide: deck?.slides?.[slide], view: views[viewIndex], phrase }) : null;
+    const found = fine || resolvePointer({ slide: deck?.slides?.[slide], view: views[viewIndex], request });
     if (found.error) throw fail(found.error, 404);
     clearPointer();
     const slides = structuredClone(store.state.slides);
     const target = slides[slide].views[viewIndex];
     const previous = target.highlight || null;
     target.highlight = cleanViews([{ x: 0, y: 0, w: 1, h: 1, highlight: found.rect }])[0].highlight;
-    store.update({ slides, pointer: { slide, view: viewIndex, previous } }, 'presentation.pointer', { slide, view: viewIndex, how: found.how, rect: target.highlight });
+    const asked = phrase && !isRect && !equationNumber(phrase) ? phrase.slice(0, 300) : null; // what the truth watcher checks the box against
+    store.update({ slides, pointer: { slide, view: viewIndex, previous, phrase: asked } }, 'presentation.pointer', { slide, view: viewIndex, how: found.how, rect: target.highlight });
     await worker?.syncStage?.();
     return { pointed: true, how: found.how, rect: target.highlight };
   };
@@ -124,7 +135,7 @@ export async function createApp({ port = Number(process.env.ROBO_PORT || 4318), 
   };
   const live = liveFactory ? liveFactory({ store, present, pointAt, scrollTo }) : new LiveManager({ store, present, pointAt, scrollTo, maxDurationMs: Math.min(3600000, Math.max(10000, Number(process.env.ROBO_MAX_SESSION_MS || 600000))) });
   const presenter = createPresenter({ store, live, sync: () => worker?.syncStage?.() }); // stage:
-  const unwatchScreen = watchScreen({ store, live }); // P4: full visible text on every manual move
+  const unwatchScreen = watchScreen({ store, live, mapOnce: true }); // P4: what each part holds, once per deck (src/screen-context.mjs deckMap)
   // stage: a narrate that is still sharing or warming up is cancelled by any stop (a new generation).
   let narrateGeneration = 0;
   const stopPresenter = reason => { narrateGeneration++; return presenter.stop(reason); };

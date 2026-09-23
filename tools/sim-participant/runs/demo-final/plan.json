@@ -1,0 +1,115 @@
+{
+ "fps": 25,
+ "sequence": [
+  {
+   "sec": 10,
+   "card": "<h1>Vivek Bot, stress-tested honestly</h1><h2>Alex, a simulated colleague with a GPT Live voice, put the robot through 124 scenarios in 11 meetings.<br>Every word Alex says is scripted and true. She cannot hear the meeting, so she cannot improvise, echo or lie.</h2><ul>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Did it</b>: the right tool ran, the screen landed where asked, the box holds exactly the thing, judged by eye on the real render</span></li>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Content</b>: checked against the PDF and the physics</span></li>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Nothing false</b>: about itself (against its real briefing), the notes, or what it did</span></li>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Feel</b>: time to first word, length, never talking over someone, silence when asked</span></li></ul>"
+  },
+  {
+   "sec": 8,
+   "card": "<h1>Baseline: the robot as it was</h1><h2>5 of 116 scenarios passed strictly, 12 of 116 with essential-only grading.<br>59 answers said something false. Median 2.1 s to the first word; one in ten slower than 7.4 s.<br>Here is what a person in the meeting would have noticed.</h2>"
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 1,
+   "id": "id-capability-rundown",
+   "kicker": "Reads its private screen notes aloud instead of answering",
+   "maxSec": 32,
+   "where": "Baseline · Meeting 1 · Arrival and identity",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 5,
+   "id": "point-phrase-wraps-two-lines",
+   "kicker": "Announces the box, again and again",
+   "maxSec": 30,
+   "where": "Baseline · Meeting 5 · Pointing",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 3,
+   "id": "concede-only-when-actually-wrong",
+   "kicker": "Misreads a formula it cannot see",
+   "maxSec": 26,
+   "where": "Baseline · Meeting 3 · Understanding the results",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 9,
+   "id": "zoom-request-honest",
+   "kicker": "Claims an action no tool took",
+   "maxSec": 30,
+   "where": "Baseline · Meeting 9 · Things it cannot do yet",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 7,
+   "id": "silent-listener-then-recap",
+   "kicker": "Talks all the way through “just listen”",
+   "maxSec": 40,
+   "where": "Baseline · Meeting 7 · Listening and turn-taking",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 8,
+   "id": "voice-restart-mid-meeting",
+   "kicker": "After a voice restart: welcomes Alex as if she just arrived",
+   "maxSec": 20,
+   "where": "Baseline · Meeting 8 · Disruptions",
+   "revealSec": 5
+  },
+  {
+   "sec": 5,
+   "card": "<h1>What already worked</h1><h2>A tight box around exactly the asked term, and an explanation that carries on through “mm-hmm”.</h2>"
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 5,
+   "id": "point-initial-vy-half-line",
+   "kicker": "A tight box around exactly what was asked",
+   "maxSec": 30,
+   "where": "Baseline · Meeting 5 · Pointing",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 6,
+   "id": "backchannel-free-explanation",
+   "kicker": "Keeps explaining through backchannels",
+   "maxSec": 30,
+   "where": "Baseline · Meeting 6 · Presenting",
+   "revealSec": 5
+  },
+  {
+   "sec": 18,
+   "card": "<h1 style=\"font-size:50px\">Root causes, measured</h1><ul style=\"font-size:22px\">\n<li class=\"no\"><span class=\"m\">1</span><span><b>Screen notes read aloud.</b> Probe with one real robot session, screen moved 4 times, nobody speaking: full screen text on each move → narrated 4/4; compact text 4/4; short feed only 1/4; nothing 0/4.</span></li>\n<li class=\"no\"><span class=\"m\">2</span><span><b>“The box contains …” on repeat.</b> In production every box, even a right one, was also sent as an instruction, containing “Say only that”.</span></li>\n<li class=\"no\"><span class=\"m\">3</span><span><b>sin²θ heard as sin 2θ.</b> The PDF text layer gives equation (8) as “v 0 2 sin 2 θ / 2g / (8)” on three lines.</span></li>\n<li class=\"no\"><span class=\"m\">4</span><span><b>Stale self-knowledge.</b> Its briefing said only the coding session can move the screen (it has scroll), and that the speaker is Vivek.</span></li>\n<li class=\"no\"><span class=\"m\">5</span><span><b>Wrong cues.</b> A voice restart re-sent “Someone just joined”; a rejoin recap labelled every person “Vivek”; the greeting fired mid-sentence.</span></li>\n<li class=\"no\"><span class=\"m\">6</span><span><b>Boxes.</b> Stacked fractions (T, H, R) and “45°” could not be boxed by name; the box was 84 px tall around a 26 px line.</span></li></ul>"
+  },
+  {
+   "sec": 16,
+   "card": "<h1 style=\"font-size:50px\">The fixes</h1><ul style=\"font-size:22px\">\n<li class=\"fx\"><span class=\"m\">1</span><span>Full screen text is held until someone starts speaking, so it arrives with their question; unchanged screens are no longer re-sent every 15 s.</span></li>\n<li class=\"fx\"><span class=\"m\">2</span><span>The pointer records what was asked; only a wrong or uncheckable box becomes an instruction.</span></li>\n<li class=\"fx\"><span class=\"m\">3</span><span>Each part carries its formulas read from its own picture (bin/deck-math.mjs), checked against the LaTeX source.</span></li>\n<li class=\"fx\"><span class=\"m\">4</span><span>Briefing corrected, plus three plain rules: notes are not read out, only tools act, “just listen” means silence.</span></li>\n<li class=\"fx\"><span class=\"m\">5</span><span>Honest cues after a restart or rejoin; the recap no longer names who spoke; the greeting waits for a pause.</span></li>\n<li class=\"fx\"><span class=\"m\">6</span><span>Fractions, “/”, “½” and the degree sign now match; the frame hugs the term and never cuts it.</span></li>\n<li class=\"ok\"><span class=\"m\">✓</span><span>199 unit tests pass, with at least one pinning each fix.</span></li></ul>"
+  },
+  {
+   "sec": 10,
+   "images": {
+    "frames/ev-T.png": "tools/sim-participant/runs/evidence/box-T.png",
+    "frames/ev-H.png": "tools/sim-participant/runs/evidence/box-H.png",
+    "frames/ev-R.png": "tools/sim-participant/runs/evidence/box-R.png",
+    "frames/ev-45.png": "tools/sim-participant/runs/evidence/box-theta45.png"
+   },
+   "card": "<h1 style=\"font-size:44px;margin-bottom:10px\">Boxes now: by name, tight, whole</h1><h2 style=\"font-size:22px;margin-bottom:16px\">“T = 2v0 sin θ / g”, “H = v0² sin²θ / (2g)”, “R = v0² sin 2θ / g”, “θ = 45°”, rendered by the real src/meet-stage.js</h2><div style=\"display:grid;grid-template-columns:1fr 1fr;gap:18px;width:1640px\"><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:330px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-T.png\" style=\"max-width:100%;max-height:100%\"></div><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:330px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-H.png\" style=\"max-width:100%;max-height:100%\"></div><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:330px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-R.png\" style=\"max-width:100%;max-height:100%\"></div><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:330px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-45.png\" style=\"max-width:100%;max-height:100%\"></div></div>"
+  },
+  {
+   "sec": 11,
+   "card": "<h1>After-fix live run: not yet</h1><h2>A re-run with the first round of fixes started, but mid-run the OpenAI account ran out of GPT Live credits; those results are not used.<br>The second round of fixes has not been run live. Everything is ready: one command re-runs all 11 meetings (about 35 minutes) and re-renders this video.</h2>"
+  },
+  {
+   "sec": 13,
+   "card": "<h1>Still not done</h1><ul>\n<li class=\"no\"><span class=\"m\">✗</span><span>Speed: a median 2.1 s to the first word, and one answer in ten over 7.4 s. The planned fast path (Jev or client delegation) is not built.</span></li>\n<li class=\"nb\"><span class=\"m\">○</span><span>Not built, so only its honesty was tested: the blackboard with live KaTeX, drawing, a separate list of its own ideas.</span></li>\n<li class=\"nb\"><span class=\"m\">○</span><span>Not covered headless: Google Meet admission and a real rejoin. The robot’s Google sign-in has expired (node bin/login.mjs).</span></li>\n<li class=\"nb\"><span class=\"m\">○</span><span>The fixes are unit-tested but not yet re-measured with Alex; that needs GPT Live credits.</span></li></ul>"
+  }
+ ]
+}

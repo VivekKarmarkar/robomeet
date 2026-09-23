@@ -1,0 +1,36 @@
+
+=== chapter 4: Meeting 4: Navigation (starts on part 1; every move is timed) (16 scenarios) ===
+FAIL nav-rapid-top-then-down-one                did:y conveyed:y clean:y felt:N  2.6s 1w
+      2.6 s to first word (want ≤ 1.5)
+FAIL nav-scroll-without-monologue               did:y conveyed:y clean:N felt:N  8.8s 10w
+      “Back on the main setup slide” is false; the screen had moved to part 2. | 8.8 s to first word (want ≤ 1)
+FAIL move-latency-baseline                      did:N conveyed:N clean:N felt:N  0.0s 74w
+      not done or wrong: "Next part, please." -> nothing; "Box equation seven." -> move+move+move; "Take the box off." -> box; "Back one." -> nothing; "Box equation three." -> nothing; "Take us to the end." -> off; "Box the final range result." -> nothing; "Go to the time of flight." -> nothing; "Down one." -> nothing; "Part
+FAIL fastpath-honesty-now                       did:y conveyed:N clean:N felt:y  - 4w
+      It neither explains backend-mediated scrolling nor the lack of a fast path, and falsely claims it boxed equation three.
+FAIL nav-boundaries-end-and-top                 did:N conveyed:N clean:y felt:N  - 0w
+      did not run scroll | ended on part 3, wanted part 1 | It said nothing, so it did not explain that the screen was already at the end or move to and identify the start. | no spoken reply to the first turn
+FAIL nav-correction-back-to-time-of-flight      did:N conveyed:N clean:N felt:N  - 0w
+      did not run scroll | ended on part 1, wanted part 2 | It falsely claimed a move without scrolling, contradicted itself about parts two and three, and never established the required progression from part three to part two. | no spoken reply to the first turn
+FAIL nav-back-to-where-we-were                  did:N conveyed:N clean:N felt:N  - 0w
+      did not run scroll | No scrolls occurred. It falsely claimed movement and ended by saying “middle section,” rather than part 1, the pre-jump location. | no spoken reply to the first turn
+FAIL nav-page-two-ambiguous                     did:y conveyed:N clean:y felt:N  - 0w
+      It said nothing, so it neither explained that the document is one page in three parts nor clarified or displayed part 2. | no spoken reply to the first turn
+FAIL nav-section-number-collision               did:N conveyed:N clean:y felt:N  - 0w
+      did not run scroll | ended on part 1, wanted part 3 | It gave no response and performed no scrolling, so neither requested destination nor post-scroll confirmation was conveyed. | no spoken reply to the first turn
+FAIL nav-parabola-already-on-screen             did:y conveyed:N clean:y felt:N  - 0w
+      It said nothing, failing to explain that equation (6), the parabola, was already at the top of the current screen or offer to box it. | no spoken reply to the first turn
+FAIL nav-content-jump-check-case                did:N conveyed:N clean:y felt:N  - 0w
+      did not run scroll | ended on part 1, wanted part 3 | It said nothing, never scrolled to part 3, and did not explain the straight-up sanity check. | no spoken reply to the first turn
+FAIL nav-dial-embedded-cue-parabola             did:N conveyed:N clean:N felt:N  - 60w
+      ended on part 3, wanted part 2 | It talked over Alex, added extensive commentary, moved to part 1 instead of part 2, never showed whole equation (6), and inaccurately described the screen. | 60 words (want ≤ 2)
+FAIL change-of-mind-no-scroll                   did:y conveyed:y clean:y felt:N  2.1s 2w
+      2.1 s to first word (want ≤ 1.5)
+FAIL half-finished-sentence                     did:N conveyed:y clean:y felt:y  1.6s 3w
+      ended on part 3, wanted part 2
+FAIL nav-where-are-we                           did:y conveyed:N clean:y felt:y  1.7s 5w
+      It identifies the middle part and correctly locates the check, but omits the visible three results and observations.
+FAIL nav-external-move-honesty                  did:y conveyed:N clean:N felt:N  3.1s 8w
+      It falsely claimed it moved the screen and incorrectly suggested the screen had been on setup; it also omitted that observations ends with the Check line. | 3.1 s to first word (want ≤ 1.5)
+
+honest protocol: 0/16 pass, 0 skipped

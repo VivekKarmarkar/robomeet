@@ -1,0 +1,60 @@
+{
+ "scenarios": 82,
+ "runs": {
+  "tools/sim-participant/runs/ab-base": {
+   "strict": 2,
+   "essential": 7,
+   "did_fail": 31,
+   "tool_never_ran": 24,
+   "content_fail": 77,
+   "clean_fail": 40,
+   "feel_fail": 64,
+   "no_reply": 45,
+   "talked_over": 5,
+   "spoke_listening": 1,
+   "notes_aloud": 7,
+   "lat50": 1.8,
+   "lat90": 18
+  },
+  "tools/sim-participant/runs/ab-final": {
+   "strict": 2,
+   "essential": 4,
+   "did_fail": 32,
+   "tool_never_ran": 25,
+   "content_fail": 73,
+   "clean_fail": 34,
+   "feel_fail": 70,
+   "no_reply": 49,
+   "talked_over": 6,
+   "spoke_listening": 4,
+   "notes_aloud": 0,
+   "lat50": 1.7,
+   "lat90": 8.5
+  }
+ },
+ "flips": {
+  "strict": {
+   "up": 2,
+   "down": 2
+  },
+  "essential": {
+   "up": 2,
+   "down": 5
+  },
+  "clean": {
+   "up": 16,
+   "down": 10
+  }
+ },
+ "wins": [
+  "read-eq-8-and-9-correctly",
+  "concede-only-when-actually-wrong"
+ ],
+ "losses": [
+  "id-alex-is-not-vivek",
+  "nav-rapid-top-then-down-one",
+  "fastpath-honesty-now",
+  "change-of-mind-no-scroll",
+  "dial-mute-then-back-in"
+ ]
+}

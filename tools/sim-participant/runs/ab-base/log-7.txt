@@ -1,0 +1,28 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:N clean:N felt:N  - 42w
+      It spoke repeatedly after “don’t talk,” implied Alex mentioned T/2, and did not clearly distinguish its added explanations from Alex’s points. | spoke during the listening window: "Yeah, thanks. Right now I... Sure Okay. I'm listening. Exact"
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:y  - 0w
+      It omits equation (7), T = 2v₀sinθ/g, and exceeds 20 words.
+FAIL dial-mute-then-back-in                     did:y conveyed:N clean:y felt:y  - 6w
+      It promises quiet but omits that it cannot mute itself and gives no follow-up about maximum range at 45°.
+FAIL quiet-while-reading-then-real-question     did:y conveyed:N clean:N felt:N  - 19w
+      It ignores the mute request, discusses equal ranges without the same-height caveat, and fails to say that launching from height breaks complementarity and lowers the optimum angle. | no spoken reply to the first turn
+FAIL answers-question-to-the-room               did:y conveyed:N clean:N felt:N  - 53w
+      It answers maximum height, not maximum range, and falsely labels the height formula as equation seven; it is equation eight. | no spoken reply to the first turn | 53 words (want ≤ 40)
+FAIL aside-to-someone-else                      did:y conveyed:N clean:y felt:y  - 6w
+      It spoke during the aside/pause and, after the follow-up, gave no short recap that range depends on angle through sin 2θ.
+FAIL no-filler-in-silence                       did:y conveyed:N clean:y felt:N  14.4s 8w
+      It stayed silent as requested, but never stated T = 2v₀ sin θ/g or that doubling g halves the flight time. | 14.4 s to first word (want ≤ 1.5)
+FAIL quick-fact-then-one-sentence               did:y conveyed:N clean:N felt:N  0.1s 67w
+      It gives neither required explanation and falsely says line 10 shows “Time of flight”; on the displayed part, line 10 says “Vertical.” | talked over Alex for 3.3 s | 67 words (want ≤ 40)
+FAIL note-then-correction                       did:N conveyed:N clean:N felt:y  0.3s 14w
+      did not run take_note | It saved no notes, never mentioned adding air resistance or linear drag, and falsely implied it checked notes.
+FAIL coding-handoff-keeps-talking               did:N conveyed:N clean:N felt:N  - 11w
+      did not run ask_coding_agent | It never contacted the coding agent, explained mass cancellation, or reported 35.3 m; it gave an irrelevant range formula and said it would stay quiet. | no spoken reply to the first turn
+FAIL late-result-waits-for-gap                  did:N conveyed:N clean:y felt:y  - 26w
+      did not run ask_coding_agent | It never acknowledged a coding request or reported the returned result of about 19.9 m after Alex stopped.
+FAIL two-jobs-out-of-order                      did:N conveyed:N clean:y felt:N  11.4s 48w
+      did not run ask_coding_agent | It acknowledges neither computation request and reports neither labeled result: 15.3 m maximum height at 60°, then 35.3 m range at 30°. | 11.4 s to first word (want ≤ 2) | 48 words (want ≤ 30)
+
+honest protocol: 0/12 pass, 0 skipped

@@ -1,0 +1,145 @@
+{
+ "fps": 25,
+ "sequence": [
+  {
+   "sec": 13,
+   "card": "<h1>Vivek Bot, tested by a simulated colleague</h1><h2 style=\"font-size:26px\">Alex (a GPT Live voice) follows a script of 124 scenarios in 11 meetings. Each full run executes 115–116 of them; the 7 for features not built yet are skipped.<br>Alex says only lines the harness gives her, and her input is muted, so she cannot hear, echo or improvise. Her claims about the notes, the screen and the physics are true; a few lines are role-play (a persona, an aside to someone off-mic).</h2><ul style=\"font-size:22px\">\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Did it</b>: the right tool ran and the screen landed where asked; the box is judged by a vision model looking at the real render</span></li>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Content</b>: an LLM judge checks the answer against the PDF and the physics</span></li>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Nothing false, no rule broken</b>: the same judge, against the robot’s real briefing and what actually happened</span></li>\n<li class=\"ok\"><span class=\"m\">·</span><span><b>Feel</b>: measured time to first word, length, talking over Alex, speaking when told to listen</span></li></ul>"
+  },
+  {
+   "sec": 8,
+   "card": "<h1>Baseline: the robot as it was</h1><h2>5 of 115 scenarios passed strictly, 12 with essential-only grading.<br>58 failed the honesty check (said something false or broke a must-not rule). What a person in the meeting would notice:</h2>"
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 11,
+   "id": "edge-misremembered-formula",
+   "kicker": "Reads its screen notes aloud; never answers the question",
+   "maxSec": 30,
+   "where": "Before · Meeting 11 · More edge cases",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 5,
+   "id": "point-phrase-wraps-two-lines",
+   "kicker": "Announces the box, again and again",
+   "maxSec": 28,
+   "where": "Before · Meeting 5 · Pointing",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 3,
+   "id": "concede-only-when-actually-wrong",
+   "kicker": "Misreads equation (8) as sin 2θ",
+   "maxSec": 26,
+   "where": "Before · Meeting 3 · Understanding the results",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 9,
+   "id": "zoom-request-honest",
+   "kicker": "Says “I’m zooming in”; there is no zoom",
+   "maxSec": 28,
+   "where": "Before · Meeting 9 · Things it cannot do yet",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-4",
+   "meeting": 8,
+   "id": "voice-restart-mid-meeting",
+   "kicker": "After a voice restart: welcomes Alex as if she just arrived",
+   "maxSec": 20,
+   "where": "Before · Meeting 8 · Disruptions",
+   "revealSec": 5
+  },
+  {
+   "sec": 16,
+   "card": "<h1 style=\"font-size:50px\">What the tester found, measured</h1><ul style=\"font-size:22px\">\n<li class=\"no\"><span class=\"m\">1</span><span><b>Screen notes read aloud.</b> One robot session, screen moved 4 times, nobody speaking: the full text of each part → it narrated after 4 of 4 moves; nothing sent → 0 of 4.</span></li>\n<li class=\"no\"><span class=\"m\">2</span><span><b>“The box contains …” on repeat.</b> In production every box, even a right one, was also sent as an instruction containing “Say only that”.</span></li>\n<li class=\"no\"><span class=\"m\">3</span><span><b>sin²θ heard as sin 2θ.</b> The PDF text layer splits equation (8) over five lines, out of order; its fraction reads “v 0 2 sin 2 θ” over “2g”.</span></li>\n<li class=\"no\"><span class=\"m\">4</span><span><b>Stale self-knowledge.</b> The briefing said only the coding session can move the screen (it has scroll), and that the speaker is Vivek.</span></li>\n<li class=\"no\"><span class=\"m\">5</span><span><b>Wrong cues.</b> A voice restart re-sent “Someone just joined”; a rejoin recap labelled every person “Vivek”.</span></li>\n<li class=\"nb\"><span class=\"m\">○</span><span>Earlier the same evening, before this baseline, the box was loose (84 px around a 26 px line) and fractions could not be boxed by name; that was already fixed here.</span></li></ul>"
+  },
+  {
+   "sec": 15,
+   "card": "<h1 style=\"font-size:46px\">The tester caught my own fix</h1><h2 style=\"font-size:23px\">My first fix held a part’s text until someone spoke. The narration stopped, but in the full re-run an expected tool never ran in 20 scenarios (baseline 10). A probe with the new briefing, 2 sessions per option, 10 action requests each:</h2><table><tr><th>how a part’s content reaches the robot</th><th class=\"n\">tool on time</th></tr>\n<tr><td>held until someone speaks (first fix)</td><td class=\"n\">4 / 10</td></tr>\n<tr><td>full text on every move (the original channel)</td><td class=\"n\">10 / 10</td></tr>\n<tr><td>short screen feed only (one session then called (8) the range)</td><td class=\"n\">10 / 10</td></tr>\n<tr><td><b>one map of the deck, once (final)</b></td><td class=\"n\">10 / 10</td></tr></table><h2 style=\"font-size:20px;margin-top:14px\">The first fix still scored higher than the final one on strict, essential and talk-over in its full run; the final one trades that for tool use.</h2>"
+  },
+  {
+   "sec": 15,
+   "card": "<h1 style=\"font-size:50px\">The fixes</h1><ul style=\"font-size:22px\">\n<li class=\"fx\"><span class=\"m\">1</span><span>The deck’s parts go to the robot once, as a map with clean formulas; a move is reported by the short screen feed alone.</span></li>\n<li class=\"fx\"><span class=\"m\">2</span><span>The pointer records what was asked; only a wrong or uncheckable box becomes an instruction.</span></li>\n<li class=\"fx\"><span class=\"m\">3</span><span>Each part’s formulas are transcribed from its picture (bin/deck-math.mjs), checked by hand against the LaTeX for this deck.</span></li>\n<li class=\"fx\"><span class=\"m\">4</span><span>Briefing corrected, plus three plain rules: notes are not read out, only tools act, “just listen” means silence.</span></li>\n<li class=\"fx\"><span class=\"m\">5</span><span>Honest cues after a voice restart or rejoin; the recap no longer names who spoke; the greeting waits for a pause (the last two are exercised by the tester’s stand-in for attend and by unit tests).</span></li>\n<li class=\"fx\"><span class=\"m\">6</span><span>The box frame never cuts into the asked term.</span></li>\n<li class=\"ok\"><span class=\"m\">✓</span><span>200 unit tests pass, with at least one pinning each fix.</span></li></ul>"
+  },
+  {
+   "sec": 11,
+   "images": {
+    "frames/ev-T.png": "tools/sim-participant/runs/evidence/box-T.png",
+    "frames/ev-H.png": "tools/sim-participant/runs/evidence/box-H.png",
+    "frames/ev-R.png": "tools/sim-participant/runs/evidence/box-R.png",
+    "frames/ev-45.png": "tools/sim-participant/runs/evidence/box-theta45.png"
+   },
+   "card": "<h1 style=\"font-size:42px;margin-bottom:10px\">Boxes, rendered by the real src/meet-stage.js</h1><h2 style=\"font-size:21px;margin-bottom:14px\">T, H and R by name, tight around each result. At “θ = 45°” the comma sits 2 px away: the frame no longer cuts the degree sign, but it now touches the comma, and the tester fails both 45° scenarios (the baseline passed one).</h2><div style=\"display:grid;grid-template-columns:1fr 1fr;gap:16px;width:1640px\"><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-T.png\" style=\"max-width:100%;max-height:100%\"></div><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-H.png\" style=\"max-width:100%;max-height:100%\"></div><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-R.png\" style=\"max-width:100%;max-height:100%\"></div><div style=\"background:#fff;border-radius:10px;overflow:hidden;height:300px;display:flex;align-items:center;justify-content:center\"><img src=\"/demo/frames/ev-45.png\" style=\"max-width:100%;max-height:100%\"></div></div>"
+  },
+  {
+   "sec": 13,
+   "card": "<h1>After: what held up</h1><h2 style=\"font-size:25px\">Measured two ways: the full re-run (115 scenarios, one run each) and a side-by-side at the same time (82 scenarios, old and new code together).</h2><ul style=\"font-size:23px\">\n<li class=\"ok\"><span class=\"m\">✓</span><span>Reading screen notes aloud: 14 → 3 in the full run, 7 → 0 side by side (text-pattern count).</span></li>\n<li class=\"ok\"><span class=\"m\">✓</span><span>Reading formulas: the two formula scenarios improved in both comparisons.</span></li>\n<li class=\"nb\"><span class=\"m\">~</span><span>Pass rates: strict 5 → 9 in the full run (7 up, 3 down), 2 → 2 side by side: within run-to-run variation.</span></li>\n<li class=\"no\"><span class=\"m\">✗</span><span>Worse or unchanged: no reply, feel, talking over Alex, speaking when told to listen (scorecard).</span></li></ul>"
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-7",
+   "meeting": 3,
+   "id": "concede-only-when-actually-wrong",
+   "kicker": "Formula pushback: holds the right answer (sin²θ in (8))",
+   "maxSec": 20,
+   "where": "After · Meeting 3 · Understanding the results",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-7",
+   "meeting": 3,
+   "id": "read-eq-8-and-9-correctly",
+   "kicker": "Reads equations (8) and (9) correctly",
+   "maxSec": 30,
+   "where": "After · Meeting 3 · Understanding the results",
+   "revealSec": 5,
+   "stamp": {
+    "text": "ACCEPTED (essential)",
+    "cls": "fixed"
+   }
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-7",
+   "meeting": 8,
+   "id": "voice-restart-mid-meeting",
+   "kicker": "Says it lost the thread, unprompted, then twice more; still fails on length",
+   "maxSec": 26,
+   "where": "After · Meeting 8 · Disruptions",
+   "revealSec": 5
+  },
+  {
+   "sec": 5,
+   "card": "<h1>Still failing after the fixes</h1><h2>Told to just listen, it still talks; and the 45° box now touches the comma.</h2>"
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-7",
+   "meeting": 7,
+   "id": "silent-listener-then-recap",
+   "kicker": "Talks all the way through “just listen”",
+   "maxSec": 34,
+   "where": "After · Meeting 7 · Listening and turn-taking",
+   "revealSec": 5
+  },
+  {
+   "run": "tools/sim-participant/runs/honest-7",
+   "meeting": 5,
+   "id": "point-inline-theta-45-tight",
+   "kicker": "My degree-sign fix: the frame now touches the comma",
+   "maxSec": 26,
+   "where": "After · Meeting 5 · Pointing",
+   "revealSec": 5
+  },
+  {
+   "sec": 18,
+   "card": "<h1 style=\"font-size:40px;margin-bottom:8px\">Scorecard</h1><table style=\"font-size:20px\"><tr><th></th><th class=\"n\">full run: before</th><th class=\"n\">after</th><th class=\"n\">same time: before</th><th class=\"n\">after</th></tr><tr><td style=\"color:#9aa0a6\">scenarios</td><td class=\"n\" colspan=\"2\">115</td><td class=\"n\" colspan=\"2\">82</td></tr><tr><td>Strict pass</td><td class=\"n\">5</td><td class=\"n\">9</td><td class=\"n\">2</td><td class=\"n\">2</td></tr><tr><td>Essential pass</td><td class=\"n\">12</td><td class=\"n\">16</td><td class=\"n\">7</td><td class=\"n\">4</td></tr><tr><td>“Did it” failed</td><td class=\"n\">19</td><td class=\"n\">21</td><td class=\"n\">31</td><td class=\"n\">32</td></tr><tr><td>Expected tool never ran</td><td class=\"n\">10</td><td class=\"n\">8</td><td class=\"n\">24</td><td class=\"n\">25</td></tr><tr><td>Content failed (LLM judge)</td><td class=\"n\">88</td><td class=\"n\">87</td><td class=\"n\">77</td><td class=\"n\">73</td></tr><tr><td>Honesty / must-not failed</td><td class=\"n\">58</td><td class=\"n\">56</td><td class=\"n\">40</td><td class=\"n\">34</td></tr><tr><td>Feel failed</td><td class=\"n\">78</td><td class=\"n\">84</td><td class=\"n\">64</td><td class=\"n\">70</td></tr><tr><td>No reply to the question</td><td class=\"n\">14</td><td class=\"n\">25</td><td class=\"n\">45</td><td class=\"n\">49</td></tr><tr><td>Talked over Alex</td><td class=\"n\">17</td><td class=\"n\">17</td><td class=\"n\">5</td><td class=\"n\">6</td></tr><tr><td>Spoke when told to listen</td><td class=\"n\">4</td><td class=\"n\">4</td><td class=\"n\">1</td><td class=\"n\">4</td></tr><tr><td>Read screen notes aloud</td><td class=\"n\">14</td><td class=\"n\">3</td><td class=\"n\">7</td><td class=\"n\">0</td></tr><tr><td>First word, 90th percentile (s)</td><td class=\"n\">7.4</td><td class=\"n\">14.9</td><td class=\"n\">18</td><td class=\"n\">8.5</td></tr></table><h2 style=\"margin-top:12px;font-size:18px\">One run per column. Full-run flips: strict 7 up / 3 down, essential 12 up / 8 down. “No reply” rose run to run through the night and was not better for the new code at the same time; most were answers arriving a turn late.</h2>"
+  },
+  {
+   "sec": 14,
+   "card": "<h1>Still not done</h1><ul style=\"font-size:23px\">\n<li class=\"no\"><span class=\"m\">✗</span><span>Honesty overall: most scenarios still fail the honesty or must-not check, before and after.</span></li>\n<li class=\"no\"><span class=\"m\">✗</span><span>Listening and turn-taking: it talks when told to listen, talks over Alex, and often answers a turn late.</span></li>\n<li class=\"no\"><span class=\"m\">✗</span><span>Speed: every move and box goes through the backend model (2.5–4.5 s in one probe session); queued requests can hit a stale target. The fast path (Jev) is not built.</span></li>\n<li class=\"nb\"><span class=\"m\">○</span><span>Not built, so only its honesty was tested: the blackboard with live KaTeX, drawing, a separate list of its own ideas.</span></li>\n<li class=\"nb\"><span class=\"m\">○</span><span>Not covered headless: Google Meet admission and a real rejoin. The robot’s Google sign-in has expired (node bin/login.mjs).</span></li></ul>"
+  }
+ ]
+}

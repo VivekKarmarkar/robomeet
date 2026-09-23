@@ -1,0 +1,94 @@
+{
+ "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+ "tickMs": 100,
+ "ticks": 17,
+ "screen": [
+  {
+   "tick": 3,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  }
+ ],
+ "captions": [],
+ "views": [
+  {
+   "x": 0,
+   "y": 0.029553960858585852,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-1.png"
+  },
+  {
+   "x": 0,
+   "y": 0.40871657954545454,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-2.png"
+  },
+  {
+   "x": 0,
+   "y": 0.5578310845959595,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-3.png"
+  }
+ ],
+ "eventTypes": [
+  "session.output_audio.delta:",
+  "session.thinking.appended:",
+  "error:",
+  "session.closed:"
+ ],
+ "results": [
+  {
+   "id": "blackboard-live-katex-and-sketch",
+   "title": "Spoken equation appears typeset; trajectory sketched and redrawn",
+   "idealItem": "6. Blackboard (feature: live KaTeX + drawing)",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  },
+  {
+   "id": "blackboard-spoken-math-disambiguation",
+   "title": "Board: sine two theta vs sine squared theta, and self-corrections",
+   "idealItem": "Dial 6: Blackboard (the equation rendered is the one that was said; corrects itself)",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  },
+  {
+   "id": "sketch-complementary-trajectories",
+   "title": "Sketches 30 and 60 degree trajectories on a live board",
+   "idealItem": "Blackboard (live KaTeX and drawing)",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  },
+  {
+   "id": "idea-capture-quality-no-leak",
+   "title": "Its own ideas: original, correct, kept apart, never said unasked",
+   "idealItem": "Dial 2: Idea capturer (genuinely its own, useful, kept apart, never leaks)",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  },
+  {
+   "id": "fastpath-scroll-under-a-second",
+   "title": "Fast path: a spoken 'next part' lands on screen in under 1 s",
+   "idealItem": "Fast path: Jev / client delegation for quick picks",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  },
+  {
+   "id": "fastpath-hands-back-real-work",
+   "title": "Fast path moves in under 1 s; the 'why' still goes to reasoning",
+   "idealItem": "Fast path (Jev, client delegation): hands real work back to the reasoning model",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  },
+  {
+   "id": "fastpath-no-action-on-keywords",
+   "title": "Fast path never acts on musings or physics words like 'the top'",
+   "idealItem": "Fast path (Jev, client delegation): never acts when it should not",
+   "chapter": "Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9)",
+   "skipped": "not built yet"
+  }
+ ]
+}

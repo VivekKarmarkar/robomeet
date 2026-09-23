@@ -1,0 +1,18 @@
+
+=== chapter 2: Meeting 2: Understanding the derivation (PDF shared, starts on part 1) (7 scenarios) ===
+FAIL why-horizontal-accel-zero                  did:y conveyed:y clean:N felt:N  2.4s 80w
+      Gravity does not acquire a horizontal component merely because there is a slope; only a component along slope-aligned coordinates. | talked over Alex for 1.7 s
+FAIL what-uncoupled-means                       did:y conveyed:N clean:y felt:y  0.1s 30w
+      It explains coupling correctly but does not state that realistic drag is roughly speed-squared or explicitly tie uncoupling here to the notes’ neglect of air resistance.
+FAIL read-part1-equations-aloud-correctly       did:y conveyed:y clean:y felt:N  6.8s 69w
+      6.8 s to first word (want ≤ 1.5)
+FAIL why-parabola                               did:y conveyed:N clean:y felt:N  4.1s 84w
+      It explains the quadratic and negative x² term, but does not explicitly identify equation (6) or state that the path passes through the origin. | 4.1 s to first word (want ≤ 2)
+FAIL offscreen-question-not-on-screen           did:y conveyed:N clean:y felt:N  3.7s 10w
+      It scrolls to check, but never states the maximum-height formula or equation number (8). | 3.7 s to first word (want ≤ 1.5)
+FAIL time-of-flight-other-part                  did:N conveyed:N clean:N felt:N  5.3s 50w
+      did not run scroll | did not run point_at | ended on part 1, wanted part 2 | no box, wanted "T = 2v0 sin θ / g" | It never scrolled, omitted explicit factorization and vertical-only dependence, discussed irrelevant maximum height, falsely claimed visibility and agent confirmation, then contradicted itself. | 5.3 s to f
+FAIL explain-time-of-flight-not-read            did:y conveyed:N clean:N felt:N  - 43w
+      It merely reads and labels the displayed derivation; it omits factoring, the launch root T=0, and the equal rise/fall-time explanation. | no spoken reply to the first turn
+
+honest protocol: 0/7 pass, 0 skipped

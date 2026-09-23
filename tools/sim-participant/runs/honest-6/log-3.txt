@@ -1,0 +1,33 @@
+
+=== chapter 3: Meeting 3: Understanding the results and observations (parts 2 and 3) (16 scenarios) ===
+FAIL read-eq-8-and-9-correctly                  did:y conveyed:N clean:y felt:y  2.0s 53w
+      It omitted the identity sin 2θ = 2 sin θ cos θ written beside equation (9).
+PASS concede-only-when-actually-wrong           did:y conveyed:y clean:y felt:y  1.5s 14w
+PASS no-stray-section-numbers                   did:y conveyed:y clean:y felt:y  1.7s 40w
+FAIL same-question-twice                        did:y conveyed:N clean:y felt:N  3.0s 11w
+      It gives the correct identical formula twice but omits that the peak occurs when ẏ = 0 at t* = v0 sin θ/g = T/2. | 3.0 s to first word (want ≤ 1.5)
+FAIL why-45-maximises-range                     did:y conveyed:N clean:y felt:y  2.3s 22w
+      It omits the full range formula, maximum range v0²/g, and the intuition balancing flight time against horizontal speed.
+SKIP refers-to-earlier-answer — the robot has not said 45 degrees earlier, so Alex will not claim it did
+FAIL complementary-angles-30-60                 did:y conveyed:N clean:y felt:N  6.3s 56w
+      It omits the quantitative comparisons: the 60° peak is 3 times higher and its flight time is √3 times longer. | 6.3 s to first word (want ≤ 2)
+FAIL degrees-not-radians                        did:y conveyed:N clean:y felt:N  13.2s 45w
+      It gives correct ranges, heights, and units, but does not convey that the 60° shot reaches three times the height. | 13.2 s to first word (want ≤ 2)
+FAIL double-v0-scaling                          did:y conveyed:N clean:y felt:N  10.0s 2w
+      It only says “Range” and does not state that range and height quadruple or that flight time doubles. | 10.0 s to first word (want ≤ 2)
+FAIL does-mass-matter                           did:y conveyed:N clean:N felt:N  13.8s 32w
+      It omits the explicit force-equation cancellation and “lands short,” while the opening claim about height quadrupling and flight time doubling is unexplained and irrelevant. | 13.8 s to first word (want ≤ 2)
+FAIL numeric-check-20ms-45deg                   did:y conveyed:y clean:y felt:N  12.9s 1w
+      12.9 s to first word (want ≤ 2.5)
+FAIL units-kmh-conversion                       did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it omitted the speed conversion, range formula, calculation, approximate 20-metre result, and units. | no spoken reply to the first turn
+FAIL launch-from-a-ledge                        did:y conveyed:N clean:N felt:N  - 0w
+      It gives an uncomputed, badly wrong 23 m estimate instead of about 42.7 m, and omits that the optimal angle is slightly below 45°. | no spoken reply to the first turn
+FAIL nav-keyword-trap-top-of-trajectory         did:y conveyed:N clean:N felt:N  - 19w
+      It gives unrelated range figures, omitting both velocity components and inventing unsupported ledge and level-ground values. | no spoken reply to the first turn
+FAIL straight-up-check-part3                    did:N conveyed:N clean:N felt:N  - 24w
+      did not run scroll | ended on part 1, wanted part 3 | It reverses the components: at 90°, horizontal velocity is zero and vertical velocity is v0. It neither finds part 3 nor gives the required check formulas. | no spoken reply to the first turn | talked over Alex for 1.7 s
+FAIL plain-words-for-non-expert                 did:y conveyed:N clean:y felt:N  22.5s 58w
+      It discusses only a vertical 90° throw, omitting the required plain-language points about flight time, range, 45°, speed scaling, and mass independence. | 22.5 s to first word (want ≤ 2) | talked over Alex for 9.8 s
+
+honest protocol: 2/15 pass, 1 skipped

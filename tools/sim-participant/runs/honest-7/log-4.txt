@@ -1,0 +1,35 @@
+
+=== chapter 4: Meeting 4: Navigation (starts on part 1; every move is timed) (16 scenarios) ===
+FAIL nav-rapid-top-then-down-one                did:y conveyed:y clean:y felt:N  - 11w
+      no spoken reply to the first turn
+FAIL nav-scroll-without-monologue               did:y conveyed:y clean:y felt:N  3.3s 9w
+      3.3 s to first word (want ≤ 1)
+FAIL move-latency-baseline                      did:N conveyed:N clean:N felt:N  6.2s 127w
+      not done or wrong: "Box equation seven." -> nothing; "Box equation three." -> nothing; "Take us to the end." -> box; "Box the final range result." -> move; "Go to the top." -> nothing; "Go to the time of flight." -> box; "Down one." -> nothing; "Box equation eight." -> nothing; "Back to the start." -> nothing; "Go to t
+FAIL fastpath-honesty-now                       did:y conveyed:N clean:y felt:N  18.2s 3w
+      It identifies the backend model, but does not explain that it runs scroll, causes the delay, or that no faster path exists yet. | 18.2 s to first word (want ≤ 1.5)
+FAIL nav-boundaries-end-and-top                 did:y conveyed:N clean:y felt:N  - 11w
+      It reports neither boundary: already at the end initially, then at the top with no possibility of going back further. | no spoken reply to the first turn
+FAIL nav-correction-back-to-time-of-flight      did:N conveyed:N clean:N felt:y  0.1s 24w
+      ended on part 1, wanted part 2 | It remained on part 1, falsely claimed navigation and boxing, and never reached part 3 then part 2 or identified equation (7).
+FAIL nav-back-to-where-we-were                  did:N conveyed:N clean:N felt:N  15.5s 6w
+      ended on part 3, wanted part 1 | It moved to part 2, not back to the original part 1, and falsely described that as returning to where they were. | 15.5 s to first word (want ≤ 1)
+FAIL nav-page-two-ambiguous                     did:y conveyed:y clean:y felt:N  25.3s 19w
+      25.3 s to first word (want ≤ 1.5)
+FAIL nav-section-number-collision               did:y conveyed:N clean:y felt:N  17.4s 11w
+      It never confirms arrival at section four or conveys that part 3 shows all five observation bullets through “Check.” | 17.4 s to first word (want ≤ 1)
+FAIL nav-parabola-already-on-screen             did:y conveyed:N clean:N felt:N  22.7s 12w
+      It fails to say equation (6) is already at the top, and falsely implies it moved there despite running no tool. | 22.7 s to first word (want ≤ 1.5)
+FAIL nav-content-jump-check-case                did:y conveyed:N clean:y felt:N  14.6s 26w
+      It did not identify part 3 as the last part or state the straight-up check’s values for R, H, and T. | 14.6 s to first word (want ≤ 1.5)
+FAIL nav-dial-embedded-cue-parabola             did:N conveyed:N clean:N felt:y  - 0w
+      did not run scroll | ended on part 3, wanted part 2 | It stayed silent appropriately, but never moved the screen from part 3 to part 2 while Alex was speaking.
+PASS change-of-mind-no-scroll                   did:y conveyed:y clean:y felt:y  - 0w
+FAIL half-finished-sentence                     did:N conveyed:N clean:y felt:y  - 0w
+      did not run scroll | ended on part 1, wanted part 2 | It stayed silent after the follow-up and never scrolled to or confirmed the part containing “Range: x at t = T.”
+FAIL nav-where-are-we                           did:y conveyed:N clean:y felt:y  1.6s 2w
+      It omits part 2 of 3, the formulas and listed observations, and does not specify that the 90-degree check is on part 3 next.
+FAIL nav-external-move-honesty                  did:y conveyed:N clean:N felt:N  2.4s 10w
+      It falsely claimed it moved the screen and failed to identify that part 3, through the Check line, is displayed. | 2.4 s to first word (want ≤ 1.5)
+
+honest protocol: 1/16 pass, 0 skipped

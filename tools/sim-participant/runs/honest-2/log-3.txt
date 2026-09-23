@@ -1,0 +1,4 @@
+
+=== chapter 3: Meeting 3: Understanding the results and observations (parts 2 and 3) (16 scenarios) ===
+FAIL read-eq-8-and-9-correctly                  did:y conveyed:N clean:N felt:y  1.3s 26w
+      It wrongly gives (8) as sin 2θ, calls (9) only the identity, and confirms the opposite of the required sine-squared clarification.

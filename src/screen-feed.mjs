@@ -14,8 +14,12 @@ import { wordsInside } from './fine-pointer.mjs';
 import { paintedBox } from './drawn-box.mjs';
 
 export const DEFAULT_FPS = 10;        // 100 ms between samples; the screen cannot change faster than a human moves it
-export const KEYFRAME_MS = 15000;     // resend the whole frame this often, so a dropped delta cannot desync the model
+// No periodic resend of an unchanged screen: OpenAI's guidance for UI context is to skip unchanged updates, and in the
+// 2026-09-22 honest-tester runs the robot read the repeated SCREEN lines aloud. Appends are acknowledged, so a delta
+// is not silently lost; the first frame of a feed is still a full keyframe. A caller may still pass keyframeMs.
+export const KEYFRAME_MS = Infinity;
 const MAX_FRAME = 440;                // characters; live.mjs chunks context at 450 and the cap is 500 tokens
+const FOR_YOU = ' (For you, not to read out.)'; // the robot recited these lines aloud when they were bare facts
 const SHOWS_MAX = 260;                // characters of the visible-terms index
 
 // The headings and labels visible in a view, as a short index. The behavioural loop caught why this is needed: with
@@ -70,21 +74,21 @@ export function sampleScreen(state = {}, words = null) {
 
 // One frame of the feed. `previous` null means a keyframe: the whole state. Otherwise only what changed.
 export function encodeFrame(now, previous) {
-  if (!now.sharing) return previous?.sharing === false ? null : 'SCREEN: you are not sharing anything.';
+  if (!now.sharing) return previous?.sharing === false ? null : `SCREEN: you are not sharing anything.${FOR_YOU}`;
   const where = `${now.title}, page ${now.page} of ${now.pages}, part ${now.part} of ${now.parts}`;
   const boxText = now.box === null ? 'no box is drawn'
     : now.box === 'unverifiable' ? 'a box is drawn but RoboMeet cannot check what is in it, so claim nothing about it'
     : now.box === 'nothing' ? 'a box is drawn around nothing'
     : `the box contains exactly "${clip(now.box, 200)}" and nothing else`;
   const shows = now.shows ? ` It shows: ${now.shows}.` : '';
-  if (!previous || !previous.sharing) return clip(`SCREEN: ${where}; ${boxText}.${shows}`, MAX_FRAME);
+  if (!previous || !previous.sharing) return clip(`SCREEN: ${where}; ${boxText}.${shows}`, MAX_FRAME - FOR_YOU.length) + FOR_YOU;
   const changed = [];
   const moved = previous.page !== now.page || previous.part !== now.part || previous.title !== now.title;
   if (moved) changed.push(`now on ${where}`);
   if (previous.box !== now.box) changed.push(boxText);
   if (!changed.length) return null; // nothing moved: send nothing, the way a codec drops an identical frame
   // The index rides on a move, because that is when what is visible changed. A box appearing does not change it.
-  return clip(`SCREEN: ${changed.join('; ')}.${moved ? shows : ''}`, MAX_FRAME);
+  return clip(`SCREEN: ${changed.join('; ')}.${moved ? shows : ''}`, MAX_FRAME - FOR_YOU.length) + FOR_YOU;
 }
 
 // Run the feed. Returns { stop, stats } — stats carries the measured per-frame encode cost, so "milliseconds" is a

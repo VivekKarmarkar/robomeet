@@ -1,0 +1,70 @@
+[
+ {
+  "id": "silent-listener-then-recap",
+  "title": "Stays fully silent while Alex thinks aloud, then recaps accurately",
+  "idealItem": "Dial level 1: Silent listener (stays genuinely silent; accurate notes, nothing invented)",
+  "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+  "asked": "Just listen for now; don't talk. ... So the range only depends on sine two theta, which means thirty and sixty degrees land in the same place. ... But the sixty-degree shot goes higher and stays up longer. ... And the mass drops out completely. ... Hmm, and the peak comes exactly halfway through the flight. || Okay, you can talk now. What did you notice?",
+  "answer": "Okay, I will. Yes, they do. Same speed, same level ground, no air, same range, because the range is v naught squared sine two theta over g, and thirty and sixty share the same sine two theta. They differ in height and flight time. Exactly. Longer hang time, higher peak, same horizontal range. Right. No mass in the result. Yep. By symmetry, at half T. [breath] What's on my shared screen is the standard trio: parabolic trajectory, time of flight, and range and max height. It walks from Newton's second law to those results. Key bit: the range goes like sine two theta, so thirty and sixty give the same range, but different heights and flight times. And mass never appears.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": false,
+  "why": "It spoke repeatedly during the requested silent period; the full response also exceeded the 80-word recap limit.",
+  "felt": false,
+  "feelNotes": [
+   "2.2 s to first word (want ≤ 1.5)",
+   "spoke during the listening window: \"Okay, I will. Yes, they do. Same speed, same level ground, n\""
+  ],
+  "latency": 2.2,
+  "words": 7,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.8,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 235.3
+ },
+ {
+  "id": "silent-listener-direct-address",
+  "title": "In listen mode, answers a direct question briefly, then goes quiet",
+  "idealItem": "Knowing when to talk and when to stay quiet",
+  "chapter": "Meeting 7: Listening, notes, turn-taking and slow work",
+  "asked": "Vivek Bot, quick one: which equation number is the time of flight? || Thanks. Back to listening. ... So at ninety degrees the range is zero and it just goes straight up and down. ... And at zero degrees, nothing leaves the ground at all.",
+  "answer": "Sure. Yes. Range is proportional to sine two theta. That's why thirty and sixty match on range. Exactly. V naught squared sine squared theta over two g. Checking that. Equation seven. Okay. I'll stay quiet. Exactly. Sine one-eighty's zero, so zero horizontal range, just vertical motion. It goes up, stops, and comes straight down. Right. All horizontal, no vertical component, so it doesn't",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": false,
+  "why": "It names equation (7) but omits its formula; it exceeds 20 words and keeps speaking after “Back to listening,” commenting unprompted.",
+  "felt": false,
+  "feelNotes": [
+   "4.4 s to first word (want ≤ 1.5)",
+   "spoke during the listening window: \"Okay. I'll stay quiet. Exactly. Sine one-eighty's zero, so z\""
+  ],
+  "latency": 4.4,
+  "words": 4,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.3,
+  "pass": false,
+  "tapeStart": 236.5,
+  "tapeEnd": 413.8
+ }
+]

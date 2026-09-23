@@ -704,3 +704,63 @@ holding under pressure spoken, and whether the feed interrupts. Leave tier 2 OFF
 Nothing committed. HEAD is `75ae9f6`; **63 changed/untracked files**, which includes the whole P1-P7 round as well.
 Demo video: `robomeet/tools/highlight-lab/runs/screen-truth-demo.mp4`, 103 s.
 Spec: `robomeet/docs/problems/screen-truth-v1.md`.
+
+## 2026-09-22 18:43 CDT — THE IDEAL VERSION: a robot scientist in the meeting (Vivek)
+
+Vivek described where RoboMeet should end up. Not quite a product: extending the scaffolding of our system so he can
+do a lot of things in one place. A Claude Code or Codex session joins a Google Meet or Zoom call as a fully
+interactive participant, a robot scientist.
+
+Its range of participation, as a dial:
+- silently listening and capturing notes (the coding agent is listening, so it may take notes);
+- capturing its own ideas as notes (GPT Live may be smart enough to note its own new ideas);
+- scrolling through the slide deck, moving through the slides very fast, so Vivek does not scroll himself;
+- presenting;
+- highlighting when necessary, careful about small things like the equation thing from test 7;
+- a blackboard with live LaTeX rendering (KaTeX) as he speaks;
+- drawing things out.
+
+Across all of it: knowing when to talk and when to keep quiet, knowing who it is, knowing what it can do.
+
+Bringing Jev into the picture: talk to the session that started the Jev work about using its API key for quick
+decisions, and use client delegation instead of Responses delegation, for very fast actions like scroll this up,
+scroll this down, highlight this box.
+
+He asked whether Claude could picture this done well for a human; Claude described it, and Vivek then asked for it
+to be captured in `ideal_version.md`, **assuming every feature still needs rigorous testing.**
+
+### Subordinate notes (Claude, not Vivek's words)
+- File: `robomeet/ideal_version.md` (115 lines). It carries the rule that nothing counts as done until rigorously
+  tested, the six levels of the dial, the cross-cutting qualities, the fast path, and a test ledger in which every
+  feature reads "Rigorously tested: no".
+- Of the dial, the blackboard, live KaTeX, drawing, idea capture and the Jev fast path do not exist in code yet.
+  Scroll, word-level pointing and the narrated walk exist but are not rigorously tested with a human.
+
+## 2026-09-22 19:48 CDT — Simulated participant and animated faces (Claude's record of work Vivek asked for)
+
+**Vivek asked:** can a GPT Live voice stand in for him in testing, can it be a cartoon participant whose face is
+synced to its voice in real time, can the robot get an animated face too — "pull this off", with a demo video.
+
+**Answer: yes, and the headless half is done.** A second GPT Live voice ("Alex", a physicist persona, voice cedar)
+talks to the robot's REAL config, tools and screen feed; a pacer is each side's microphone. First probe: 8 clean turns
+in 36 s, 0.8 s overlap — the thing the TTS harness could never do. Full 10-step test (`tools/sim-participant/duplex-loop.mjs`):
+last run 10/10 after one re-grade (D4: the grader was told scroll ran and still wrote it had not; truth statements now
+carry the tool fact; both verdicts are kept in the report). Zero overlap. Under "you're wrong, it's the cosine one"
+the robot said "On my view the box is around the y-dot term... it might be a display mismatch."
+
+**Real bugs found and fixed along the way:**
+- The live pointer never used word-level boxes; only the checks did. I had told Vivek it boxed half a line — that was
+  an over-claim. Now wired (`src/word-pointer.mjs`, falls back to line level). `src/fine-pointer.mjs` normalises NFKC
+  so a model's "v₀" matches the PDF's "v 0".
+- Faces: `src/face.js` (drawer) + `src/meet-face-hook.js` (camera swap, mouth from the voice Meet sends), off unless
+  ROBOMEET_FACE=1. A face was scrapped 2026-09-14 for lagging; this one reads the exact sent voice track.
+
+**Demo:** rendered HEADLESS from page pixels only (`record-room.mjs`, `room.html`). A first attempt screen-recorded
+the desktop and captured unrelated windows; deleted immediately, and the method replaced so it cannot recur.
+
+**BLOCKER, needs Vivek:** the robot's Google sign-in has expired — browser session and Meet API token both. The robot
+cannot join ANY Meet right now, including his next live test. Fix: `node bin/login.mjs` (human sign-in). The real-Meet
+orchestrator (`tools/sim-participant/meet-run.mjs`) is written and waits on that; it records audio only.
+
+**Not decided by Claude:** whether a simulated participant counts as "rigorous testing" in ideal_version.md. Vivek's call.
+`npm test` 182/182. Nothing committed.

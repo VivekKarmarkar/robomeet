@@ -1,0 +1,5 @@
+
+=== chapter 6: Meeting 6: Presenting (starts on part 1) (12 scenarios) ===
+FAIL present-part-1-own-words                   did:y conveyed:N clean:y felt:y  1.3s 84w
+      It omits the launch assumptions, uncoupling statement, vertical integrated solution, and trajectory elimination yielding the parabola.
+PASS backchannel-free-explanation               did:y conveyed:y clean:y felt:y  0.1s 86w

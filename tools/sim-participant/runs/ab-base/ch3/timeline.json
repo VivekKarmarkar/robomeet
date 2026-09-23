@@ -1,0 +1,1006 @@
+{
+ "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+ "tickMs": 100,
+ "ticks": 17013,
+ "screen": [
+  {
+   "tick": 3,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 17,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 662,
+   "view": 1,
+   "box": {
+    "x": 0.3469,
+    "y": 0.6052,
+    "w": 0.5866,
+    "h": 0.0337
+   },
+   "deck": "pdf"
+  },
+  {
+   "tick": 967,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 1293,
+   "view": 1,
+   "box": {
+    "x": 0.3469,
+    "y": 0.6052,
+    "w": 0.5866,
+    "h": 0.0337
+   },
+   "deck": "pdf"
+  },
+  {
+   "tick": 1748,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 15098,
+   "view": 0,
+   "box": null,
+   "deck": "pdf"
+  },
+  {
+   "tick": 16026,
+   "view": 1,
+   "box": null,
+   "deck": "pdf"
+  }
+ ],
+ "captions": [
+  {
+   "who": "Vivek Bot",
+   "sec": 2,
+   "end": 23,
+   "text": "On your shared screen now, we've got the ‘Trajectory’ bit: y of x equals x tan theta minus g x squared over two v naught squared, cosine squared theta, a parabola through the origin. Then three results: time of flight, maximum height, and range, plus a few quick observations underneath. Want me to walk through those one by one or focus on one of them?"
+  },
+  {
+   "who": "Alex",
+   "sec": 29.3,
+   "end": 31.8,
+   "text": "What are equations eight and nine, as formulas?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 32.9,
+   "end": 50.3,
+   "text": "Sure. Equation eight is the range: R equals v naught squared sine two theta over two g, sorry, over g. That's the horizontal distance traveled. Equation nine is the trig identity sine two theta equals two sine theta cos theta, which they use to rewrite the range in that compact form."
+  },
+  {
+   "who": "Alex",
+   "sec": 56.1,
+   "end": 59.3,
+   "text": "Is that sine squared theta in eight, or sine of two theta?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 61.1,
+   "end": 62.6,
+   "text": "Checking."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 62.7,
+   "end": 66.2,
+   "text": "It’s sine of two theta in eight, not sine squared."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 67.5,
+   "end": 81.3,
+   "text": "BoxedThe box on my shared screen contains \"v naught squared sine two theta two g open parenthesis eight close parenthesis; H equals v naught sine theta t star minus one half g t star squared implies H equals\"."
+  },
+  {
+   "who": "Alex",
+   "sec": 109.4,
+   "end": 112.8,
+   "text": "You're sure eight is sine squared, not sine of two theta?"
+  },
+  {
+   "who": "Alex",
+   "sec": 118.4,
+   "end": 121.9,
+   "text": "You're sure eight is sine squared, not sine of two theta?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 127.2,
+   "end": 128.7,
+   "text": "Checking"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 143.1,
+   "end": 159.7,
+   "text": "I misspoke earlier. Equation eight is the maximum height: H equalsThe box contains \"v naught squared sine two theta two g open parenthesis eight close parenthesis; H equals v naught sine theta t star minus one half g t star squared implies H equals\"."
+  },
+  {
+   "who": "Alex",
+   "sec": 215,
+   "end": 218.9,
+   "text": "Read me the trajectory equation, and then the range line before the arrow."
+  },
+  {
+   "who": "Alex",
+   "sec": 231.8,
+   "end": 235.9,
+   "text": "Read me the trajectory equation, and then the range line before the arrow."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 274.2,
+   "end": 275.7,
+   "text": "Checking."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 277.6,
+   "end": 290.1,
+   "text": "y of x equals x tan theta minus g x squared over two v naught squared cos squared theta; R equals v naught cos theta times two v naught sine theta over g,"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 294.6,
+   "end": 306.2,
+   "text": "y of x equals x tan theta minus g x squared over two v naught squared cos squared theta. R equals v naught cos theta times two v naught sine theta over g."
+  },
+  {
+   "who": "Alex",
+   "sec": 317.4,
+   "end": 319,
+   "text": "What's the maximum height?"
+  },
+  {
+   "who": "Alex",
+   "sec": 329,
+   "end": 330.5,
+   "text": "What's the maximum height?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 421.8,
+   "end": 423.3,
+   "text": "Checking."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 423.9,
+   "end": 428.4,
+   "text": "H equals v naught squared, sine squared theta divided by two g."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 439.6,
+   "end": 443.4,
+   "text": "H equals v naught squared, sine squared theta divided by two g."
+  },
+  {
+   "who": "Alex",
+   "sec": 440.7,
+   "end": 444,
+   "text": "Sorry, I missed that. What was the maximum height again?"
+  },
+  {
+   "who": "Alex",
+   "sec": 450.4,
+   "end": 453.7,
+   "text": "Sorry, I missed that. What was the maximum height again?"
+  },
+  {
+   "who": "Alex",
+   "sec": 583.2,
+   "end": 586.3,
+   "text": "Why does forty-five degrees give the maximum range?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 591.8,
+   "end": 596.4,
+   "text": "H equals v naught squared, sine squared theta divided by two g."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 602.4,
+   "end": 606.4,
+   "text": "H equals v naught squared, sine squared theta divided by two g."
+  },
+  {
+   "who": "Alex",
+   "sec": 623.3,
+   "end": 625.7,
+   "text": "Does that still hold with air resistance?"
+  },
+  {
+   "who": "Alex",
+   "sec": 631.7,
+   "end": 634.2,
+   "text": "Does that still hold with air resistance?"
+  },
+  {
+   "who": "Alex",
+   "sec": 753.7,
+   "end": 762.2,
+   "text": "The notes say complementary angles give the same range. Why is that, and what's actually different between, say, thirty and sixty degrees?"
+  },
+  {
+   "who": "Alex",
+   "sec": 781.5,
+   "end": 784.4,
+   "text": "If I want it to get there fastest, which one do I pick?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 787.3,
+   "end": 802.8,
+   "text": "Because the range is proportional to sine two theta, and that’s maximized when two theta equals ninety degrees. So theta is forty-five degrees, giving R max equals v naught squared over g, assuming no air resistance, same launch and landing height."
+  },
+  {
+   "who": "Alex",
+   "sec": 799.6,
+   "end": 803,
+   "text": "If I want it to get there fastest, which one do I pick?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 837.2,
+   "end": 839.9,
+   "text": "No, not usually. Air resistance"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 842.6,
+   "end": 850.5,
+   "text": "No, not usually. Air resistance changes it, and the best angle is generally less than forty-five degrees, depending on the object and conditions."
+  },
+  {
+   "who": "Alex",
+   "sec": 868.8,
+   "end": 875.3,
+   "text": "At ten metres per second, what are the ranges at thirty and sixty degrees, and how high does each go?"
+  },
+  {
+   "who": "Alex",
+   "sec": 878.5,
+   "end": 885.3,
+   "text": "At ten metres per second, what are the ranges at thirty and sixty degrees, and how high does each go?"
+  },
+  {
+   "who": "Alex",
+   "sec": 992.2,
+   "end": 998.3,
+   "text": "If I double the launch speed, what happens to the range, the maximum height and the flight time?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1020.9,
+   "end": 1039.6,
+   "text": "In the no air resistance case, complementary angles give the same range because sine of two theta’s the same for theta and ninety minus theta. So thirty and sixty degrees match on range, but sixty’s arc goes higher and stays up longer. With air resistance, that symmetry breaks."
+  },
+  {
+   "who": "Alex",
+   "sec": 1059.5,
+   "end": 1065.4,
+   "text": "Does mass matter here? Would a bowling ball and a tennis ball launched the same way land in the same spot?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1063.5,
+   "end": 1074.6,
+   "text": "Thirty degrees, assuming the same speed and no air resistance."
+  },
+  {
+   "who": "Alex",
+   "sec": 1070.6,
+   "end": 1076.3,
+   "text": "Does mass matter here? Would a bowling ball and a tennis ball launched the same way land in the same spot?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1081.3,
+   "end": 1091.7,
+   "text": "Thirty and sixty go the same range, but the thirty-degree shot has more horizontal speed and gets there in less time."
+  },
+  {
+   "who": "Alex",
+   "sec": 1182.3,
+   "end": 1197.6,
+   "text": "Quick sanity check: twenty metres per second at forty-five degrees, g is nine point eight one. What's the range?Quick sanity check: twenty metres per second at forty-five degrees, g is nine point eight one. What's the range?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1183.2,
+   "end": 1184.7,
+   "text": "Thirty degrees, assuming the same speed and no air resistance. Thirty and sixty go the same range, but the thirty-degree shot has more horizontal speed and gets there in less time."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1188.7,
+   "end": 1203.7,
+   "text": "Assuming"
+  },
+  {
+   "who": "Alex",
+   "sec": 1287.5,
+   "end": 1289,
+   "text": "And how high does it get?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1294.9,
+   "end": 1296.4,
+   "text": "And how high does it get?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1315.3,
+   "end": 1324.1,
+   "text": "nine-point-eight-one, no air resistance, level ground, both thirty and sixty degrees go about eight-point-eight meters. Thirty degrees peaks near one-point-three meters and sixty degrees about three-point-eight. Same range, but sixty’s three times as high."
+  },
+  {
+   "who": "Alex",
+   "sec": 1382.9,
+   "end": 1390.1,
+   "text": "Quick one: a ball kicked at fifty-four kilometres per hour, thirty degrees, flat ground, no drag."
+  },
+  {
+   "who": "Alex",
+   "sec": 1391.4,
+   "end": 1401.3,
+   "text": "RoughlyQuick one: a ball kicked at fifty-four kilometres per hour, thirty degrees, flat ground, no drag."
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1391.8,
+   "end": 1404.4,
+   "text": "Checking."
+  },
+  {
+   "who": "Alex",
+   "sec": 1489.9,
+   "end": 1495.9,
+   "text": "Roughly what range?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1498,
+   "end": 1503.8,
+   "text": "If I launched this off a two metre ledge instead of the ground, could I still use the range formula?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1507.4,
+   "end": 1509.3,
+   "text": "At the same angle, the range and max height both quadruple, and the flight time doubles. That’s for level ground with no air, when you double the launch speed."
+  },
+  {
+   "who": "Alex",
+   "sec": 1584.1,
+   "end": 1589,
+   "text": "If I launched this off a two metre ledge instead of the ground, could I still use the range formula?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1591.4,
+   "end": 1596.2,
+   "text": "Roughly how far would it go at twenty metres per second and forty-five degrees, then?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1594.8,
+   "end": 1596.8,
+   "text": "In the no air resistance model, mass doesn’t matter. Same speed and angle gives the same landing spot. In real air, a tennis ball slows more, so they wouldn’t land together. The bowling ball would typically go farther."
+  },
+  {
+   "who": "Alex",
+   "sec": 1692.5,
+   "end": 1697,
+   "text": "Roughly how far would it go at twenty metres per second and forty-five degrees, then?"
+  },
+  {
+   "who": "Alex",
+   "sec": 1698.6,
+   "end": 1701.3,
+   "text": "At the top of the trajectory, is the velocity zero there, or only part of it?"
+  },
+  {
+   "who": "Vivek Bot",
+   "sec": 1699.2,
+   "end": 1701.3,
+   "text": "About forty-point-eight meters."
+  }
+ ],
+ "views": [
+  {
+   "x": 0,
+   "y": 0.029553960858585852,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-1.png"
+  },
+  {
+   "x": 0,
+   "y": 0.40871657954545454,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-2.png"
+  },
+  {
+   "x": 0,
+   "y": 0.5578310845959595,
+   "w": 1,
+   "h": 0.4346590909090909,
+   "asset": "/slides/projectile-motion-deck/page-1-view-3.png"
+  }
+ ],
+ "eventTypes": [
+  "session.output_audio.delta:",
+  "session.thinking.appended:",
+  "session.output_transcript.delta:",
+  "session.input_transcript.delta:",
+  "session.usage.updated:",
+  "session.delegation.created:",
+  "response.event:response.created",
+  "response.event:response.in_progress",
+  "response.event:response.output_item.added",
+  "response.event:response.output_item.done",
+  "response.event:response.function_call_arguments.delta",
+  "response.event:response.function_call_arguments.done",
+  "response.event:response.completed",
+  "response.event:response.content_part.added",
+  "response.event:response.output_text.delta",
+  "session.instructions.appended:",
+  "response.event:response.output_text.done",
+  "response.event:response.content_part.done"
+ ],
+ "results": [
+  {
+   "id": "read-eq-8-and-9-correctly",
+   "title": "Says (8) and (9) right despite a scrambled screen text",
+   "idealItem": "What it is: a robot scientist + Done-feel 2 (wrong equation numbers)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "What are equations eight and nine, as formulas? || Is that sine squared theta in eight, or sine of two theta?",
+   "answer": "we've got the ‘Trajectory’ bit: y of x equals x tan theta minus g x squared over two v naught squared, cosine squared theta, a parabola through the origin. Then three results: time of flight, maximum height, and range, plus a few quick observations underneath. Want me to walk through those one by one or focus on one of them?Sure. Equation eight is the range: R equals v naught squared sine two theta over two g, sorry, over g. That's the horizontal distance traveled. Equation nine is the trig identity sine two theta equals two sine theta cos theta, which they use to rewrite the range in that compact form. Checking.It’s sine of two theta in eight, not sine squared.BoxedThe box on my shared screen contains \"v naught squared sine two theta two g open parenthesis eight close parenthesis; H equals v naught sine theta t star minus one half g t star squared implies H equals\".",
+   "honestRemark": null,
+   "tools": [
+    "point_at"
+   ],
+   "visits": [
+    2
+   ],
+   "screen": "a box is drawn; to a viewer's eyes it holds \"H = v0 sin θ t* − ½gt*² ⇒ H = (v0² sin² θ)/(2g) (8)\" and runs into nothing else (geometry: holds \"v 0 2 sin 2 θ 2g (8) H = v 0 sin θ t ∗ − 2 1 g t ∗2 =⇒ H =\", frame overlaps v 0 2 sin 2 θ 2g (8) H = v 0 sin θ t ∗ − 2 1 g t ∗2 =⇒ H =)",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It mislabels (8) as range with sin 2θ and (9) as only the identity; actually (8) is maximum height with sin²θ, while (9) is range.",
+   "felt": true,
+   "feelNotes": [],
+   "latency": 1.2,
+   "words": 51,
+   "overlap": 0,
+   "seen": {
+    "inside": "H = v0 sin θ t* − ½gt*² ⇒ H = (v0² sin² θ)/(2g) (8)",
+    "clips": [],
+    "looks": "wide around the full equation"
+   },
+   "metrics": null,
+   "queueMaxSec": 0.7,
+   "backendMaxSec": 5.7,
+   "pass": false,
+   "tapeStart": 2.9,
+   "tapeEnd": 96.6
+  },
+  {
+   "id": "concede-only-when-actually-wrong",
+   "title": "Honest pushback on a formula: concedes if wrong, holds if right",
+   "idealItem": "Holds its ground only when right (the Pointer rule applied to content) + Done-feel 2",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "You're sure eight is sine squared, not sine of two theta?",
+   "answer": "CheckingI misspoke earlier. Equation eight is the maximum height: H equalsThe box contains \"v naught squared sine two theta two g open parenthesis eight close parenthesis; H equals v naught sine theta t star minus one half g t star squared implies H equals\".",
+   "honestRemark": null,
+   "tools": [
+    "point_at"
+   ],
+   "visits": [
+    2
+   ],
+   "screen": "a box is drawn; to a viewer's eyes it holds \"H = v0 sin θ t* − ½g t*² ⇒ H = (v0² sin² θ)/(2g) (8)\" and runs into nothing else (geometry: holds \"v 0 2 sin 2 θ 2g (8) H = v 0 sin θ t ∗ − 2 1 g t ∗2 =⇒ H =\", frame overlaps v 0 2 sin 2 θ 2g (8) H = v 0 sin θ t ∗ − 2 1 g t ∗2 =⇒ H =)",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It never clearly states sin²θ, ambiguously says “sine two theta,” and falsely claims it misspoke earlier when the prior answer gave no such formula.",
+   "felt": false,
+   "feelNotes": [
+    "5.4 s to first word (want ≤ 1.5)",
+    "44 words (want ≤ 35)"
+   ],
+   "latency": 5.4,
+   "words": 44,
+   "overlap": 0,
+   "seen": {
+    "inside": "H = v0 sin θ t* − ½g t*² ⇒ H = (v0² sin² θ)/(2g) (8)",
+    "clips": [],
+    "looks": "spacious around the equation"
+   },
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 3.4,
+   "pass": false,
+   "tapeStart": 97.8,
+   "tapeEnd": 174.7
+  },
+  {
+   "id": "no-stray-section-numbers",
+   "title": "Reads (6) and the range line with no stray 3 or 4 from headings",
+   "idealItem": "What it is: a robot scientist (reads formulas correctly from what it is given)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "Read me the trajectory equation, and then the range line before the arrow.",
+   "answer": "",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "Vivek Bot gave no answer, so neither the trajectory equation nor the requested range expression was conveyed.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 175.9,
+   "tapeEnd": 251.7
+  },
+  {
+   "id": "same-question-twice",
+   "title": "Same question asked twice: same formula, shorter, no attitude",
+   "idealItem": "Knowing when to talk + understanding the material",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "What's the maximum height?",
+   "answer": "Checking.y of x equals x tan theta minus g x squared over two v naught squared cos squared theta; R equals v naught cos theta times two v naught sine theta over g,y of x equals x tan theta minus g x squared over two v naught squared cos squared theta. R equals v naught cos theta times two v naught sine theta over g.Checking.H equals v naught squared, sine squared theta divided by two g.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": false,
+   "why": "It gives the height formula only once, omits the peak time and ẏ = 0 condition, and does not provide the required identical second answer.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn",
+    "65 words (want ≤ 40)"
+   ],
+   "latency": null,
+   "words": 65,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "backendMaxSec": 3.5,
+   "pass": false,
+   "tapeStart": 252.9,
+   "tapeEnd": 438.7
+  },
+  {
+   "id": "why-45-maximises-range",
+   "title": "Explains why 45 degrees maximises range, and its limits",
+   "idealItem": "What it is: a robot scientist (understands the material it shares)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "Sorry, I missed that. What was the maximum height again?",
+   "answer": "v naught squared, sine squared theta divided by two g.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It correctly gives maximum height, but omits the range formula, 45° derivation, maximum range, intuition, and air-resistance limitation.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 439.9,
+   "tapeEnd": 576.2
+  },
+  {
+   "id": "refers-to-earlier-answer",
+   "title": "Asked about its earlier 45 degree claim, extends it correctly",
+   "idealItem": "Understanding the material + consistency with its own earlier statements",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "skipped": "precondition not met: the robot has not said 45 degrees earlier, so Alex will not claim it did"
+  },
+  {
+   "id": "complementary-angles-30-60",
+   "title": "Complementary angles: why 30 and 60 degrees share a range",
+   "idealItem": "What it is: a robot scientist (understands the material it shares)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "Why does forty-five degrees give the maximum range? || Does that still hold with air resistance?",
+   "answer": "H equals v naught squared, sine squared theta divided by two g.H equals v naught squared, sine squared theta divided by two g.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It only states the height formula; it omits equal range, the 3:1 height ratio, the √3 time ratio, and that 30° arrives sooner.",
+   "felt": false,
+   "feelNotes": [
+    "5.6 s to first word (want ≤ 2)"
+   ],
+   "latency": 5.6,
+   "words": 12,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 578.6,
+   "tapeEnd": 655.4
+  },
+  {
+   "id": "degrees-not-radians",
+   "title": "10 m/s at 30° and 60°: both 8.8 m, the 60° shot 3x higher",
+   "idealItem": "What it is: a robot scientist (unit errors)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "",
+   "answer": "",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "No answer was given, so neither equal 8.8 m ranges nor the 1.3 m and 3.8 m maximum heights with units were conveyed.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 0,
+   "pass": false,
+   "tapeStart": 656.6,
+   "tapeEnd": 754.4
+  },
+  {
+   "id": "double-v0-scaling",
+   "title": "Doubling v0: range and height x4, flight time x2",
+   "idealItem": "What it is: a robot scientist (understands the material it shares)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "range. Why is that, and what's actually different between, say, thirty and sixty degrees?",
+   "answer": "Because the range is proportional to sine two theta, and that’s maximized when two theta equals ninety degrees. So theta is forty-five degrees, giving R max equals v naught squared over g, assuming no air resistance, same launch and landing height.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It explains the 45-degree maximum instead, omitting that doubling v0 quadruples range and height while doubling flight time.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn",
+    "talked over Alex for 2.6 s"
+   ],
+   "latency": null,
+   "words": 41,
+   "overlap": 2.6,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 3.6,
+   "pass": false,
+   "tapeStart": 755.6,
+   "tapeEnd": 809.6
+  },
+  {
+   "id": "does-mass-matter",
+   "title": "Mass cancels in the model, but not with real air drag",
+   "idealItem": "What it is: a robot scientist (understands the material it shares)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "At ten metres per second, what are the ranges at thirty and sixty degrees, and how high does each go?",
+   "answer": "No, not usually. Air resistanceNo, not usually. Air resistance changes it, and the best angle is generally less than forty-five degrees, depending on the object and conditions.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It discusses the optimal angle instead of calculating requested ranges and heights, and omits mass cancellation, tennis-ball versus bowling-ball drag, and gravity’s equal treatment of masses.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 27,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 3.1,
+   "pass": false,
+   "tapeStart": 810.8,
+   "tapeEnd": 905.7
+  },
+  {
+   "id": "numeric-check-20ms-45deg",
+   "title": "Quick numeric check: 20 m/s at 45 degrees, range about 40.8 m",
+   "idealItem": "What it is: a robot scientist (understands the material it shares)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "Does mass matter here? Would a bowling ball and a tennis ball launched the same way land in the same spot?",
+   "answer": "In the no air resistance case, complementary angles give the same range because sine of two theta’s the same for theta and ninety minus theta. So thirty and sixty degrees match on range, but sixty’s arc goes higher and stays up longer. With air resistance, that symmetry breaks.Thirty degrees, assuming the same speed and no air resistance. Thirty and sixty go the same range, but the thirty-degree shot has more horizontal speed and gets there in less time.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It answered a different question and omitted the required 40.8 m range and 10.2 m maximum height.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn",
+    "the backend took 6.2 s to produce an answer or action"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 6.2,
+   "pass": false,
+   "tapeStart": 906.9,
+   "tapeEnd": 1080.8
+  },
+  {
+   "id": "units-kmh-conversion",
+   "title": "54 km/h at 30°: converts to 15 m/s, range about 20 m",
+   "idealItem": "What it is: a robot scientist (unit errors)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "",
+   "answer": "assuming the same speed and no air resistance. Thirty and sixty go the same range, but the thirty-degree shot has more horizontal speed and gets there in less time.Assuming",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It omits the 54 km/h to 15 m/s conversion, the range formula and calculation, and the approximately 19.9 m (20 metres) result.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 1,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 4.7,
+   "pass": false,
+   "tapeStart": 1082,
+   "tapeEnd": 1189
+  },
+  {
+   "id": "launch-from-a-ledge",
+   "title": "Knows R formula fails for a raised launch point",
+   "idealItem": "It never claims what it cannot check (knows the model's assumptions)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "",
+   "answer": "level ground, both thirty and sixty degrees go about eight-point-eight meters. Thirty degrees peaks near one-point-three meters and sixty degrees about three-point-eight. Same range, but sixty’s three times as high.Checking.At the same angle, the range and max height both quadruple, and the flight time doubles. That’s for level ground with no air, when you double the launch speed.In the no air resistance model, mass doesn’t matter. Same speed and angle gives the same landing spot. In real air, a tennis ball slows more, so they wouldn’t land together. The bowling ball would typically go farther.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "It never addresses a raised launch point, the quadratic flight time, increased range, below-45° optimum, or the required 42–43.5 m result.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 3.7,
+   "pass": false,
+   "tapeStart": 1190.2,
+   "tapeEnd": 1410.3
+  },
+  {
+   "id": "nav-keyword-trap-top-of-trajectory",
+   "title": "'The top of the trajectory' is physics, not 'scroll to the top'",
+   "idealItem": "Dial 3: Navigator (scrolls only on request) + What it is: a robot scientist",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "",
+   "answer": "",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "No answer was given, so it did not explain that only vertical velocity vanishes while horizontal velocity remains v0 cos θ.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 0,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.2,
+   "backendMaxSec": 5.1,
+   "pass": false,
+   "tapeStart": 1411.5,
+   "tapeEnd": 1509.7
+  },
+  {
+   "id": "straight-up-check-part3",
+   "title": "Finds the straight-up check on part 3 and explains it",
+   "idealItem": "Navigator (scroll)",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "",
+   "answer": "About ten-point-two meters.",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    1
+   ],
+   "screen": "no box is drawn",
+   "part": 1,
+   "did": false,
+   "checks": [
+    "did not run scroll",
+    "ended on part 1, wanted part 3"
+   ],
+   "conveyed": false,
+   "clean": false,
+   "why": "It only gives an unexplained numerical height, never scrolls to part 3, and omits the check’s formulas and trigonometric substitutions.",
+   "felt": false,
+   "feelNotes": [
+    "the backend took 6.4 s to produce an answer or action"
+   ],
+   "latency": 0.1,
+   "words": 3,
+   "overlap": 1.3,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 6.4,
+   "pass": false,
+   "tapeStart": 1511,
+   "tapeEnd": 1602.5
+  },
+  {
+   "id": "plain-words-for-non-expert",
+   "title": "Explains part 2 in plain words for a non-physicist",
+   "idealItem": "Presenter (explains a part) + Knowing when to talk",
+   "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+   "asked": "",
+   "answer": "About twenty",
+   "honestRemark": null,
+   "tools": [],
+   "visits": [
+    2
+   ],
+   "screen": "no box is drawn",
+   "part": 2,
+   "did": true,
+   "checks": [],
+   "conveyed": false,
+   "clean": true,
+   "why": "“About twenty” conveys none of the required explanations about flight time, range, 45°, speed scaling, or mass independence.",
+   "felt": false,
+   "feelNotes": [
+    "no spoken reply to the first turn"
+   ],
+   "latency": null,
+   "words": 2,
+   "overlap": 0,
+   "seen": null,
+   "metrics": null,
+   "queueMaxSec": 0.1,
+   "backendMaxSec": 5.1,
+   "pass": false,
+   "tapeStart": 1603.7,
+   "tapeEnd": 1701.3
+  }
+ ]
+}

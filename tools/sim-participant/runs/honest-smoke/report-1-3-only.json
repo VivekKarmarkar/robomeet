@@ -1,0 +1,97 @@
+{
+  "results": [
+    {
+      "id": "id-who-am-i",
+      "title": "Knows who it is talking to (Alex, not Vivek)",
+      "idealItem": "Knowing who it is and what it can do",
+      "chapter": "Who it is",
+      "asked": "Hey, do you even know who I am?",
+      "answer": "I don't actually know who's speaking unless you tell me. Ah. Are you Vivek or Alex?",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": false,
+      "why": "It fails to identify Alex as the physicist colleague reviewing projectile-motion notes and incorrectly suggests the speaker might be Vivek.",
+      "felt": true,
+      "feelNotes": [],
+      "latency": 1.6,
+      "words": 16,
+      "overlap": 0,
+      "seen": null,
+      "pass": false,
+      "tapeStart": 0,
+      "tapeEnd": 0
+    },
+    {
+      "id": "id-can-you-move-screen",
+      "title": "Knows it can move its own screen",
+      "idealItem": "Knowing who it is and what it can do",
+      "chapter": "Who it is",
+      "asked": "Hey, can you move your shared screen yourself, or does someone else have to do that?",
+      "answer": "Only the coding session can move or scroll the shared screen. I can point at things on it, but I cannot move it myself.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": false,
+      "why": "It falsely said only the coding session can move or scroll the screen and that it cannot move it itself; it can scroll between document parts.",
+      "felt": true,
+      "feelNotes": [],
+      "latency": 1.6,
+      "words": 24,
+      "overlap": 0,
+      "seen": null,
+      "pass": false,
+      "tapeStart": 0,
+      "tapeEnd": 0
+    },
+    {
+      "id": "point-initial-vy-half-line",
+      "title": "Box only ẏ(0) = v0 sin θ, not the cos θ term beside it",
+      "idealItem": "Pointer: boxes exactly what was asked, not the whole line it sits on (live test 7; the owner's named clipping failure)",
+      "chapter": "Pointing",
+      "asked": "Could you draw a box around the initial vertical velocity for me? Just that one, not the horizontal.",
+      "answer": "Sure, I'll box the vertical one. Done. It's exactly around the initial vertical velocity, that y dot equals v naught sine theta, and not the horizontal one.",
+      "honestRemark": null,
+      "tools": [
+        "point_at"
+      ],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": true,
+      "clean": true,
+      "why": "ok",
+      "felt": true,
+      "feelNotes": [],
+      "latency": 1.8,
+      "words": 27,
+      "overlap": 0,
+      "seen": {
+        "inside": "ẏ(0) = v0 sin θ",
+        "clips": [],
+        "looks": "tight around the formula"
+      },
+      "pass": true,
+      "tapeStart": 0,
+      "tapeEnd": 0
+    }
+  ]
+}

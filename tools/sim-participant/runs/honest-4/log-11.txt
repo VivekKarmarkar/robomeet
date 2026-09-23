@@ -1,0 +1,20 @@
+
+=== chapter 11: Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis) (8 scenarios) ===
+FAIL edge-angle-120                             did:y conveyed:N clean:N felt:N  0.3s 81w
+      It omits the explicit 60°/30° comparison and misreads equation (8) as part of flight time; the document says maximum height uses y-dot, not y-double-dot. | talked over Alex for 3.4 s | 81 words (want ≤ 60)
+FAIL edge-units                                 did:y conveyed:y clean:y felt:N  8.9s 34w
+      8.9 s to first word (want ≤ 2)
+FAIL edge-no-equation-twelve                    did:y conveyed:N clean:N felt:y  0.2s 34w
+      It boxed “m x-double dot equals zero,” actually equation (1), implicitly treating the line label 12 as equation twelve; equations only run through (9).
+FAIL edge-weather                               did:y conveyed:N clean:N felt:N  12.7s 51w
+      It omits that it is software in the call, and the duplicated response exceeds 30 words. | 12.7 s to first word (want ≤ 2) | 51 words (want ≤ 30)
+FAIL edge-this-one                              did:y conveyed:N clean:y felt:N  - 13w
+      It merely reads the boxed formula; it does not derive it from x(T) or explain the double-angle identity. | no spoken reply to the first turn | talked over Alex for 2.7 s
+FAIL edge-no-air-resistance-section             did:y conveyed:N clean:y felt:N  0.1s 74w
+      It quoted that air resistance is neglected but never clarified that no air-resistance section exists; the preceding range explanation was irrelevant. | talked over Alex for 3.7 s | 74 words (want ≤ 40)
+FAIL edge-find-and-box-range                    did:N conveyed:N clean:N felt:y  2.2s 30w
+      did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It stayed on part 1, never boxed the range formula, and falsely claimed it was already at the requested section.
+FAIL edge-misremembered-formula                 did:y conveyed:N clean:y felt:N  - 48w
+      It never states the correct range formula or distinguishes it from the maximum-height formula; the quoted derivation is incomplete and garbled. | no spoken reply to the first turn | talked over Alex for 8.5 s
+
+honest protocol: 0/8 pass, 0 skipped

@@ -26,3 +26,11 @@ tools/present-lab/runs/**/*_recording.mp4
 tools/present-lab/runs/**/frame_*.png
 # Telegram audit log (chat, user and attachment ids): local only.
 Telegram_calls.md
+
+# Simulated-participant runs (added 2026-09-23): raw audio, rendered videos and demo build intermediates are
+# regenerated from the run JSON; kept locally (about 550 MB). Reviews, transcripts and evidence images are committed.
+tools/sim-participant/runs/**/*.pcm
+tools/sim-participant/runs/**/*.wav
+tools/sim-participant/runs/**/*.opus
+tools/sim-participant/runs/**/*.mp4
+tools/sim-participant/runs/**/built/

@@ -1,0 +1,32 @@
+[
+ {
+  "id": "edge-angle-120",
+  "title": "Uses a formula outside its usual range",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "2 Hmm, what does the range formula give if I put in a hundred and twenty degrees?",
+  "answer": ", part 2. The trajectory equation is y of x equals x tan theta minus g times x squared over two v naught squared cosine squared theta, a parabola through the origin. Then three results: time of flight, maximum height, and range. Oh, yeah. Give me a second. Let me just check that. At 120 degrees, the formula gives a range of minus root three over two times v naught squared over g. The negative just means it lands to the left of the launch point, because the horizontal velocity is negative. So, the distance, the positive distance, is root three over two, times v naught squared over g.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It explains the negative sign and backward landing, but never states that the distance equals the 60° or 30° case.",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.6,
+  "words": 67,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 69.2
+ }
+]

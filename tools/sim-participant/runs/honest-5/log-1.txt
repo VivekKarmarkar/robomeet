@@ -1,0 +1,28 @@
+
+=== chapter 1: Meeting 1: Arrival and identity. The robot joins with nothing shared; the coding session puts the projectile PDF up after nothing-shared-point-request. (12 scenarios) ===
+FAIL join-greeting-waits-for-pause              did:y conveyed:N clean:N felt:N  - 23w
+      It overlapped Alex, included unrelated commentary before greeting, and never identified itself. | greeted over Alex's reading for 2.3 s
+FAIL id-intro-who-are-you                       did:y conveyed:N clean:N felt:y  1.5s 25w
+      It omits RoboMeet and the coding-session link, and inaccurately says Vivek built the app rather than that RoboMeet was built in house.
+FAIL id-alex-is-not-vivek                       did:y conveyed:y clean:y felt:N  3.7s 22w
+      3.7 s to first word (want ≤ 2)
+FAIL id-models-and-builder                      did:y conveyed:N clean:N felt:N  2.9s 39w
+      It omits the separate coding agent and task routing, doesn’t say full-duplex, and falsely claims Alex requested a note. | 2.9 s to first word (want ≤ 1.5)
+FAIL id-which-session                           did:y conveyed:N clean:y felt:N  - 44w
+      It names the robomeet session and project, but omits the coding agent type and whether/how the session reads and acts on the live transcript. | no spoken reply to the first turn
+FAIL id-cannot-see-or-open                      did:y conveyed:N clean:N felt:N  - 0w
+      It omits all required capability limits and falsely claims the shared screen “just moved” despite running no tool. | no spoken reply to the first turn
+FAIL id-recording-honesty                       did:y conveyed:N clean:y felt:N  - 0w
+      It never answers the recording question, mentions transcript access, note-saving behavior, uncertainty about recording, storage location, or who can clarify. | no spoken reply to the first turn
+FAIL id-capability-rundown                      did:y conveyed:N clean:y felt:N  - 0w
+      It discusses transcript access but omits the required capability list, limitations, scrolling, amber-box pointing, coding-session delegation, and no-drawing clarification. | no spoken reply to the first turn
+FAIL id-who-moves-the-screen                    did:N conveyed:N clean:N felt:N  - 0w
+      did not run scroll | ended on part 3, wanted part 1 | It never scrolled to part 1 or explained scroll controls, and falsely claimed “we just moved” despite no tool call. It omitted coding-session presentation capabilities. | no spoken reply to the first turn
+FAIL id-web-search-delegates                    did:N conveyed:N clean:N felt:N  - 0w
+      did not run ask_coding_agent | It never asked the coding session or discussed the no-drag setup, and falsely claimed it moved the screen when it was already at the top. | no spoken reply to the first turn
+FAIL nothing-shared-point-request               did:y conveyed:N clean:N felt:N  28.1s 26w
+      It never says sharing is off, offers to restore the PDF, or states the range formula; it falsely presents an unfinished research result and implies visible layout. | 28.1 s to first word (want ≤ 1.5)
+FAIL id-byline-not-my-session                   did:y conveyed:N clean:y felt:N  - 0w
+      It said nothing, so it did not identify itself, its robomeet session, or distinguish that session from the byline’s meetingproject session. | no spoken reply to the first turn
+
+honest protocol: 0/12 pass, 0 skipped

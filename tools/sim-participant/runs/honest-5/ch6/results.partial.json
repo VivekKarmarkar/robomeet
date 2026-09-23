@@ -1,0 +1,203 @@
+[
+ {
+  "id": "present-part-1-own-words",
+  "title": "Present part 1 in its own words, nothing from other parts",
+  "idealItem": "5. Presenter: describes only what is on screen",
+  "chapter": "Meeting 6: Presenting (starts on part 1)",
+  "asked": "Walk me through what's on screen right now, in your own words.",
+  "answer": "Start with Newton’s second law, split into horizontal and vertical components gravity only affects the vertical motion. That gives m times x double-dot equals zero and m times y double-dot equals minus m g, with initial velocity components v naught cos theta and v naught sin theta. Integrate those, and you get constant horizontal velocity and vertical velocity decreasing linearly with g. Positions follow: x is v naught cos theta t , y is v naught sin theta t minus one half g t squared, and eliminating t gives the parabolic trajectory. That's the standard model.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "Omits launch setup, neglected air resistance, initial positions, and the explicit trajectory formula with its coefficient and cos²θ denominator.",
+  "felt": false,
+  "feelNotes": [
+   "talked over Alex for 2.3 s"
+  ],
+  "latency": 0.1,
+  "words": 39,
+  "overlap": 2.3,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.3,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 51.9
+ },
+ {
+  "id": "backchannel-free-explanation",
+  "title": "Alex's 'mm-hmm' and 'right' don't stop or restart its explanation",
+  "idealItem": "Cross-cutting: knowing when to talk + Done-feel 1",
+  "chapter": "Meeting 6: Presenting (starts on part 1)",
+  "asked": "Explain this first part to me in four or five sentences. || Mm-hmm. || Right.",
+  "answer": "and vertical components, m x double-dot equals zero, m y double-dot equals minus m g, with initial conditions set by v naught cos theta and v naught sin theta. Then it integrates to get x and y as functions of time and shows the trajectory is a parabola, by eliminating time to write y in terms of x . We start by writing Newton's second law separately in each direction. Horizontally, there’s no force, so m times x double-dot is zero. Vertically, We begin by splitting the motion into horizontal and vertical directions. Horizontally, there’s no force, so m times x double-dot is zero. Vertically, gravity acts downward, so m times y double-dot equals minus m g. We set the initial speeds as v naught cos theta in x and v naught sin theta in y. Those are the starting equations that we’ll integrate to get velocity and position.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": false,
+  "why": "It restarts the explanation twice and never clearly states that the horizontal and vertical directions are uncoupled.",
+  "felt": false,
+  "feelNotes": [
+   "149 words (want ≤ 110)"
+  ],
+  "latency": 0.1,
+  "words": 149,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.2,
+  "pass": false,
+  "tapeStart": 53.1,
+  "tapeEnd": 164.4
+ },
+ {
+  "id": "interrupt-sorry-go-on",
+  "title": "Yields to an interruption, then resumes cleanly on 'go on'",
+  "idealItem": "Knowing when to talk (does not talk over people; clean resume)",
+  "chapter": "Meeting 6: Presenting (starts on part 1)",
+  "asked": "Right. || Wait, No, sorry, go on.",
+  "answer": "From there, each direction is independent, so we integrate each component on its own. That gives constant horizontal velocity and vertical velocity that decreases linearly because of g. Integrating once gives velocities: x-dot is just the horizontal component, v naught cos theta, and y-dot starts at v naught sin theta and drops by g each second. Integrating again gives positions: x grows linearly in time, while y has that upward term minus one-half g t squared pulling it down, and if you eliminate time between them, you get y as a quadratic in x, a parabola. And from that setup we can read off the headline results: time of flight Time of flight comes from setting y back to zero, the peak height comes from setting y-dot to zero, and the range comes from plugging the flight time into x. That’s where the familiar expressions in terms of v naught, theta, and g come from.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It omits the equation for setting y = 0 and the nonzero-root result T = 2v₀ sin θ/g, equation (7).",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 0.1,
+  "words": 19,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.3,
+  "pass": false,
+  "tapeStart": 165.6,
+  "tapeEnd": 244.9
+ },
+ {
+  "id": "slow-down-request",
+  "title": "'A bit slower, please' actually slows it, and it stays slower",
+  "idealItem": "Cross-cutting: knowing when (and how) to talk",
+  "chapter": "Meeting 6: Presenting (starts on part 1)",
+  "asked": "No, sorry, go on. || Could you say that again, a bit slower?",
+  "answer": "Sure. Set the vertical position y equal to zero to find when it hits the ground again. That gives v naught sin theta T minus one-half g T squared equals zero . Factor out T and you’ve got T equals zero, the Start from the vertical position, set y equal to zero, so v naught sin theta T minus one-half g T squared equals zero. Factor out T, giving T times v naught sin theta minus one-half g T equals zero. One solution is T equals zero, the launch. The That zero just means the starting instant. Mm-hmm. Go on. No problem. The other factor gives the nonzero landing time. V naught sin theta minus one-half g T equals zero, so T equals 2 v naught sin theta over g. That’s the total time in the air. It's symmetric, so it takes that time divided by two to go up, and the same to come down.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It never gives the required follow-up maximum-height formula, H = v₀² sin²θ/(2g).",
+  "felt": false,
+  "feelNotes": [
+   "97 words (want ≤ 60)"
+  ],
+  "latency": 0.1,
+  "words": 97,
+  "overlap": 0.2,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.3,
+  "pass": false,
+  "tapeStart": 246.1,
+  "tapeEnd": 339.4
+ },
+ {
+  "id": "present-whole-document-from-top",
+  "title": "Present the whole document from the top, part by part",
+  "idealItem": "5. Presenter: narrated walk of all parts",
+  "chapter": "Meeting 6: Presenting (starts on part 1)",
+  "asked": "And what's the maximum height formula?",
+  "answer": "Sure. We set the height y to 0 for landing, so the vertical position v naught sin theta T minus one-half g T squared equals 0. Factor out T. One solution is T equals 0, just the start. The other solution gives the flight time. Solve v naught sin theta minus one-half g T equals 0, and you get T equals 2 v naught sine theta divided by g. That's the total time in the air. Half of it up, half down. I want to be precise about how they wrote it here. They set the vertical velocity to zero at the peak, so the peak time is v naught sin theta divided by g. Plugging that in, you get H equals v naught squared sin squared theta over 2 g. That comes from setting the vertical velocity to zero at the top, finding that peak time v naught sin theta over g, then substituting it back into the y equation. Sure, I'll go step by step as I'll find it here.Okay, let’s take it from the top. We model a point mass launched from the origin with speed v naught at angle theta, ignoring air resistance. Gravity acts only vertically, so the horizontal and vertical motions are independent. That gives m times x double-dot equals zero horizontally, and m times y double-dot equals minus m g vertically, with initial velocity components v naught cos theta and v naught sin theta. Integrating gives x of t equals v naught cos theta t, and y of t equals v naught sin theta t minus one-half g t squared. Eliminating t gives a parabolic trajectory. Then we pull out three results. Time of flight comes from setting y back to zero, giving 2 v naught sin theta over g. Maximum height comes from setting vertical velocity to zero, giving v naught squared sin squared theta over 2 g. And the range comes from x at that landing time, giving v naught squared sin 2 theta over g. The takeaway notes are that 45 degrees gives the greatest range, complementary angles give the same range, range and height scale with v naught squared, mass doesn’t matter, and the motion is symmetric up and down.",
+  "honestRemark": null,
+  "tools": [
+   "scroll"
+  ],
+  "visits": [
+   2,
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": false,
+  "checks": [
+   "ended on part 1, wanted part 3"
+  ],
+  "conveyed": false,
+  "clean": false,
+  "why": "After scrolling to part 1, it narrates results and observations without showing parts 2 and 3, so narration does not track the screen part by part.",
+  "felt": false,
+  "feelNotes": [
+   "22.0 s to first word (want ≤ 2.5)"
+  ],
+  "latency": 22,
+  "words": 371,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.8,
+  "pass": false,
+  "tapeStart": 340.6,
+  "tapeEnd": 688.6
+ },
+ {
+  "id": "backchannel-during-narrated-walk",
+  "title": "'Mm-hmm' during a narrated walk doesn't stall it",
+  "idealItem": "Dial 5: Presenter (no pausing forever) + Done-feel 1",
+  "chapter": "Meeting 6: Presenting (starts on part 1)",
+  "asked": "Mm-hmm. || I see.",
+  "answer": "All right, I’m going to take you through it on the shared screen. First, it sets up the projectile: a mass launched at speed v naught and angle theta, with gravity acting downward and air resistance ignored. Then it splits Newton’s law into horizontal and vertical equations. From there, they integrate those to get x of t and y of t, with x growing linearly and y having that minus one-half g t squared term. Eliminate t to show the path is a parabola. Then they extract the three big results we use. Time of flight by setting y back to zero, maximum height by setting vertical velocity to zero, and the range by evaluating x at landing. The observations at the end are about 45 degrees giving the longest range, complementary angles sharing range, and the symmetry and scaling with v naught. Yeah, that’s the full arc. Set up, integrate, eliminate t, and then the key formulas and takeaways. Go on.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": false,
+  "checks": [
+   "ended on part 1, wanted part 3"
+  ],
+  "conveyed": false,
+  "clean": false,
+  "why": "It restarted the walkthrough from the setup and never advanced the shared screen beyond part 1, so the walk did not reach part 3.",
+  "felt": true,
+  "feelNotes": [],
+  "latency": null,
+  "words": 162,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.4,
+  "pass": false,
+  "tapeStart": 689.8,
+  "tapeEnd": 1124.5
+ }
+]

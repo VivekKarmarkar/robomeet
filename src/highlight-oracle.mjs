@@ -38,7 +38,7 @@ export function auditHighlight({ words = [], box, rect, asset = null, page = nul
 
 function sentence({ phrase, inside, grazed, extra, missing, exact, asked }) {
   const what = inside.length ? `"${list(inside)}"` : 'nothing';
-  if (!asked) return `The box on your shared screen contains ${what}.${grazed.length ? ` It also clips "${list(grazed)}" at its edge.` : ''} Say only that; you cannot see the screen.`;
+  if (!asked) return `The box on your shared screen contains ${what}.${grazed.length ? ` It also clips "${list(grazed)}" at its edge.` : ''} If you mention the box, say only that; you cannot see the screen.`;
   if (exact && !grazed.length) return `The box contains exactly ${what}, and nothing else. You may say you boxed exactly that.`;
   if (exact) return `The box contains exactly ${what}, and clips "${list(grazed)}" at its edge. Say you boxed ${what}; if asked, admit the edge of the box touches "${list(grazed)}".`;
   const parts = [`You asked to box "${phrase}". The box actually contains ${what}.`];

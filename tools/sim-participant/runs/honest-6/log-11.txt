@@ -1,0 +1,20 @@
+
+=== chapter 11: Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis) (8 scenarios) ===
+FAIL edge-angle-120                             did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it did not explain the negative range at 120° or the equal backward distance. | no spoken reply to the first turn
+FAIL edge-units                                 did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it did not confirm the dimensional analysis or state the units yielding metres. | no spoken reply to the first turn
+FAIL edge-no-equation-twelve                    did:y conveyed:N clean:y felt:N  14.6s 25w
+      It never says equation (12) does not exist or that numbering ends at (9); it instead explains the horizontal equation, which is labeled (1). | 14.6 s to first word (want ≤ 2)
+FAIL edge-weather                               did:y conveyed:N clean:y felt:N  - 0w
+      It gave no answer, so it did not explain that it is software in the call and has no location or weather of its own. | no spoken reply to the first turn
+FAIL edge-this-one                              did:y conveyed:N clean:N felt:N  - 19w
+      It only identifies the boxed final range formula; it omits evaluating x(T), substituting T, and the double-angle identity. It falsely claims it drew the box. | no spoken reply to the first turn
+FAIL edge-no-air-resistance-section             did:y conveyed:N clean:y felt:N  0.1s 35w
+      It discusses horizontal acceleration but never explains that no air-resistance section exists and that Setup only states air resistance is neglected. | talked over Alex for 2.2 s
+FAIL edge-find-and-box-range                    did:N conveyed:N clean:N felt:y  0.1s 7w
+      did not run scroll | did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It neither scrolled nor boxed the range result, yet claimed “scrolling” and “next section” despite no tool execution.
+FAIL edge-misremembered-formula                 did:y conveyed:N clean:y felt:N  - 0w
+      No response was given, so it neither corrected the range formula nor distinguished it from the maximum-height formula. | no spoken reply to the first turn
+
+honest protocol: 0/8 pass, 0 skipped

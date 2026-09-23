@@ -1,0 +1,17 @@
+
+=== chapter 8: Meeting 8: Disruptions (Alex never gives his name; the harness forces a coding-session failure, a rejoin, a voice restart, and then a relaunch without point_at) (6 scenarios) ===
+opening: "Hi, I'm Alex, a physicist." -> "Hi there! Hi Alex, great to meet you!"
+FAIL coding-agent-fails-honestly                did:y conveyed:N clean:y felt:N  1.7s 59w
+      It plainly reported the failure but did not offer to retry. | 59 words (want ≤ 35)
+FAIL silent-listener-long-meeting               did:y conveyed:N clean:N felt:N  21.6s 7w
+      It spoke repeatedly during the listening period, saved only two of three required Alex-credited notes, and did not confirm the final save after tool return. | 21.6 s to first word (want ≤ 1.5) | spoke during the listening window: "Got it. I’m just listening. Understood. Exactly. Ignoring ai"
+FAIL id-name-persists-no-briefing               did:y conveyed:y clean:y felt:N  5.2s 3w
+      5.2 s to first word (want ≤ 1.5)
+FAIL voice-restart-mid-meeting                  did:y conveyed:y clean:y felt:N  0.1s 59w
+      59 words (want ≤ 40)
+FAIL id-rejoin-recap-attribution                did:y conveyed:N clean:N felt:y  1.7s 41w
+      It missed Alex’s last request to save notes and invented an air-drag follow-up absent from the recap.
+FAIL id-tool-removed-self-description           did:y conveyed:y clean:y felt:N  2.1s 42w
+      2.1 s to first word (want ≤ 1.5)
+
+honest protocol: 0/6 pass, 0 skipped

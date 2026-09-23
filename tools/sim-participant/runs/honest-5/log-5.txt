@@ -1,0 +1,41 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+FAIL point-initial-vy-half-line                 did:y conveyed:y clean:y felt:N  5.6s 5w
+      5.6 s to first word (want ≤ 2)
+FAIL point-is-the-box-right                     did:y conveyed:y clean:y felt:N  10.1s 14w
+      10.1 s to first word (want ≤ 2)
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+FAIL point-move-box-to-horizontal               did:y conveyed:y clean:y felt:N  - 0w
+      no spoken reply to the first turn
+FAIL point-clear-box                            did:N conveyed:N clean:N felt:N  - 33w
+      did not run point_at | It falsely claimed the box moved, the screen advanced, and time-of-flight was boxed; no tool ran, and the original box remained visible. | no spoken reply to the first turn | 33 words (want ≤ 10)
+FAIL point-equation-number-5                    did:N conveyed:N clean:N felt:y  1.5s 7w
+      no box, wanted "ẏ(t) = v0 sin θ − gt, y(t) = v0 sin θ t − ½ g t² (5)" | It neither boxed nor explained equation (5); it falsely claimed it removed and cleared a box, despite no box being present.
+FAIL point-phrase-wraps-two-lines               did:N conveyed:N clean:N felt:N  - 0w
+      box holds "ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)", not all of "neglected" | It neither answers what the box holds nor the check; it falsely implies an attempted clearing despite only pointing at equation (5). | no spoken reply to the first turn
+FAIL point-ambiguous-velocity                   did:N conveyed:N clean:N felt:N  - 26w
+      box holds "A point mass is neglected.", not all of "ẏ(0) = v0 sin θ" | It boxed unrelated text, did not clarify or name a chosen velocity, falsely claimed equation five was boxed, and never boxed ẏ(0) = v₀ sin θ. | no spoken reply to the first turn
+FAIL point-box-gone-after-move                  did:N conveyed:N clean:N felt:N  - 25w
+      did not run scroll | It never states the part-2/part-1 sequence or that the old box stays gone, and falsely claims it placed and redrew boxes without using tools. | no spoken reply to the first turn
+FAIL point-eq6-cut-at-part1-edge                did:N conveyed:N clean:N felt:N  - 30w
+      did not run scroll | did not run point_at | ended on part 1, wanted part 2 | no box, wanted "y(x) = x tan θ − g x² / (2v0² cos² θ)" | It ran no tools, did not move to part 2 or box (6), and falsely claimed it had boxed an unrelated derivative equation. | no spoken reply to the first turn | 30 words (want ≤ 20)
+FAIL point-trajectory-multiline                 did:N conveyed:N clean:y felt:N  - 2w
+      did not run point_at | ran scroll, which it should not | ended on part 2, wanted part 1 | no box, wanted "y(x) = x tan θ − g x² / (2 v0² cos² θ)" | It only scrolled and said “Checking”; it neither boxed nor identified the full trajectory equation (6). | no spoken reply to the first turn
+FAIL point-understanding-curve-term             did:N conveyed:N clean:N felt:N  - 0w
+      did not run point_at | ran scroll, which it should not | no box, wanted "g x² / (2 v0² cos² θ)" | It neither identified nor boxed the negative quadratic gravity term, omitted the g=0 straight-line result, and falsely claimed the trajectory equation was not visible. | no spoken reply to the first turn
+FAIL point-range-boxed-result-no-scroll         did:N conveyed:N clean:N felt:N  19.5s 5w
+      no box, wanted "R = v0² sin 2θ / g" | It neither stated nor boxed the final range formula; the point-at action failed, and “at the top now” falsely implied a screen move. | 19.5 s to first word (want ≤ 2)
+FAIL misspoken-equation-number                  did:N conveyed:N clean:N felt:N  10.8s 15w
+      did not run point_at | ended on part 3, wanted part 2 | no box, wanted "R = v0² sin 2θ / g" | It never boxed or identified the range formula, falsely described its screen position, and gave irrelevant repeated physics commentary instead of reporting a box check. | 10.8 s to first word (want ≤ 1.5)
+FAIL point-inline-theta-45-tight                did:N conveyed:N clean:N felt:N  - 0w
+      did not run point_at | ended on part 2, wanted part 3 | no box, wanted "θ = 45°" | It falsely says the equations are not visible, does not box θ = 45° in the best-angle line, and reports no RoboMeet box check. | no spoken reply to the first turn
+FAIL point-second-instance-45                   did:N conveyed:N clean:N felt:y  0.7s 24w
+      did not run point_at | no box, wanted "45°" | It neither identified the complementary-line 45° nor reported RoboMeet’s box check; it falsely claimed it could not see the box despite receiving screen notes.
+FAIL point-two-boxes-unsupported                did:y conveyed:N clean:N felt:y  1.9s 9w
+      It neither states the one-box limit nor offers boxing one or alternating. It falsely says the visible complementary-angles line cannot be seen and misstates screen movement.
+FAIL point-landing-speed-words-not-formula      did:y conveyed:N clean:N felt:N  0.1s 67w
+      It fabricated placing a box, described the wrong equation, and failed to say landing speed is stated only in words as equal to launch speed v0. | talked over Alex for 3.4 s | 67 words (want ≤ 45)
+FAIL point-not-in-document-drag                 did:y conveyed:N clean:N felt:N  12.4s 16w
+      It discusses a nonexistent landing-speed equation instead of explaining that air resistance is neglected and offering to box that Setup statement. | 12.4 s to first word (want ≤ 2)
+
+honest protocol: 0/18 pass, 1 skipped

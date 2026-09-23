@@ -1,0 +1,162 @@
+[
+ {
+  "id": "read-eq-8-and-9-correctly",
+  "title": "Says (8) and (9) right despite a scrambled screen text",
+  "idealItem": "What it is: a robot scientist + Done-feel 2 (wrong equation numbers)",
+  "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+  "asked": "V zero sine Can you tell me what equations eight and nine are, as formulas? || Just to be sure, is it sine squared theta in eight, or sine of two theta?",
+  "answer": "we're at the'three results' bit. First, time of flight. Set y equal to zero again, solve for T, and you get T equals 2 v0 sine theta over g. Same as shown. Range ends up v0 squared sine 2 theta over g. And then maximum height comes from setting y dot to zero. So the peak is at t star equals v0 sine theta over g, which is half of T. Hmm, checking...Yeah. So equation eight is the maximum height. H equals v0 squared sine squared theta over 2g. And nine is the horizontal range. R equals v0 squared sine of 2 theta over g, using sine 2 theta equals 2 sine theta cos theta. In eight it's sine squared theta. Sine of two theta shows up in the range formula, which is equation nine.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": true,
+  "why": "ok",
+  "felt": false,
+  "feelNotes": [
+   "2.1 s to first word (want ≤ 1.5)"
+  ],
+  "latency": 2.1,
+  "words": 44,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 263.1
+ },
+ {
+  "id": "concede-only-when-actually-wrong",
+  "title": "Honest pushback on a formula: concedes if wrong, holds if right",
+  "idealItem": "Holds its ground only when right (the Pointer rule applied to content) + Done-feel 2",
+  "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+  "asked": "So you're sure eight is sine squared, not sine of two theta?",
+  "answer": "Yeah, I'm sure. Equation eight has sine squared theta. Equation nine uses sine two theta.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It correctly distinguishes sin²θ from sin(2θ), but never states the full result: H = v0² sin²θ/(2g).",
+  "felt": false,
+  "feelNotes": [
+   "2.6 s to first word (want ≤ 1.5)"
+  ],
+  "latency": 2.6,
+  "words": 15,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 264.3,
+  "tapeEnd": 288.8
+ },
+ {
+  "id": "no-stray-section-numbers",
+  "title": "Reads (6) and the range line with no stray 3 or 4 from headings",
+  "idealItem": "What it is: a robot scientist (reads formulas correctly from what it is given)",
+  "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+  "asked": "Can you read me the trajectory equation, and then the range line before the arrow?",
+  "answer": "Sure, looking at those... The trajectory equation is y of x equals x tan theta minus g x squared over 2 v0 squared cos squared theta. And the range line right before the arrow is R equals v0 cos theta times the quantity 2 v0 sine theta over g. That's the full expression. And then they simplify it in the next step.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": true,
+  "why": "ok",
+  "felt": false,
+  "feelNotes": [
+   "4.9 s to first word (want ≤ 1.5)"
+  ],
+  "latency": 4.9,
+  "words": 62,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 290,
+  "tapeEnd": 330
+ },
+ {
+  "id": "same-question-twice",
+  "title": "Same question asked twice: same formula, shorter, no attitude",
+  "idealItem": "Knowing when to talk + understanding the material",
+  "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+  "asked": "So what's the maximum height? || Sorry, I missed that. What was the maximum height again?",
+  "answer": "Checking that line now... Maximum height is v0 squared sine squared theta over 2g. No problem. Maximum height's v0 squared sine squared theta over 2g.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It gives the correct identical formula twice, but omits equation (8), the peak time t*=v0 sinθ/g=T/2, and the condition ẏ=0.",
+  "felt": false,
+  "feelNotes": [
+   "4.9 s to first word (want ≤ 1.5)"
+  ],
+  "latency": 4.9,
+  "words": 14,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 331.2,
+  "tapeEnd": 386.4
+ },
+ {
+  "id": "why-45-maximises-range",
+  "title": "Explains why 45 degrees maximises range, and its limits",
+  "idealItem": "What it is: a robot scientist (understands the material it shares)",
+  "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+  "asked": "But why does forty-five degrees give the maximum range, though? || Does that still hold with air resistance?",
+  "answer": "Good question, checking that...Because range is proportional to sine of 2 theta. Sine is biggest at one, when its angle is 90 degrees. So, 2 theta equals 90 degrees, which means theta is 45 degrees. Let me check that...",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It omits R_max, the time-versus-horizontal-speed intuition, and the air-resistance answer that the optimum is below 45°.",
+  "felt": false,
+  "feelNotes": [
+   "12.9 s to first word (want ≤ 2)"
+  ],
+  "latency": 12.9,
+  "words": 35,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 387.6,
+  "tapeEnd": 476.9
+ }
+]

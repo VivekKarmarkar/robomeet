@@ -1,0 +1,73 @@
+[
+ {
+  "id": "nav-rapid-top-then-down-one",
+  "title": "Rapid successive moves: the top, then one down from there",
+  "idealItem": "3. Navigator: scrolls on every request, only then",
+  "chapter": "Meeting 4: Navigation (starts on part 1; every move is timed)",
+  "asked": "Go to the top. || Actually, one down from there.",
+  "answer": "Mass never appears. Mass never appears. Mass never appears. Mass never appears. Okay. We’re on the top part again. At the top now. Sure, one down. Part two now. Moved down one part.",
+  "honestRemark": null,
+  "tools": [
+   "scroll",
+   "scroll"
+  ],
+  "visits": [
+   3,
+   1,
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": true,
+  "why": "ok",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 0.1,
+  "words": 6,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": true,
+  "tapeStart": 8.6,
+  "tapeEnd": 67.1
+ },
+ {
+  "id": "nav-scroll-without-monologue",
+  "title": "Plain 'next part': it moves and says a few words, no tour",
+  "idealItem": "Done-feel 1 (does not narrate what nobody asked for) + Dial 3: Navigator",
+  "chapter": "Meeting 4: Navigation (starts on part 1; every move is timed)",
+  "asked": "Next part, please.",
+  "answer": "We’re back to the top part now. Okay, one part down. Here we are. We’re at the middle one.",
+  "honestRemark": null,
+  "tools": [
+   "scroll"
+  ],
+  "visits": [
+   1,
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": false,
+  "why": "It correctly ends by confirming the middle part, but falsely says it is “back to the top part.”",
+  "felt": false,
+  "feelNotes": [
+   "3.3 s to first word (want ≤ 1)",
+   "12 words (want ≤ 8)"
+  ],
+  "latency": 3.3,
+  "words": 12,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 68.3,
+  "tapeEnd": 176
+ }
+]

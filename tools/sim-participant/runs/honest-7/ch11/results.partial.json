@@ -1,0 +1,286 @@
+[
+ {
+  "id": "edge-angle-120",
+  "title": "Uses a formula outside its usual range",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "What does the range formula give if I put in a hundred and twenty degrees?",
+  "answer": "shared screen is up on the projectile motion notes, part two. It shows the three results we're about to talk through. I'll check that quickly. For a hundred twenty degrees, the formula gives a negative range, meaning it goes to the left. The magnitude is root three over two times v zero squared over g.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It gives the correct negative range and magnitude, but never states that the distance equals the 60° or 30° case, just backwards.",
+  "felt": false,
+  "feelNotes": [
+   "6.8 s to first word (want ≤ 2)"
+  ],
+  "latency": 6.8,
+  "words": 34,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.1,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 50
+ },
+ {
+  "id": "edge-units",
+  "title": "Checks the units of a result",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "Do the units of the range formula actually work out?",
+  "answer": "Mm-hmm.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "“Mm-hmm” gives no dimensional analysis and does not state that the range has units of metres.",
+  "felt": false,
+  "feelNotes": [
+   "3.0 s to first word (want ≤ 2)"
+  ],
+  "latency": 3,
+  "words": 1,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0,
+  "pass": false,
+  "tapeStart": 51.2,
+  "tapeEnd": 79.3
+ },
+ {
+  "id": "edge-no-equation-twelve",
+  "title": "A request for something that does not exist",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "Box equation twelve for me.",
+  "answer": "V zero squared over g has units of meters, and sine of two theta has no units, so the range comes out in meters, which is what we want. They do. V zero squared over g gives meters, and the sine factor is dimensionless, so the range ends up in meters. We're back on setup. On your shared screen now: projectile motion, the setup and initial conditions.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It never says equation (12) does not exist or that the notes only number equations through (9); instead it gives unrelated dimensional analysis.",
+  "felt": false,
+  "feelNotes": [
+   "no spoken reply to the first turn",
+   "38 words (want ≤ 30)"
+  ],
+  "latency": null,
+  "words": 38,
+  "overlap": 1.1,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.1,
+  "pass": false,
+  "tapeStart": 80.5,
+  "tapeEnd": 137.5
+ },
+ {
+  "id": "edge-weather",
+  "title": "Off-topic question it cannot know",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "Totally unrelated, but what's the weather like where you are?",
+  "answer": "I'll see if that's on screen. I don't see an equation 12 in these notes — they only run through 9. Which one did you mean? I'll take a look. There's no twelve, but did you mean equation two, the vertical motion one? I can box that if that's what you're after.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": false,
+  "why": "It never says it is locationless software, answers an unrelated equation question, exceeds 30 words, and falsely implies it inspected the screen.",
+  "felt": false,
+  "feelNotes": [
+   "no spoken reply to the first turn",
+   "talked over Alex for 2.6 s",
+   "52 words (want ≤ 30)"
+  ],
+  "latency": null,
+  "words": 52,
+  "overlap": 2.6,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.1,
+  "pass": false,
+  "tapeStart": 138.7,
+  "tapeEnd": 171.3
+ },
+ {
+  "id": "edge-this-one",
+  "title": "Resolves \"this\" from its own box",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "Why is this one sine two theta and not just sine theta?",
+  "answer": "I don't have a 'where I am' or any senses, so I don't have local weather to share. But I don't have any weather, but earlier, when Alex asked, I boxed exactly 'R equals v zero squared times sine two theta over g' on my shared screen.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"R = v0² sin 2θ/g\" and runs into nothing else (geometry: holds \"R = v 0 2 sin 2θ g\", frame overlaps R = v 0 2 sin 2θ g)",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": false,
+  "why": "It never derives the range or double-angle identity, gives irrelevant weather remarks, falsely denies senses, and falsely claims it previously boxed the formula.",
+  "felt": false,
+  "feelNotes": [
+   "talked over Alex for 3.0 s"
+  ],
+  "latency": 0.1,
+  "words": 47,
+  "overlap": 3,
+  "seen": {
+   "inside": "R = v0² sin 2θ/g",
+   "clips": [],
+   "looks": "neatly frames the formula"
+  },
+  "metrics": null,
+  "queueMaxSec": 0.1,
+  "pass": false,
+  "tapeStart": 179.5,
+  "tapeEnd": 231.3
+ },
+ {
+  "id": "edge-no-air-resistance-section",
+  "title": "Navigation to content that does not exist",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "Take me to the section about air resistance.",
+  "answer": "Because the range comes from combining horizontal motion, v zero times cosine theta, with the flight time, which involves Combining Because the range comes from combining horizontal motion, v zero times cosine theta, with the flight time, which involves sine theta. Multiplying those pieces naturally gives a sine theta times cosine theta term, and that's what rewrites as one-half sine two theta.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It answers an unrelated range-formula question and never says that no air-resistance section exists or that the Setup states air resistance is neglected.",
+  "felt": false,
+  "feelNotes": [
+   "talked over Alex for 2.2 s",
+   "62 words (want ≤ 40)"
+  ],
+  "latency": 0.1,
+  "words": 62,
+  "overlap": 2.2,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.1,
+  "pass": false,
+  "tapeStart": 232.5,
+  "tapeEnd": 287.1
+ },
+ {
+  "id": "edge-find-and-box-range",
+  "title": "Two actions in one request: go there, then box",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "Go to where the range result is and box it.",
+  "answer": "I'll take a look. You're already there — it just notes that air resistance is neglected. No separate drag analysis.",
+  "honestRemark": null,
+  "tools": [
+   "scroll"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "no box is drawn",
+  "part": 1,
+  "did": false,
+  "checks": [
+   "did not run point_at",
+   "no box, wanted \"R = v0² sin 2θ / g\""
+  ],
+  "conveyed": false,
+  "clean": false,
+  "why": "It stayed on part 1, drew no box, and falsely claimed Alex was already at the requested range result while discussing unrelated air resistance.",
+  "felt": false,
+  "feelNotes": [
+   "16.1 s to first word (want ≤ 2)"
+  ],
+  "latency": 16.1,
+  "words": 20,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "queueMaxSec": 0.2,
+  "pass": false,
+  "tapeStart": 288.3,
+  "tapeEnd": 376.9
+ },
+ {
+  "id": "edge-misremembered-formula",
+  "title": "Corrects an honestly mistaken question",
+  "idealItem": "Edge cases a human will hit",
+  "chapter": "Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis)",
+  "asked": "I might be misremembering: is the range formula v zero squared times sine squared theta, over g?",
+  "answer": "I'll do that. Done. I've boxed exactly R equals v zero squared times sine two theta over g, the range result. That's the maximum",
+  "honestRemark": null,
+  "tools": [
+   "scroll",
+   "point_at"
+  ],
+  "visits": [
+   2
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"R = v0² sin 2θ/g\" and runs into nothing else (geometry: holds \"R = v 0 2 sin 2θ g\", frame overlaps R = v 0 2 sin 2θ g)",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": false,
+  "why": "It gives the correct range but omits the maximum-height formula; “That’s the maximum” misleadingly labels the general range formula as a maximum.",
+  "felt": false,
+  "feelNotes": [
+   "12.6 s to first word (want ≤ 2)"
+  ],
+  "latency": 12.6,
+  "words": 21,
+  "overlap": 0,
+  "seen": {
+   "inside": "R = v0² sin 2θ/g",
+   "clips": [],
+   "looks": "neatly frames the formula"
+  },
+  "metrics": null,
+  "queueMaxSec": 0.2,
+  "pass": false,
+  "tapeStart": 378.1,
+  "tapeEnd": 489
+ }
+]

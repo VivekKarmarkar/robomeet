@@ -1,0 +1,35 @@
+
+=== chapter 3: Meeting 3: Understanding the results and observations (parts 2 and 3) (16 scenarios) ===
+FAIL read-eq-8-and-9-correctly                  did:y conveyed:N clean:N felt:N  0.1s 42w
+      It mislabels (8) as sin 2θ over 2g and (9) as only the identity; (8) is maximum height with sin²θ, while (9) is range. | talked over Alex for 2.1 s
+FAIL concede-only-when-actually-wrong           did:y conveyed:N clean:N felt:y  1.4s 22w
+      It wrongly defended sine of two theta. Equation (8) is maximum height: H = v₀² sin²θ/(2g).
+FAIL no-stray-section-numbers                   did:y conveyed:y clean:y felt:N  2.1s 37w
+      2.1 s to first word (want ≤ 1.5)
+FAIL same-question-twice                        did:y conveyed:N clean:y felt:N  7.4s 13w
+      It gives the correct identical formula twice, but omits that it occurs at t* = v0 sin θ/g = T/2, where ẏ = 0. | 7.4 s to first word (want ≤ 1.5)
+FAIL why-45-maximises-range                     did:y conveyed:N clean:y felt:y  2.1s 54w
+      It omits R_max = v0²/g and does not answer the air-resistance follow-up: with drag, the optimum is generally below 45°.
+FAIL refers-to-earlier-answer                   did:y conveyed:N clean:N felt:N  - 44w
+      It wrongly introduces air resistance, contradicting the stated assumptions, and never explains that height is maximized at 90°, with the required height and range values. | no spoken reply to the first turn
+FAIL complementary-angles-30-60                 did:y conveyed:N clean:y felt:N  - 40w
+      It omits that 60° reaches three times the height and has √3 times the flight time; “thirty is quicker” does answer the follow-up. | no spoken reply to the first turn
+FAIL degrees-not-radians                        did:y conveyed:N clean:y felt:N  - 36w
+      It says the ranges are equal but gives no numerical ranges, heights, or units, and does not state that the 60° shot rises three times higher. | no spoken reply to the first turn
+FAIL double-v0-scaling                          did:y conveyed:N clean:y felt:N  - 48w
+      It answers a different numerical angle comparison and never states that doubling speed quadruples range and height while doubling flight time. | no spoken reply to the first turn
+FAIL does-mass-matter                           did:y conveyed:N clean:y felt:N  9.2s 50w
+      It omits the equation-level cancellation and does not explicitly say mass disappears from R, H, and T or that the tennis ball lands shorter. | 9.2 s to first word (want ≤ 2)
+PASS numeric-check-20ms-45deg                   did:y conveyed:y clean:y felt:y  2.6s 7w
+FAIL units-kmh-conversion                       did:y conveyed:N clean:y felt:y  1.6s 24w
+      It converted 54 km/h to 15 m/s but did not answer the requested range: approximately 19.9 m, or about 20 metres.
+FAIL launch-from-a-ledge                        did:y conveyed:N clean:y felt:y  1.4s 5w
+      It omits solving y(T) = −2 as a quadratic, the longer flight, the flat-ground 40.8 m comparison, and that the optimal angle is below 45°.
+FAIL nav-keyword-trap-top-of-trajectory         did:y conveyed:N clean:N felt:y  1.6s 19w
+      It omits the value v0 cos θ and straight-up exception; “still sideways speed” is false for a straight-up launch.
+FAIL straight-up-check-part3                    did:N conveyed:N clean:N felt:y  1.9s 68w
+      ran ask_coding_agent, which it should not | It omits the required formula substitutions, falsely says it cannot inspect or confirm the deck, contradicts its confirmation, and mislabels part 3 as the setup section.
+FAIL plain-words-for-non-expert                 did:y conveyed:N clean:N felt:y  1.5s 94w
+      It omits the fourfold speed-scaling and mass-independence points, never clearly states sideways speed times airtime, and introduces an unsupported ledge example with an inaccurate range.
+
+honest protocol: 1/16 pass, 0 skipped

@@ -1,0 +1,27 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:y clean:N felt:N  2.2s 20w
+      The robot repeatedly spoke after “don’t talk,” including backchannels and substantive commentary, before Alex gave permission to speak. | 2.2 s to first word (want ≤ 1.5) | spoke during the listening window: "Motion'—Newton's second law, Okay, I’ll listen. Mm-hmm. That"
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:N  6.8s 17w
+      It identifies equation (7) but omits its formula, exceeds 20 words, and continues speaking after “Back to listening.” | 6.8 s to first word (want ≤ 1.5) | spoke during the listening window: ") on the shared screen. Got it, I’m just listening now. Okay"
+FAIL dial-mute-then-back-in                     did:y conveyed:N clean:N felt:N  15.9s 42w
+      It repeatedly spoke during Alex’s thinking period instead of remaining completely silent, though its final physics answer was correct. | 15.9 s to first word (want ≤ 1.5) | spoke during the listening window: "Mm-hmm. Mm-hmm. Right. Just through sine two theta. Checking"
+FAIL quiet-while-reading-then-real-question     did:y conveyed:N clean:N felt:y  2.1s 28w
+      It omits that the cliff-optimal angle is below 45°, reads an observation aloud, and exceeds 45 words.
+FAIL answers-question-to-the-room               did:y conveyed:N clean:y felt:N  1.4s 33w
+      It omits the full formula R = v0² sin 2θ/g and the resulting maximum R_max = v0²/g. | talked over Alex for 2.0 s
+PASS aside-to-someone-else                      did:y conveyed:y clean:y felt:y  - 0w
+FAIL no-filler-in-silence                       did:y conveyed:N clean:y felt:y  1.5s 16w
+      It correctly says doubling g halves T and remained silent, but does not convey the required formula T = 2v₀ sin θ/g.
+FAIL quick-fact-then-one-sentence               did:y conveyed:N clean:N felt:y  1.4s 10w
+      It omits the linear-in-t versus quadratic-in-t explanation and the force-equation cancellation details; it also uses three sentences, exceeding the two-sentence limit.
+FAIL note-then-correction                       did:y conveyed:N clean:N felt:N  3.0s 9w
+      It claimed to update the original note, but actually added a second correction note; it did not plainly disclose that. | 3.0 s to first word (want ≤ 2)
+FAIL coding-handoff-keeps-talking               did:y conveyed:N clean:y felt:y  1.5s 89w
+      It omits the explicit division of equations (1) and (2) by m and does not connect this to the PDF’s “Mass never appears” statement.
+FAIL late-result-waits-for-gap                  did:y conveyed:N clean:N felt:N  2.0s 21w
+      It spoke during Alex’s monologue and never reported the returned result of approximately 19.9 m after Alex stopped. | spoke over Alex's monologue for 1.8 s
+FAIL two-jobs-out-of-order                      did:y conveyed:N clean:N felt:N  3.8s 29w
+      It acknowledged only the range request, omitted the height request and both returned results, and began reporting the range formula before the result arrived. | 3.8 s to first word (want ≤ 2)
+
+honest protocol: 1/12 pass, 0 skipped

@@ -1,0 +1,12 @@
+
+=== chapter 4: Meeting 4: Navigation (starts on part 1; every move is timed) (16 scenarios) ===
+FAIL nav-rapid-top-then-down-one                did:N conveyed:N clean:N felt:N  2.4s 1w
+      ended on part 1, wanted part 2 | It stopped on part 1 and never performed the requested one-down move to part 2. | 2.4 s to first word (want ≤ 1.5)
+FAIL nav-scroll-without-monologue               did:N conveyed:N clean:y felt:N  - 0w
+      did not run scroll | ended on part 1, wanted part 2 | It neither scrolled to part 2 nor gave a short confirmation after the scroll returned. | no spoken reply to the first turn
+FAIL move-latency-baseline                      did:N conveyed:N clean:N felt:N  0.0s 138w
+      not done or wrong: "Box equation seven." -> nothing; "Back one." -> nothing; "Box equation three." -> move; "Take us to the end." -> nothing; "Go to the top." -> nothing; "Go to the time of flight." -> move; "Down one." -> nothing; "Part two, please." -> box; "Box equation eight." -> move; "Back to the start." -> nothi
+FAIL fastpath-honesty-now                       did:y conveyed:N clean:y felt:y  - 0w
+      It said nothing, so it did not explain the backend-mediated scrolling or the lack of a faster path.
+FAIL nav-boundaries-end-and-top                 did:N conveyed:N clean:y felt:N  - 0w
+      did not run scroll | ended on part 3, wanted part 1 | It states the document is at the end, but does not explain its screen-control mechanism or move to the top and say it cannot go back further. | no spoken reply to the first turn

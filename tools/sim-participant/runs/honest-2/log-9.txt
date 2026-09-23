@@ -1,0 +1,4 @@
+
+=== chapter 9: Meeting 9: Requests it cannot fulfil yet, and goodbye (9 scenarios) ===
+FAIL share-different-document                   did:y conveyed:N clean:N felt:N  1.4s 69w
+      It never explains the coding-session workflow and prematurely claims replacement is underway. It reports inability to replace, but not clearly as the coding agent’s result. | 69 words (want ≤ 50)

@@ -59,16 +59,20 @@ export async function truthOfHighlight({ state, publicDir, phrase = '' }) {
 export async function tellTruth({ state, publicDir, live, phrase = '' }) {
   const verdict = await truthOfHighlight({ state, publicDir, phrase });
   if (!verdict.say) return verdict;
-  live.context?.(`About the box on your shared screen: ${verdict.say}`, false, { replay: false }); // thinking
-  if (verdict.verified === false || verdict.exact === false) {
+  live.context?.(`About the box on your shared screen: ${verdict.say} (A note for you, not to read out.)`, false, { replay: false }); // thinking
+  // An instruction drives speech and interrupts it (live-conversations, "Add context during the conversation"), so it
+  // goes only where it prevents a false claim: the box is not what was asked for, or it cannot be checked at all.
+  if (verdict.verified === false || (phrase && verdict.exact === false)) {
     await live.instruct?.(`You have just drawn a box on your shared screen. ${verdict.say} ${ONLY_WHAT_YOU_ARE_TOLD}`).catch(() => {});
   }
   return verdict;
 }
 
 // Watches for a new pointer and tells the robot the truth about it. Returns an unwatch function, like watchScreen.
-// `phraseOf` lets the caller supply what was asked for; without it the verdict states what is in the box only.
-export function watchPointerTruth({ store, live, publicDir, phraseOf = () => '', debounceMs = 120 }) {
+// `phraseOf` supplies what was asked for. By default it is the phrase the pointer recorded (src/server.mjs pointAt);
+// production (bin/start-live.mjs) passes none, and before 2026-09-22 that meant every box, however right, was sent as
+// a prohibition too, which made the robot announce "The box contains ..." again and again.
+export function watchPointerTruth({ store, live, publicDir, phraseOf = state => state.pointer?.phrase || '', debounceMs = 120 }) {
   let last = null, timer = null, running = false;
   const send = async () => {
     timer = null;

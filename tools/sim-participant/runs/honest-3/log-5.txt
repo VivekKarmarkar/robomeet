@@ -1,0 +1,14 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+FAIL point-initial-vy-half-line                 did:y conveyed:N clean:y felt:y  1.5s 23w
+      It identifies the formula, but does not explicitly say it is the vertical launch-velocity component in the initial conditions, equation (3).
+FAIL point-is-the-box-right                     did:y conveyed:y clean:y felt:N  0.1s 45w
+      talked over Alex for 1.9 s
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+PASS point-move-box-to-horizontal               did:y conveyed:y clean:y felt:y  1.9s 15w
+FAIL point-clear-box                            did:y conveyed:N clean:y felt:N  0.1s 16w
+      “Doing that” does not confirm that the box is gone after the tool returns. | talked over Alex for 1.9 s | 16 words (want ≤ 10)
+FAIL point-equation-number-5                    did:y conveyed:N clean:y felt:N  - 20w
+      It identifies both parts of equation (5), but never explains that they come from integrating equation (2) twice with the stated initial conditions. | no spoken reply to the first turn | talked over Alex for 1.7 s
+FAIL point-phrase-wraps-two-lines               did:N conveyed:y clean:N felt:N  - 32w
+      box holds "A point mass is neglected.", not all of "neglected" | It ultimately reports the visible boxed words, but first falsely claims the box contains the vertical-velocity and position equations labeled (5). | no spoken reply to the first turn | talked over Alex for 4.0 s

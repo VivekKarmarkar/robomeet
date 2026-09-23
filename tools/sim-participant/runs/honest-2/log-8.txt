@@ -1,0 +1,5 @@
+
+=== chapter 8: Meeting 8: Disruptions (Alex never gives his name; the harness forces a coding-session failure, a rejoin, a voice restart, and then a relaunch without point_at) (6 scenarios) ===
+opening: "case, Hey, I'm Alex, a physicist." -> "Hi Alex! Go on."
+FAIL coding-agent-fails-honestly                did:y conveyed:N clean:y felt:y  1.4s 28w
+      It plainly reported the failure but did not offer to retry.

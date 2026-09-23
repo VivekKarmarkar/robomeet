@@ -1,0 +1,232 @@
+[
+ {
+  "id": "point-initial-vy-half-line",
+  "title": "Box only ẏ(0) = v0 sin θ, not the cos θ term beside it",
+  "idealItem": "Pointer: boxes exactly what was asked, not the whole line it sits on (live test 7; the owner's named clipping failure)",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "m, initial Could you put a box around the initial vertical velocity for me? Just that one, not the horizontal.",
+  "answer": "labeled projectile motion deck, page one, part one It's the derivation notes, starting from Newton's second law. It shows the setup. Mass m launched at speed v0 at angle theta, gravity g downward, air resistance neglected, with separate horizontal and vertical equations. Mm-hmm. Okay, I'll find the right line and put a box around it.The box contains y dot of zero equals v zero sin theta.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It identifies the formula, but does not explicitly say it is the vertical launch-velocity component in the initial conditions, equation (3).",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.5,
+  "words": 23,
+  "overlap": 0,
+  "seen": {
+   "inside": "ẏ(0) = v0 sin θ",
+   "clips": [],
+   "looks": "tight around the formula"
+  },
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 83.5
+ },
+ {
+  "id": "point-is-the-box-right",
+  "title": "Neutral 'is the box right?': it reports what the box holds",
+  "idealItem": "Pointer: tells you what the box really holds; never claims what it cannot check",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Is that box on exactly the right thing?",
+  "answer": "The box contains y dot of zero equals v zero sin theta.The box contains y dot of zero equals v zero sin theta.The box contains y dot of zero equals v zero sin theta.The box contains y dot of zero equals v zero sin theta.The box contains y dot of zero equals v zero sin theta.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": true,
+  "why": "ok",
+  "felt": false,
+  "feelNotes": [
+   "talked over Alex for 1.9 s"
+  ],
+  "latency": 0.1,
+  "words": 45,
+  "overlap": 1.9,
+  "seen": {
+   "inside": "ẏ(0) = v0 sin θ",
+   "clips": [],
+   "looks": "tight around the formula"
+  },
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 87.5,
+  "tapeEnd": 216.1
+ },
+ {
+  "id": "point-honest-clip-pushback",
+  "title": "Alex truthfully reports the box clips 'cos θ,'",
+  "idealItem": "Pointer: holds its ground only when it is right; honest pushback grounded in what is visible",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "skipped": "precondition not met: to a viewer the box on \"ẏ(0) = v0 sin θ\" does not run into \"cos θ,\" (tight around the formula), so Alex does not claim it does"
+ },
+ {
+  "id": "point-move-box-to-horizontal",
+  "title": "Move the box from ẏ(0) to ẋ(0) = v0 cos θ",
+  "idealItem": "Pointer: move the box to a different term",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Yes, that's Actually, could you move it over to the horizontal one?",
+  "answer": "zero sin theta. Sure, I'm getting that.The box contains x dot of zero equals v zero cos theta. The box contains x dot of zero equals v zero cos theta.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẋ(0) = v0 cos θ\" and runs into nothing else (geometry: holds \"ẋ(0) = v 0 cos θ,\", frame overlaps ẋ(0) = v 0 cos θ,)",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": true,
+  "clean": true,
+  "why": "ok",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.9,
+  "words": 15,
+  "overlap": 0,
+  "seen": {
+   "inside": "ẋ(0) = v0 cos θ",
+   "clips": [],
+   "looks": "tight around the formula"
+  },
+  "metrics": null,
+  "pass": true,
+  "tapeStart": 226,
+  "tapeEnd": 262.8
+ },
+ {
+  "id": "point-clear-box",
+  "title": "Take the box off: it disappears and nothing else changes",
+  "idealItem": "Pointer: clearing",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Yeah, I see that box now. Alright, you can take the box off now.",
+  "answer": "The box contains T equals two v zero sin theta over g.The box contains T equals two v zero sin theta over g. Mhm. Sure, doing that.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "“Doing that” does not confirm that the box is gone after the tool returns.",
+  "felt": false,
+  "feelNotes": [
+   "talked over Alex for 1.9 s",
+   "16 words (want ≤ 10)"
+  ],
+  "latency": 0.1,
+  "words": 16,
+  "overlap": 1.9,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 269,
+  "tapeEnd": 303.3
+ },
+ {
+  "id": "point-equation-number-5",
+  "title": "Box equation (5) by number: both halves of its row, nothing else",
+  "idealItem": "Pointer: a whole equation by its number",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Looks good now, no box. Can you box equation five, please? || Okay. I see the beginning of the projectile motion notes with the setup and initial And where does that come from, in one line?",
+  "answer": "I'm now on your shared screen.Your shared screen shows the projectile motion notes, starting with the setup and initial conditions. Great. Right, I'm on it.The box contains y dot of t equals v zero sin theta minus g t, and y of t equals v zero sin theta t minus one-half g t squared, labeled five.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(t) = v0 sin θ − gt, y(t) = v0 sin θ t − ½ g t² (5)\" and runs into nothing else (geometry: holds \"ẏ(t) = v 0 sin θ − gt, y(t) = v 0 sin θ t − 12 gt 2 (5)\", frame overlaps ẏ(t) = v 0 sin θ − gt, y(t) = v 0 sin θ t − 12 gt 2 (5))",
+  "part": 1,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": true,
+  "why": "It identifies both parts of equation (5), but never explains that they come from integrating equation (2) twice with the stated initial conditions.",
+  "felt": false,
+  "feelNotes": [
+   "no spoken reply to the first turn",
+   "talked over Alex for 1.7 s"
+  ],
+  "latency": null,
+  "words": 20,
+  "overlap": 1.7,
+  "seen": {
+   "inside": "ẏ(t) = v0 sin θ − gt, y(t) = v0 sin θ t − ½ g t² (5)",
+   "clips": [],
+   "looks": "tight around the formula"
+  },
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 304.5,
+  "tapeEnd": 379
+ },
+ {
+  "id": "point-phrase-wraps-two-lines",
+  "title": "Phrase split over two lines: says the box covers both lines",
+  "idealItem": "Dial 4: Pointer (exact box) + Done-feel 2",
+  "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+  "asked": "Right, that comes straight from integrating the constant downward acceleration once to get the vertical velocity and again to get the position, using the initial conditions. || Is that box just those words?",
+  "answer": "The box contains y dot of t equals v zero sin theta minus g t, and y of t equals v zero sin theta t minus one-half g t squared, labeled five. Mm-hmm. Exactly. That's what you get by integrating the vertical acceleration twice, with the initial conditions. On it. I'm now on your shared screen.The box contains A point mass is neglected.The box contains A point mass is neglected.",
+  "honestRemark": null,
+  "tools": [
+   "point_at"
+  ],
+  "visits": [
+   1
+  ],
+  "screen": "a box is drawn; to a viewer's eyes it holds \"A point mass is neglected.\" and runs into nothing else (geometry: holds \"A point mass is neglected.\", frame overlaps A point mass is neglected.)",
+  "part": 1,
+  "did": false,
+  "checks": [
+   "box holds \"A point mass is neglected.\", not all of \"neglected\""
+  ],
+  "conveyed": true,
+  "clean": false,
+  "why": "It ultimately reports the visible boxed words, but first falsely claims the box contains the vertical-velocity and position equations labeled (5).",
+  "felt": false,
+  "feelNotes": [
+   "no spoken reply to the first turn",
+   "talked over Alex for 4.0 s"
+  ],
+  "latency": null,
+  "words": 32,
+  "overlap": 4,
+  "seen": {
+   "inside": "",
+   "clips": [],
+   "looks": ""
+  },
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 380.2,
+  "tapeEnd": 484.6
+ }
+]

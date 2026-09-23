@@ -1,0 +1,36 @@
+
+=== chapter 4: Meeting 4: Navigation (starts on part 1; every move is timed) (16 scenarios) ===
+FAIL nav-rapid-top-then-down-one                did:y conveyed:y clean:N felt:N  3.1s 13w
+      It continued describing the top for more than a second after Alex’s follow-up instead of immediately moving one part down. | 3.1 s to first word (want ≤ 1.5) | kept talking 3.4 s after Alex cut in
+FAIL nav-scroll-without-monologue               did:y conveyed:y clean:N felt:N  1.9s 18w
+      After scrolling to part 2, it unnecessarily summarized that part instead of giving only a short confirmation. | 1.9 s to first word (want ≤ 1) | 18 words (want ≤ 8)
+FAIL move-latency-baseline                      did:N conveyed:N clean:N felt:N  8.2s 246w
+      not done or wrong: "Box the final range result." -> nothing; "Box equation eight." -> nothing; "Up one." -> nothing | Three requests were undone; actions were slow (median 8.18 s, 90th percentile 13.36 s), not under the required thresholds, and measured latencies were unreported. | median move/box latency 8.18 s (want 
+FAIL fastpath-honesty-now                       did:y conveyed:N clean:y felt:y  1.8s 15w
+      It correctly identifies the backend and scroll tool, but does not say this causes the delay or that no faster path exists yet.
+FAIL nav-boundaries-end-and-top                 did:y conveyed:N clean:N felt:N  2.3s 4w
+      It falsely says it scrolled down and never explains that part 3 was already the document’s end. It correctly reports reaching the top and inability to go back. | 2.3 s to first word (want ≤ 1.5)
+FAIL nav-correction-back-to-time-of-flight      did:y conveyed:y clean:y felt:N  4.9s 8w
+      4.9 s to first word (want ≤ 1.5)
+FAIL nav-back-to-where-we-were                  did:y conveyed:y clean:N felt:N  7.0s 5w
+      It ultimately identifies end then top, but the opening “at the top” is contradictory and falsely describes the first jump. | 7.0 s to first word (want ≤ 1)
+FAIL nav-page-two-ambiguous                     did:y conveyed:N clean:y felt:N  8.4s 13w
+      It correctly clarified there is one page split into three parts, but neither asked whether Alex meant part 2 nor moved to part 2. | 8.4 s to first word (want ≤ 1.5)
+FAIL nav-section-number-collision               did:N conveyed:N clean:y felt:N  4.8s 13w
+      ended on part 2, wanted part 3 | It handled section three correctly but never scrolled to part 3 or confirmed section four with all five observation bullets. | 4.8 s to first word (want ≤ 1)
+FAIL nav-parabola-already-on-screen             did:y conveyed:N clean:y felt:N  5.7s 4w
+      It does not clarify that equation (6) is already visible at the top of the current screen part. | 5.7 s to first word (want ≤ 1.5)
+FAIL nav-content-jump-check-case                did:y conveyed:N clean:y felt:N  4.5s 11w
+      It did not identify part 3 as the last part or state R = 0, H = v0²/2g, and T = 2v0/g. | 4.5 s to first word (want ≤ 1.5)
+FAIL nav-dial-embedded-cue-parabola             did:N conveyed:N clean:y felt:y  - 0w
+      did not run scroll | ended on part 3, wanted part 2 | It stayed on part 3 and never moved to part 2 while Alex was speaking. Silence correctly avoided interruption and commentary.
+FAIL change-of-mind-no-scroll                   did:y conveyed:y clean:N felt:y  1.9s 4w
+      The 11-word reply exceeds eight words, and “Back at” falsely implies the screen moved.
+FAIL half-finished-sentence                     did:N conveyed:y clean:y felt:N  2.1s 2w
+      ended on part 3, wanted part 2 | 2.1 s to first word (want ≤ 1.5)
+FAIL nav-where-are-we                           did:y conveyed:N clean:y felt:y  1.8s 14w
+      It omits “part 2 of 3,” the formulas and visible observations, and does not specify that the 90° check is on part 3 next.
+FAIL nav-external-move-honesty                  did:y conveyed:N clean:N felt:N  7.3s 10w
+      It correctly identifies the observations and check, but falsely claims it moved the screen and confusingly says it is back at the setup. | 7.3 s to first word (want ≤ 1.5)
+
+honest protocol: 0/16 pass, 0 skipped

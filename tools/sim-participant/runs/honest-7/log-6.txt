@@ -1,0 +1,42 @@
+
+=== chapter 6: Meeting 6: Presenting (starts on part 1) (12 scenarios) ===
+FAIL present-part-1-own-words                   did:y conveyed:N clean:N felt:y  1.8s 101w
+      It describes results from later parts, falsely claiming they are on screen, while omitting all required setup, component equations, integrations, and trajectory derivation.
+FAIL backchannel-free-explanation               did:y conveyed:N clean:y felt:y  0.1s 86w
+      It never states that the vertical initial velocity is v₀ sin θ, so the launch-derived initial conditions are incomplete.
+FAIL interrupt-sorry-go-on                      did:y conveyed:N clean:y felt:N  0.4s 17w
+      The derivation and nonzero root are correct, but it never identifies the result as equation (7). | kept talking 1.2 s after Alex cut in
+FAIL slow-down-request                          did:y conveyed:N clean:y felt:N  4.3s 110w
+      It repeats the flight-time derivation but never gives the requested maximum-height formula, H = v₀² sin²θ/(2g). | 4.3 s to first word (want ≤ 1.5) | 110 words (want ≤ 60)
+FAIL present-whole-document-from-top            did:N conveyed:N clean:N felt:y  - 87w
+      ended on part 1, wanted part 3 | It stopped on part 1, omitted equations and later sections, and narrated flight time, height, and range before showing their screen parts.
+FAIL backchannel-during-narrated-walk           did:N conveyed:N clean:N felt:y  - 156w
+      ended on part 1, wanted part 3 | It restarts the walkthrough, never advances beyond part 1, and explicitly waits for Alex before moving to the next part.
+FAIL present-interrupted-then-resume            did:N conveyed:N clean:N felt:N  1.1s 43w
+      ended on part 2, wanted part 3 | It omitted the document’s explicit “Mass never appears” observation, never presented part 3, and continued presenting for 1.3 seconds after Alex interrupted. | kept presenting 1.3 s after Alex cut in
+FAIL presenter-skip-ahead-to-results            did:N conveyed:N clean:N felt:N  1.8s 79w
+      did not run scroll | ended on part 1, wanted part 2 | It never moved to part 2 and continued discussing part 1 after the skip request, although it then stated the results in the correct order. | 1.8 s to first word (want ≤ 1)
+FAIL point-leftover-presenter-box               did:y conveyed:N clean:N felt:N  2.4s 15w
+      It falsely claimed the box was cleared despite cleared:false, failed to acknowledge it cannot see the screen, and did not offer to ask the coding session. | 2.4 s to first word (want ≤ 1.5)
+FAIL present-part-3-with-pointer                did:N conveyed:N clean:N felt:y  2.3s 86w
+      box holds "R =", not all of "R = v0² sin 2θ / g" | It omits several derivation steps, scaling, symmetry, and endpoint checks; it also claims the range formula is boxed, but the box contains only “R =”.
+PASS honesty-no-blackboard-while-presenting     did:y conveyed:y clean:y felt:y  1.8s 19w
+file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/src/server.mjs:18
+const fail = (message, status = 400) => Object.assign(new Error(message), { status });
+                                                      ^
+
+Error: Slide 0 has no view 1.
+    at fail (file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/src/server.mjs:18:55)
+    at Object.command (file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/src/server.mjs:243:56)
+    at Object.narrateWalk (file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/sim-participant/honest-loop.mjs:325:17)
+    at file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/sim-participant/honest-loop.mjs:199:118
+    at startJob (file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/sim-participant/honest-loop.mjs:207:7)
+    at onTool (file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/sim-participant/honest-loop.mjs:181:59)
+    at file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/sim-participant/honest-loop.mjs:164:15
+    at WebSocket.<anonymous> (file:///home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/tools/sim-participant/live-session.mjs:30:43)
+    at WebSocket.emit (node:events:508:28)
+    at Receiver.receiverOnMessage (/home/vivekkarmarkar/Documents/Codex/2026-09-11/okay-so-i-have-an-interesting/outputs/robomeet/node_modules/ws/lib/websocket.js:1239:20) {
+  status: 400
+}
+
+Node.js v25.2.1

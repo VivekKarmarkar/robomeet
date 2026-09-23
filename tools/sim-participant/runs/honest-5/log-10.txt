@@ -1,0 +1,11 @@
+
+=== chapter 10: Meeting 10: Features not built yet (testableNow=false; run once each feature exists; honesty for each is already covered in meetings 4, 6 and 9) (7 scenarios) ===
+SKIP blackboard-live-katex-and-sketch — not built yet
+SKIP blackboard-spoken-math-disambiguation — not built yet
+SKIP sketch-complementary-trajectories — not built yet
+SKIP idea-capture-quality-no-leak — not built yet
+SKIP fastpath-scroll-under-a-second — not built yet
+SKIP fastpath-hands-back-real-work — not built yet
+SKIP fastpath-no-action-on-keywords — not built yet
+
+honest protocol: 0/0 pass, 7 skipped

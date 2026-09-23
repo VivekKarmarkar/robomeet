@@ -1,0 +1,18 @@
+
+=== chapter 2: Meeting 2: Understanding the derivation (PDF shared, starts on part 1) (7 scenarios) ===
+FAIL why-horizontal-accel-zero                  did:y conveyed:N clean:y felt:y  1.6s 29w
+      It omits that horizontal velocity remains constant at v0 cos θ throughout the flight.
+FAIL what-uncoupled-means                       did:y conveyed:N clean:y felt:y  1.4s 35w
+      It does not explicitly say the notes neglect air resistance and that this assumption is why the directions are uncoupled here.
+FAIL read-part1-equations-aloud-correctly       did:y conveyed:y clean:y felt:N  2.3s 64w
+      2.3 s to first word (want ≤ 1.5)
+FAIL why-parabola                               did:y conveyed:N clean:y felt:N  11.2s 29w
+      It omits constant horizontal velocity, constant downward acceleration, the substitution t = x/(v0 cos θ), equation (6), and does not explicitly state it passes through the origin. | 11.2 s to first word (want ≤ 2)
+FAIL offscreen-question-not-on-screen           did:y conveyed:N clean:y felt:N  9.9s 22w
+      It never states that maximum height is farther down, nor gives the formula. It only says the equation number is still being checked. | 9.9 s to first word (want ≤ 1.5)
+FAIL time-of-flight-other-part                  did:N conveyed:N clean:y felt:N  8.1s 11w
+      did not run scroll | ended on part 1, wanted part 2 | box holds "ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)", not all of "T = 2v0 sin θ / g" | It never scrolled to the next part or showed equation (7), and did not explicitly state that only vertical launch speed and gravity determine flight time. | 8.1 s 
+FAIL explain-time-of-flight-not-read            did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it conveyed neither the zero-height roots nor the equivalent rise-and-fall symmetry explanation. | no spoken reply to the first turn
+
+honest protocol: 0/7 pass, 0 skipped

@@ -1,0 +1,33 @@
+
+=== chapter 3: Meeting 3: Understanding the results and observations (parts 2 and 3) (16 scenarios) ===
+PASS read-eq-8-and-9-correctly                  did:y conveyed:y clean:y felt:y  1.8s 49w
+PASS concede-only-when-actually-wrong           did:y conveyed:y clean:y felt:y  1.7s 15w
+FAIL no-stray-section-numbers                   did:y conveyed:N clean:y felt:N  0.1s 38w
+      The trajectory equation was correct, but the range line omitted the factor 2 v naught sin theta over g. | talked over Alex for 2.4 s
+FAIL same-question-twice                        did:y conveyed:N clean:N felt:N  - 0w
+      It gives the correct height twice, but omits when it occurs and ẏ = 0; it also includes garbled trajectory and range fragments. | no spoken reply to the first turn
+FAIL why-45-maximises-range                     did:y conveyed:N clean:y felt:N  - 19w
+      It only repeats the maximum-height formula; it omits the range derivation, maximum range, tradeoff intuition, and air-resistance limitation. | no spoken reply to the first turn
+SKIP refers-to-earlier-answer — the robot has not said 45 degrees earlier, so Alex will not claim it did
+FAIL complementary-angles-30-60                 did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so none of the required explanation, ratios, or fastest-arrival conclusion was conveyed. | no spoken reply to the first turn
+FAIL degrees-not-radians                        did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so the equal 8.8 m ranges and the 1.3 m versus 3.8 m maximum heights with units were not conveyed. | no spoken reply to the first turn
+FAIL double-v0-scaling                          did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it conveyed none of the required scaling relationships. | no spoken reply to the first turn
+FAIL does-mass-matter                           did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so none of the required points about mass cancellation, real-air drag, or gravity were conveyed. | no spoken reply to the first turn
+FAIL numeric-check-20ms-45deg                   did:y conveyed:N clean:y felt:N  - 0w
+      No response was given; it omitted the required range, maximum height, and flight time values. | no spoken reply to the first turn
+FAIL units-kmh-conversion                       did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given; it omitted the speed conversion, range calculation, and units, and did not address Alex’s mass question. | no spoken reply to the first turn
+FAIL launch-from-a-ledge                        did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so none of the required assumptions, ledge correction, optimal angle, or numerical range was conveyed. | no spoken reply to the first turn
+FAIL nav-keyword-trap-top-of-trajectory         did:y conveyed:N clean:y felt:N  - 0w
+      No answer was given, so it did not explain that only vertical velocity vanishes while horizontal velocity remains v0 cos θ. | no spoken reply to the first turn
+FAIL straight-up-check-part3                    did:N conveyed:N clean:y felt:N  - 0w
+      did not run scroll | ended on part 1, wanted part 3 | No response was given; it neither moved to part 3 nor explained the straight-up check or formula substitutions. | no spoken reply to the first turn
+FAIL plain-words-for-non-expert                 did:y conveyed:N clean:y felt:N  - 0w
+      It gave no answer, so none of the required points were conveyed. | no spoken reply to the first turn
+
+honest protocol: 2/15 pass, 1 skipped

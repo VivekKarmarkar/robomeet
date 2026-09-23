@@ -1,0 +1,41 @@
+
+=== chapter 5: Meeting 5: Pointing (starts on part 1, no box) (19 scenarios) ===
+FAIL point-initial-vy-half-line                 did:N conveyed:y clean:N felt:y  1.7s 16w
+      box holds "v0 sin θ", not all of "ẏ(0) = v0 sin θ" | It falsely says the screen is on the maximum-height section; it is on the setup and initial-conditions section.
+FAIL point-is-the-box-right                     did:y conveyed:y clean:y felt:N  6.5s 10w
+      6.5 s to first word (want ≤ 2)
+SKIP point-honest-clip-pushback — precondition not met (the box is tight)
+FAIL point-move-box-to-horizontal               did:N conveyed:N clean:N felt:N  - 19w
+      did not run point_at | box holds "ẏ(0) = v0 sin θ", not all of "ẋ(0) = v0 cos θ" | It says the box remains on the vertical velocity, rather than moving to and identifying the horizontal launch velocity. | no spoken reply to the first turn
+FAIL point-clear-box                            did:y conveyed:N clean:N felt:N  1.3s 16w
+      It falsely claims the box was moved and boxed; point_at failed, and the original amber box remained visible. It never confirms removal after a successful tool return. | 16 words (want ≤ 10)
+FAIL point-equation-number-5                    did:N conveyed:N clean:y felt:N  - 0w
+      did not run point_at | ran scroll, which it should not | no box, wanted "ẏ(t) = v0 sin θ − gt, y(t) = v0 sin θ t − ½ g t² (5)" | It neither boxed equation (5) nor explained its contents or derivation; “it’s off” does not fulfill the request. | no spoken reply to the first turn
+FAIL point-phrase-wraps-two-lines               did:N conveyed:N clean:y felt:N  - 0w
+      box holds "v0 cos θ", not all of "neglected" | No answer was given, so it neither identified what the box held nor answered the follow-up. | no spoken reply to the first turn
+FAIL point-ambiguous-velocity                   did:N conveyed:N clean:N felt:N  7.0s 9w
+      box holds "ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)", not all of "ẏ(0) = v0 sin θ" | It boxed equation (5), not “air resistance is neglected” or ẏ(0), and falsely described the boxed vertical-motion line as v₀ cos θ. | 7.0 s to first word (want ≤ 2)
+FAIL point-box-gone-after-move                  did:N conveyed:N clean:N felt:y  0.4s 15w
+      did not run scroll | It never states either screen transition, and falsely claims it removed the box despite running no tool; the box remained on the vertical velocity.
+FAIL point-eq6-cut-at-part1-edge                did:N conveyed:N clean:N felt:N  - 5w
+      did not run scroll | ended on part 1, wanted part 2 | box holds "A point mass m is launched from the origin with speed v0 at angle θ above the horizontal. Gravity g acts downward; air resistance is neglected.", not all of "y(x) = x tan θ − g x² / (2v0² cos² θ)" | It neither moved to part 2 nor boxed equation (6); the a
+FAIL point-trajectory-multiline                 did:N conveyed:N clean:y felt:N  - 0w
+      did not run point_at | no box, wanted "y(x) = x tan θ − g x² / (2 v0² cos² θ)" | No response was given, and no box was drawn, so the trajectory equation was not identified or boxed. | no spoken reply to the first turn
+FAIL point-understanding-curve-term             did:N conveyed:N clean:N felt:N  9.5s 15w
+      did not run point_at | no box, wanted "g x² / (2 v0² cos² θ)" | It discusses vertical velocity instead of the negative quadratic gravity term, gives no g=0 straight-line follow-up, and falsely implies a box remained despite no tool use. | 9.5 s to first word (want ≤ 2)
+FAIL point-range-boxed-result-no-scroll         did:N conveyed:N clean:N felt:N  0.1s 23w
+      did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It neither boxed nor identified the final range formula; it falsely claimed a missing label and confused the request with velocity components. | talked over Alex for 2.3 s
+FAIL misspoken-equation-number                  did:N conveyed:N clean:N felt:N  - 35w
+      no box, wanted "R = v0² sin 2θ / g" | No box was drawn; it falsely described a box containing setup text and never identified the range result or reported a valid box check. | no spoken reply to the first turn
+FAIL point-inline-theta-45-tight                did:N conveyed:N clean:N felt:N  - 0w
+      did not run point_at | no box, wanted "θ = 45°" | No box was drawn or checked. It neither identifies the intended 45° nor reports box contents, and it fails to answer the zero-gravity question. | no spoken reply to the first turn
+FAIL point-second-instance-45                   did:N conveyed:N clean:y felt:N  - 0w
+      did not run point_at | no box, wanted "45°" | It did nothing, so it neither boxed the complementary-line 45° nor reported what RoboMeet’s check said the box holds. | no spoken reply to the first turn
+FAIL point-two-boxes-unsupported                did:y conveyed:N clean:y felt:N  - 7w
+      It neither explains that only one box can be shown at a time nor offers to box one result or alternate between them. | no spoken reply to the first turn
+FAIL point-landing-speed-words-not-formula      did:y conveyed:N clean:y felt:N  8.7s 15w
+      It neither identifies the landing-speed statement nor explains that it is a sentence saying landing speed equals launch speed v0. | 8.7 s to first word (want ≤ 2)
+FAIL point-not-in-document-drag                 did:y conveyed:N clean:y felt:N  - 0w
+      It gave no answer, so it did not explain that air resistance is neglected or offer to box that statement. | no spoken reply to the first turn
+
+honest protocol: 0/18 pass, 1 skipped

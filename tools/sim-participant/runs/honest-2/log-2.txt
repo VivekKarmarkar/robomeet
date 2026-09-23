@@ -1,0 +1,6 @@
+
+=== chapter 2: Meeting 2: Understanding the derivation (PDF shared, starts on part 1) (7 scenarios) ===
+FAIL why-horizontal-accel-zero                  did:y conveyed:N clean:y felt:y  2.1s 34w
+      It explains zero acceleration from no horizontal force, but omits constant horizontal velocity and examples of forces making acceleration nonzero.
+FAIL what-uncoupled-means                       did:y conveyed:N clean:y felt:y  2.1s 57w
+      It never explicitly states that the notes neglect air resistance and that this assumption is why the displayed equations are uncoupled.

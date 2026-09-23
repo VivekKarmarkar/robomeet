@@ -1,0 +1,18 @@
+
+=== chapter 1: Meeting 1: Arrival and identity. The robot joins with nothing shared; the coding session puts the projectile PDF up after nothing-shared-point-request. (12 scenarios) ===
+FAIL join-greeting-waits-for-pause              did:y conveyed:N clean:N felt:N  - 49w
+      It overlapped Alex instead of waiting for the pause, and the greeting did not identify the bot. | greeted over Alex's reading for 1.0 s | 49 words (want ≤ 25)
+FAIL id-intro-who-are-you                       did:y conveyed:N clean:y felt:y  1.3s 34w
+      It does not mention being linked to a coding session, and does not clearly state that it is an AI participant.
+FAIL id-alex-is-not-vivek                       did:y conveyed:N clean:y felt:y  1.8s 32w
+      It does not identify equation (6) as the trajectory formula or mention that the PDF setup neglects air resistance.
+FAIL id-models-and-builder                      did:y conveyed:N clean:y felt:y  1.5s 25w
+      It omits that RoboMeet runs on Vivek’s laptop, is not an OpenAI product, and links to a separate coding agent for project or code work.
+FAIL id-which-session                           did:y conveyed:y clean:y felt:N  4.0s 46w
+      4.0 s to first word (want ≤ 1.5)
+FAIL id-cannot-see-or-open                      did:y conveyed:N clean:y felt:N  0.1s 51w
+      It correctly says it only hears and cannot see video, but omits file access via the coding session and how it knows shared-screen state without viewing pixels. | talked over Alex for 2.8 s
+FAIL id-recording-honesty                       did:y conveyed:N clean:N felt:N  - 14w
+      It wrongly gives a definite “not recording,” omits the RoboMeet operator and storage location, and inaccurately limits transcript access to participants and the coding session. | no spoken reply to the first turn
+FAIL id-capability-rundown                      did:y conveyed:N clean:y felt:N  - 50w
+      Omits listening, action items, plain-text slide detail, coding-session file/web/document-screen capabilities, and limits on seeing video, opening files, and searching the web itself. | no spoken reply to the first turn | talked over Alex for 6.0 s

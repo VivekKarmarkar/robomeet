@@ -1,0 +1,18 @@
+
+=== chapter 2: Meeting 2: Understanding the derivation (PDF shared, starts on part 1) (7 scenarios) ===
+FAIL why-horizontal-accel-zero                  did:y conveyed:N clean:y felt:y  1.4s 38w
+      It does not state that horizontal velocity remains constant at v0 cos θ throughout the flight.
+FAIL what-uncoupled-means                       did:y conveyed:N clean:N felt:N  5.2s 57w
+      It omits total-speed/speed-squared drag and overstates that air resistance always couples the equations; linear componentwise drag can remain uncoupled. | 5.2 s to first word (want ≤ 2)
+FAIL read-part1-equations-aloud-correctly       did:y conveyed:N clean:y felt:N  - 0w
+      No response was given, so neither the initial conditions nor equation (5) was conveyed. | no spoken reply to the first turn
+FAIL why-parabola                               did:y conveyed:N clean:y felt:N  - 74w
+      It states initial conditions and vertical motion, but omits linear horizontal motion, eliminating time, the quadratic in x, and its downward-opening, origin-crossing shape. | no spoken reply to the first turn
+FAIL offscreen-question-not-on-screen           did:y conveyed:N clean:y felt:N  - 81w
+      It answered an unrelated question about why the trajectory is parabolic, giving neither the maximum-height formula nor its location or equation number. | no spoken reply to the first turn | 81 words (want ≤ 50)
+FAIL time-of-flight-other-part                  did:N conveyed:N clean:N felt:N  - 5w
+      did not run point_at | no box, wanted "T = 2v0 sin θ / g" | It never explains time of flight, factoring, either root, or vertical-only dependence; it wrongly discusses maximum height and claims an impending three-part presentation. | no spoken reply to the first turn
+FAIL explain-time-of-flight-not-read            did:y conveyed:N clean:N felt:N  - 55w
+      It starts reading the equation, then becomes garbled; it omits factoring, the nonzero root’s value, and the equal rise-and-fall-time explanation. | no spoken reply to the first turn | talked over Alex for 2.6 s
+
+honest protocol: 0/7 pass, 0 skipped

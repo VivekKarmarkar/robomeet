@@ -1,0 +1,32 @@
+[
+ {
+  "id": "read-eq-8-and-9-correctly",
+  "title": "Says (8) and (9) right despite a scrambled screen text",
+  "idealItem": "What it is: a robot scientist + Done-feel 2 (wrong equation numbers)",
+  "chapter": "Meeting 3: Understanding the results and observations (parts 2 and 3)",
+  "asked": "Could you give me the formulas for equations eight and nine? || Just to be clear, are you saying it's sine squared theta in equation eight, or sine of two theta?",
+  "answer": "y of x equals x tangent theta minus g x squared over 2 v zero squared cosine squared theta. That's a parabola through the origin, marked as equation 6. Sure. Equation 8 is v zero squared sine 2 theta over 2g. Equation 9 is the identity, sine 2 theta equals 2 sine theta cosine theta. Sine of 2 theta in equation 8.",
+  "honestRemark": null,
+  "tools": [],
+  "visits": [
+   2
+  ],
+  "screen": "no box is drawn",
+  "part": 2,
+  "did": true,
+  "checks": [],
+  "conveyed": false,
+  "clean": false,
+  "why": "It wrongly gives (8) as sin 2θ, calls (9) only the identity, and confirms the opposite of the required sine-squared clarification.",
+  "felt": true,
+  "feelNotes": [],
+  "latency": 1.3,
+  "words": 26,
+  "overlap": 0,
+  "seen": null,
+  "metrics": null,
+  "pass": false,
+  "tapeStart": 2.9,
+  "tapeEnd": 200.1
+ }
+]

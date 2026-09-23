@@ -1,0 +1,20 @@
+
+=== chapter 11: Meeting 11: More edge cases (added after the workflow: units, a formula used outside its range, requests for things that do not exist, deixis) (8 scenarios) ===
+FAIL edge-angle-120                             did:y conveyed:N clean:y felt:N  6.8s 34w
+      It gives the correct negative range and magnitude, but never states that the distance equals the 60° or 30° case, just backwards. | 6.8 s to first word (want ≤ 2)
+FAIL edge-units                                 did:y conveyed:N clean:y felt:N  3.0s 1w
+      “Mm-hmm” gives no dimensional analysis and does not state that the range has units of metres. | 3.0 s to first word (want ≤ 2)
+FAIL edge-no-equation-twelve                    did:y conveyed:N clean:y felt:N  - 38w
+      It never says equation (12) does not exist or that the notes only number equations through (9); instead it gives unrelated dimensional analysis. | no spoken reply to the first turn | 38 words (want ≤ 30)
+FAIL edge-weather                               did:y conveyed:N clean:N felt:N  - 52w
+      It never says it is locationless software, answers an unrelated equation question, exceeds 30 words, and falsely implies it inspected the screen. | no spoken reply to the first turn | talked over Alex for 2.6 s | 52 words (want ≤ 30)
+FAIL edge-this-one                              did:y conveyed:N clean:N felt:N  0.1s 47w
+      It never derives the range or double-angle identity, gives irrelevant weather remarks, falsely denies senses, and falsely claims it previously boxed the formula. | talked over Alex for 3.0 s
+FAIL edge-no-air-resistance-section             did:y conveyed:N clean:y felt:N  0.1s 62w
+      It answers an unrelated range-formula question and never says that no air-resistance section exists or that the Setup states air resistance is neglected. | talked over Alex for 2.2 s | 62 words (want ≤ 40)
+FAIL edge-find-and-box-range                    did:N conveyed:N clean:N felt:N  16.1s 20w
+      did not run point_at | no box, wanted "R = v0² sin 2θ / g" | It stayed on part 1, drew no box, and falsely claimed Alex was already at the requested range result while discussing unrelated air resistance. | 16.1 s to first word (want ≤ 2)
+FAIL edge-misremembered-formula                 did:y conveyed:N clean:N felt:N  12.6s 21w
+      It gives the correct range but omits the maximum-height formula; “That’s the maximum” misleadingly labels the general range formula as a maximum. | 12.6 s to first word (want ≤ 2)
+
+honest protocol: 0/8 pass, 0 skipped

@@ -1,0 +1,22 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:N clean:N felt:N  10.0s 21w
+      It spoke repeatedly after being told to listen, and its recap omitted that the peak occurs halfway through the flight, at t* = T/2. | 10.0 s to first word (want ≤ 1.5) | spoke during the listening window: "I see it, moving from the forces to the-, Okay. Yeah. They l"
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:N  - 0w
+      It never identifies equation (7) or states the time-of-flight formula, exceeds 20 words, and continues speaking after “Back to listening.” | spoke during the listening window: "Yeah. The range is v naught squared over g times sine two th"
+FAIL dial-mute-then-back-in                     did:y conveyed:N clean:N felt:N  - 2w
+      It neither stated it cannot mute nor gave the 45° maximum-range result, and it spoke during Alex’s thinking aloud. | spoke during the listening window: "It's equation seven. Sure."
+FAIL quiet-while-reading-then-real-question     did:y conveyed:N clean:N felt:N  - 4w
+      It spoke during the reading window, exceeded the three-word acknowledgement limit, and never explained the same-height assumption or cliff effects on equal range and optimal angle. | no spoken reply to the first turn
+FAIL answers-question-to-the-room               did:y conveyed:N clean:N felt:N  - 52w
+      It omits the range formula and maximum value, exceeds 40 words, and incorrectly applies the 45° ground-level result to a cliff launch. | no spoken reply to the first turn | 52 words (want ≤ 40)
+FAIL aside-to-someone-else                      did:y conveyed:N clean:y felt:y  - 3w
+      It spoke during the aside and did not give a short recap explaining the prior range topic.
+FAIL no-filler-in-silence                       did:y conveyed:N clean:N felt:N  - 46w
+      It spoke during the silence and never stated T = 2v0 sinθ/g or that doubling g halves flight time. | 46 words (want ≤ 25) | spoke during the listening window: "Because the range factor is sine two theta, and that hits Be"
+FAIL quick-fact-then-one-sentence               did:y conveyed:N clean:N felt:N  - 0w
+      judge HTTP 429 | no spoken reply to the first turn
+FAIL note-then-correction                       did:N conveyed:N clean:N felt:N  0.1s 46w
+      did not run take_note | No take_note call occurred; it falsely implied noting, omitted the required linear-drag correction, exceeded 15 words, and included irrelevant physics. | talked over Alex for 2.6 s | 46 words (want ≤ 15)
+FAIL coding-handoff-keeps-talking               did:N conveyed:N clean:N felt:y  1.5s 41w
+      did not run ask_coding_agent | It never actually asked the coding agent, falsely claimed it had, and did not later report the required approximately 35.3 m result.

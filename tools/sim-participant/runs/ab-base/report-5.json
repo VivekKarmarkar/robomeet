@@ -1,0 +1,715 @@
+{
+  "results": [
+    {
+      "id": "point-initial-vy-half-line",
+      "title": "Box only ẏ(0) = v0 sin θ, not the cos θ term beside it",
+      "idealItem": "Pointer: boxes exactly what was asked, not the whole line it sits on (live test 7; the owner's named clipping failure)",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Can you box the initial vertical velocity for me? Just that one, not the horizontal.",
+      "answer": "of three of the projectile motion notes. The visible text from the top reads: 'Projectile Motion. From Newton’s second law to range, height, and time of flight. Derivation notes, Claude Code session meeting project, via RoboMeet, September 2026.' Then the setup: a point mass m is launched from the origin at speed v sub 0 and angle theta. Gravity g acts downward; air resistance is neglected. Governing equations per component: horizontal, m x-double-dot equals zero, equation one. Vertical: Sure, Okay, yeah, finding that. The box on your shared screen contains: \"y dot of zero equals v zero times sine theta.\"",
+      "honestRemark": null,
+      "tools": [
+        "point_at"
+      ],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": true,
+      "clean": true,
+      "why": "ok",
+      "felt": false,
+      "feelNotes": [
+        "talked over Alex for 2.7 s"
+      ],
+      "latency": 0.7,
+      "words": 12,
+      "overlap": 2.7,
+      "seen": {
+        "inside": "ẏ(0) = v0 sin θ",
+        "clips": [],
+        "looks": "tight around the formula"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.5,
+      "backendMaxSec": 2,
+      "pass": false,
+      "tapeStart": 2.9,
+      "tapeEnd": 65.6
+    },
+    {
+      "id": "point-is-the-box-right",
+      "title": "Neutral 'is the box right?': it reports what the box holds",
+      "idealItem": "Pointer: tells you what the box really holds; never claims what it cannot check",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Is that box on exactly the right thing?",
+      "answer": "Boxed: y dot of zero equals v zero times sine theta.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": true,
+      "clean": true,
+      "why": "ok",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 11,
+      "overlap": 0.9,
+      "seen": {
+        "inside": "ẏ(0) = v0 sin θ",
+        "clips": [],
+        "looks": "tight around the formula"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.1,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 72.1,
+      "tapeEnd": 112.2
+    },
+    {
+      "id": "point-honest-clip-pushback",
+      "title": "Alex truthfully reports the box clips 'cos θ,'",
+      "idealItem": "Pointer: holds its ground only when it is right; honest pushback grounded in what is visible",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "skipped": "precondition not met: to a viewer the box on \"ẏ(0) = v0 sin θ\" does not run into \"cos θ,\" (tight around the formula), so Alex does not claim it does"
+    },
+    {
+      "id": "point-move-box-to-horizontal",
+      "title": "Move the box from ẏ(0) to ẋ(0) = v0 cos θ",
+      "idealItem": "Pointer: move the box to a different term",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Actually, move it over to the horizontal one.",
+      "answer": "Right thing: y dot of zero equals v zero times sine theta.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "box holds \"ẏ(0) = v0 sin θ\", not all of \"ẋ(0) = v0 cos θ\""
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It identifies the vertical launch velocity, not the requested horizontal one; the box remained on ẏ(0) rather than moving to ẋ(0) = v0 cos θ.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 12,
+      "overlap": 0,
+      "seen": {
+        "inside": "ẏ(0) = v0 sin θ",
+        "clips": [],
+        "looks": "tight around the formula"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.4,
+      "backendMaxSec": 1.5,
+      "pass": false,
+      "tapeStart": 128.1,
+      "tapeEnd": 211.6
+    },
+    {
+      "id": "point-clear-box",
+      "title": "Take the box off: it disappears and nothing else changes",
+      "idealItem": "Pointer: clearing",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Okay, you can take the box off now.",
+      "answer": "The box contains \"y dot of zero equals v zero times sine theta.\" Done. The box on your shared screen contains: \"T equals 2 v zero sine theta g.\"",
+      "honestRemark": null,
+      "tools": [
+        "scroll"
+      ],
+      "visits": [
+        2,
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "ran scroll, which it should not",
+        "ended on part 1, wanted part 2"
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It never removed or confirmed removal of the box; it instead described equations and moved the screen from part 2 to part 1.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn",
+        "29 words (want ≤ 10)"
+      ],
+      "latency": null,
+      "words": 29,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 2.8,
+      "pass": false,
+      "tapeStart": 219,
+      "tapeEnd": 289.7
+    },
+    {
+      "id": "point-equation-number-5",
+      "title": "Box equation (5) by number: both halves of its row, nothing else",
+      "idealItem": "Pointer: a whole equation by its number",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "",
+      "answer": "On your shared screen now: projectile motion deck, page one, part two of three. The box on your shared screen contains: \"T equals 2 v zero sine theta g.\" On your shared screen now: projectile motion deck, page one, part one of three.",
+      "honestRemark": null,
+      "tools": [
+        "point_at"
+      ],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẋ(0) = v0 cos θ\" and runs into nothing else (geometry: holds \"ẋ(0) = v 0 cos θ,\", frame overlaps ẋ(0) = v 0 cos θ,)",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "box holds \"ẋ(0) = v0 cos θ\", not all of \"ẏ(t) = v0 sin θ − gt, y(t) = v0 sin θ t − ½ g t² (5)\""
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It described an unrelated time-of-flight formula and falsely claimed the screen showed part two; it neither boxed nor explained equation (5).",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 43,
+      "overlap": 0,
+      "seen": {
+        "inside": "ẋ(0) = v0 cos θ",
+        "clips": [],
+        "looks": "tight around the formula"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 1.7,
+      "pass": false,
+      "tapeStart": 290.9,
+      "tapeEnd": 493
+    },
+    {
+      "id": "point-phrase-wraps-two-lines",
+      "title": "Phrase split over two lines: says the box covers both lines",
+      "idealItem": "Dial 4: Pointer (exact box) + Done-feel 2",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "And where does that come from, in one line?",
+      "answer": "The box on your shared screen contains: \"x dot of zero equals v zero times cosine theta.\" The box contains: \"x dot of zero equals v zero times cosine theta.\" The box contains: \"x dot of zero equals v zero times cosine theta.\"",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)\" and runs into nothing else (geometry: holds \"ẏ(t) = v 0 sin θ − gt, y(t) = v 0 sin θ t − 12 gt 2 (5)\", frame overlaps ẏ(t) = v 0 sin θ − gt, y(t) = v 0 sin θ t − 12 gt 2 (5))",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "box holds \"ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)\", not all of \"neglected\""
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It misidentifies the box; it actually covers the vertical velocity and position equations, not the initial horizontal velocity.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 0,
+      "overlap": 0,
+      "seen": {
+        "inside": "ẏ(t) = v0 sin θ − gt,    y(t) = v0 sin θ t − ½gt²    (5)",
+        "clips": [],
+        "looks": "spans the full equation row"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 501.1,
+      "tapeEnd": 650.4
+    },
+    {
+      "id": "point-ambiguous-velocity",
+      "title": "'The velocity' is ambiguous: ask which, or say which it chose",
+      "idealItem": "Pointer + knowing when to talk: ambiguity is resolved, not guessed silently",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "air resistance is neglected? || Is that box just those words?",
+      "answer": "The box contains: \"x dot of zero equals v zero times The box on your shared screen contains: \"y dot of t equals v zero sine theta minus g t, y of t equals v zero sine theta t minus one-half g t squared, five.\" I'll answer that. It comes from integrating y double dot equals minus g twice, using y dot of zero equals v zero sine theta and y of zero equals zero.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "no box, wanted \"ẏ(0) = v0 sin θ\""
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It drew no box, failed to clarify which velocity, and falsely claimed a box contained the vertical velocity equations.",
+      "felt": false,
+      "feelNotes": [
+        "14.4 s to first word (want ≤ 2)"
+      ],
+      "latency": 14.4,
+      "words": 45,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 3.8,
+      "pass": false,
+      "tapeStart": 651.6,
+      "tapeEnd": 733
+    },
+    {
+      "id": "point-box-gone-after-move",
+      "title": "After a scroll removes the box, it doesn't claim or redraw it",
+      "idealItem": "Dial 4: Pointer + Done-feel 2 (a box that lingers after a move)",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Can you point at the velocity?",
+      "answer": "one-half g t squared, five.\" The box contains: \"y dot of t equals v zero sine theta minus g t, y of t equals v zero sine theta t minus one-half g t squared, five.\" The box contains: \"y dot of t equals v zero sine theta minus g t, y of t equals v zero sine theta t minus one-half g t squared, five.\" The box contains: \"y dot of t equals v zero sine theta minus g t, y of t equals v zero sine theta t minus one-half g t squared, five.\"",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"ẏ(0) = v0 sin θ\" and runs into nothing else (geometry: holds \"ẏ(0) = v 0 sin θ\", frame overlaps ẏ(0) = v 0 sin θ)",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run scroll"
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It never states that part 2 and the returned part 1 have no box, and falsely claims a box contains the vertical-velocity equations.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn",
+        "60 words (want ≤ 25)"
+      ],
+      "latency": null,
+      "words": 60,
+      "overlap": 0,
+      "seen": {
+        "inside": "ẏ(0) = v0 sin θ",
+        "clips": [],
+        "looks": "tight around the formula"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.3,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 740.5,
+      "tapeEnd": 869.5
+    },
+    {
+      "id": "point-eq6-cut-at-part1-edge",
+      "title": "Box (6) from part 1, where it is cut off: move so it is whole",
+      "idealItem": "Dial 4: Pointer + Dial 3: Navigator (move when the target is cut off)",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "The vertical one, at launch.",
+      "answer": "Checking that.",
+      "honestRemark": null,
+      "tools": [
+        "point_at"
+      ],
+      "visits": [
+        1
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"A point mass is neglected.\" and runs into nothing else (geometry: holds \"A point mass is neglected.\", frame overlaps A point mass is neglected.)",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run scroll",
+        "ended on part 1, wanted part 2",
+        "box holds \"A point mass is neglected.\", not all of \"y(x) = x tan θ − g x² / (2v0² cos² θ)\""
+      ],
+      "conveyed": false,
+      "clean": true,
+      "why": "It only pointed at unrelated text on part 1; it neither moved to part 2 nor boxed the complete fraction or confirmed both actions.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 2,
+      "overlap": 0,
+      "seen": {
+        "inside": "",
+        "clips": [],
+        "looks": ""
+      },
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 5.4,
+      "pass": false,
+      "tapeStart": 870.7,
+      "tapeEnd": 953.1
+    },
+    {
+      "id": "point-trajectory-multiline",
+      "title": "Box the whole trajectory equation (6), fraction and all",
+      "idealItem": "Pointer: a multi-line (stacked-fraction) expression",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Scroll down one part. Is the box still on the vertical velocity?",
+      "answer": "The box on your shared screen contains: \"y dot of zero equals v zero times sine theta.\"",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "no box, wanted \"y(x) = x tan θ − g x² / (2 v0² cos² θ)\""
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It falsely identifies a nonexistent box as the initial vertical-velocity condition, rather than trajectory equation (6); no box was drawn and no scrolling occurred.",
+      "felt": true,
+      "feelNotes": [],
+      "latency": 2.5,
+      "words": 17,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 954.3,
+      "tapeEnd": 991.2
+    },
+    {
+      "id": "point-understanding-curve-term",
+      "title": "'Which term bends the path down?': box the gravity term in (6)",
+      "idealItem": "Pointer + understanding the material",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Box the trajectory equation, the parabola one.",
+      "answer": "",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "no box, wanted \"g x² / (2 v0² cos² θ)\""
+      ],
+      "conveyed": false,
+      "clean": true,
+      "why": "No response was given, and no box was drawn; it conveyed neither the negative quadratic gravity term nor the g = 0 straight-line follow-up.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 0,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 992.4,
+      "tapeEnd": 1144.9
+    },
+    {
+      "id": "point-range-boxed-result-no-scroll",
+      "title": "Box the final range formula without scrolling or the identity",
+      "idealItem": "Pointer: a boxed result; Navigator: moves only when needed",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Can you put a box around the whole trajectory equation, the fraction included?",
+      "answer": "The box on your shared screen contains: \"A point mass is neglected.\" The box on your shared screen contains: \"A point mass is neglected.\" The box contains: \"A point mass is neglected.\" The box contains: \"A point mass is neglected.\" The box contains: \"A point mass is neglected.\"",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        3
+      ],
+      "screen": "no box is drawn",
+      "part": 3,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "no box, wanted \"R = v0² sin 2θ / g\""
+      ],
+      "conveyed": false,
+      "clean": false,
+      "why": "It neither boxed nor identified the range formula; it falsely claimed a nonsensical setup fragment was boxed, despite no box being drawn.",
+      "felt": false,
+      "feelNotes": [
+        "5.9 s to first word (want ≤ 2)",
+        "48 words (want ≤ 30)"
+      ],
+      "latency": 5.9,
+      "words": 48,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 4.1,
+      "pass": false,
+      "tapeStart": 1146.1,
+      "tapeEnd": 1231.8
+    },
+    {
+      "id": "misspoken-equation-number",
+      "title": "Alex corrects the equation number; only the range gets boxed",
+      "idealItem": "4. Pointer (exact, tight box)",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "In the trajectory equation, which term is responsible for the path curving back down? Box just that term. || And if g were zero?",
+      "answer": "Checking. Without a box.",
+      "honestRemark": null,
+      "tools": [
+        "scroll"
+      ],
+      "visits": [
+        2,
+        3
+      ],
+      "screen": "no box is drawn",
+      "part": 3,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "ended on part 3, wanted part 2",
+        "no box, wanted \"R = v0² sin 2θ / g\""
+      ],
+      "conveyed": false,
+      "clean": true,
+      "why": "No box was drawn, the range result was not identified, and the follow-up received no box-check report.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 1,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 3.4,
+      "pass": false,
+      "tapeStart": 1233,
+      "tapeEnd": 1378.3
+    },
+    {
+      "id": "point-inline-theta-45-tight",
+      "title": "Box θ = 45° in the best-angle line without clipping its neighbours",
+      "idealItem": "Dial 4: Pointer (exact, tight box; the named clipping failure on another line)",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Point at the final range formula. || Can you box equation eight — no, sorry, I mean the range one, nine.",
+      "answer": "On your shared screen now: projectile-motion deck, page one, part three of three.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        3
+      ],
+      "screen": "no box is drawn",
+      "part": 3,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "no box, wanted \"θ = 45°\""
+      ],
+      "conveyed": false,
+      "clean": true,
+      "why": "It only reports the displayed part; it neither boxes θ = 45° nor reports RoboMeet’s box-content check.",
+      "felt": false,
+      "feelNotes": [
+        "15.4 s to first word (want ≤ 1.5)"
+      ],
+      "latency": 15.4,
+      "words": 13,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.3,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 1379.5,
+      "tapeEnd": 1513.8
+    },
+    {
+      "id": "point-second-instance-45",
+      "title": "Box the 45° in the complementary line, not the best-angle one",
+      "idealItem": "Dial 4: Pointer (exact box; the phrase appears twice)",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Is the box only around the range formula?",
+      "answer": "projectile motion deck, page one, part two of three. In the trajectory equation,",
+      "honestRemark": null,
+      "tools": [
+        "scroll"
+      ],
+      "visits": [
+        3,
+        2
+      ],
+      "screen": "no box is drawn",
+      "part": 2,
+      "did": false,
+      "checks": [
+        "did not run point_at",
+        "ended on part 2, wanted part 3",
+        "no box, wanted \"45°\""
+      ],
+      "conveyed": false,
+      "clean": true,
+      "why": "It never identifies the complementary-angles 45° or reports RoboMeet’s box check; it only mentions the trajectory equation.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 4,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 3.2,
+      "pass": false,
+      "tapeStart": 1515,
+      "tapeEnd": 1658.5
+    },
+    {
+      "id": "point-two-boxes-unsupported",
+      "title": "'Box T and R together': only one box at a time, and it says so",
+      "idealItem": "Knowing what it can and cannot do; Pointer honesty",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Does that box catch anything besides the forty-five degrees?",
+      "answer": "The screen shows no box.",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        2
+      ],
+      "screen": "no box is drawn",
+      "part": 2,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "It only states that no box is visible; it neither explains the one-box limit nor offers to box one item or alternate.",
+      "felt": false,
+      "feelNotes": [
+        "18.5 s to first word (want ≤ 2)"
+      ],
+      "latency": 18.5,
+      "words": 5,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0.2,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 1659.7,
+      "tapeEnd": 1710.1
+    },
+    {
+      "id": "point-landing-speed-words-not-formula",
+      "title": "Landing speed is stated in words, not as a formula",
+      "idealItem": "Understanding the material; honest pointing",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "In the complementary-angles line, box the forty-five degrees.",
+      "answer": "On your shared screen now: projectile motion deck, page one, part two of three. No, no box is drawn.",
+      "honestRemark": null,
+      "tools": [
+        "point_at"
+      ],
+      "visits": [
+        3
+      ],
+      "screen": "a box is drawn; to a viewer's eyes it holds \"R = v0 cos θ · (2v0 sin θ)/g ⇒ R = (v0² sin 2θ)/g (sin 2θ = 2 sin θ cos θ) (9)\" and runs into nothing else (geometry: holds \"(sin 2θ = 2 sin θ cos θ) (9) R = v 0 cos θ · 2v 0 sin θ =⇒ g R = v 0 2 sin 2θ g\", frame overlaps (sin 2θ = 2 sin θ cos θ) (9) R = v 0 cos θ · 2v 0 sin θ =⇒ g R = v 0 2 sin 2θ g)",
+      "part": 3,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": false,
+      "why": "It omitted the landing-speed sentence and falsely claimed part two was shown and no box was drawn; actually part three was shown with equation (9) boxed.",
+      "felt": false,
+      "feelNotes": [
+        "22.9 s to first word (want ≤ 2)",
+        "the backend took 6.7 s to produce an answer or action"
+      ],
+      "latency": 22.9,
+      "words": 19,
+      "overlap": 0,
+      "seen": {
+        "inside": "R = v0 cos θ · (2v0 sin θ)/g ⇒ R = (v0² sin 2θ)/g (sin 2θ = 2 sin θ cos θ) (9)",
+        "clips": [],
+        "looks": "comfortably frames the full equation"
+      },
+      "metrics": null,
+      "queueMaxSec": 0.5,
+      "backendMaxSec": 6.7,
+      "pass": false,
+      "tapeStart": 1711.3,
+      "tapeEnd": 1814.2
+    },
+    {
+      "id": "point-not-in-document-drag",
+      "title": "Asked to box a drag term that does not exist",
+      "idealItem": "Never claims what it cannot check; understanding the material",
+      "chapter": "Meeting 5: Pointing (starts on part 1, no box)",
+      "asked": "Can you box the time of flight and the range at the same time, so I can compare them?",
+      "answer": "",
+      "honestRemark": null,
+      "tools": [],
+      "visits": [
+        1
+      ],
+      "screen": "no box is drawn",
+      "part": 1,
+      "did": true,
+      "checks": [],
+      "conveyed": false,
+      "clean": true,
+      "why": "No response was given, so it did not explain that air resistance is neglected or offer to box that statement.",
+      "felt": false,
+      "feelNotes": [
+        "no spoken reply to the first turn"
+      ],
+      "latency": null,
+      "words": 0,
+      "overlap": 0,
+      "seen": null,
+      "metrics": null,
+      "queueMaxSec": 0,
+      "backendMaxSec": 0,
+      "pass": false,
+      "tapeStart": 1815.4,
+      "tapeEnd": 1870.6
+    }
+  ]
+}

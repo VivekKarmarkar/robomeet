@@ -1,0 +1,105 @@
+=== PART 1 of 3 ===
+[line 1] Projectile Motion
+[line 2] From Newton’s second law to range, height and time of flight
+[line 3] Derivation notes — Claude Code session meetingproject, via RoboMeet — September 2026
+[line 4] 1
+[line 5] Setup
+[line 6] A point mass m is launched from the origin with speed v 0 at angle θ above the horizontal. Gravity g acts downward; air resistance
+[line 7] is neglected.
+[line 8] Governing equations (Newton’s second law, per component)
+[line 9] Horizontal:
+[line 10] Vertical:
+[line 11] Initial conditions:
+[line 12] m ẍ = 0
+[line 13] (1)
+[line 14] m ÿ = −mg
+[line 15] (2)
+[line 16] x(0) = 0, y(0) = 0,
+[line 17] ẋ(0) = v 0 cos θ, ẏ(0) = v 0 sin θ
+[line 18] (3)
+[line 19] The two directions are uncoupled : gravity touches only y. Each equation integrates on its own.
+[line 20] 2
+[line 21] Integrate twice
+[line 22] ẋ(t) = v 0 cos θ,
+[line 23] x(t) = v 0 cos θ t
+[line 24] (4)
+[line 25] ẏ(t) = v 0 sin θ − gt,
+[line 26] y(t) = v 0 sin θ t − 12 gt 2
+[line 27] (5)
+[line 28] Trajectory: eliminate t
+[line 29] From (4), t = x/(v 0 cos θ). Substitute into (5):
+[line 30] y(x) = x tan θ −
+[line 31] g
+[line 32] x 2
+[line 33] 2v 0 2 cos 2 θ
+[line 34] a parabola through the origin.
+[line 35] (6)
+=== PART 2 of 3 ===
+[line 1] From (4), t = x/(v 0 cos θ). Substitute into (5):
+[line 2] y(x) = x tan θ −
+[line 3] 3
+[line 4] g
+[line 5] x 2
+[line 6] 2v 0 2 cos 2 θ
+[line 7] a parabola through the origin.
+[line 8] (6)
+[line 9] Three results
+[line 10] Time of flight: y = 0 again
+[line 11] v 0 sin θ T − 12 gT 2 = 0 =⇒
+[line 12] T =
+[line 13] 2v 0 sin θ
+[line 14] g
+[line 15] (7)
+[line 16] v 0 2 sin 2 θ
+[line 17] 2g
+[line 18] (8)
+[line 19] (sin 2θ = 2 sin θ cos θ)
+[line 20] (9)
+[line 21] Maximum height: ẏ = 0
+[line 22] The peak is reached at t ∗ = v 0 sin θ/g = T /2 (by symmetry). Then
+[line 23] H = v 0 sin θ t ∗ − 2 1 g t ∗2 =⇒
+[line 24] H =
+[line 25] Range: x at t = T
+[line 26] R = v 0 cos θ ·
+[line 27] 4
+[line 28] 2v 0 sin θ
+[line 29] =⇒
+[line 30] g
+[line 31] R =
+[line 32] v 0 2 sin 2θ
+[line 33] g
+[line 34] Observations
+[line 35] What the formulas say
+[line 36]  Best angle. R is largest when sin 2θ = 1, i.e. θ = 45 ◦ , giving R max = v 0 2 /g.
+[line 37]  Complementary angles. θ and 90 ◦ − θ share the same range (sin 2θ is symmetric about 45 ◦ ) but not the same
+[line 38] height or flight time.
+[line 39]  Scaling. Doubling v 0 quadruples both R and H; doubling g halves them. Mass never appears.
+[line 40]  Symmetry. Rise and fall take equal time T /2; the speed at landing equals the launch speed.
+=== PART 3 of 3 ===
+[line 1] v 0 2 sin 2 θ
+[line 2] 2g
+[line 3] (8)
+[line 4] (sin 2θ = 2 sin θ cos θ)
+[line 5] (9)
+[line 6] Maximum height: ẏ = 0
+[line 7] The peak is reached at t ∗ = v 0 sin θ/g = T /2 (by symmetry). Then
+[line 8] H = v 0 sin θ t ∗ − 2 1 g t ∗2 =⇒
+[line 9] H =
+[line 10] Range: x at t = T
+[line 11] R = v 0 cos θ ·
+[line 12] 4
+[line 13] 2v 0 sin θ
+[line 14] =⇒
+[line 15] g
+[line 16] R =
+[line 17] v 0 2 sin 2θ
+[line 18] g
+[line 19] Observations
+[line 20] What the formulas say
+[line 21]  Best angle. R is largest when sin 2θ = 1, i.e. θ = 45 ◦ , giving R max = v 0 2 /g.
+[line 22]  Complementary angles. θ and 90 ◦ − θ share the same range (sin 2θ is symmetric about 45 ◦ ) but not the same
+[line 23] height or flight time.
+[line 24]  Scaling. Doubling v 0 quadruples both R and H; doubling g halves them. Mass never appears.
+[line 25]  Symmetry. Rise and fall take equal time T /2; the speed at landing equals the launch speed.
+[line 26]  Check. θ = 90 ◦ : R = 0, H = v 0 2 /2g, T = 2v 0 /g (straight up and down). θ = 0: T = 0, nothing leaves the ground.
+[line 27] 1

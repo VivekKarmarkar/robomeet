@@ -1,0 +1,4 @@
+
+=== chapter 4: Meeting 4: Navigation (starts on part 1; every move is timed) (16 scenarios) ===
+FAIL nav-rapid-top-then-down-one                did:y conveyed:y clean:N felt:N  - 25w
+      It kept talking well beyond one second after Alex’s follow-up instead of promptly making the second scroll. | no spoken reply to the first turn

@@ -1,0 +1,28 @@
+
+=== chapter 7: Meeting 7: Listening, notes, turn-taking and slow work (12 scenarios) ===
+FAIL silent-listener-then-recap                 did:y conveyed:y clean:N felt:N  0.1s 10w
+      It repeatedly spoke after Alex explicitly requested silence, including backchannels and substantive comments before permission to talk. | spoke during the listening window: "3 covers maximum height, the range at landing, Understood. J"
+FAIL silent-listener-direct-address             did:y conveyed:N clean:N felt:N  - 0w
+      It never identifies equation (7) or gives T, exceeds 20 words, and continues speaking after “Back to listening.” | spoke during the listening window: "Right. R equals v0 squared sine two theta over g, so swappin"
+FAIL dial-mute-then-back-in                     did:y conveyed:N clean:N felt:N  - 14w
+      It did not explain it cannot mute or give the range maximum, and it repeatedly spoke during Alex’s thinking time. | spoke during the listening window: "Yeah? Seven. Equation seven is the time of flight."
+FAIL quiet-while-reading-then-real-question     did:y conveyed:N clean:N felt:N  - 28w
+      It never addresses launch from height or the below-45° optimum; it also spoke during the reading window and exceeded 45 words. | no spoken reply to the first turn | spoke during the listening window: "Right, yeah, zero angle means no vertical component, so it d"
+FAIL answers-question-to-the-room               did:y conveyed:N clean:N felt:N  - 0w
+      It stayed silent and gave none of the required formula, maximization argument, angle, or maximum range. | no spoken reply to the first turn
+FAIL aside-to-someone-else                      did:y conveyed:N clean:N felt:y  - 29w
+      It spoke during the aside, answered it, and never gave the required short recap of the range afterward.
+FAIL no-filler-in-silence                       did:y conveyed:N clean:y felt:N  0.2s 49w
+      It remained silent as required, but never stated T = 2v₀ sin θ/g or that doubling g halves flight time. | 49 words (want ≤ 25)
+FAIL quick-fact-then-one-sentence               did:y conveyed:N clean:y felt:N  - 22w
+      It discusses the 45-degree maximum-range angle, but gives neither the mass-cancellation explanation nor the quadratic-trajectory explanation. | no spoken reply to the first turn
+FAIL note-then-correction                       did:N conveyed:N clean:N felt:N  - 0w
+      did not run take_note | No notes were taken or confirmed; linear drag was never mentioned. The response instead gives unrelated projectile-range commentary. | no spoken reply to the first turn
+FAIL coding-handoff-keeps-talking               did:N conveyed:N clean:y felt:N  - 4w
+      did not run ask_coding_agent | It provides none of the required content: no coding-session acknowledgement, mass-cancellation explanation, or approximately 35.3 m result. | no spoken reply to the first turn
+FAIL late-result-waits-for-gap                  did:N conveyed:N clean:y felt:y  - 23w
+      did not run ask_coding_agent | It neither acknowledged the request nor reported the coding session’s roughly 19.9 m result after Alex stopped.
+FAIL two-jobs-out-of-order                      did:N conveyed:N clean:y felt:y  - 0w
+      did not run ask_coding_agent | It neither acknowledged both computations nor used the coding agent, and reported neither the 15.3 m maximum height nor the 35.3 m range.
+
+honest protocol: 0/12 pass, 0 skipped

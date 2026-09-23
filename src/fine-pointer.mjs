@@ -4,12 +4,18 @@
 // returns the union of the matched words only, plus which words they were, so the caller can say what it boxed.
 // Pure: no I/O, no deck reading. One job.
 const r4 = value => Math.round(value * 1e4) / 1e4;
-// Same normalisation on both sides: NFC (ẏ has a composed and a decomposed spelling), lowercase, unify the dash and
-// quote families a PDF renders differently from what a person types, drop the rest of the punctuation noise.
-export const norm = text => String(text ?? '').normalize('NFC').toLowerCase()
+// Same normalisation on both sides: NFKC, lowercase, unify the dash and quote families a PDF renders differently from
+// what a person types, drop the rest of the punctuation noise. NFKC rather than NFC because models write maths with
+// typographic characters and the PDF extractor emits plain ones: a live run asked to box "ẏ(0) = v₀ sin θ" and the
+// page says "v 0", so NFC never matched and the pointer fell back to boxing the whole line. NFKC folds subscript
+// and superscript digits (₀ -> 0, ² -> 2) and ligatures, and still keeps ẏ composed.
+export const norm = text => String(text ?? '').normalize('NFKC').toLowerCase()
   .replace(/[‐-―−]/g, '-').replace(/[‘’ʼ]/g, "'").replace(/[“”]/g, '"')
+  .replace(/[◦∘˚]/g, '°') // the PDF sets a degree as U+25E6 "◦"; people and models write "°"
   .replace(/\s+/g, ' ').trim();
-const squash = text => norm(text).replace(/[\s,;:.]/g, '');
+// A stacked fraction has no "/" glyph in the PDF ("T = 2v 0 sin θ" over "g"), and a model writes "/(2g)" where the page
+// shows 2g under a bar, so fraction slashes and grouping parentheses are ignored on both sides, like spaces.
+const squash = text => norm(text).replace(/[\s,;:.\/\u2044()]/g, ''); // \u2044: NFKC turns ½ into 1⁄2
 
 // Every [start, end) run of words whose squashed text contains the squashed phrase. Longest-first is not needed:
 // the first hit in reading order is the one on screen that a person means.
@@ -27,6 +33,43 @@ function runs(words, wanted) {
       if (joined.includes(wanted) && end - start <= wanted.length) { out.push([start, end + 1]); break; }
     }
   }
+  return out.map(([start, end]) => words.slice(start, end));
+}
+
+// The fallback when no contiguous run matches: the PDF does not emit a displayed formula in reading order. For
+// "H = v0² sin²θ / 2g" it emits the fraction's numerator and denominator first, then other lines, and "H =" last.
+// So the words are grouped into visual lines (a fraction's numerator and denominator sit on their formula's line),
+// and on each line the smallest left-to-right span whose characters are exactly the phrase's characters is taken.
+// Order-free on purpose: within one span of one line, the same characters are the same formula.
+const tally = text => { const m = new Map(); for (const ch of text) m.set(ch, (m.get(ch) || 0) + 1); return m; };
+const sameTally = (a, b) => a.size === b.size && [...a].every(([ch, n]) => b.get(ch) === n);
+function visualLines(words) {
+  const centre = word => word.y + word.h / 2;
+  const sorted = [...words].sort((a, b) => centre(a) - centre(b));
+  const lines = [];
+  for (const word of sorted) {
+    const line = lines.at(-1);
+    // A gap between centres of more than 0.9 of a text height starts a new line; numerator, denominator,
+    // sub- and superscripts stay closer than that to their formula.
+    if (line && centre(word) - line.last <= Math.max(0.009, 0.9 * word.h)) { line.words.push(word); line.last = centre(word); }
+    else lines.push({ words: [word], last: centre(word) });
+  }
+  return lines.map(line => line.words.sort((a, b) => a.x - b.x));
+}
+function lineSpans(words, wanted) {
+  const want = tally(wanted), out = [];
+  for (const line of visualLines(words)) {
+    for (let i = 0; i < line.length; i++) {
+      if (!squash(line[i].text)) continue;
+      for (let j = i; j < line.length; j++) {
+        const right = Math.max(...line.slice(i, j + 1).map(w => w.x + w.w));
+        const span = line.filter(w => w.x >= line[i].x && w.x + w.w / 2 <= right);
+        const text = span.map(w => squash(w.text)).join('');
+        if (text.length > wanted.length) break;
+        if (text.length === wanted.length && sameTally(tally(text), want)) { out.push(span); break; }
+      }
+    }
+  }
   return out;
 }
 
@@ -41,11 +84,11 @@ const union = boxes => {
 export function findPhrase(words = [], phrase) {
   const wanted = squash(phrase);
   if (!wanted || !words.length) return null;
-  const hits = runs(words, wanted);
+  let hits = runs(words, wanted);
+  if (!hits.length) hits = lineSpans(words, wanted);
   if (!hits.length) return null;
   // Prefer the shortest run: the fewest extra words around the phrase.
-  const [start, end] = hits.sort((a, b) => (a[1] - a[0]) - (b[1] - b[0]))[0];
-  const chosen = words.slice(start, end);
+  const chosen = hits.sort((a, b) => a.length - b.length)[0];
   return { rect: union(chosen), words: chosen, text: chosen.map(word => word.text).join(' ') };
 }
 

@@ -1,0 +1,13 @@
+{
+  "pass": 0,
+  "graded": 0,
+  "results": [
+    {
+      "id": "ERROR",
+      "error": "Command failed: gws meet spaces create --json {\"config\":{\"accessType\":\"OPEN\",\"entryPointAccess\":\"ALL\"}}\nUsing keyring backend: keyring\nerror[auth]: Authentication failed: Failed to get token: Server error: invalid_grant: Token has been expired or revoked.: invalid_grant: Token has been expired or revoked.\n"
+    }
+  ],
+  "heard": [],
+  "alexSaid": [],
+  "robotEvents": []
+}

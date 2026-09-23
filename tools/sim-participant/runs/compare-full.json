@@ -1,0 +1,73 @@
+{
+ "scenarios": 115,
+ "runs": {
+  "tools/sim-participant/runs/honest-4": {
+   "strict": 5,
+   "essential": 12,
+   "did_fail": 19,
+   "tool_never_ran": 10,
+   "content_fail": 88,
+   "clean_fail": 58,
+   "feel_fail": 78,
+   "no_reply": 14,
+   "talked_over": 17,
+   "spoke_listening": 4,
+   "notes_aloud": 14,
+   "lat50": 2.1,
+   "lat90": 7.4
+  },
+  "tools/sim-participant/runs/honest-7": {
+   "strict": 9,
+   "essential": 16,
+   "did_fail": 21,
+   "tool_never_ran": 8,
+   "content_fail": 87,
+   "clean_fail": 56,
+   "feel_fail": 84,
+   "no_reply": 25,
+   "talked_over": 17,
+   "spoke_listening": 4,
+   "notes_aloud": 3,
+   "lat50": 2.3,
+   "lat90": 14.9
+  }
+ },
+ "flips": {
+  "strict": {
+   "up": 7,
+   "down": 3
+  },
+  "essential": {
+   "up": 12,
+   "down": 8
+  },
+  "clean": {
+   "up": 27,
+   "down": 25
+  }
+ },
+ "wins": [
+  "id-intro-who-are-you",
+  "id-alex-is-not-vivek",
+  "why-horizontal-accel-zero",
+  "read-part1-equations-aloud-correctly",
+  "read-eq-8-and-9-correctly",
+  "concede-only-when-actually-wrong",
+  "no-stray-section-numbers",
+  "why-45-maximises-range",
+  "change-of-mind-no-scroll",
+  "point-landing-speed-words-not-formula",
+  "point-not-in-document-drag",
+  "honesty-no-blackboard-while-presenting"
+ ],
+ "losses": [
+  "what-uncoupled-means",
+  "numeric-check-20ms-45deg",
+  "launch-from-a-ledge",
+  "fastpath-honesty-now",
+  "point-initial-vy-half-line",
+  "interrupt-sorry-go-on",
+  "no-filler-in-silence",
+  "coding-handoff-keeps-talking"
+ ]
+}
